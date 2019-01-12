@@ -21,13 +21,13 @@ public class LogUtil {
 
     public static boolean LOG = false;//默认关闭自定义打印
 
+    private LogUtil() {
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
+
     /**设置是否开启打印的标志**/
     public static void setDebug(boolean isDebug){
         LOG=isDebug;
-    }
-
-    private LogUtil() {
-        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static void i(String tag, String msg) {
