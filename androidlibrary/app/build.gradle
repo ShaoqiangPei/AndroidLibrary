@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+//android配置
+def config = rootProject.ext.android
+//相关库依赖
+def librarys = rootProject.ext.supportDependencies
+
+android {
+
+    compileSdkVersion config.compileSdkVersion
+    defaultConfig {
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+        testInstrumentationRunner config.testInstrumentationRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    androidTestCompile('com.android.support:support-annotations:26.1.0') {
+        force = true
+    }
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //基础库
+    implementation librarys.implementation_support_appcompat
+    compile librarys.compile_support_v4
+    compile librarys.compile_suppout_design
+    implementation librarys.implementation_constraint_layout
+    testImplementation librarys.testImplementation_test_junit
+    androidTestImplementation librarys.androidTestImplementation_support_runner
+    androidTestImplementation librarys.androidTestImplementation_support_espresso
+    implementation project(':commonlibrary')
+    //==========第三方========
+    //butterknife
+    implementation librarys.compile_butterknife
+    annotationProcessor librarys.annotationProcessor_butterknife_compiler
+}

@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+
+//引用butterknife
+apply plugin: 'com.jakewharton.butterknife'
+
+//android配置
+def config = rootProject.ext.android
+//相关库依赖
+def librarys = rootProject.ext.supportDependencies
+
+android {
+    compileSdkVersion config.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+        testInstrumentationRunner config.testInstrumentationRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //==========基础库============
+    implementation librarys.implementation_support_appcompat
+    implementation librarys.compile_support_v4
+    implementation librarys.compile_suppout_design
+    implementation librarys.compile_recyclerview_v7
+    implementation librarys.implementation_constraint_layout
+    androidTestImplementation librarys.testImplementation_test_junit
+    androidTestImplementation librarys.androidTestImplementation_support_runner
+    androidTestImplementation librarys.androidTestImplementation_support_espresso
+
+    //===============网络库============
+    //retroefit2.0
+    api librarys.compile_retrofit2
+    //retrofit2.0对gson支持
+    api librarys.compile_retrofit2_converter_gson
+    //retrofit2.0支持内置log打印
+    api librarys.compile_okhttp3
+    api librarys.compile_logging_interceptor
+    //添加Retrofit2.0对Rx的支持(RxJava2.x时使用，RxJava1.x时不支持)
+    api librarys.compile_retrofit2_adapter_rxjava2
+    //rxjava2.x
+    api librarys.compile_rx_android2
+    api librarys.compile_rx_java2
+
+    //================第三方库============
+    //Brvah适配器
+    api librarys.compile_BaseRecyclerViewAdapterHelper
+    //butterKnife
+    implementation librarys.compile_butterknife
+    annotationProcessor librarys.annotationProcessor_butterknife_compiler
+    //Glide
+    api librarys.compile_glide4
+    annotationProcessor librarys.annotationProcessor_glide4_compiler
+    //PermissionGen
+    api librarys.compile_permissionenGen
+    //loadingDialog
+    implementation librarys.compile_loading_dialog
+    //selector框架
+    api librarys.compile_DevShapeUtils
+}

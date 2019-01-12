@@ -1,0 +1,129 @@
+/**
+ * 在主项目的根目录下创建config.gradle文件 
+ * 在这里单独处理统一依赖问题 
+ * 注意需要在根目录的build.gradle中进行引入
+ */
+ext {
+    android = [
+            //编译的SDK版本  
+            compileSdkVersion: 26,
+
+            //项目id
+            applicationId:"com.androidlibrary",
+            //支持SDK的最低版本  
+            minSdkVersion    : 19,
+            //支持SDK的目标版本 
+            targetSdkVersion : 26,
+            //编译的Tools版本  
+            buildToolsVersion: "26.0.3",
+            //版本号
+            versionCode:1,
+            //版本名称
+            versionName:"1.0.0",
+
+            testInstrumentationRunner:"android.support.test.runner.AndroidJUnitRunner"
+    ]
+
+
+
+    //依赖库版本
+    supportLibrary = "26.1.0"
+    //库依赖
+    supportDependencies = [
+            //基础库
+            implementation_support_appcompat: "com.android.support:appcompat-v7:${supportLibrary}",
+            compile_support_v4       : "com.android.support:support-v4:${supportLibrary}",
+            compile_suppout_design   : "com.android.support:design:${supportLibrary}",
+            compile_recyclerview_v7:"com.android.support:recyclerview-v7:${supportLibrary}",
+            implementation_constraint_layout:"com.android.support.constraint:constraint-layout:1.1.3",
+            testImplementation_test_junit:"junit:junit:4.12",
+            androidTestImplementation_support_runner:"com.android.support.test:runner:1.0.2",
+            androidTestImplementation_support_espresso:"com.android.support.test.espresso:espresso-core:3.0.2",
+
+            //bugly，其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+            compile_bugly:"com.tencent.bugly:crashreport:latest.release",
+
+            //jpush
+            compile_jiguang_jpush: "cn.jiguang.sdk:jpush:3.1.0",
+            compile_jiguang_janalytics: "cn.jiguang.sdk:janalytics:1.1.1",
+            compile_jiguang_jcore: "cn.jiguang.sdk:jcore:1.1.8",
+
+            //LitePal
+            compile_litepal_core: 'org.litepal.android:core:1.6.1',
+
+            //butterKnife
+            compile_butterknife     : "com.jakewharton:butterknife:8.5.1",
+            //这条千万不能忘记!!,引用方式：annotationProcessor librarys.butterknifeCompiler
+            annotationProcessor_butterknife_compiler:"com.jakewharton:butterknife-compiler:8.5.1",
+
+            //PermissionGen
+            compile_permissionenGen:"com.lovedise:permissiongen:0.0.6",
+
+            //selector框架
+            compile_DevShapeUtils:"com.github.LiangLuDev:DevShapeUtils:1.0.1",
+
+            //loadingdialog,网络加载对话框
+            compile_loading_dialog:"com.github.d-max:spots-dialog:0.7@aar",
+
+            //retroefit2.0
+            compile_retrofit2:"com.squareup.retrofit2:retrofit:2.3.0",
+            //retrofit2.0对gson支持
+            compile_retrofit2_converter_gson:"com.squareup.retrofit2:converter-gson:2.2.0",
+            //retrofit2.0支持内置log打印
+            compile_okhttp3:"com.squareup.okhttp3:okhttp:3.4.1",
+            compile_logging_interceptor:"com.squareup.okhttp3:logging-interceptor:3.4.1",
+            //添加Retrofit2.0对Rx的支持(RxJava2.x时使用，RxJava1.x时不支持)
+            compile_retrofit2_adapter_rxjava2:"com.squareup.retrofit2:adapter-rxjava2:2.3.0",
+
+            //rxjava2.x
+            compile_rx_android2:"io.reactivex.rxjava2:rxandroid:2.0.1",
+            compile_rx_java2:"io.reactivex.rxjava2:rxjava:2.1.0",
+
+            //Brvah(adapter)适配器
+            compile_BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
+
+            //SmartRefresh上拉加载下拉刷新
+            implementation_SmartRefreshLayout:"com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7",
+            implementation_SmartRefreshHeader:"com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7",
+
+            //RecycleView侧滑删除
+            compile_recyclerview_swipe:"com.yanzhenjie:recyclerview-swipe:1.1.4",
+
+            //Glide
+            compile_glide4:"com.github.bumptech.glide:glide:4.0.0",
+            annotationProcessor_glide4_compiler:"com.github.bumptech.glide:compiler:4.0.0",
+
+            //ZXing二维码
+            compile_zxing_core:"com.google.zxing:core:3.3.0",
+
+    ]
+
+}
+
+//====================在app module统一添加================
+//   //android配置  
+//   def config = rootProject.ext.android
+//   //相关库依赖  
+//   def librarys = rootProject.ext.supportDependencies
+//
+//   implementation fileTree(dir: 'libs', include: ['*.jar'])
+//   //基础库
+//   implementation librarys.implementation_support_appcompat
+//   compile librarys.compile_support_v4
+//   compile librarys.compile_suppout_design
+//   compile librarys.compile_recyclerview_v7
+//   implementation librarys.implementation_constraint_layout
+//   testImplementation librarys.testImplementation_test_junit
+//   androidTestImplementation librarys.androidTestImplementation_support_runner
+//   androidTestImplementation librarys.androidTestImplementation_support_espresso
+
+//在你的project的 build.gradle中 allprojects-->repositories 中添加brvah适配器的maven依赖( maven { url "https://jitpack.io" } ),
+//project的buile.gradle中 allprojects 对应示例代码如下：
+//   allprojects {
+//       repositories {
+//           google()
+//           jcenter()
+//
+//           maven { url "https://jitpack.io" }
+//       }
+//   }
