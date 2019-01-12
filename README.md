@@ -1,5 +1,4 @@
-
-####库引用说明
+#### 库引用说明
 在自己项目的project对应的build.gradle里面添加如下代码：
 ```
 	allprojects {
