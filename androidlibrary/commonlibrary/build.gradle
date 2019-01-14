@@ -26,6 +26,7 @@ android {
         }
     }
 
+//==========以下添加是为了让自己的库发布到JitPack上仍能显示注释==================
     // 打包源码jar
     task sourcesJar(type: Jar) {
         from android.sourceSets.main.java.srcDirs
@@ -58,7 +59,7 @@ android {
         archives sourcesJar
         archives javadocJar
     }
-
+//==========以上添加是为了让自己的库发布到JitPack上仍能显示注释==================
 }
 
 dependencies {
@@ -94,6 +95,8 @@ dependencies {
     //butterKnife
     implementation librarys.compile_butterknife
     annotationProcessor librarys.annotationProcessor_butterknife_compiler
+    //LitePal
+    api librarys.compile_litepal_core
     //Glide
     api librarys.compile_glide4
     annotationProcessor librarys.annotationProcessor_glide4_compiler

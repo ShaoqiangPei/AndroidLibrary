@@ -140,6 +140,7 @@ public class MainfastUtil {
                 }
             }
         }
+        LogUtil.i("==XXX===metaData====XXX=="+metaData);
         return metaData;
     }
 
