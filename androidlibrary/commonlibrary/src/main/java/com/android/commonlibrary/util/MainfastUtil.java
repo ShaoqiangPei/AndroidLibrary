@@ -122,7 +122,6 @@ public class MainfastUtil {
                 break;
             }
         }
-        LogUtil.i("==XXX===authority====XXX=="+authority);
         return authority;
     }
 
