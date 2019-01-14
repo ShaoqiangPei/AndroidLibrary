@@ -122,6 +122,7 @@ public class MainfastUtil {
                 break;
             }
         }
+        LogUtil.i("==XXX===authority====XXX=="+authority);
         return authority;
     }
 
@@ -140,7 +141,6 @@ public class MainfastUtil {
                 }
             }
         }
-        LogUtil.i("==XXX===metaData====XXX=="+metaData);
         return metaData;
     }
 
