@@ -153,7 +153,7 @@ public class FileUtil {
             dirFile.mkdirs();
         }
         File file=new File(dirPath+ File.separator+"test.txt");
-        if (!file.exists()) {
+        if (!file.exists()){
             try {
                 file.createNewFile();
             } catch (IOException e){

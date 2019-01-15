@@ -54,7 +54,8 @@ public class FormatUtil {
     /**
      *  格式化距离为 km/m 数
      *
-     *  eg：
+     *  保留一位小数的eg：504 转化后为 504.0m
+     *                  1504 转化后为 1.5km
      *
      * @param distance 距离
      * @param n 四舍五入 保留n位小数
