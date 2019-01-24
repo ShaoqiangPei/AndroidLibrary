@@ -545,7 +545,7 @@ public class SpannableStringUtil {
 			if (index == -1) {
 				return source;
 			}
-			Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId);
+			Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId,null);
 			drawable.setBounds(0, 0, drawable.getIntrinsicWidth() , drawable.getIntrinsicHeight());
 			ImageSpan imageSpan = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
 			if(index==0){
@@ -590,7 +590,7 @@ public class SpannableStringUtil {
 				return source;
 			}
 			index=index+changeStr.length();
-			Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId);
+			Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId,null);
 			drawable.setBounds(0, 0, drawable.getIntrinsicWidth() , drawable.getIntrinsicHeight());
 			ImageSpan imageSpan = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
 			SpannableStringBuilder builder=new SpannableStringBuilder(source);
@@ -631,7 +631,8 @@ public class SpannableStringUtil {
 				return source;
 			}
 			int endIndex=startIndex+changeStr.length();
-			Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId);
+
+			Drawable drawable=ComContext.getInstance().getDrawable(drawableId);
 			drawable.setBounds(0, 0, drawable.getIntrinsicWidth() , drawable.getIntrinsicHeight());
 			ImageSpan imageSpan = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
 			source.setSpan(imageSpan, startIndex, endIndex, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
@@ -671,7 +672,7 @@ public class SpannableStringUtil {
 			DynamicDrawableSpan dds = new DynamicDrawableSpan() {
 				@Override
 				public Drawable getDrawable() {
-					Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId);
+					Drawable drawable=ComContext.getInstance().getDrawable(drawableId);
 					drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
 					return drawable;
 				}
@@ -721,7 +722,7 @@ public class SpannableStringUtil {
 			DynamicDrawableSpan dds = new DynamicDrawableSpan() {
 				@Override
 				public Drawable getDrawable() {
-					Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId);
+					Drawable drawable = ComContext.getInstance().getDrawable(drawableId);
 					drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
 					return drawable;
 				}
@@ -767,7 +768,7 @@ public class SpannableStringUtil {
 			DynamicDrawableSpan dds = new DynamicDrawableSpan() {
 				@Override
 				public Drawable getDrawable() {
-					Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId);
+					Drawable drawable = ComContext.getInstance().getDrawable(drawableId);
 					drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
 					return drawable;
 				}
@@ -815,7 +816,7 @@ public class SpannableStringUtil {
 
                 @Override
                 public void updateDrawState(TextPaint ds) {
-                    ds.setColor(ComContext.getInstance().getResources().getColor(colorId));//设置颜色
+                    ds.setColor(ContextCompat.getColor(ComContext.getInstance(),colorId));//设置颜色
                     ds.setUnderlineText(isUnderLine);//false时表示去掉下划线
                 }
             }, index1, index2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
