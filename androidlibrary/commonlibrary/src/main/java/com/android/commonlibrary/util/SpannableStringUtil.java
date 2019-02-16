@@ -3,6 +3,8 @@ package com.android.commonlibrary.util;
 import android.graphics.BlurMaskFilter;
 import android.graphics.EmbossMaskFilter;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -548,13 +550,14 @@ public class SpannableStringUtil {
 			Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId,null);
 			drawable.setBounds(0, 0, drawable.getIntrinsicWidth() , drawable.getIntrinsicHeight());
 			ImageSpan imageSpan = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
+
+			SpannableStringBuilder builder=new SpannableStringBuilder(source);
+			builder.insert(index,DEFAULT_LETTER);
+			source=SpannableString.valueOf(builder);
 			if(index==0){
-				SpannableStringBuilder builder=new SpannableStringBuilder(source);
-				builder.insert(index,DEFAULT_LETTER);
-			    source=SpannableString.valueOf(builder);
 				source.setSpan(imageSpan, 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			}else if(index>0){
-				source.setSpan(imageSpan, index-1, index, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+				source.setSpan(imageSpan, index, index+1, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
 			}
 			return source;
 		}
@@ -582,6 +585,7 @@ public class SpannableStringUtil {
 	 * @param drawableId 图片id,如:R.drawable.ic
 	 * @return
 	 */
+	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 	public static SpannableString setTextRightImage(SpannableString source, String changeStr, int drawableId) {
 		if(source!=null){
 			String temp = source.toString();
@@ -610,6 +614,7 @@ public class SpannableStringUtil {
 	 * @param drawableId 图片id,如:R.drawable.ic
 	 * @return
 	 */
+	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 	public static SpannableString setTextRightImage(String source, String changeStr, int drawableId) {
 		SpannableString result=getSpannableString(source);
 		return setTextRightImage(result,changeStr,drawableId);

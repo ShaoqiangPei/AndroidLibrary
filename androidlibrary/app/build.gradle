@@ -26,14 +26,14 @@ android {
 }
 
 dependencies {
-    androidTestCompile('com.android.support:support-annotations:26.1.0') {
+    androidTestImplementation('com.android.support:support-annotations:26.1.0') {
         force = true
     }
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //基础库
     implementation librarys.implementation_support_appcompat
-    compile librarys.compile_support_v4
-    compile librarys.compile_suppout_design
+    implementation librarys.compile_support_v4
+    implementation librarys.compile_suppout_design
     implementation librarys.implementation_constraint_layout
     testImplementation librarys.testImplementation_test_junit
     androidTestImplementation librarys.androidTestImplementation_support_runner
