@@ -1517,7 +1517,7 @@ public class SpannableStringUtil {
      * @param index2 终止坐标
      * @return
      */
-    private static SpannableString setTextURL(SpannableString source, String parameter,int index1, int index2){
+	public static SpannableString setTextURL(SpannableString source, String parameter,int index1, int index2){
         if(source!=null&& StringUtil.isNotEmpty(parameter)){
             URLSpan urlSpan=new URLSpan(parameter);
             source.setSpan(urlSpan, index1, index2,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -1538,7 +1538,7 @@ public class SpannableStringUtil {
      * @param index2 终止坐标
      * @return
      */
-    private static SpannableString setTextURL(String source, String parameter,int index1, int index2){
+	public static SpannableString setTextURL(String source, String parameter,int index1, int index2){
         SpannableString result=getSpannableString(source);
         return setTextURL(result,parameter,index1,index2);
     }
@@ -1554,7 +1554,7 @@ public class SpannableStringUtil {
      * @param changeStr 操作内容
      * @return
      */
-    private static SpannableString setTextURL(SpannableString source, String parameter,String changeStr){
+    public static SpannableString setTextURL(SpannableString source, String parameter,String changeStr){
         if(source!=null&& StringUtil.isNotEmpty(parameter)){
             String temp=source.toString();
             int startIndex = temp.indexOf(changeStr);
