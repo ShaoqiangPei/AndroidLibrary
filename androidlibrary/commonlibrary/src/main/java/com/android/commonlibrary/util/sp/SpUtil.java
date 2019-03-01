@@ -245,14 +245,6 @@ public class SpUtil {
     }
 
     /**
-     * 取int，默认取0
-     **/
-    public static int getInt(String key) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
-        return sp.getInt(key, 0);
-    }
-
-    /**
      * 取int，默认取number
      **/
     public static int getInt(String key, int number){
@@ -261,11 +253,10 @@ public class SpUtil {
     }
 
     /**
-     * 取float，默认取0f
+     * 取int，默认取0
      **/
-    public static float getFloat(String key) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
-        return sp.getFloat(key, 0f);
+    public static int getInt(String key) {
+        return getInt(key, 0);
     }
 
     /**
@@ -273,15 +264,14 @@ public class SpUtil {
      **/
     public static float getFloat(String key, float number) {
         SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
-        return sp.getFloat(key, 0f);
+        return sp.getFloat(key, number);
     }
 
     /**
-     * 取long，默认取0L
+     * 取float，默认取0f
      **/
-    public static long getLong(String key) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
-        return sp.getLong(key, 0L);
+    public static float getFloat(String key) {
+        return getFloat(key, 0f);
     }
 
     /**
@@ -289,15 +279,29 @@ public class SpUtil {
      **/
     public static long getLong(String key, long number) {
         SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
-        return sp.getLong(key, 0L);
+        return sp.getLong(key, number);
+    }
+
+    /**
+     * 取long，默认取0L
+     **/
+    public static long getLong(String key) {
+        return getLong(key, 0L);
+    }
+
+    /**
+     * 取boolean，默认取flag
+     **/
+    public static boolean getBoolean(String key, boolean flag) {
+        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        return sp.getBoolean(key, flag);
     }
 
     /**
      * 取boolean，默认取false
      **/
     public static boolean getBoolean(String key) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
-        return sp.getBoolean(key, false);
+        return getBoolean(key, false);
     }
 
     /**
