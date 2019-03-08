@@ -89,7 +89,7 @@ putList(String keyName, List<?> list)
 ```
 ##### 17.取list
 ```
-getMap(String key);
+getList(String key);
 ```
 ##### 18.移除某个key对应的value
 ```
