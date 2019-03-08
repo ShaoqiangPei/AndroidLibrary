@@ -23,6 +23,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.security.Provider;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -305,45 +306,47 @@ public class SpUtil {
     }
 
     /**
-     * 存list
+     * 存list(存储基础数据类型)
      **/
     public static void putList(String keyName, List<?> list) {
         int size = list.size();
         if (size < 1) {
             return;
         }
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
-        SharedPreferences.Editor editor = sp.edit();
-        if (list.get(0) instanceof String) {
-            for (int i = 0; i < size; i++) {
-                editor.putString(keyName + i, (String) list.get(i));
-            }
-        } else if (list.get(0) instanceof Long) {
-            for (int i = 0; i < size; i++) {
-                editor.putLong(keyName + i, (Long) list.get(i));
-            }
-        } else if (list.get(0) instanceof Float) {
-            for (int i = 0; i < size; i++) {
-                editor.putFloat(keyName + i, (Float) list.get(i));
-            }
-        } else if (list.get(0) instanceof Integer) {
-            for (int i = 0; i < size; i++) {
-                editor.putLong(keyName + i, (Integer) list.get(i));
-            }
-        } else if (list.get(0) instanceof Boolean) {
-            for (int i = 0; i < size; i++) {
-                editor.putBoolean(keyName + i, (Boolean) list.get(i));
-            }
+        //先存储list长度
+        SpUtil.put(keyName,size);
+        //再存list内容
+        for (int i = 0; i <size; i++) {
+            SpUtil.put(keyName + i,list.get(i));
         }
-        SharedPreferencesCompat.apply(editor);
     }
 
     /**
-     * 取list
+     * 取list(取存储基础数据类型的集合)
      **/
-    public static Map<String, ?> getMap(String key) {
+    public static List<?> getList(String key) {
         SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
-        return sp.getAll();
+        Map<String, Object> map = (Map<String, Object>) sp.getAll();
+        int size = getInt(key);
+        List<Object> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            Object obj = map.get(key + i);
+            if (obj instanceof String) {
+                obj = getString(key + i);
+            } else if (obj instanceof Integer) {
+                obj = getInt(key + i);
+            } else if (obj instanceof Boolean) {
+                obj = getBoolean(key + i);
+            } else if (obj instanceof Float) {
+                obj = getFloat(key + i);
+            } else if (obj instanceof Long) {
+                obj = getLong(key + i);
+            } else {
+                obj = getString(key + i);
+            }
+            list.add(obj);
+        }
+        return list;
     }
 
     /**
