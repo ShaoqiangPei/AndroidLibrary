@@ -26,6 +26,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
 //==========以下添加是为了让自己的库发布到JitPack上仍能显示注释==================
     // 打包源码jar
     task sourcesJar(type: Jar) {
@@ -64,46 +69,48 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     //==========基础库============
     implementation librarys.implementation_support_appcompat
-    implementation librarys.compile_support_v4
-    implementation librarys.compile_suppout_design
-    implementation librarys.compile_recyclerview_v7
+    implementation librarys.implementation_support_v4
+    implementation librarys.implementation_suppout_design
+    implementation librarys.implementation_recyclerview_v7
     implementation librarys.implementation_constraint_layout
     androidTestImplementation librarys.testImplementation_test_junit
     androidTestImplementation librarys.androidTestImplementation_support_runner
     androidTestImplementation librarys.androidTestImplementation_support_espresso
 
-    //===============网络库============
-    //retroefit2.0
-    api librarys.compile_retrofit2
-    //retrofit2.0对gson支持
-    api librarys.compile_retrofit2_converter_gson
-    //retrofit2.0支持内置log打印
-    api librarys.compile_okhttp3
-    api librarys.compile_logging_interceptor
-    //添加Retrofit2.0对Rx的支持(RxJava2.x时使用，RxJava1.x时不支持)
-    api librarys.compile_retrofit2_adapter_rxjava2
-    //rxjava2.x
-    api librarys.compile_rx_android2
-    api librarys.compile_rx_java2
+//    //===============网络库============
+//    //retroefit2.0
+//    api librarys.compile_retrofit2
+//    //retrofit2.0对gson支持
+//    api librarys.compile_retrofit2_converter_gson
+//    //retrofit2.0支持内置log打印
+//    api librarys.compile_okhttp3
+//    api librarys.compile_logging_interceptor
+//    //添加Retrofit2.0对Rx的支持(RxJava2.x时使用，RxJava1.x时不支持)
+//    api librarys.compile_retrofit2_adapter_rxjava2
+//    //rxjava2.x
+//    api librarys.compile_rx_android2
+//    api librarys.compile_rx_java2
 
     //================第三方库============
-    //Brvah适配器
-    api librarys.compile_BaseRecyclerViewAdapterHelper
-    //butterKnife
-    implementation librarys.compile_butterknife
-    annotationProcessor librarys.annotationProcessor_butterknife_compiler
     //LitePal
-    api librarys.compile_litepal_core
-    //Glide
-    api librarys.compile_glide4
-    annotationProcessor librarys.annotationProcessor_glide4_compiler
+    implementation librarys.implementation_litepal_core
     //PermissionGen
-    api librarys.compile_permissionenGen
-    //loadingDialog
-    implementation librarys.compile_loading_dialog
-    //selector框架
-    api librarys.compile_DevShapeUtils
+    implementation librarys.implementation_permissionenGen
+    //gson(引入Retrofit网络框架后,需要替换成retrofit2_converter_gson)
+    implementation librarys.implementation_gson
+    //butterKnife
+    implementation librarys.implementation_butterknife
+    annotationProcessor librarys.annotationProcessor_butterknife_compiler
+
+//    //Brvah适配器
+//    api librarys.compile_BaseRecyclerViewAdapterHelper
+//    //Glide
+//    api librarys.compile_glide4
+//    annotationProcessor librarys.annotationProcessor_glide4_compiler
+//    //loadingDialog
+//    implementation librarys.compile_loading_dialog
+//    //selector框架
+//    api librarys.compile_DevShapeUtils
 }

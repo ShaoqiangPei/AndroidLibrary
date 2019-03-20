@@ -1,7 +1,5 @@
 package com.android.commonlibrary.app;
 
-import com.luliang.shapeutils.DevShapeUtils;
-
 import org.litepal.LitePal;
 import org.litepal.LitePalApplication;
 
@@ -26,7 +24,7 @@ public class ComContext extends LitePalApplication {
         instance = this;
         //引入LitePal数据存储框架
         LitePal.initialize(this);
-        //引入selector框架
-        DevShapeUtils.init(this);
+//        //引入selector框架
+//        DevShapeUtils.init(this);
     }
 }

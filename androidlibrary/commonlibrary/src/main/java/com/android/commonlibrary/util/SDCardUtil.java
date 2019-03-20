@@ -2,7 +2,7 @@ package com.android.commonlibrary.util;
 
 import android.os.Build;
 import android.os.Environment;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 
 import com.android.commonlibrary.app.ComContext;
 

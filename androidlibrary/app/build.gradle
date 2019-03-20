@@ -23,24 +23,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
-    androidTestImplementation('com.android.support:support-annotations:26.1.0') {
-        force = true
-    }
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //基础库
     implementation librarys.implementation_support_appcompat
-    implementation librarys.compile_support_v4
-    implementation librarys.compile_suppout_design
+    implementation librarys.implementation_support_v4
+    implementation librarys.implementation_suppout_design
+    implementation librarys.implementation_recyclerview_v7
     implementation librarys.implementation_constraint_layout
-    testImplementation librarys.testImplementation_test_junit
+    androidTestImplementation librarys.testImplementation_test_junit
     androidTestImplementation librarys.androidTestImplementation_support_runner
     androidTestImplementation librarys.androidTestImplementation_support_espresso
     implementation project(':commonlibrary')
     //==========第三方========
     //butterknife
-    implementation librarys.compile_butterknife
+    implementation librarys.implementation_butterknife
     annotationProcessor librarys.annotationProcessor_butterknife_compiler
 }
