@@ -1,5 +1,6 @@
 package com.android.commonlibrary.util;
 
+import android.annotation.SuppressLint;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.os.PowerManager;
@@ -20,6 +21,7 @@ public class WakeUpUtil {
     /**
      * 唤醒手机屏幕并解锁
      */
+    @SuppressLint("InvalidWakeLockTag")
     public static void wakeUpAndUnlock() {
         // 获取电源管理器对象
         PowerManager pm = (PowerManager) ComContext.getContext()

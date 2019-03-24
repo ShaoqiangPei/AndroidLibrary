@@ -47,4 +47,6 @@ dependencies {
     //butterknife
     implementation librarys.implementation_butterknife
     annotationProcessor librarys.annotationProcessor_butterknife_compiler
+
+
 }

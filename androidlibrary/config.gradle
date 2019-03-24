@@ -52,13 +52,14 @@ ext {
             //gson(引入Retrofit网络框架后,需要替换成retrofit2_converter_gson)
             implementation_gson: "com.google.code.gson:gson:2.8.5",
 
-            //PermissionGen
-            implementation_permissionenGen:"com.lovedise:permissiongen:0.0.6",
-
             //butterKnife
             implementation_butterknife     : "com.jakewharton:butterknife:10.1.0",
             //这条千万不能忘记!!,引用方式：annotationProcessor librarys.butterknifeCompiler
             annotationProcessor_butterknife_compiler:"com.jakewharton:butterknife-compiler:10.1.0",
+
+            //PermissionGen
+            implementation_permissionenGen:"com.lovedise:permissiongen:0.0.6",
+
 
 
 
