@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         mBtnTest=findViewById(R.id.button);
         mTvTest=findViewById(R.id.textView);
-
 
     }
 
