@@ -1,18 +1,11 @@
 package com.android.commonlibrary.function;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-
-import com.android.commonlibrary.util.LogUtil;
 import java.lang.ref.WeakReference;
-
-import androidx.annotation.NonNull;
-import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
-import kr.co.namee.permissiongen.PermissionSuccess;
 
 /**
  * Description:app权限申请工具类
