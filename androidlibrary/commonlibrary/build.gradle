@@ -1,7 +1,10 @@
 apply plugin: 'com.android.library'
-
 //引用butterknife
 apply plugin: 'com.jakewharton.butterknife'
+
+//为jitpack做配置
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.ShaoqiangPei'
 
 //android配置
 def config = rootProject.ext.android
