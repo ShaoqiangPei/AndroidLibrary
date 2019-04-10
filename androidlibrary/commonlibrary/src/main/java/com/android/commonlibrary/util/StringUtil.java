@@ -57,6 +57,15 @@ public class StringUtil {
         return str;
     }
 
+    /**去掉字符串前面的零**/
+    public static String removeZeroBeforeStr(String str){
+        if(StringUtil.isNotEmpty(str)){
+            String newStr = str.replaceAll("^(0+)", "");
+            return newStr;
+        }
+        return null;
+    }
+
     /**
      * 按位数以 分隔符 将原字符串分割成几段
      *
