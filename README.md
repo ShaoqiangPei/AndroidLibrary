@@ -22,3 +22,5 @@
 	        implementation 'com.github.ShaoqiangPei:AndroidLibrary:1.0.0'
 	}
 ```
+#### 使用说明索引
+#####1.0 启动页工具类
