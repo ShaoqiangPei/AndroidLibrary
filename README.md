@@ -24,4 +24,5 @@
 ```
 #### 使用说明索引
 #### 一. 启动页工具类
-[]()
+[LaunchUtil](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/LaunchUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
+)
