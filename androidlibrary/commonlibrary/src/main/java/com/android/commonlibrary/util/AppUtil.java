@@ -201,6 +201,15 @@ public class AppUtil {
     }
 
     /**
+     * 获取设备名称
+     * eg:UBX
+     */
+    /**设备名称**/
+    public static String getDeviceName() {
+        return android.os.Build.MANUFACTURER;
+    }
+
+    /**
      * 获取系统版本号(用户可见的版本字符串)
      * eg:4.4.4
      */

@@ -24,8 +24,7 @@ public class WakeUpUtil {
     @SuppressLint("InvalidWakeLockTag")
     public static void wakeUpAndUnlock() {
         // 获取电源管理器对象
-        PowerManager pm = (PowerManager) ComContext.getContext()
-                .getSystemService(Context.POWER_SERVICE);
+        PowerManager pm = (PowerManager) ComContext.getInstance().getSystemService(Context.POWER_SERVICE);
         boolean screenOn = pm.isScreenOn();
         if (!screenOn) {
             // 获取PowerManager.WakeLock对象,后面的参数|表示同时传入两个值,最后的是LogCat里用的Tag
@@ -36,7 +35,7 @@ public class WakeUpUtil {
             wl.release(); // 释放
         }
         // 屏幕解锁
-        KeyguardManager keyguardManager = (KeyguardManager) ComContext.getContext()
+        KeyguardManager keyguardManager = (KeyguardManager) ComContext.getInstance()
                 .getSystemService(KEYGUARD_SERVICE);
         KeyguardManager.KeyguardLock keyguardLock = keyguardManager.newKeyguardLock("unLock");
         // 屏幕锁定

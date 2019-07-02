@@ -46,9 +46,6 @@ ext {
 //            compile_jiguang_janalytics: "cn.jiguang.sdk:janalytics:1.1.1",
 //            compile_jiguang_jcore: "cn.jiguang.sdk:jcore:1.1.8",
 
-            //LitePal
-            implementation_litepal_core: 'org.litepal.android:core:1.6.1',
-
             //gson(引入Retrofit网络框架后,需要替换成retrofit2_converter_gson)
             implementation_gson: "com.google.code.gson:gson:2.8.5",
 

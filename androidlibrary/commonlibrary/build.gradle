@@ -97,8 +97,6 @@ dependencies {
 //    api librarys.compile_rx_java2
 
     //================第三方库============
-    //LitePal
-    implementation librarys.implementation_litepal_core
     //PermissionGen
     implementation librarys.implementation_permissionenGen
     //gson(引入Retrofit网络框架后,需要替换成retrofit2_converter_gson)

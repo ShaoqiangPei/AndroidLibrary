@@ -71,10 +71,8 @@ public class SpUtil {
      * @param mak:为16位数字字母混合字符串
      */
     public static void setMAK(String mak){
-
         if(StringUtil.isEmpty(mak)||mak.length()<16){
-            Log.e("SpUtil_setMAK_error","设置秘钥失败,请设置16位数字与字母混合长度的秘钥");
-            return;
+            throw new SecurityException("SpUtil_setMAK_error,设置秘钥失败,请设置16位数字与字母混合长度的秘钥");
         }
         MAK=mak;
     }
@@ -90,8 +88,7 @@ public class SpUtil {
             editor.remove(key);
         } else if (object instanceof String) {
             if(StringUtil.isEmpty(MAK)){
-                Log.e("SpUtil_put_error","存储失败,请在存储前设置存储秘钥");
-                return;
+                throw new NullPointerException("SpUtil_put_error,存储失败,请在存储前设置存储秘钥");
             }
             String value = (String) object;
             try {
@@ -182,8 +179,7 @@ public class SpUtil {
             editor.remove(key);
         }else{
             if(StringUtil.isEmpty(MAK)){
-                Log.e("SpUtil_error","存储失败,请在存储前设置秘钥");
-                return;
+                throw new NullPointerException("SpUtil_put_error,存储失败,请在存储前设置存储秘钥");
             }
             Gson gson =new Gson();
             String objStr=gson.toJson(obj);
@@ -206,8 +202,7 @@ public class SpUtil {
         SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
         String str = null;
         if(StringUtil.isEmpty(MAK)){
-            Log.e("SpUtil_error","获取失败,请在调用SpUtil类方法前先前设置秘钥");
-            return str;
+            throw new NullPointerException("SpUtil_put_error,获取失败,请在调用SpUtil类方法前先前设置秘钥");
         }
         try {
             str = sp.getString(key, null);
@@ -231,8 +226,7 @@ public class SpUtil {
         SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
         String str = null;
         if(StringUtil.isEmpty(MAK)){
-            Log.e("SpUtil_getString_error","获取失败,请在调用SpUtil类方法前先前设置秘钥");
-            return str;
+            throw new NullPointerException("SpUtil_put_error,获取失败,请在调用SpUtil类方法前先前设置秘钥");
         }
         try {
             str = sp.getString(key, null);

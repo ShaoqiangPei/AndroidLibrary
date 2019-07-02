@@ -119,7 +119,7 @@ public class SpannableStringUtil {
 	 */
 	public static SpannableString setTextFrontColor(SpannableString source,int index1, int index2,int color){
 		if(source!=null) {
-			int colorVaule = ContextCompat.getColor(ComContext.getContext(), color);
+			int colorVaule = ContextCompat.getColor(ComContext.getInstance(), color);
 			ForegroundColorSpan fcs=new ForegroundColorSpan(colorVaule);
 			source.setSpan(fcs,index1, index2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			return source;
@@ -186,7 +186,7 @@ public class SpannableStringUtil {
 	 */
 	public static SpannableString setTextBackgroundColor(SpannableString source,int index1,int index2, int color){
 		if(source!=null){
-			int colorVaule = ContextCompat.getColor(ComContext.getContext(), color);
+			int colorVaule = ContextCompat.getColor(ComContext.getInstance(), color);
 			BackgroundColorSpan bcs=new BackgroundColorSpan(colorVaule);
 			source.setSpan(bcs,index1, index2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			return source;
@@ -540,6 +540,7 @@ public class SpannableStringUtil {
 	 * @param drawableId 图片id,如:R.drawable.ic
 	 * @return
 	 */
+	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 	public static SpannableString setTextLeftImage(SpannableString source, String changeStr, int drawableId) {
 		if (source != null) {
 			String temp = source.toString();
@@ -572,6 +573,7 @@ public class SpannableStringUtil {
 	 * @param drawableId 图片id,如:R.drawable.ic
 	 * @return
 	 */
+	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 	public static SpannableString setTextLeftImage(String source, String changeStr, int drawableId) {
 		SpannableString result=getSpannableString(source);
 		return setTextLeftImage(result,changeStr,drawableId);
@@ -628,6 +630,7 @@ public class SpannableStringUtil {
 	 * @param drawableId 图片id,如:R.drawable.ic
 	 * @return
 	 */
+	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 	public static SpannableString replaceTextByImage(SpannableString source, String changeStr, int drawableId) {
 		if(source!=null){
 			String temp = source.toString();
@@ -654,6 +657,7 @@ public class SpannableStringUtil {
 	 * @param drawableId 图片id,如:R.drawable.ic
 	 * @return
 	 */
+	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 	public static SpannableString replaceTextByImage(String source, String changeStr, int drawableId) {
 		SpannableString result=getSpannableString(source);
 		return replaceTextByImage(result,changeStr,drawableId);
@@ -675,6 +679,7 @@ public class SpannableStringUtil {
 				return source;
 			}
 			DynamicDrawableSpan dds = new DynamicDrawableSpan() {
+				@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 				@Override
 				public Drawable getDrawable() {
 					Drawable drawable=ComContext.getInstance().getDrawable(drawableId);
@@ -725,6 +730,7 @@ public class SpannableStringUtil {
 			}
 			index=index+changeStr.length();
 			DynamicDrawableSpan dds = new DynamicDrawableSpan() {
+				@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 				@Override
 				public Drawable getDrawable() {
 					Drawable drawable = ComContext.getInstance().getDrawable(drawableId);
@@ -771,6 +777,7 @@ public class SpannableStringUtil {
 			}
 			int endIndex=startIndex+changeStr.length();
 			DynamicDrawableSpan dds = new DynamicDrawableSpan() {
+				@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 				@Override
 				public Drawable getDrawable() {
 					Drawable drawable = ComContext.getInstance().getDrawable(drawableId);
