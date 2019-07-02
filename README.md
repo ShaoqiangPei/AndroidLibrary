@@ -22,6 +22,31 @@
 	        implementation 'com.github.ShaoqiangPei:AndroidLibrary:1.0.0'
 	}
 ```
+在你的项目中自定义一个Application继承于ComContext,类似如下：
+```
+public class AppContext extends ComContext {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+    }
+}
+```
+在你项目的mainfast.xml中声明自己的application，类似如下：
+```
+ <application
+        android:name=".AppContext"//声明自己的Application
+	//以下省略
+        //......
+        >
+    //此处省略
+    //......
+
+    </application>
+
+</manifest>
+```
 ### 使用说明索引
 #### 一. 启动页工具类  
 [LaunchUtil](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/LaunchUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
