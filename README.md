@@ -1,6 +1,6 @@
 [![](https://jitpack.io/v/ShaoqiangPei/AndroidLibrary.svg)](https://jitpack.io/#ShaoqiangPei/AndroidLibrary)
 
-#### 库引用说明
+### 库引用说明
 在自己项目的project对应的build.gradle里面添加如下代码：
 ```
 	allprojects {
@@ -22,14 +22,14 @@
 	        implementation 'com.github.ShaoqiangPei:AndroidLibrary:1.0.0'
 	}
 ```
-#### 使用说明索引
-- ##### 启动页工具类  
+### 使用说明索引
+- #### 启动页工具类  
 [LaunchUtil](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/LaunchUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 )
-- ##### 用户权限申请  
+- #### 用户权限申请  
 [PermissionHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/PermissionHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 )
-- ##### util工具  
+- #### util工具  
 [SpUtil](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SpUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)                  ————— SharedPreferences存储类  
 AppUtil ————— app设备信息相关类  
 CollectionUtil ————— 集合处理工具  
