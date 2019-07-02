@@ -23,13 +23,13 @@
 	}
 ```
 ### 使用说明索引
-#### 一.启动页工具类  
+#### 一. 启动页工具类  
 [LaunchUtil](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/LaunchUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 )
-#### 二.用户权限申请  
+#### 二. 用户权限申请  
 [PermissionHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/PermissionHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 )
-#### 三.util工具  
+#### 三. Util工具  
 [SpUtil](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SpUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)                  ————— SharedPreferences存储类  
 AppUtil ————— app设备信息相关类  
 CollectionUtil ————— 集合处理工具  
