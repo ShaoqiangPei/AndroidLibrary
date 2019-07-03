@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData(){
-        LogUtil.setDebug(true);
+//        LogUtil.setDebug(true);
 
         mBtnTest=findViewById(R.id.button);
         mTvTest=findViewById(R.id.textView);
