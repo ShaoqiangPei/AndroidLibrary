@@ -43,9 +43,7 @@ public class AppContext extends ComContext {
     //此处省略
     //......
 
-    </application>
-
-</manifest>
+  </application>
 ```
 ### 使用说明索引
 #### 一. 启动页工具类  
