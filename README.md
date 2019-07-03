@@ -84,4 +84,4 @@ WakeUpUtil ————— 屏幕唤醒工具类
 #### 四. 可序列化基类
 [BaseEntity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/BaseEntity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
 #### 五. 缓存
-[Cache](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/Cache%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+[Cache](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/Cache%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— app内存缓存
