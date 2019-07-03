@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
+import com.android.commonlibrary.cacher.normal_cache.Cache;
 import com.android.commonlibrary.util.LogUtil;
 
 import java.util.List;
@@ -124,8 +125,8 @@ public class AppActivityManager {
      */
     public void appExit() {
         LogUtil.i("=====退出程序=======");
-//        //关闭缓存
-//        Cache.getInstance().closeCache();
+        //关闭缓存
+        Cache.getInstance().closeCache();
         //关闭activity
         finishAllActivity();
 //        System.exit(0);

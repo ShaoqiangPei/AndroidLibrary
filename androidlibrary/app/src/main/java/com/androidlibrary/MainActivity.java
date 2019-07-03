@@ -5,14 +5,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.commonlibrary.cacher.normal_cache.Cache;
-import com.android.commonlibrary.entity.BaseEntity;
+import com.android.commonlibrary.cacher.simple_cache.SimpleCache;
 import com.android.commonlibrary.util.LogUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.json.JSONObject;
+
+import java.io.File;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,21 +29,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData(){
-//        LogUtil.setDebug(true);
+        LogUtil.setDebug(true);
 
         mBtnTest=findViewById(R.id.button);
         mTvTest=findViewById(R.id.textView);
+
     }
 
     private void setListener(){
         mBtnTest.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                 test();
             }
         });
     }
 
+    private void test() {
+
+    }
 }
 
 

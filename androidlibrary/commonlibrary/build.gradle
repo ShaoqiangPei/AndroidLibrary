@@ -104,8 +104,6 @@ dependencies {
     //butterKnife
     implementation librarys.implementation_butterknife
     annotationProcessor librarys.annotationProcessor_butterknife_compiler
-    //PermissionGen
-    implementation librarys.implementation_permissionenGen
 
 
 //    //Brvah适配器
