@@ -88,6 +88,9 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [AppActivityManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivityManager%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 ) ————— App中Activity管理类  
 [AppHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
-) ————— Activity基类帮助类
+) ————— Activity基类帮助类  
+[IntentHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/IntentHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
+) ————— Activity跳转帮助类(包含activity间的各种跳转和传值)
+
 
 
