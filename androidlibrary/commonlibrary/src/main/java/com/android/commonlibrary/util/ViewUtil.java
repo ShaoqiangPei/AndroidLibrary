@@ -9,8 +9,12 @@ import android.os.Build;
 import androidx.annotation.ColorRes;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
+
+import android.text.InputFilter;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 /**
@@ -40,6 +44,10 @@ public class ViewUtil {
     public interface OnViewListener {
         void onView(int width, int height);
     }
+
+    //===========================================================
+    //                   控件可见性
+    //===========================================================
 
     /**
      * 获取控件可见性状态
@@ -104,6 +112,10 @@ public class ViewUtil {
             view.setVisibility(View.GONE);
         }
     }
+
+    //===========================================================
+    //                   ImageView相关
+    //===========================================================
 
     public static int getColor(Context conetxt, @ColorRes int id){
         return  ContextCompat.getColor(conetxt,id);
@@ -185,6 +197,29 @@ public class ViewUtil {
         if(uri!=null){
             imv.setImageURI(uri);
         }
+    }
+
+    //===========================================================
+    //                   EditText相关
+    //===========================================================
+    /**设置光标显示在输入框尾部**/
+    public void setEndEditTextCursor(EditText edtText,String edtString){
+        //设置数量
+        if(StringUtil.isNotEmpty(edtString)){
+            //将光标移至文字末尾
+            edtText.setSelection(edtString.length());
+        }
+    }
+
+    /**设置输入框最大数字输入长度**/
+    public void setEditMaxNumLength(EditText edtText,int maxLength){
+        edtText.setInputType(InputType.TYPE_CLASS_NUMBER); //输入类型为数字
+        setEditMaxLength(edtText,maxLength);
+    }
+
+    /**设置输入框最大输入长度**/
+    public void setEditMaxLength(EditText edtText,int maxLength){
+        edtText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
     }
 
 }

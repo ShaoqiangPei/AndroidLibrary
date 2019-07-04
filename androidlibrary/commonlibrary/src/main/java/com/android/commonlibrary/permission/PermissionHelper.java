@@ -1,4 +1,4 @@
-package com.android.commonlibrary.function;
+package com.android.commonlibrary.permission;
 
 import android.app.Activity;
 import android.content.Context;

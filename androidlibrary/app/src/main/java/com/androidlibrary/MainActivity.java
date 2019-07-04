@@ -1,54 +1,50 @@
 package com.androidlibrary;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.android.commonlibrary.cacher.simple_cache.SimpleCache;
+import com.android.commonlibrary.activityfragment.AppActivity;
 import com.android.commonlibrary.util.LogUtil;
 
-import org.json.JSONObject;
-
-import java.io.File;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppActivity {
 
     private Button mBtnTest;
     private TextView mTvTest;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        initData();
-        setListener();
+    public int getContentViewId() {
+        return R.layout.activity_main;
     }
 
-    private void initData(){
+    @Override
+    public void initData() {
 //        LogUtil.setDebug(true);
-        
 
-        mBtnTest=findViewById(R.id.button);
-        mTvTest=findViewById(R.id.textView);
-
+        mBtnTest=getView(R.id.button);
+        mTvTest=getView(R.id.textView);
     }
 
-    private void setListener(){
-        mBtnTest.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                 test();
-            }
-        });
+    @Override
+    public void setListener() {
+        mBtnTest.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.button:
+                test();
+                break;
+            default:
+                break;
+         }
     }
 
     private void test() {
 
     }
+
 }
 
 

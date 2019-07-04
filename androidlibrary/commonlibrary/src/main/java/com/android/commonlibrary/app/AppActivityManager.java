@@ -120,7 +120,7 @@ public class AppActivityManager {
 
     /**
      * 退出应用程序
-     * <p>
+     *
      * System.exit(0);会造成退出app后，再次进入时，会白屏或者黑屏3秒左右才进入广告页面
      */
     public void appExit() {
