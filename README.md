@@ -82,4 +82,19 @@ WakeUpUtil ————— 屏幕唤醒工具类
 #### 四. 可序列化基类
 [BaseEntity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/BaseEntity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
 #### 五. 缓存
-[Cache](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/Cache%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— app内存缓存
+[Cache](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/Cache%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— app内存缓存  
+[SimpleCache](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SimpleCache%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 文件式缓存 
+#### 六. app辅助类
+[AppActivityManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivityManager%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
+) ————— App中Activity管理类  
+[AppHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
+) ————— Activity基类帮助类  
+[IntentHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/IntentHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
+) ————— Activity跳转帮助类(包含activity间的各种跳转和传值)  
+#### 七. Activity & Fragment
+[AppActivity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
+)————— Activity基类
+
+
+
+
