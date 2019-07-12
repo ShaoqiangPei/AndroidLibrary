@@ -16,10 +16,16 @@
 	        implementation 'com.github.ShaoqiangPei:AndroidLibrary:Tag'
 	}
 ```
-若你引用的版本为v1.0.0,则在app_module对应的build.gradle里面具体引用如下：
+1.1.0以下版本(以1.0.0版为例),则在app_module对应的build.gradle里面具体引用如下：
 ```
   dependencies {
-	        implementation 'com.github.ShaoqiangPei:AndroidLibrary:1.0.0'
+	        implementation 'com.github.ShaoqiangPei:AndroidLibrary:v1.0.0'
+	}
+```
+1.1.0及以上版本(以1.1.0版为例),则在app_module对应的build.gradle里面具体引用如下：
+```
+  dependencies {
+	        implementation 'com.github.ShaoqiangPei:AndroidLibrary:1.1.0'
 	}
 ```
 在你的项目中自定义一个Application继承于ComContext,类似如下：
