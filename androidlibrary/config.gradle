@@ -55,7 +55,7 @@ ext {
             annotationProcessor_butterknife_compiler:"com.jakewharton:butterknife-compiler:10.1.0",
 
             //PermissionGen
-            implementation_permissionenGen:"com.lovedise:permissiongen:0.0.6"
+            api_permissionenGen:"com.lovedise:permissiongen:0.0.6"
 
 
 //            //selector框架
