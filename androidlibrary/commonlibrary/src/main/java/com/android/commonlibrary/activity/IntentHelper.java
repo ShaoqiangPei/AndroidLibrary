@@ -1,4 +1,4 @@
-package com.android.commonlibrary.activityfragment;
+package com.android.commonlibrary.activity;
 
 import android.app.Activity;
 import android.content.Context;

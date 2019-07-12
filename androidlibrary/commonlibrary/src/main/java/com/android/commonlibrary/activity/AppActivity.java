@@ -1,4 +1,4 @@
-package com.android.commonlibrary.activityfragment;
+package com.android.commonlibrary.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -58,7 +58,7 @@ public abstract class AppActivity extends AppCompatActivity implements IActivity
             initData();
             setListener();
         }else{
-            throw new SecurityException("====请在getContentViewId中给activity设置对应的xml文件id=======");
+            throw new SecurityException("====请在Activity的getContentViewId中给activity设置对应的xml文件id=======");
         }
     }
 
@@ -120,7 +120,8 @@ public abstract class AppActivity extends AppCompatActivity implements IActivity
     }
 
     /**用于初始化控件的**/
-    protected <T> T getView(int rId) {
+    @Override
+    public <T>T getView(int rId) {
         return AppHelper.getInstance().getView(mContext,rId);
     }
 

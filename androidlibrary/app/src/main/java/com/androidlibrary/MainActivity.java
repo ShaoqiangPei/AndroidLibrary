@@ -3,8 +3,7 @@ package com.androidlibrary;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.android.commonlibrary.activityfragment.AppActivity;
-import com.android.commonlibrary.util.LogUtil;
+import com.android.commonlibrary.activity.AppActivity;
 
 public class MainActivity extends AppActivity {
 

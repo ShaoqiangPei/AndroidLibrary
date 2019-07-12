@@ -37,6 +37,9 @@ public interface IActivity extends View.OnClickListener{
     /**短吐司**/
     void showShortToast(String msg);
 
+    /**用于初始化控件的**/
+    <T>T getView(int rId);
+
     /**基础的界面跳转**/
     void startAct(Class<?> cls);
 
