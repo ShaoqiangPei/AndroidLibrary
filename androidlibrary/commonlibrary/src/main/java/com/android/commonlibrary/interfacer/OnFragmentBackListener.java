@@ -1,5 +1,7 @@
 package com.android.commonlibrary.interfacer;
 
+import android.view.KeyEvent;
+
 /**
  * Description:Activity与Fragment交互时,对于返回键处理的监听
  *
@@ -9,5 +11,5 @@ package com.android.commonlibrary.interfacer;
 public interface OnFragmentBackListener {
 
     /**返回键的处理**/
-    void  onBackForward();
+    void onBackForward(int keyCode, KeyEvent event);
 }

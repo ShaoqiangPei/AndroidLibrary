@@ -217,4 +217,13 @@ public abstract class AppFragment extends Fragment implements IActivity{
         return ((AppActivity)mContext).getParcelableList(tag);
     }
 
+    /**下一个Fragemnt中接收传值**/
+    protected Bundle getFragBundle(){
+        Bundle bundle=getArguments();
+        if(bundle!=null){
+            return bundle;
+        }
+        return null;
+    }
+
 }
