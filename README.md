@@ -61,13 +61,14 @@ public class AppContext extends ComContext {
 #### 三. Util工具  
 [SpUtil](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SpUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)                  ————— SharedPreferences存储类  
 AppUtil ————— app设备信息相关类  
-CollectionUtil ————— 集合处理工具 
-[CompareSortor](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/CompareSortor%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)————— List集合排列工具类 
+CollectionUtil ————— 集合处理工具  
+[CompareSortor](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/CompareSortor%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)————— List集合排列工具类  
 DateUtil ————— 日期相关工具处理类  
 DoubleClickUtil ————— 防双击，防抖功能类  
 FileUtil ————— 文件工具类  
 FlyAnimtor ————— 物品飞入购物车效果工具类(贝塞尔曲线)  
 FormatUtil ————— 数字给格式化工具类  
+GroupUtil ————— 分组工具类  
 GsonUtil ————— gson解析工具类  
 KeyboardUtil ————— 软键盘控制工具类  
 LogUtil ————— log打印工具类  
@@ -91,7 +92,7 @@ WakeUpUtil ————— 屏幕唤醒工具类
 #### 五. 缓存
 [Cache](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/Cache%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— app内存缓存  
 [SimpleCache](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SimpleCache%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 文件式缓存 
-#### 六. app辅助类
+#### 六. Activity 辅助类
 [AppActivityManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivityManager%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 ) ————— App中Activity管理类  
 [AppHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
