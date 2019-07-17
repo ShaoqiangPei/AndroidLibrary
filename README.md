@@ -103,8 +103,8 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [AppFragmentManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragmentManager%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— Fragment跳转,移除管理类  
 #### 八. Activity & Fragment
 [AppActivity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
-)————— Activity基类
-
+)————— Activity基类  
+[AppFragActivity]()
 
 
 
