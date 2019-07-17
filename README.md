@@ -104,7 +104,7 @@ WakeUpUtil ————— 屏幕唤醒工具类
 #### 八. Activity & Fragment
 [AppActivity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 )————— Activity基类  
-[AppFragActivity]()
+[AppFragActivity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 集成Fragment时需要用到的activity,主要用来处理Fragment和activity的返回键功能
 
 
 
