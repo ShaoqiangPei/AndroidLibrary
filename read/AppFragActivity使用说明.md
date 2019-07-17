@@ -17,7 +17,8 @@ public class MainActivity extends AppFragActivity{
 
 }
 ```
-在 MainActivity中重写AppFragActivity的onActivityKeyDown(int keyCode, KeyEvent event)方法，用于处理MainActivity中的返回键功能，类似如下：
+当 MainActivity 不需要处理返回键的时候，它无需重写onActivityKeyDown(int keyCode, KeyEvent event)方法。此时MainActivity点击返回键会执行系统对于返回键响应的方法。
+当 MainActivity 中需要处理返回键逻辑的时候,则需要重写AppFragActivity的onActivityKeyDown(int keyCode, KeyEvent event)方法，并且将返回值设置为true,类似如下：
 ```
 public class MainActivity extends AppFragActivity{
 
@@ -25,11 +26,13 @@ public class MainActivity extends AppFragActivity{
    //......
 
     @Override
-    protected void onActivityKeyDown(int keyCode, KeyEvent event) {
-        super.onActivityKeyDown(keyCode, event);
+    protected boolean onActivityKeyDown(int keyCode, KeyEvent event) {
         //此处写MianActivity的返回键处理逻辑
         //......
-    } 
+
+        //最后返回true,用于拦截系统返回键功能
+        return true;
+    }
 }
 ```
 Fragment中处理返回键逻辑的话,Fragment需要实现OnFragmentBackListener接口，如下：
