@@ -42,6 +42,7 @@ public abstract class AppFragment extends Fragment implements IActivity{
         mContext=context;
     }
 
+    /**设置监听**/
     public void setOnFragmentListener(OnFragmentListener onFragmentListener){
         this.mOnFragmentListener=onFragmentListener;
     }

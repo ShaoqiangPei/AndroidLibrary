@@ -1,9 +1,13 @@
 package com.androidlibrary;
 
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.android.commonlibrary.activity.AppActivity;
+import com.android.commonlibrary.activity.AppFragActivity;
+import com.android.commonlibrary.util.LogUtil;
 
 public class MainActivity extends AppActivity {
 

@@ -4,7 +4,6 @@ import android.view.KeyEvent;
 
 import com.android.commonlibrary.interfacer.OnFragmentBackListener;
 import com.android.commonlibrary.util.LogUtil;
-import com.android.commonlibrary.util.ToastUtil;
 
 /**
  * Description: 集成Fragment时需要用到的activity
@@ -30,14 +29,15 @@ public abstract class AppFragActivity extends AppActivity{
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             if (mOnFragmentBackListener != null) {
+                LogUtil.i("======fragment中拦截处理返回键========");
                 //fragment中拦截处理返回键
                 mOnFragmentBackListener.onBackForward(keyCode,event);
-                LogUtil.i("========fragment返回键======");
+                return true;
             } else {
+                LogUtil.i("======activity中拦截返回键的处理========");
                 //activity中拦截返回键的处理
-                onActivityKeyDown(keyCode,event);
+                return onActivityKeyDown(keyCode,event);
             }
-            return true;
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -49,7 +49,7 @@ public abstract class AppFragActivity extends AppActivity{
      * @param keyCode
      * @param event
      */
-    protected void onActivityKeyDown(int keyCode, KeyEvent event){
-
+    protected boolean onActivityKeyDown(int keyCode, KeyEvent event){
+        return super.onKeyDown(keyCode, event);
     }
 }
