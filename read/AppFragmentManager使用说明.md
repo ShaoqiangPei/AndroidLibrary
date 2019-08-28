@@ -1,7 +1,7 @@
 ## AppFragmentManager使用说明
 
 ### 概述
-AppFragmentManager是一个处理 Fragment跳转,移除的管理类，可以方便的进行Activity与Fragment间的界面跳转,以及Fragment的关闭。
+AppFragmentManager是一个处理 Fragment跳转,移除的管理类，可以方便的进行Activity与Fragment间的界面跳转,以及Fragment的关闭。其采取的Fragment管理方式为非回退栈，若想利用Fragment的回退栈来管理Fragment，可参考
 
 ### 使用说明
 #### 1. 初始化
