@@ -121,7 +121,7 @@ public class NetUtil {
     }
 
     /**VPN是否已经连接**/
-    private boolean isVpnConnected(){
+    public static boolean isVpnConnected(){
         try {
             Enumeration<NetworkInterface> niList = NetworkInterface.getNetworkInterfaces();
             if (niList != null) {
