@@ -11,6 +11,7 @@ import com.android.commonlibrary.app.ComContext;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.util.Collections;
 import java.util.Enumeration;
 
 public class NetUtil {
@@ -117,6 +118,27 @@ public class NetUtil {
             netType = "WIFI";
         }
         return netType;
+    }
+
+    /**VPN是否已经连接**/
+    private boolean isVpnConnected(){
+        try {
+            Enumeration<NetworkInterface> niList = NetworkInterface.getNetworkInterfaces();
+            if (niList != null) {
+                for (NetworkInterface intf : Collections.list(niList)) {
+                    if (!intf.isUp() || intf.getInterfaceAddresses().size() == 0) {
+                        continue;
+                    }
+                    LogUtil.i("isVpnUsed() NetworkInterface Name: " + intf.getName());
+                    if ("tun0".equals(intf.getName()) || "ppp0".equals(intf.getName())) {
+                        return true; // The VPN is up
+                    }
+                }
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
