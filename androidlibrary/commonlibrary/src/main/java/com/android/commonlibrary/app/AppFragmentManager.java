@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.Stack;
 
 /**
- * Description:Fragment跳转,移除管理类
+ * Description:Fragment跳转,移除管理类(非回退站管理方式)
  *
  * Author:pei
  * Date: 2019/7/15

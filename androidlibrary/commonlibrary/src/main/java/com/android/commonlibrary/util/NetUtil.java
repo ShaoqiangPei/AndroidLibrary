@@ -120,7 +120,6 @@ public class NetUtil {
         return netType;
     }
 
-
     /**VPN是否已经连接**/
     public static boolean isVpnConnected(){
         try {
