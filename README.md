@@ -100,7 +100,8 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [IntentHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/IntentHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 ) ————— Activity跳转帮助类(包含activity间的各种跳转和传值)  
 #### 七. Fragment 辅助类  
-[AppFragmentManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragmentManager%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— Fragment跳转,移除管理类  
+[AppFragmentManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragmentManager%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— Fragment跳转,移除管理类(采用非回退栈管理方式)  
+[FragmentStackManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/FragmentStackManager%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— Fragment跳转,移除管理类(采用回退栈管理方式) 
 #### 八. Activity & Fragment
 [AppActivity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 )————— Activity基类  
