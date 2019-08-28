@@ -21,7 +21,6 @@ public abstract class AppFragActivity extends AppActivity{
 
     /**设置监听**/
     public void setOnFragmentBackListener(OnFragmentBackListener listener){
-
         this.mOnFragmentBackListener=listener;
     }
 
@@ -53,6 +52,5 @@ public abstract class AppFragActivity extends AppActivity{
     protected boolean onActivityKeyDown(int keyCode, KeyEvent event){
         return super.onKeyDown(keyCode, event);
     }
-
 
 }
