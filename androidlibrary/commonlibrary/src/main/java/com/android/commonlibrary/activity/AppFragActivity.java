@@ -52,4 +52,5 @@ public abstract class AppFragActivity extends AppActivity{
     protected boolean onActivityKeyDown(int keyCode, KeyEvent event){
         return super.onKeyDown(keyCode, event);
     }
+
 }
