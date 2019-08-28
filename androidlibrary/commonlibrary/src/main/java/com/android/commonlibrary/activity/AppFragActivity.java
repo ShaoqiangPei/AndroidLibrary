@@ -53,4 +53,5 @@ public abstract class AppFragActivity extends AppActivity{
         return super.onKeyDown(keyCode, event);
     }
 
+
 }
