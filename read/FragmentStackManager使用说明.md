@@ -1,1 +1,4 @@
 ## FragmentStackManager使用说明
+
+概述
+FragmentStackManager是一个处理 Fragment跳转,关闭的管理类，可以方便的进行Activity与Fragment间的界面跳转,以及Fragment的关闭。其采取的Fragment管理方式为回退栈方式，若想利用Fragment的非回退栈来管理Fragment，可参考[AppFragmentManager]()
