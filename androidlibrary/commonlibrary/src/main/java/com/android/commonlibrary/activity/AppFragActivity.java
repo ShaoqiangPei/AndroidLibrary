@@ -21,6 +21,7 @@ public abstract class AppFragActivity extends AppActivity{
 
     /**设置监听**/
     public void setOnFragmentBackListener(OnFragmentBackListener listener){
+
         this.mOnFragmentBackListener=listener;
     }
 
