@@ -109,7 +109,7 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [AppFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— Fragment基类,包含Fragment跳转activity方法，fragment向fragment传值方法和Fragmnet向activity回传值的方法  
 #### 九. DialogFragment  
 [DefaultDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/DefaultDialogFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
-)————— 创建默认dialog
+)————— 创建(系统)默认dialog
 
 
 
