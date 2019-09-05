@@ -110,7 +110,7 @@ WakeUpUtil ————— 屏幕唤醒工具类
 #### 九. Dialog  
 [DefaultDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/DefaultDialogFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 ) ————— 创建(系统)默认dialog  
-[AppDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppDialogFragment使用说明.md) ————— 自定义dialog的父类   
-
+[AppDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppDialogFragment使用说明.md) ————— 自定义dialog的父类  
+[SyDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SyDialogFragment使用说明.md) ————— 通用dialog  
 
 
