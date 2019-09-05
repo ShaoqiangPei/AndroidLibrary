@@ -46,7 +46,7 @@ SyDialogFragment使用过程中，一般效果图如下
                 .setCancelOnTouchOutside(false)//默认true
                 .showDialog(getSupportFragmentManager());
 ```
-#### 一. SyDialogFragment使用时注意事项
+#### 二. SyDialogFragment使用时注意事项
 SyDialogFragment作为AppDialogFragment子类，具备AppDialogFragment的所有特性，其支持链式调用，当你的SyDialogFragment调用的时候既涉及到SyDialogFragment
 的方法，又涉及到AppDialogFragment中的方法的时候，请先调用SyDialogFragment类中的方法，再调用AppDialogFragment。下面举例说明。
 例如:syDialogFragment中有setMesssageText方法，而setCancelOnTouchOutside是AppDialogFragment的方法，若你的SyDialogFragment再显示的时候需要调用到
