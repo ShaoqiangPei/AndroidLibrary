@@ -5,7 +5,7 @@ AppDialogFragment作为一个dialog的父类，集中了dialog创建，展示需
 
 ### 使用说明
 #### 一. 创建一个dialog的准备
-若你要新建一个dialog，你可以类似这样
+若你要新建一个dialog，你需要继承AppDialogFragment，这样可以帮你快速建一个dialog，具体操作示例如下
 ```
 public class MyDialog extends AppDialogFragment{
 
