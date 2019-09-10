@@ -113,5 +113,7 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [AppDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppDialogFragment使用说明.md) ————— 自定义dialog的父类  
 [SyDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SyDialogFragment使用说明.md) ————— 通用dialog  
 [SyDialogHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SyDialogHelper使用说明.md) ————— SyDialogFragment帮助类，用以快速显示通用dialog  
+#### 十. PopupWindow 
+[AppPopupWindow](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppPopupWindow使用说明.md) ————— PopupWindow基类
 
 
