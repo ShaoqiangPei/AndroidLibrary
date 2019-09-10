@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="popuwindow_top_style">
+        <item name="android:windowEnterAnimation">@anim/popu_top_in</item>
+        <item name="android:windowExitAnimation">@anim/popu_top_out</item>
+    </style>
+
+    <style name="popuwindow_left_style">
+        <item name="android:windowEnterAnimation">@anim/popu_left_in</item>
+        <item name="android:windowExitAnimation">@anim/popu_left_out</item>
+    </style>
+
+    <style name="popuwindow_bottom_style">
+        <item name="android:windowEnterAnimation">@anim/popu_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/popu_bottom_out</item>
+    </style>
+
+    <style name="popuwindow_right_style">
+        <item name="android:windowEnterAnimation">@anim/popu_right_in</item>
+        <item name="android:windowExitAnimation">@anim/popu_right_out</item>
+    </style>
+
+    <style name="popuwindow_screen_bottom_style">
+        <item name="android:windowEnterAnimation">@anim/popu_screen_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/popu_screen_bottom_out</item>
+    </style>
+
+</resources>
