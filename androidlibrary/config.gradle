@@ -58,7 +58,7 @@ ext {
             api_permissionenGen:"com.lovedise:permissiongen:0.0.6",
 
             //Brvah(adapter)适配器
-            implementation_BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34"
+            api_BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34"
 
 
 //            //selector框架
