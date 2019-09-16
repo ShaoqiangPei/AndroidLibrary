@@ -104,7 +104,8 @@ dependencies {
     //butterKnife
     implementation librarys.implementation_butterknife
     annotationProcessor librarys.annotationProcessor_butterknife_compiler
-
+    //Brvah(adapter)适配器
+    implementation librarys.implementation_BaseRecyclerViewAdapterHelper
 
 //    //Brvah适配器
 //    api librarys.compile_BaseRecyclerViewAdapterHelper
