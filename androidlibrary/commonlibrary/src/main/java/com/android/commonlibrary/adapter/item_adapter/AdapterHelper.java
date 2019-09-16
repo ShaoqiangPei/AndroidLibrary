@@ -95,7 +95,7 @@ public class AdapterHelper {
     /**
      * 添加控件监听
      **/
-    protected void addOnClickListener(OnItemClickListener listener, View view, final BaseViewHolder viewHolder, final Object obj) {
+    public void addOnClickListener(OnItemClickListener listener, View view, final BaseViewHolder viewHolder, final Object obj) {
         //mTvName点击事件
         view.setOnClickListener(new View.OnClickListener() {
             @Override
