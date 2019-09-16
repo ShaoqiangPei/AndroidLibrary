@@ -114,6 +114,12 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [SyDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SyDialogFragment使用说明.md) ————— 通用dialog  
 [SyDialogHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SyDialogHelper使用说明.md) ————— SyDialogFragment帮助类，用以快速显示通用dialog  
 #### 十. PopupWindow 
-[AppPopupWindow](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppPopupWindow使用说明.md) ————— PopupWindow基类
+[AppPopupWindow](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppPopupWindow使用说明.md) ————— PopupWindow基类  
+#### 11. RecyclerView & Adapter  
+[DefaultAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/androidlibrary/commonlibrary/src/main/java/com/android/commonlibrary/adapter/item_adapter/DefaultAdapter.java) ————— 原生RecyclerView的adapter使用示例(仅做参考)  
+[AdapterHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AdapterHelper使用说明.md) ————— 适配器帮助类  
+[ComAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/ComAdapter使用说明.md) ————— RecyclerView通用适配器基类  
+[GroupAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/GroupAdapter使用说明.md) ————— RecyclerView分组适配器基类
+
 
 
