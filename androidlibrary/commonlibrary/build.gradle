@@ -107,7 +107,6 @@ dependencies {
     //Brvah(adapter)适配器
     api librarys.api_BaseRecyclerViewAdapterHelper
 
-
 //    //Glide
 //    api librarys.compile_glide4
 //    annotationProcessor librarys.annotationProcessor_glide4_compiler
