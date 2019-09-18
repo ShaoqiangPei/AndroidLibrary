@@ -133,7 +133,7 @@ Header相关方法都在convertHead中处理。item的相关处理在initView,in
 ##### 3.3 设置分割线,返回RecyclerView.ItemDecoration对象
 线性布局的时候，可以像下面这样设置分割线：
 ```
-//线性布局分割线l
+//线性布局分割线
 LinearDividerItemDecoration linearDivider=mPersonAdapter.setLinearLayoutItemSpace(mRecyclerView, 5, R.color.colorAccent);
 ```
 注意: 在实现分组适配器<即继承GroupAdapter的adapter>不能使用setGridLayoutItemSpace给列表设置分割线，会出现ui上显示的bug，为了避免
