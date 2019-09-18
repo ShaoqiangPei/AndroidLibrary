@@ -3,6 +3,9 @@ package com.android.commonlibrary.adapter.item_adapter;
 import android.content.Context;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.commonlibrary.adapter.item_divider.GridDividerItemDecoration;
+import com.android.commonlibrary.adapter.item_divider.LinearDividerItemDecoration;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -130,21 +133,29 @@ public abstract class GroupAdapter<T>extends BaseSectionQuickAdapter implements 
 
     /**设置线性RecycleView间距**/
     @Override
-    public void setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId) {
-        AdapterHelper.getInstance().setLinearLayoutItemSpace(recyclerView,dp,colorId,mContext);
+    public LinearDividerItemDecoration setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId) {
+        return AdapterHelper.getInstance().setLinearLayoutItemSpace(recyclerView,dp,colorId,mContext);
     }
 
+    /**设置九宫格RecyclerView**/
     @Override
     public void setRecyclerGridManager(RecyclerView recyclerView, int itemCount) {
         openLoadAnimation();//默认adapter渐现效果
         AdapterHelper.getInstance().setRecyclerGridManager(this,recyclerView,itemCount,mContext);
     }
 
+    /**设置九宫格间距**/
     @Override
-    public void setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId) {
+    public GridDividerItemDecoration setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId) {
         //分组九宫格的分割线需要在adapter中具体用代码实现，或者在布局中布局实现，不可调用此方法
         String errorMessage="分组九宫格的分割线需要在adapter中具体用代码实现，或者在布局中布局实现,不可调用此方法";
         throw new SecurityException(errorMessage);
+    }
+
+    /**移除RecycleView间距**/
+    @Override
+    public void removeItemSpace(RecyclerView recyclerView, RecyclerView.ItemDecoration divider) {
+        AdapterHelper.getInstance().removeItemSpace(recyclerView,divider);
     }
 
     @Override

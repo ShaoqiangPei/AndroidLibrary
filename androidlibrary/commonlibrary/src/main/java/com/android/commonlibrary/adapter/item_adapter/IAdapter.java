@@ -4,6 +4,8 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.commonlibrary.adapter.item_divider.GridDividerItemDecoration;
+import com.android.commonlibrary.adapter.item_divider.LinearDividerItemDecoration;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 
@@ -64,13 +66,16 @@ public interface IAdapter {
     void setRecyclerLinearManager(RecyclerView recyclerView);
 
     /**设置线性RecycleView间距**/
-    void setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId);
+    LinearDividerItemDecoration setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId);
 
     /**设置九宫格RecyclerView**/
     void setRecyclerGridManager(RecyclerView recyclerView, int itemCount);
 
     /**设置九宫格间距**/
-    void setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId);
+    GridDividerItemDecoration setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId);
+
+    /**移除RecycleView间距**/
+    void removeItemSpace(RecyclerView recyclerView,  RecyclerView.ItemDecoration divider);
 
     /**获取position，当添加有header或footer要注意改变**/
     int getPosition(BaseViewHolder viewHolder);

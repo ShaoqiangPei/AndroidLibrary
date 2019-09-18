@@ -65,9 +65,10 @@ public class AdapterHelper {
     }
 
     /**设置线性RecycleView间距**/
-    public void setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId, Context context) {
+    public LinearDividerItemDecoration setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId, Context context) {
         LinearDividerItemDecoration divider = new LinearDividerItemDecoration(LinearLayoutManager.VERTICAL, ScreenUtil.dp2px(dp, context), ContextCompat.getColor(context, colorId));
         recyclerView.addItemDecoration(divider);
+        return divider;
     }
 
     /**设置九宫格RecyclerView**/
@@ -82,9 +83,17 @@ public class AdapterHelper {
     }
 
     /**设置九宫格间距**/
-    public void setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId, Context context) {
-        GridDividerItemDecoration gridDividerItemDecoration = new GridDividerItemDecoration(ScreenUtil.dp2px(dp, context), ContextCompat.getColor(context, colorId));
-        recyclerView.addItemDecoration(gridDividerItemDecoration);
+    public GridDividerItemDecoration setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId, Context context) {
+        GridDividerItemDecoration divider = new GridDividerItemDecoration(ScreenUtil.dp2px(dp, context), ContextCompat.getColor(context, colorId));
+        recyclerView.addItemDecoration(divider);
+        return divider;
+    }
+
+    /**移除RecycleView间距**/
+    public void removeItemSpace(RecyclerView recyclerView,  RecyclerView.ItemDecoration divider) {
+        if (divider != null) {
+            recyclerView.removeItemDecoration(divider);
+        }
     }
 
     /**获取position，当添加有header或footer要注意改变**/
@@ -137,5 +146,13 @@ public class AdapterHelper {
             e.printStackTrace();
         }
     }
+
+//    //在九宫格adapter初始化方法中设置item高度
+//    //此段代码仅作使用参考
+//    public void itemHeight() {
+//        //九宫格设置item高度[思路:(屏幕宽度-间隙*间隙个数)/item个数]
+//        int height = (ScreenUtil.getWidth() - ScreenUtil.dp2px(5, context)*2) / 3;
+//        ViewUtil.setViewHeight(height, view);
+//    }
 
 }

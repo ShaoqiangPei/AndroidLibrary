@@ -3,6 +3,9 @@ package com.android.commonlibrary.adapter.item_adapter;
 import android.content.Context;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.commonlibrary.adapter.item_divider.GridDividerItemDecoration;
+import com.android.commonlibrary.adapter.item_divider.LinearDividerItemDecoration;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.animation.BaseAnimation;
@@ -133,8 +136,8 @@ public abstract class ComAdapter<T> extends BaseQuickAdapter<T, BaseViewHolder> 
 
     /**设置线性RecycleView间距**/
     @Override
-    public void setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId) {
-        AdapterHelper.getInstance().setLinearLayoutItemSpace(recyclerView,dp,colorId,mContext);
+    public LinearDividerItemDecoration setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId) {
+        return AdapterHelper.getInstance().setLinearLayoutItemSpace(recyclerView,dp,colorId,mContext);
     }
 
     /**设置九宫格RecyclerView**/
@@ -146,8 +149,14 @@ public abstract class ComAdapter<T> extends BaseQuickAdapter<T, BaseViewHolder> 
 
     /**设置九宫格间距**/
     @Override
-    public void setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId) {
-        AdapterHelper.getInstance().setGridLayoutItemSpace(recyclerView,dp,colorId,mContext);
+    public GridDividerItemDecoration setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId) {
+        return AdapterHelper.getInstance().setGridLayoutItemSpace(recyclerView,dp,colorId,mContext);
+    }
+
+    /**移除RecycleView间距**/
+    @Override
+    public void removeItemSpace(RecyclerView recyclerView, RecyclerView.ItemDecoration divider) {
+        AdapterHelper.getInstance().removeItemSpace(recyclerView,divider);
     }
 
     @Override

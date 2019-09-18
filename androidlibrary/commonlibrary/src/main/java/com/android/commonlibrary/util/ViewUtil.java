@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -43,6 +44,45 @@ public class ViewUtil {
 
     public interface OnViewListener {
         void onView(int width, int height);
+    }
+
+    //===========================================================
+    //                   设置view控件宽高
+    //===========================================================
+
+    /**
+     * 设置view宽度
+     * @param width 需要做dp2px转换
+     * @param view
+     */
+    public static void setViewWidth(int width,View view){
+        ViewGroup.LayoutParams params=view.getLayoutParams();
+        params.width=width;
+        view.setLayoutParams(params);
+    }
+
+    /**
+     * 设置view高度
+     * @param height 需要做dp2px转换
+     * @param view
+     */
+    public static void setViewHeight(int height,View view){
+        ViewGroup.LayoutParams params=view.getLayoutParams();
+        params.height=height;
+        view.setLayoutParams(params);
+    }
+
+    /**
+     * 设置view宽高
+     * @param width 需要做dp2px转换
+     * @param height 需要做dp2px转换
+     * @param view
+     */
+    public static void setViewSize(int width, int height, View view){
+        ViewGroup.LayoutParams params=view.getLayoutParams();
+        params.width=width;
+        params.height=height;
+        view.setLayoutParams(params);
     }
 
     //===========================================================
@@ -203,11 +243,11 @@ public class ViewUtil {
     //                   EditText相关
     //===========================================================
     /**设置光标显示在输入框尾部**/
-    public void setEndEditTextCursor(EditText edtText,String edtString){
-        //设置数量
-        if(StringUtil.isNotEmpty(edtString)){
+    public void setEndEditTextCursor(EditText edtText){
+        String value=edtText.getText().toString();
+        if(StringUtil.isNotEmpty(value)){
             //将光标移至文字末尾
-            edtText.setSelection(edtString.length());
+            edtText.setSelection(value.length());
         }
     }
 
