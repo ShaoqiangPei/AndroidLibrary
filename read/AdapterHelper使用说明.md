@@ -29,34 +29,39 @@ public String getAdapterString(Object obj)
 /**设置线性RecyclerView**/
 public void setRecyclerLinearManager(RecyclerView.Adapter adapter, RecyclerView recyclerView, Context context)
 ```
-#### 5. 设置线性RecycleView间距
+#### 5. 设置线性RecycleView间距,返回LinearDividerItemDecoration对象
 ```
 /**设置线性RecycleView间距**/
-public void setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId, Context context) 
+public LinearDividerItemDecoration setLinearLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId, Context context) 
 ```
 #### 6. 设置九宫格RecyclerView
 ```
 /**设置九宫格RecyclerView**/
 public void setRecyclerGridManager(RecyclerView.Adapter adapter, RecyclerView recyclerView, int itemCount, Context context)
 ```
-#### 7. 设置九宫格间距
+#### 7. 设置九宫格间距,返回GridDividerItemDecoration对象
 ```
 /**设置九宫格间距**/
-public void setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId, Context context)
+public GridDividerItemDecoration setGridLayoutItemSpace(RecyclerView recyclerView, int dp, int colorId, Context context)
 ```
-#### 8. 获取position，当添加有header或footer要注意改变
+#### 8. 移除RecycleView间距
+```
+/**移除RecycleView间距**/
+public void removeItemSpace(RecyclerView recyclerView,  RecyclerView.ItemDecoration divider)
+```
+#### 9. 获取position，当添加有header或footer要注意改变
 ```
 /**获取position，当添加有header或footer要注意改变**/
 public int getPosition(BaseViewHolder viewHolder) 
 ```
-#### 9. 添加控件监听
+#### 10. 添加控件监听
 ```
 /**
   * 添加控件监听
   **/
 public void addOnClickListener(OnItemClickListener listener, View view, final BaseViewHolder viewHolder, final Object obj)
 ```
-### 10.滑动到指定位置(此position会列表置顶)
+### 11.滑动到指定位置(此position会列表置顶)
 ```
 /***
    * 滑动到指定位置(此position会列表置顶)
@@ -64,4 +69,15 @@ public void addOnClickListener(OnItemClickListener listener, View view, final Ba
    * @param position
    */
 public void moveToPosition(RecyclerView recyclerView, int position, Context context)
+```
+### 12.adapter中设置item高度
+当你的adaper为九宫格模式。要设置item的高度与宽度一样，形成方块造型的话，你可以在adapter中view初始化的时候，类似下面这样设置view高度：
+```
+    //在九宫格adapter初始化方法中设置item高度
+    //此段代码仅作使用参考
+    public void itemHeight() {
+        //九宫格设置item高度[思路:(屏幕宽度-间隙*间隙个数)/item个数]
+        int height = (ScreenUtil.getWidth() - ScreenUtil.dp2px(5, context)*2) / 3;
+        ViewUtil.setViewHeight(height, view);
+    }
 ```
