@@ -56,14 +56,19 @@ mNames=new ArrayList<>();
 mNameAdapter=new NameAdapter<>(mNames,MainActivity.this);
 mNameAdapter.setRecyclerGridManager(mRecyclerView,4);
 ```
-#### 三. 设置分割线
+#### 三. 设置分割线,返回RecyclerView.ItemDecoration对象
 ```
 //设置线性布局分割线
-mNameAdapter.setLinearLayoutItemSpace(mRecyclerView,5,R.color.colorAccent);
+LinearDividerItemDecoration linearDivider=mNameAdapter.setLinearLayoutItemSpace(mRecyclerView,5,R.color.colorAccent);
 //设置九宫格局分割线
-mNameAdapter.setGridLayoutItemSpace(mRecyclerView,5,R.color.colorAccent);
+GridDividerItemDecoration gridDivider=mNameAdapter.setGridLayoutItemSpace(mRecyclerView,5,R.color.colorAccent);
 ```
-#### 四.点击事件
+#### 四. 移除分割线
+```
+/**移除RecycleView间距**/
+removeItemSpace(RecyclerView recyclerView,  RecyclerView.ItemDecoration divider)
+```
+#### 五.点击事件
 ```
         //点击事件
         mNameAdapter.setOnItemClickListener(new AdapterHelper.OnItemClickListener() {
