@@ -130,16 +130,21 @@ Header相关方法都在convertHead中处理。item的相关处理在initView,in
         mPersonAdapter=new PersonAdapter<>(mPersonList,MainActivity.this);
         mPersonAdapter.setRecyclerGridManager(mRecyclerView,3);
 ```
-##### 3.3 分割线
+##### 3.3 设置分割线,返回RecyclerView.ItemDecoration对象
 线性布局的时候，可以像下面这样设置分割线：
 ```
-//线性布局分割线
-mPersonAdapter.setLinearLayoutItemSpace(mRecyclerView, 5, R.color.colorAccent);
+//线性布局分割线l
+LinearDividerItemDecoration linearDivider=mPersonAdapter.setLinearLayoutItemSpace(mRecyclerView, 5, R.color.colorAccent);
 ```
 注意: 在实现分组适配器<即继承GroupAdapter的adapter>不能使用setGridLayoutItemSpace给列表设置分割线，会出现ui上显示的bug，为了避免
 用户使用不当，我已经将GroupAdapter类中的setGridLayoutItemSpace抛出异常并做以错误提示。大家若还是需要在分组九宫格布局中做分割线的话，
 需要自己在布局中，或者在adapter中处理数据的时候，用代码来实现分割线效果。
-##### 3.4 点击事件
+##### 3.4 移除分割线
+```
+/**移除RecycleView间距**/
+removeItemSpace(RecyclerView recyclerView, RecyclerView.ItemDecoration divider)   
+```
+##### 3.5 点击事件
 若要设置adapter的点击事件，你可以像下面这样写:
 ```
         //点击事件
