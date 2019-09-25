@@ -99,7 +99,7 @@ public class AppHelper {
      * eg : Button btn=getView("R.id.btn","id",context);
      *
      * 若获取图片id,你也可以这样:
-     * int drawableId=activity.getResources().getIdentifier("drawableId", "drawable", ctx.getPackageName());
+     * int drawableId=activity.getResources().getIdentifier("R.drawable.ic_launch", "drawable", ctx.getPackageName());
      *
      * @return
      */
