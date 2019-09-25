@@ -36,3 +36,27 @@ obj 为AppCompatActivity或ViewGroup或View的实例，rId 控件id
      */
     public <T> T getView(Object obj,int rId)
 ```
+#### 7. 将字符串的id转成int类型(控件初始化)
+```
+    /**
+     * 通过字符串"R.id.btn"获取控件对象
+     * @param rId
+     * @param idType
+     * @param activity
+     * eg : Button btn=getView("R.id.btn","id",context);
+     *
+     * 若获取图片id,你也可以这样:
+     * int drawableId=activity.getResources().getIdentifier("R.drawable.ic_launch", "drawable", ctx.getPackageName());
+     *
+     * @return
+     */
+    public View getView(String rId,String idType,AppCompatActivity activity){
+```
+当你要将一个字符串类型的控件id，转成可用于初始化的int类型的id的时候，你可以这样：
+```
+int rId=activity.getResources().getIdentifier("R.id.btn", "id", ctx.getPackageName());
+```
+当你要将一个字符串类型的drawable  id，转成可用于初始化的int类型的drawable  id的时候，你可以这样：
+```
+int drawableId=activity.getResources().getIdentifier("R.drawable.ic_launch", "drawable", ctx.getPackageName());
+```
