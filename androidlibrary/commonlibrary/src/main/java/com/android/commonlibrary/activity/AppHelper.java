@@ -90,4 +90,24 @@ public class AppHelper {
         }
         return (T) view;
     }
+
+    /**
+     * 通过字符串"R.id.btn"获取控件对象
+     * @param rId
+     * @param idType
+     * @param activity
+     * eg : Button btn=getView("R.id.btn","id",context);
+     *
+     * 若获取图片id,你也可以这样:
+     * int drawableId=activity.getResources().getIdentifier("drawableId", "drawable", ctx.getPackageName());
+     *
+     * @return
+     */
+    public View getView(String rId,String idType,AppCompatActivity activity){
+        View view=null;
+        Context ctx=activity.getBaseContext();
+        int resId = activity.getResources().getIdentifier(rId, idType, ctx.getPackageName());
+        view = activity.findViewById(resId);
+        return view;
+    }
 }
