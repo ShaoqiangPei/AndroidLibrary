@@ -12,7 +12,6 @@ import com.android.commonlibrary.adapter.item_divider.GridDividerItemDecoration;
 import com.android.commonlibrary.adapter.item_divider.LinearDividerItemDecoration;
 import com.android.commonlibrary.util.ScreenUtil;
 import com.android.commonlibrary.util.StringUtil;
-import com.android.commonlibrary.util.ViewUtil;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 /**

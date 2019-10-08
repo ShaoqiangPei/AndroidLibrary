@@ -101,6 +101,7 @@ public class AppHelper {
      * 若获取图片id,你也可以这样:
      * int drawableId=activity.getResources().getIdentifier("R.drawable.ic_launch", "drawable", ctx.getPackageName());
      *
+     *
      * @return
      */
     public View getView(String rId,String idType,AppCompatActivity activity){
