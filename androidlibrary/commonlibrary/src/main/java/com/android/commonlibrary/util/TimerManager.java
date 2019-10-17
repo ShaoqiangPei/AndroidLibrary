@@ -1,5 +1,9 @@
 package com.android.commonlibrary.util;
 
+import android.content.Context;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -27,29 +31,49 @@ public class TimerManager {
     }
 
     /**启动定时器循环调用**/
-    public void startRecycle(OnTimerListener onTimerListener){
+    public void startRecycle(Context context,OnTimerListener onTimerListener){
         LogUtil.i("=====定时器循环启动开启======");
         mTimer=getTimer();
         //启动定时器
         mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                onTimerListener.schedule();
+                if(context!=null) {
+                    ((AppCompatActivity) context).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            onTimerListener.schedule();
+                        }
+                    });
+                }else{
+                    onTimerListener.schedule();
+                }
             }
         }, 0, mDelayTime);
     }
 
     /**启动定时器延时调用**/
-    public void startDelay(OnTimerListener onTimerListener){
+    public void startDelay(Context context,OnTimerListener onTimerListener){
         LogUtil.i("=====定时器延时启动开启======");
         mTimer=getTimer();
         //启动定时器
         mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                onTimerListener.schedule();
-                //取消定时器
-                TimerManager.this.cancel();
+                if(context!=null) {
+                    ((AppCompatActivity) context).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            onTimerListener.schedule();
+                            //取消定时器
+                            TimerManager.this.cancel();
+                        }
+                    });
+                }else{
+                    onTimerListener.schedule();
+                    //取消定时器
+                    TimerManager.this.cancel();
+                }
             }
         }, mDelayTime);
     }
