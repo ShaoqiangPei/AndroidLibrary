@@ -116,7 +116,8 @@ public class TimerManager {
 //        //定时器循环
 //        TimerManager.getInstance()
 //                .setDelayTime(1000)//设置时间间隔，默认1000(即1秒)
-//                .startRecycle(new TimerManager.OnTimerListener() {
+//                //context设置为null时可执行非ui的逻辑，context不为null时可更新ui
+//                .startRecycle(MainActivity.this,new TimerManager.OnTimerListener() {
 //                    @Override
 //                    public void schedule() {
 //                        //循环执行逻辑
@@ -127,7 +128,8 @@ public class TimerManager {
 //        //定时器延时
 //        TimerManager.getInstance()
 //                .setDelayTime(1000)//设置时间间隔，默认1000(即1秒)
-//                .startDelay(new TimerManager.OnTimerListener() {
+//                //context设置为null时可执行非ui的逻辑，context不为null时可更新ui
+//                .startDelay(MainActivity.this,new TimerManager.OnTimerListener() {
 //                    @Override
 //                    public void schedule() {
 //                        //延时执行逻辑
