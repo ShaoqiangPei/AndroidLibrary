@@ -82,6 +82,7 @@ ShotShareUtil ————— 截屏分享工具类
 SpannableStringUtil ————— 设置文本工具类  
 StatusBarUtil ————— 状态类工具类  
 StringUtil ————— 字符串处理工具类  
+[TimerManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TimerManager使用说明.md) ————— 定时器工具类  
 ToastUtil ————— 吐司工具类  
 UriUtil ————— uri转换工具类  
 VibratorUtil ————— 手机震动工具类  
