@@ -16,11 +16,11 @@ TimerManager.getInstance()
 #### 二. TimerManager中提供的方法
 TimerManager作为一个定时器工具类，提供以下几个公开方法：
 ```
-/**启动定时器循环调用**/
-startRecycle(OnTimerListener onTimerListener)
+/**启动定时器循环调用(context设置为null时可执行非ui的逻辑，context不为null时可更新ui)**/
+startRecycle(Context context,OnTimerListener onTimerListener)
 
-/**启动定时器延时调用**/
-startDelay(OnTimerListener onTimerListener)
+/**启动定时器延时调用(context设置为null时可执行非ui的逻辑，context不为null时可更新ui)**/
+startDelay(Context context,OnTimerListener onTimerListener)
 
 /**停止定时器**/
 cancel() 
@@ -35,7 +35,8 @@ setDelayTime(long delayTime)
         //定时器延时
         TimerManager.getInstance()
                 .setDelayTime(1000)//设置时间间隔，默认1000(即1秒)
-                .startDelay(new TimerManager.OnTimerListener() {
+                //context设置为null时可执行非ui的逻辑，context不为null时可执行更新ui逻辑
+                .startDelay(MainActivity.this,new TimerManager.OnTimerListener() {
                     @Override
                     public void schedule() {
                         //延时执行逻辑
@@ -50,7 +51,8 @@ setDelayTime(long delayTime)
 //定时器循环
 TimerManager.getInstance()
         .setDelayTime(1000)//设置时间间隔，默认1000(即1秒)
-        .startRecycle(new TimerManager.OnTimerListener() {
+        //context设置为null时可执行非ui的逻辑，context不为null时可执行更新ui逻辑
+        .startRecycle(MainActivity.this,new TimerManager.OnTimerListener() {
              @Override
              public void schedule() {
                  //循环执行逻辑
