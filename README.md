@@ -120,7 +120,12 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [DefaultAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/androidlibrary/commonlibrary/src/main/java/com/android/commonlibrary/adapter/item_adapter/DefaultAdapter.java) ————— 原生RecyclerView的adapter使用示例(仅做参考)  
 [AdapterHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AdapterHelper使用说明.md) ————— 适配器帮助类  
 [ComAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/ComAdapter使用说明.md) ————— RecyclerView通用适配器基类  
-[GroupAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/GroupAdapter使用说明.md) ————— RecyclerView分组适配器基类
+[GroupAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/GroupAdapter使用说明.md) ————— RecyclerView分组适配器基类  
+#### X. widget
+[SearchConfig](
+https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SearchConfig使用说明.md) ————— SearchView使用帮助类  
+
+
 
 
 
