@@ -338,7 +338,9 @@ public class SpUtil {
             } else {
                 obj = getString(key + i);
             }
-            list.add(obj);
+            if(obj!=null){
+                list.add(obj);
+            }
         }
         return list;
     }
