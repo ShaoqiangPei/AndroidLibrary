@@ -121,6 +121,8 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [AdapterHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AdapterHelper使用说明.md) ————— 适配器帮助类  
 [ComAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/ComAdapter使用说明.md) ————— RecyclerView通用适配器基类  
 [GroupAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/GroupAdapter使用说明.md) ————— RecyclerView分组适配器基类  
+#### 12. BroadcastReceiver  
+[AppReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppReceiver使用说明.md) ————— 广播使用工具类  
 #### X. widget
 [SearchConfig](
 https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SearchConfig使用说明.md) ————— SearchView使用帮助类  
