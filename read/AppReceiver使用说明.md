@@ -1,6 +1,6 @@
 ## AppReceiver使用说明
 ### 概述
-AppReceiver本质是一个BroadcastReceiver，是一个基于BroadcastReceiver的封装类。它的出现是为了让手动注册广播的使用更加方便快捷。使注册和使用广播时不再繁琐。
+AppReceiver本质是一个BroadcastReceiver，是一个基于BroadcastReceiver的封装类。它的出现是为了让手动注册广播的使用更加方便快捷。使注册和使用广播时不再繁琐。作为一个全局广播工具类，适合涉及监听本app广播，也有监听其他app广播需求的场景使用。
 
 ### 使用说明
 #### 一. 基本方法介绍
