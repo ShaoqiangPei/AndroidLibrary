@@ -1,10 +1,12 @@
 package com.android.commonlibrary.widget;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.widget.SearchView;
 import com.android.commonlibrary.R;
+import com.android.commonlibrary.util.KeyboardUtil;
 import java.lang.reflect.Field;
 
 /**
@@ -90,6 +92,13 @@ public class SearchConfig {
     /**获取搜索结果**/
     public String getQueryText(){
         return mSearchAutoComplete.getText().toString();
+    }
+
+    /**关闭软键盘**/
+    public void closeKeybord(Context context) {
+        if (mSearchAutoComplete != null&&context!=null) {
+            KeyboardUtil.closeKeybord(mSearchAutoComplete,context);
+        }
     }
 
     /**设置搜索文本监听**/
@@ -182,4 +191,12 @@ public class SearchConfig {
 //            }
 //        });
 //    }
-
+//
+//   //在activity退出含SearchView界面的时候,关闭软键盘
+//   @Override
+//   public void onDestroyView() {
+//       super.onDestroyView();
+//       //关闭键盘
+//       mSearchConfig.closeKeybord(mContext);
+//   }
+//
