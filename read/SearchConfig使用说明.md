@@ -93,3 +93,13 @@ SearchConfig是androidx.appcompat.widget.SearchView的一个辅助类，那当�
             }
         });
 ```
+退出含有SearchView界面时，需要关闭软键盘，你可以在界面销毁方法中像下面这样关闭软键盘：
+```
+       //在activity退出含SearchView界面的时候,关闭软键盘
+       @Override
+       public void onDestroyView() {
+           super.onDestroyView();
+           //关闭键盘
+           mSearchConfig.closeKeybord(mContext);
+       }
+```
