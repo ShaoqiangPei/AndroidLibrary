@@ -1,5 +1,5 @@
-[![](https://jitpack.io/v/ShaoqiangPei/AndroidLibrary.svg)](https://jitpack.io/#ShaoqiangPei/AndroidLibrary)
 
+[![](https://jitpack.io/v/ShaoqiangPei/AndroidLibrary.svg)](https://jitpack.io/#ShaoqiangPei/AndroidLibrary)
 
 ### 库引用说明
 在自己项目的project对应的build.gradle里面添加如下代码：
