@@ -67,6 +67,7 @@ CollectionUtil ————— 集合处理工具
 DateUtil ————— 日期相关工具处理类  
 DoubleClickUtil ————— 防双击，防抖功能类  
 FileUtil ————— 文件工具类  
+[FlashHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/FlashHelper使用说明.md) ————— 控件闪烁帮助类  
 FlyAnimtor ————— 物品飞入购物车效果工具类(贝塞尔曲线)  
 FormatUtil ————— 数字给格式化工具类  
 GroupUtil ————— 分组工具类  
@@ -128,6 +129,7 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [NetworkReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/NetworkReceiver使用说明.md) ————— 监听网络实时链接状态广播工具类  
 
 #### X. widget
+[MaskButton](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/MaskButton使用说明.md) ————— 带点击效果的button  
 [SearchConfig](
 https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SearchConfig使用说明.md) ————— SearchView使用帮助类  
 
