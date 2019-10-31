@@ -8,7 +8,7 @@ MaskButton 是一款 实现按钮点击变暗 特效的 button。它的出现是
 #### 1. MaskButton使用
 若你要在你的MainActivity中使用MaskButton控件，你需要在MainActivity对应的布局中添加控件引用，类似下面这样(注：具体包路径以代码为准)：
 ```
-    <com.example.function.MaskButton
+    <com.android.commonlibrary.widget.MaskButton
         android:id="@+id/btn"
         android:layout_width="80dp"
         android:layout_height="40dp"
