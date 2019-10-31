@@ -1,3 +1,4 @@
+
 [![](https://jitpack.io/v/ShaoqiangPei/AndroidLibrary.svg)](https://jitpack.io/#ShaoqiangPei/AndroidLibrary)
 
 ### 库引用说明
@@ -124,6 +125,7 @@ WakeUpUtil ————— 屏幕唤醒工具类
 #### 12. BroadcastReceiver  
 [AppReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppReceiver使用说明.md) ————— 全局广播使用工具类(注册的广播剧本全局性，可接收其他app的广播消息)  
 [AppLocalReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppLocalReceiver使用说明.md) ————— 本广播使用工具类(具备安全性，适合本app内部消息通讯)  
+[NetworkReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/NetworkReceiver使用说明.md) ————— 监听网络实时链接状态广播工具类  
 
 #### X. widget
 [SearchConfig](
