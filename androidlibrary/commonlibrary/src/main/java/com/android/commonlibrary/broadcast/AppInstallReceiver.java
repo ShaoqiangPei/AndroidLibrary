@@ -1,4 +1,4 @@
-package com.android.commonlibrary.app;
+package com.android.commonlibrary.broadcast;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
