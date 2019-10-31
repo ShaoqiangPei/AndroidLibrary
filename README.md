@@ -123,7 +123,8 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [AdapterHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AdapterHelper使用说明.md) ————— 适配器帮助类  
 [ComAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/ComAdapter使用说明.md) ————— RecyclerView通用适配器基类  
 [GroupAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/GroupAdapter使用说明.md) ————— RecyclerView分组适配器基类  
-#### 12. BroadcastReceiver  
+#### 12. BroadcastReceiver 
+[AppInstallReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppInstallReceiver使用说明.md) ————— 监听app安装完成，替换完成和卸载完成的广播  
 [AppReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppReceiver使用说明.md) ————— 全局广播使用工具类(注册的广播剧本全局性，可接收其他app的广播消息)  
 [AppLocalReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppLocalReceiver使用说明.md) ————— 本广播使用工具类(具备安全性，适合本app内部消息通讯)  
 [NetworkReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/NetworkReceiver使用说明.md) ————— 监听网络实时链接状态广播工具类  
