@@ -31,7 +31,7 @@ AppInstallReceiver 是一个监听 app 安装完成，替换完成，和 卸载�
   ACTION_PACKAGE_CHANGED	一个已存在的应用程序包已经改变，包括包名
   ACTION_PACKAGE_REMOVED	一个已存在的应用程序包已经从设备上移除，包括包名（正在被安装的包程序不能接收到这个广播）
   ACTION_PACKAGE_RESTARTED	用户重新开始一个包，包的所有进程将被杀死，所有与其联系的运行时间状态应该被移除，
-                            包括包名（重新开始包程序不能接收到这个广播）
+                                包括包名（重新开始包程序不能接收到这个广播）
   ACTION_PACKAGE_DATA_CLEARED	用户已经清楚一个包的数据，包括包名（清除包程序不能接收到这个广播）
 ```
 #### 2. 使用示例
