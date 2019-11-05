@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import com.android.commonlibrary.util.LogUtil;
+
 /**
  * Title:监听程序安装，替换和卸载
  * Description:

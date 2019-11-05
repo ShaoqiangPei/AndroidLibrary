@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatButton;
 
 /**
- * Title: 带点击效果的 button
+ * Title: 带点击效果的button
  * description:
  * autor:pei
  * created on 2019/10/31
