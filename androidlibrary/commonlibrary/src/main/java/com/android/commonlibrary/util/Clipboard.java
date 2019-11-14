@@ -8,37 +8,25 @@ import android.text.method.ArrowKeyMovementMethod;
 import android.widget.TextView;
 
 /**
- * Title:剪切板监听帮助类
+ * Title:剪切板帮助类
  * description:
  * autor:pei
- * created on 2019/11/2
+ * created on 2019/11/14
  */
-public class ClipboardHelper {
+public class Clipboard{
 
     private ClipboardManager mClipboardManager;
     private ClipboardManager.OnPrimaryClipChangedListener mOnPrimaryClipChangedListener;
-
-    private ClipboardHelper(){}
-
-    private static class Holder {
-        private static ClipboardHelper instance = new ClipboardHelper();
-    }
-
-    public static ClipboardHelper getInstance() {
-        return Holder.instance;
-    }
 
     /**
      * 注册剪切板复制、剪切事件监听
      *
      * @param context
-     * @param value 设置默认值后,获取的则是你设置的值，而不是监听的值。当设为null时，获取的是监听到的值
      * @param listener
      */
-    public void registerClipEvents(Context context,String value,OnClipboardListener listener) {
-        mClipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        if (StringUtil.isNotEmpty(value)) {
-            mClipboardManager.setPrimaryClip(ClipData.newPlainText(null, value));//参数一：标签，可为空，参数二：要复制到剪贴板的文本
+    public void registerClipEvents(Context context,OnClipboardListener listener) {
+        if(mClipboardManager==null){
+            mClipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         }
         mOnPrimaryClipChangedListener = new ClipboardManager.OnPrimaryClipChangedListener() {
             @Override
@@ -59,6 +47,22 @@ public class ClipboardHelper {
     public void unRegisterClipEvents(){
         if (mClipboardManager != null && mOnPrimaryClipChangedListener != null) {
             mClipboardManager.removePrimaryClipChangedListener(mOnPrimaryClipChangedListener);
+        }
+    }
+
+    /**
+     * 复制口令,调用此方法，将value复制到剪切板上
+     * 使用场景：点击按钮，调用此方法，将value设置到剪切板中。
+     *
+     * @param context
+     * @param value
+     */
+    public void setClipboardContent(Context context,String value){
+        if(mClipboardManager==null){
+            mClipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        }
+        if (StringUtil.isNotEmpty(value)) {
+            mClipboardManager.setPrimaryClip(ClipData.newPlainText(null, value));//参数一：标签，可为空，参数二：要复制到剪贴板的文本
         }
     }
 
@@ -120,3 +124,4 @@ public class ClipboardHelper {
     }
 
 }
+
