@@ -78,6 +78,7 @@ LogUtil ————— log打印工具类
 MainfastUtil ————— mainfast信息获取工具类  
 MD5Util ————— MD5工具类  
 NetUtil ————— 网络工具类  
+[NotificationHelper]() ————— 通知栏工具类
 RegularUtil ————— 正则表达式工具类  
 ScreenUtil ————— 屏幕工具类  
 SDCardUtil ————— 内存卡工具类  
