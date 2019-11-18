@@ -57,7 +57,7 @@ public class LocalServiceHelper extends ServiceHelper {
      */
     public void stopLocalServiceByIntent(Context context,Intent intent){
         if(intent!=null){
-            context.stopService(mLocalIntent);
+            context.stopService(intent);
         }
     }
 
