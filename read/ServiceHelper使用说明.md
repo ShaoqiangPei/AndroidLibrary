@@ -29,4 +29,11 @@ ServiceHelper mServiceHelper=new ServiceHelper();
     /**开启服务前台模式**/
     public void startForeService(Service service, Notification notification){
 ```
-关于通知栏的快速创建，你可以参考[]
+关于通知栏的快速创建，你可以参考[NotificationHelper使用说明](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/NotificationHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+#### 3. 关闭前台模式
+如果你的服务已经开启了前台模式，那么在服务销毁的时候，你需要关闭前台模式：
+```
+    /**关闭服务前台模式**/
+    stopForeService(Service service)
+```
+
