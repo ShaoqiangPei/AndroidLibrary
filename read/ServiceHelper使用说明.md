@@ -3,7 +3,7 @@
 ### 概述
 ServiceHelper是为方便创建服务而产生的一个帮助类，目前里面的主要方法是用来创建 服务前台模式的，目的是最大限度的保持创建的服务不在app生命周期内“意外死亡”。
 ServiceHelper拥有两个子类
-- LocalServiceHelper  ："非绑定式"服务帮助类
+- [LocalServiceHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/LocalServiceHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)  ："非绑定式"服务帮助类
 -  
 
 ### 使用说明
