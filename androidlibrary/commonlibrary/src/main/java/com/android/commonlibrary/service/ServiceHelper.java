@@ -15,7 +15,7 @@ public class ServiceHelper {
     protected final int SERVICE_FRONT = 0x1988;
 
     /**开启服务前台模式**/
-    public void startForeService(Service service, Notification notification, Context context){
+    public void startForeService(Service service, Notification notification){
         if(service!=null&&notification!=null) {
             service.startForeground(SERVICE_FRONT, notification);
         }
