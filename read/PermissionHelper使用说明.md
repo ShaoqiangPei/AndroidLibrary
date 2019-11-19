@@ -2,10 +2,6 @@
 #### app权限申请工具类
 
 #### 一.提前准备
-在你的项目中出引用当前项目的依赖外，还要另外添加以下依赖：
-```
-implementation 'com.lovedise:permissiongen:0.1.1'
-```
 在你项目的 mainfast.xml中增加以下权限：
 ```
  <!--安装未知来源应用的权限 -->
