@@ -51,6 +51,23 @@ public class MyService extends RemoteService{
 
 }
 ```
+当然，不要忘了在manifast.xml中注册你的MyService，你可像下面这样注册：
+```
+ </application
+  //以下代码省略
+  //......
+>
+        <service android:name="com.example.function.MyService">
+            <intent-filter>
+                <action android:name="com.example.function.MyService"/>
+            </intent-filter>
+        </service>
+  //以下代码省略
+  //......
+    </application>
+```
+注意，service标签中的name属性和action标签中的name属性要保证唯一，一般我用自建服务(此处为MyService)的全路径标识。
+
 #### 一.给自建的“绑定式”服务设置前台运行模式
 RemoteServiceHelper可以方便的给你自己创建的“绑定式”服务设置前台运行模式，如果你想要给你创建的“绑定式”服务设置前台运行模式，你可以这样
 (以上面的MyService为例)：
