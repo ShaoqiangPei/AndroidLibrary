@@ -151,7 +151,7 @@ MainActivity中关闭一个不传参的 "非绑定式"服务，你可以这样�
   //销毁服务
   mLocalServiceHelper.stopLocalService(MainActivity.this);
 ```
-#### 6.启动与关闭不含参的“非绑定式服务”
+#### 6.启动与关闭含参的“非绑定式服务”
 若你需要在MainActivity中启动一个含参的“非绑定式服务”，你可以像下面这样：
 ```
     private Intent mIntent;
