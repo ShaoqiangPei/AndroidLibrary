@@ -106,6 +106,8 @@ dependencies {
     annotationProcessor librarys.annotationProcessor_butterknife_compiler
     //Brvah(adapter)适配器
     api librarys.api_BaseRecyclerViewAdapterHelper
+    //未读消息小圆点
+    implementation librarys.implementation_badgeview
 
 
 //    //Glide

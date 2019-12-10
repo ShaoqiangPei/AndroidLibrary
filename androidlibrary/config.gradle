@@ -58,8 +58,10 @@ ext {
             api_permissionenGen:"com.lovedise:permissiongen:0.0.6",
 
             //Brvah(adapter)适配器
-            api_BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34"
+            api_BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
 
+            //未读消息小圆点
+            implementation_badgeview: 'q.rorbin:badgeview:1.1.3'
 
 //            //selector框架
 //            compile_DevShapeUtils:"com.github.LiangLuDev:DevShapeUtils:1.0.1",
