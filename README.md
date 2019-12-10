@@ -62,6 +62,7 @@ public class AppContext extends ComContext {
 #### 三. Util工具  
 [SpUtil](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SpUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)                  ————— SharedPreferences存储类  
 AppUtil ————— app设备信息相关类  
+[Badgetor](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/Badgetor%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 未读消息小圆点工具类  
 [Clipboard](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/ClipboardHelper使用说明.md) ————— 剪切板监听帮助类  
 CollectionUtil ————— 集合处理工具  
 [CompareSortor](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/CompareSortor%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)————— List集合排列工具类  
