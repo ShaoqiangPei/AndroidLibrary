@@ -143,6 +143,8 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [MaskButton](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/MaskButton使用说明.md) ————— 带点击效果的button  
 [SearchConfig](
 https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SearchConfig使用说明.md) ————— SearchView使用帮助类  
+[ClearEditText](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/ClearEditText%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 带删除按钮的输入框(左侧可设置小图标)  
+
 
 
 
