@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- 带删除按钮的editText -->
     <declare-styleable name="clearEditText">
         <attr name="rightDrawable_width" format="dimension"/>
         <attr name="rightDrawable_height" format="dimension"/>
 
         <attr name="leftDrawable_width" format="dimension"/>
         <attr name="leftDrawable_height" format="dimension"/>
+    </declare-styleable>
+
+    <!-- 带icon的TextView -->
+    <declare-styleable name="ImageTextView">
+        <attr name="drawable" format="reference"/>
+        <attr name="drawableWidth" format="dimension"/>
+        <attr name="drawableHeight" format="dimension"/>
+        <attr name="position" format="integer"/>
     </declare-styleable>
 </resources>
