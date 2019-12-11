@@ -50,7 +50,7 @@ xmlns:clearEditText="http://schemas.android.com/apk/res-auto"
         app:layout_constraintTop_toBottomOf="@+id/tv"/>
 ```
 ##### 2. ClearEditText几个重要属性的讲解
-ClearEditText除了以上的一些基本设置外，还有几个重要属性的设置：
+ClearEditText除了以上的一些基本设置外，还有几个重要属性的设置：  
 **设置右侧删除按钮**
 ```
         //设置右侧删除按钮的图标
@@ -60,7 +60,7 @@ ClearEditText除了以上的一些基本设置外，还有几个重要属性的�
         //设置右侧删除按钮的高度
         clearEditText:rightDrawable_height="15dp"  
 ```
-以上属性可以不设置，默认图标是一个带"X"的圆形图标，宽高默认15dp
+以上属性可以不设置，默认图标是一个带"X"的圆形图标，宽高默认15dp  
 **设置左侧图标**
 ```    
         //设置输入框左侧图标，默认为null，即不设置
