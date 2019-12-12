@@ -16,6 +16,10 @@ ServiceHelper mServiceHelper=new ServiceHelper();
 然后调用相关方法。
 
 #### 2. 开启前台模式
+开启前台模式之前，你需要在自己的manifast.xml文件中添加以下权限：
+```
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+```
 开启前台服务，必须结合通知栏使用，若你需要快速开启一个含简易通知栏的前台服务，你可以在你创建的“非绑定式”service中调用以下方法：
 ```
     /**
