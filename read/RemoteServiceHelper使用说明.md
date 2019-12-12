@@ -69,6 +69,10 @@ public class MyService extends RemoteService{
 注意，service标签中的name属性和action标签中的name属性要保证唯一，一般我用自建服务(此处为MyService)的全路径标识。
 
 #### 一.给自建的“绑定式”服务设置前台运行模式
+开启前台模式之前，你需要在自己的manifast.xml文件中添加以下权限：
+```
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+```
 RemoteServiceHelper可以方便的给你自己创建的“绑定式”服务设置前台运行模式，如果你想要给你创建的“绑定式”服务设置前台运行模式，你可以这样
 (以上面的MyService为例)：
 ```
