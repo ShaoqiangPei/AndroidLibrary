@@ -17,6 +17,10 @@ LocalServiceHelper作为"非绑定式"服务的帮助类，其继承于 ServiceH
     mLocalServiceHelper=new LocalServiceHelper();
 ```
 #### 2. 开启前台模式
+开启前台模式之前，你需要在自己的manifast.xml文件中添加以下权限：
+```
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+```
 你可以像下面这样在"非绑定式服务"中开启一个简易通知栏前台模式：
 ```
     //开启简易通知栏前台模式
