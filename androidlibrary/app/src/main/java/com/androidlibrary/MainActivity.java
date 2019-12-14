@@ -4,6 +4,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.android.commonlibrary.activity.AppActivity;
+import com.android.commonlibrary.util.LogUtil;
+import com.android.commonlibrary.widget.TitleBar;
+
+import butterknife.BindView;
 
 public class MainActivity extends AppActivity {
 
@@ -21,7 +25,10 @@ public class MainActivity extends AppActivity {
 
         mBtnTest=getView(R.id.button);
         mTvTest=getView(R.id.textView);
+
+
     }
+
 
     @Override
     public void setListener() {
