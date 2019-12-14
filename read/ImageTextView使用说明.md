@@ -87,4 +87,9 @@ mImageTextView.setDrawableRight(R.drawable.activate_card2,MainActivity.this);
 //设置下边显示图片
 mImageTextView.setDrawableBottom(R.drawable.activate_card2,MainActivity.this);
 ```
+代码中设置drawable的宽高：
+```
+mImageTextView.setDrawableWidth(50);//设置drawable宽度
+mImageTextView.setDrawableHeight(50);//设置drawable高度
+```
 
