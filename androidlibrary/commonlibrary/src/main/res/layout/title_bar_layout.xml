@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
 
-    <com.example.function.ImageTextView
+    <com.android.commonlibrary.widget.ImageTextView
         android:id="@+id/tv_left"
         style="@style/tv_text"
         android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.function.ImageTextView
+    <com.android.commonlibrary.widget.ImageTextView
         android:id="@+id/tv_right"
         style="@style/tv_text"
         android:layout_width="wrap_content"
