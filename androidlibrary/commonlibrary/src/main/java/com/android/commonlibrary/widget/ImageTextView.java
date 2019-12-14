@@ -139,5 +139,27 @@ public class ImageTextView extends TextView {
         invalidate();
     }
 
+    /**设置图片宽度**/
+    public void setDrawableWidth(int width){
+        this.mScaleWidth=ScreenUtil.dp2px(width, mContext);
+        invalidate();
+    }
+
+    /**获取图片宽度**/
+    public float getDrawableWidth(){
+        return ScreenUtil.px2dp(mScaleWidth,mContext);
+    }
+
+    /**设置图片高度**/
+    public void setDrawableHeight(int height){
+        this.mScaleHeight=ScreenUtil.dp2px(height, mContext);
+        invalidate();
+    }
+
+    /**获取图片高度**/
+    public float getDrawableHeight(){
+        return ScreenUtil.px2dp(mScaleHeight,mContext);
+    }
+
 }
 

@@ -25,4 +25,9 @@
         <item name="android:windowExitAnimation">@anim/popu_screen_bottom_out</item>
     </style>
 
+    <style name="tv_text">
+        <item name="android:lineSpacingExtra">@dimen/dp_1</item>
+        <item name="android:lineSpacingMultiplier">1.0</item>
+    </style>
+
 </resources>
