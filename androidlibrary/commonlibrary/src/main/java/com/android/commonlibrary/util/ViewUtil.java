@@ -3,13 +3,13 @@ package com.android.commonlibrary.util;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import androidx.annotation.ColorRes;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
-
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.View;
@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Instruction:控件相关工具类
@@ -233,7 +234,7 @@ public class ViewUtil {
      * @param imv
      * @param uri
      */
-    public void setImageURI(ImageView imv,Uri uri){
+    public static void setImageURI(ImageView imv,Uri uri){
         if(uri!=null){
             imv.setImageURI(uri);
         }
@@ -243,7 +244,7 @@ public class ViewUtil {
     //                   EditText相关
     //===========================================================
     /**设置光标显示在输入框尾部**/
-    public void setEndEditTextCursor(EditText edtText){
+    public static void setEndEditTextCursor(EditText edtText){
         String value=edtText.getText().toString();
         if(StringUtil.isNotEmpty(value)){
             //将光标移至文字末尾
@@ -252,14 +253,25 @@ public class ViewUtil {
     }
 
     /**设置输入框最大数字输入长度**/
-    public void setEditMaxNumLength(EditText edtText,int maxLength){
+    public static void setEditMaxNumLength(EditText edtText,int maxLength){
         edtText.setInputType(InputType.TYPE_CLASS_NUMBER); //输入类型为数字
         setEditMaxLength(edtText,maxLength);
     }
 
     /**设置输入框最大输入长度**/
-    public void setEditMaxLength(EditText edtText,int maxLength){
+    public static void setEditMaxLength(EditText edtText,int maxLength){
         edtText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+    }
+
+    //===========================================================
+    //                   TextView相关
+    //===========================================================
+    /**设置TextView文字粗体(true为粗体,false为正常字体)**/
+    public static void setBoldTextStyle(TextView textView, boolean bold) {
+        if (textView == null){
+            return;
+        }
+        textView.setTypeface(Typeface.defaultFromStyle(bold ? Typeface.BOLD : Typeface.NORMAL));
     }
 
 }
