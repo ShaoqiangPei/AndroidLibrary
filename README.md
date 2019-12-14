@@ -84,6 +84,7 @@ RegularUtil ————— 正则表达式工具类
 ScreenUtil ————— 屏幕工具类  
 SDCardUtil ————— 内存卡工具类  
 ShotShareUtil ————— 截屏分享工具类  
+[SoftKeyBoardHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SoftKeyBoardHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 监听软键盘 显示/隐藏 工具类  
 SpannableStringUtil ————— 设置文本工具类  
 StatusBarUtil ————— 状态类工具类  
 StringUtil ————— 字符串处理工具类  
