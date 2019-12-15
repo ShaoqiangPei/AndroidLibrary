@@ -52,6 +52,8 @@ public class TitleBar extends ConstraintLayout {
         mTvTitle.setVisibility(View.GONE);
     }
 
+
+
     public ImageTextView getTvLeft() {
         return mTvLeft;
     }

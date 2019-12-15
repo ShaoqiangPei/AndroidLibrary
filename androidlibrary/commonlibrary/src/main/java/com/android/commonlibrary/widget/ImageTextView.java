@@ -76,24 +76,31 @@ public class ImageTextView extends TextView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        switch (mPosition) {
-            case ImageTextView.DRAWABLE_LEFT://左
-                this.setCompoundDrawables(mDrawable, null, null, null);
-                break;
-            case ImageTextView.DRAWABLE_TOP://上
-                this.setCompoundDrawables(null, mDrawable, null, null);
-                break;
-            case ImageTextView.DRAWABLE_RIGHET://右
-                this.setCompoundDrawables(null, null, mDrawable, null);
-                break;
-            case ImageTextView.DRAWABLE_BOTTOM://下
-                this.setCompoundDrawables(null, null, null, mDrawable);
-                break;
-            default:
-                break;
+        if(mDrawable!=null) {
+            switch (mPosition) {
+                case ImageTextView.DRAWABLE_LEFT://左
+                    this.setCompoundDrawables(mDrawable, null, null, null);
+                    break;
+                case ImageTextView.DRAWABLE_TOP://上
+                    this.setCompoundDrawables(null, mDrawable, null, null);
+                    break;
+                case ImageTextView.DRAWABLE_RIGHET://右
+                    this.setCompoundDrawables(null, null, mDrawable, null);
+                    break;
+                case ImageTextView.DRAWABLE_BOTTOM://下
+                    this.setCompoundDrawables(null, null, null, mDrawable);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
+    /**设置不显示drawable并重绘**/
+    public void setNullDrawable(){
+        this.mDrawable=null;
+        invalidate();
+    }
 
     /**
      * 设置左侧图片并重绘
