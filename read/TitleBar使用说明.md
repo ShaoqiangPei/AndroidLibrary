@@ -7,7 +7,7 @@ TitleBar 是一个自定义标题栏，里面含有 左返回键，标题，右�
 #### 一.TitleBar的引用
 ##### 1.1 要在MainActivity中使用TitleBar，则在activity_main.xml中引入TitleBar控件如下(控件包路径以实际为准)：
 ```
-    <com.example.function.TitleBar
+    <com.android.commonlibrary.widget.TitleBar
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="55dp"
