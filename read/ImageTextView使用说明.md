@@ -92,4 +92,9 @@ mImageTextView.setDrawableBottom(R.drawable.activate_card2,MainActivity.this);
 mImageTextView.setDrawableWidth(50);//设置drawable宽度
 mImageTextView.setDrawableHeight(50);//设置drawable高度
 ```
+代码中不给ImageTextView设置drawable:
+```
+//设置不显示图片
+mImageTextView.setNullDrawable();
+```
 
