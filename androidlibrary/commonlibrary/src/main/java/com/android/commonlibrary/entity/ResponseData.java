@@ -1,12 +1,15 @@
 package com.android.commonlibrary.entity;
 
+import android.annotation.SuppressLint;
+
 /**
- * Description:RxBus数据实体
+ * Description:网络通讯返回数据最外层数据结构体(备用)
  *
  * Author:pei
  * Date: 2019/3/21
  */
-public class RxData<T> extends BaseEntity {
+@SuppressLint("ParcelCreator")
+public class ResponseData<T> extends BaseEntity {
 
     private int code;
     private String message;
@@ -38,7 +41,7 @@ public class RxData<T> extends BaseEntity {
 
     @Override
     public String toString() {
-        return "RxData{" +
+        return "ResponseData{" +
                 "code=" + code +
                 ", message='" + message + '\'' +
                 ", data=" + data +

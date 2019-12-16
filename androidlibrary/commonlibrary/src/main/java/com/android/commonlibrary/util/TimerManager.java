@@ -1,14 +1,12 @@
 package com.android.commonlibrary.util;
 
 import android.content.Context;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Title:定时器
+ * Title:定时器<只能启动一个定时器>
  * description:
  * autor:pei
  * created on 2019/10/17
