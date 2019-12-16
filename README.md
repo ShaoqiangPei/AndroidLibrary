@@ -138,7 +138,9 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [ServiceHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/ServiceHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 服务帮助类父类(主要为本地服务和远程服务的帮助类提供公共方法)  
 [LocalServiceHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/LocalServiceHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— "非绑定式"服务帮助类  
 [RemoteService](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RemoteService%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— "绑定式"服务基类，供自建的“绑定式”服务继承  
-[RemoteServiceHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RemoteServiceHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— "绑定式"服务帮助类  
+[RemoteServiceHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RemoteServiceHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— "绑定式"服务帮助类   
+####  14. 消息事务总线
+[RxBus](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RxBus%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— RxBus基于 RxJava2.x实现事务总线  
 
 #### X. widget
 [MaskButton](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/MaskButton使用说明.md) ————— 带点击效果的button  
