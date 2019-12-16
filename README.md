@@ -90,7 +90,8 @@ StatusBarUtil ————— 状态类工具类
 StringUtil ————— 字符串处理工具类  
 [TimeFlag](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TimeFlag%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 ) ————— 时间节点器(主要用于统计某个 方法/代码块 执行耗时)   
-[TimerManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TimerManager使用说明.md) ————— 定时器工具类  
+[TimerManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TimerManager使用说明.md) ————— 定时器工具类(只能建立一个定时器)  
+[RxTimer](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RxTimer%E5%AE%9A%E6%97%B6%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 定时器工具类(可建立多个定时器)  
 ToastUtil ————— 吐司工具类  
 UriUtil ————— uri转换工具类  
 VibratorUtil ————— 手机震动工具类  
