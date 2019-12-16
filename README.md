@@ -96,6 +96,7 @@ ToastUtil ————— 吐司工具类
 UriUtil ————— uri转换工具类  
 VibratorUtil ————— 手机震动工具类  
 ViewUtil ————— 控件相关工具类  
+[VersionHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/VersionHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— app版本判断工具类  
 WakeUpUtil ————— 屏幕唤醒工具类  
 #### 四. 可序列化基类
 [BaseEntity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/BaseEntity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
