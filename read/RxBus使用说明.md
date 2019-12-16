@@ -22,7 +22,7 @@ RxBus的使用有以下几个步骤：
             }
         });
 ```
-这里需要注意的是，register第一个传的值是String类型，我们一般传class 的name(全路径)作为String，不一定要是Activity或Fragment哟，只要是一个class的全路径name就行。
+这里需要注意的是，register第一个传的值是class类型，这里的class不一定要是Activity或Fragment哟，只要是一个class就行。
 #### 二. RxBus传值  
 在你需要传值的时候，你可以像下面这样：
 ```
@@ -64,5 +64,5 @@ post的时候可以传Object，但是在一个app项目中会有多个值传来�
         //注销RxBus
         RxBus.getInstance().unRegister(MainActivity.class);
 ```
-需要注意的是，注销时传的String要和注册时传的String一 一对应。
+需要注意的是，注销时传的class要和注册时传的class一 一对应。
 
