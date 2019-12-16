@@ -119,10 +119,10 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [AppFragActivity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 集成Fragment时需要用到的activity,主要用来处理Fragment和activity的返回键功能  
 [AppFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— Fragment基类,包含Fragment跳转activity方法，fragment向fragment传值方法和Fragmnet向activity回传值的方法  
 #### 九. mvp-frame(MVP架构)
-[](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 创建(系统)默认dialog  
-[](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 创建(系统)默认dialog  
-[](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 创建(系统)默认dialog  
-[](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 创建(系统)默认dialog  
+[PreActivity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— MVP架构Activity基类  
+[PreFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— MVP架构Fragment基类  
+[PrePresenter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— T-MVPPresenter基类  
+[PreView](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— MVP-View基类  
 #### 十. Dialog  
 [DefaultDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/DefaultDialogFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 ) ————— 创建(系统)默认dialog  
