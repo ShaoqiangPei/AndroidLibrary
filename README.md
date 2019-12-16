@@ -90,11 +90,13 @@ StatusBarUtil ————— 状态类工具类
 StringUtil ————— 字符串处理工具类  
 [TimeFlag](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TimeFlag%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 ) ————— 时间节点器(主要用于统计某个 方法/代码块 执行耗时)   
-[TimerManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TimerManager使用说明.md) ————— 定时器工具类  
+[TimerManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TimerManager使用说明.md) ————— 定时器工具类(只能建立一个定时器)  
+[RxTimer](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RxTimer%E5%AE%9A%E6%97%B6%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 定时器工具类(可建立多个定时器)  
 ToastUtil ————— 吐司工具类  
 UriUtil ————— uri转换工具类  
 VibratorUtil ————— 手机震动工具类  
 ViewUtil ————— 控件相关工具类  
+[VersionHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/VersionHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— app版本判断工具类  
 WakeUpUtil ————— 屏幕唤醒工具类  
 #### 四. 可序列化基类
 [BaseEntity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/BaseEntity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
@@ -116,30 +118,35 @@ WakeUpUtil ————— 屏幕唤醒工具类
 )————— Activity基类  
 [AppFragActivity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 集成Fragment时需要用到的activity,主要用来处理Fragment和activity的返回键功能  
 [AppFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— Fragment基类,包含Fragment跳转activity方法，fragment向fragment传值方法和Fragmnet向activity回传值的方法  
-#### 九. Dialog  
+#### 九. mvp-frame(MVP架构)
+[PreActivity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— MVP架构Activity基类  
+[PreFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— MVP架构Fragment基类  
+[PrePresenter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— T-MVPPresenter基类  
+[PreView](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— MVP-View基类  
+#### 十. Dialog  
 [DefaultDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/DefaultDialogFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 ) ————— 创建(系统)默认dialog  
 [AppDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppDialogFragment使用说明.md) ————— 自定义dialog的父类  
 [SyDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SyDialogFragment使用说明.md) ————— 通用dialog  
 [SyDialogHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SyDialogHelper使用说明.md) ————— SyDialogFragment帮助类，用以快速显示通用dialog  
-#### 十. PopupWindow 
+#### 11. PopupWindow 
 [AppPopupWindow](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppPopupWindow使用说明.md) ————— PopupWindow基类  
-#### 11. RecyclerView & Adapter  
+#### 12. RecyclerView & Adapter  
 [DefaultAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/androidlibrary/commonlibrary/src/main/java/com/android/commonlibrary/adapter/item_adapter/DefaultAdapter.java) ————— 原生RecyclerView的adapter使用示例(仅做参考)  
 [AdapterHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AdapterHelper使用说明.md) ————— 适配器帮助类  
 [ComAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/ComAdapter使用说明.md) ————— RecyclerView通用适配器基类  
 [GroupAdapter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/GroupAdapter使用说明.md) ————— RecyclerView分组适配器基类  
-#### 12. BroadcastReceiver 
+#### 13. BroadcastReceiver 
 [AppInstallReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppInstallReceiver使用说明.md) ————— 监听app安装完成，替换完成和卸载完成的广播  
 [AppReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppReceiver使用说明.md) ————— 全局广播使用工具类(注册的广播剧本全局性，可接收其他app的广播消息)  
 [AppLocalReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppLocalReceiver使用说明.md) ————— 本广播使用工具类(具备安全性，适合本app内部消息通讯)  
 [NetworkReceiver](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/NetworkReceiver使用说明.md) ————— 监听网络实时链接状态广播工具类  
-#### 13. Service
+#### 14. Service
 [ServiceHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/ServiceHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 服务帮助类父类(主要为本地服务和远程服务的帮助类提供公共方法)  
 [LocalServiceHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/LocalServiceHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— "非绑定式"服务帮助类  
 [RemoteService](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RemoteService%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— "绑定式"服务基类，供自建的“绑定式”服务继承  
 [RemoteServiceHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RemoteServiceHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— "绑定式"服务帮助类   
-####  14. 消息事务总线
+####  15. 消息事务总线
 [RxBus](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RxBus%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— RxBus基于 RxJava2.x实现事务总线  
 
 #### X. widget

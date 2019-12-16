@@ -2,6 +2,7 @@
 
 ### 概述
 TimerManager类是对 Timer 使用的一个封装，用户可以方便的使用到 timer 相关的定时，延时功能。
+需要注意的是：TimerManager只能建立一个定时器。若需要使用多个定时器，可以查看另一个定时器类 [RxTimer](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/RxTimer%E5%AE%9A%E6%97%B6%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)  
 
 ### 使用说明
 #### 一. TimerManager初始化
