@@ -1,7 +1,7 @@
 ## RxTimer定时器使用说明
 
 ### 概述
-RxTimer定时器是一款经 RxJava2.x实现的定时器。与 TimerManager 定时器不同，你可以通过 new 不同的 RxTimer 对象，来建立多个定时器。
+RxTimer定时器是一款经 RxJava2.x实现的定时器。与 [TimerManager](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TimerManager%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) 定时器不同，你可以通过 new 不同的 RxTimer 对象，来建立多个定时器。
 定时器之间互不干扰。
 
 ### 使用说明
