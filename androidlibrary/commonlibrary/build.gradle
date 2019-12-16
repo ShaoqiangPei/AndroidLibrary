@@ -108,6 +108,9 @@ dependencies {
     api librarys.api_BaseRecyclerViewAdapterHelper
     //未读消息小圆点
     implementation librarys.implementation_badgeview
+    //RxBus
+    implementation librarys.implementation_rx_android2
+    implementation librarys.implementation_rx_java2
 
 
 //    //Glide
