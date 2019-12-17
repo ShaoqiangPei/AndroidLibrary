@@ -35,13 +35,13 @@ LoadingDialog在使用的时候，一般是会弹出的，若你在通讯过程�
         
         //隐藏网络加载dialog
 ```
-#### 二. LoadingDialog的隐藏
+#### 三. LoadingDialog的隐藏
 通讯收到结果后，你可以像下面这样隐藏你的网络加载框:
 ```
         //隐藏网络加载dialog
         LoadingDialog.getInstance().hideLoading();
 ```
-#### 其他方法
+#### 四. 其他方法
 LoadingDialog还有一个用于判断dialog是否该显示的通用方法：
 ```
     /**
