@@ -5,9 +5,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
-
 import com.android.commonlibrary.app.ComContext;
-
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;

@@ -5,7 +5,7 @@ import android.app.Application;
 /**
  * Title:自定义的Application,继承LitePalApplication,集成LitePal数据库功能
  * Description:
- * <p>
+ *
  * Created by pei
  * Date: 2017/12/30
  */

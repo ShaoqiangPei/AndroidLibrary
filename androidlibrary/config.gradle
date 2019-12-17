@@ -66,13 +66,16 @@ ext {
             //rxAndroid2.x
             implementation_rx_android2:"io.reactivex.rxjava2:rxandroid:2.0.1",
             //rxJava2.x
-            implementation_rx_java2:"io.reactivex.rxjava2:rxjava:2.1.0"
+            implementation_rx_java2:"io.reactivex.rxjava2:rxjava:2.1.0",
+
+            //loadingdialog,网络加载对话框
+            implementation_loading_dialog:"com.github.d-max:spots-dialog:0.7@aar"
+
+
+
 
 //            //selector框架
 //            compile_DevShapeUtils:"com.github.LiangLuDev:DevShapeUtils:1.0.1",
-
-//            //loadingdialog,网络加载对话框
-//            compile_loading_dialog:"com.github.d-max:spots-dialog:0.7@aar",
 //
 //            //retroefit2.0
 //            compile_retrofit2:"com.squareup.retrofit2:retrofit:2.3.0",

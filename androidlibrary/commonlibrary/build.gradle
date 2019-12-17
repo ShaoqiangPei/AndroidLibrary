@@ -82,20 +82,6 @@ dependencies {
     androidTestImplementation librarys.androidTestImplementation_support_runner
     androidTestImplementation librarys.androidTestImplementation_support_espresso
 
-//    //===============网络库============
-//    //retroefit2.0
-//    api librarys.compile_retrofit2
-//    //retrofit2.0对gson支持
-//    api librarys.compile_retrofit2_converter_gson
-//    //retrofit2.0支持内置log打印
-//    api librarys.compile_okhttp3
-//    api librarys.compile_logging_interceptor
-//    //添加Retrofit2.0对Rx的支持(RxJava2.x时使用，RxJava1.x时不支持)
-//    api librarys.compile_retrofit2_adapter_rxjava2
-//    //rxjava2.x
-//    api librarys.compile_rx_android2
-//    api librarys.compile_rx_java2
-
     //================第三方库============
     //PermissionGen
     api librarys.api_permissionenGen
@@ -111,7 +97,8 @@ dependencies {
     //RxBus
     implementation librarys.implementation_rx_android2
     implementation librarys.implementation_rx_java2
-
+    //loadingdialog,网络加载对话框
+    implementation librarys.implementation_loading_dialog
 
 //    //Glide
 //    api librarys.compile_glide4
