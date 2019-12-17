@@ -125,6 +125,7 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [PrePresenter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— T-MVPPresenter基类  
 [PreView](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— MVP-View基类  
 #### 十. Dialog  
+[LoadingDialog](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/LoadingDialog%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 网络通讯加载dialog(针对通讯的loading)  
 [DefaultDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/DefaultDialogFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
 ) ————— 创建(系统)默认dialog  
 [AppDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppDialogFragment使用说明.md) ————— 自定义dialog的父类  
