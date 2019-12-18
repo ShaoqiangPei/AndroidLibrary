@@ -15,7 +15,7 @@ UIPresenter uiPresenter=new UIPresenter();
     public  <T> void updateUI(Context context, PreView view, UIData<T> data, OnUIListener listener)
 ```
 #### 二.UIPresenter在Presenter类中使用范例
-UIPresenter主要在Presenter类中使用，下面以在MainPresenter通过UIPresenter更新主线程UI为例：
+UIPresenter主要在Presenter类中使用，下面以在MainPresenter通过UIPresenter更新主线程UI为例：  
 数据实体类 UIData，请参看[源码](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/androidlibrary/commonlibrary/src/main/java/com/android/commonlibrary/entity/UIData.java)  
 ```
 /**
