@@ -101,7 +101,8 @@ WakeUpUtil ————— 屏幕唤醒工具类
 #### 四. 可序列化基类
 [BaseEntity](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/BaseEntity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 数据实体基类  
 [ResponseData](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/androidlibrary/commonlibrary/src/main/java/com/android/commonlibrary/entity/ResponseData.java) ————— 网络通讯返回数据最外层数据结构体(备用)  
-[RxData](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/androidlibrary/commonlibrary/src/main/java/com/android/commonlibrary/entity/RxData.java) ————— RxBus消息传递数据实体
+[RxData](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/androidlibrary/commonlibrary/src/main/java/com/android/commonlibrary/entity/RxData.java) ————— RxBus消息传递数据实体  
+[UIData](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/androidlibrary/commonlibrary/src/main/java/com/android/commonlibrary/entity/UIData.java) ————— 用于业务逻辑线程更新主线程数据传值的数据实体  
 #### 五. 缓存
 [Cache](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/Cache%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— app内存缓存  
 [SimpleCache](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SimpleCache%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 文件式缓存 
@@ -126,6 +127,7 @@ WakeUpUtil ————— 屏幕唤醒工具类
 [PreFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— MVP架构Fragment基类  
 [PrePresenter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— T-MVPPresenter基类  
 [PreView](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— MVP-View基类  
+[UIPresenter](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/UIPresenter%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 更新主线程ui帮助类  
 #### 十. Dialog  
 [LoadingDialog](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/LoadingDialog%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ————— 网络通讯加载dialog(针对通讯的loading)  
 [DefaultDialogFragment](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/DefaultDialogFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md
