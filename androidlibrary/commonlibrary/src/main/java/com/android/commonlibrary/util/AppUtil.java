@@ -177,7 +177,7 @@ public class AppUtil {
      * 获取 设备uuid
      * 优先用androidId生成uuid,
      * 若uuid获取不到,则用Android其他设备信息拼成uuid
-     * 若设备信息还是获取不到，则用字符串"860000000000086"生成uuid
+     * 若设备信息还是获取不到，则随机生成一个uuid
      *
      * eg:uuid格式：00995657cc093f88966c652e25cb6dbc
      */
@@ -215,7 +215,8 @@ public class AppUtil {
             uuid = new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
         }
         if (TextUtils.isEmpty(uuid)) {
-            uuid = "860000000000086";
+            //生成随机uuid
+            uuid = UUID.randomUUID().toString();
         }
         uuid = uuid.replaceAll("-", "");
         return uuid;
