@@ -19,6 +19,7 @@ import android.os.Build;
 import android.provider.Settings;
 import androidx.core.app.ActivityCompat;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 
 import com.android.commonlibrary.app.ComContext;
 
@@ -27,6 +28,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.UUID;
 
 import static android.content.Context.TELEPHONY_SERVICE;
 
@@ -168,6 +171,54 @@ public class AppUtil {
             return tm.getDeviceId();
         }
         return null;
+    }
+
+    /**
+     * 获取 设备uuid
+     * 优先用androidId生成uuid,
+     * 若uuid获取不到,则用Android其他设备信息拼成uuid
+     * 若设备信息还是获取不到，则用字符串"860000000000086"生成uuid
+     *
+     * eg:uuid格式：00995657cc093f88966c652e25cb6dbc
+     */
+    public static String getUUId() {
+        String uuid=AppUtil.getAndroidId();
+        if(StringUtil.isEmpty(uuid)){
+            uuid=getRandomUUId();
+        }else{
+            uuid= UUID.nameUUIDFromBytes((uuid).getBytes(Charset.forName("UTF-8"))).toString();
+        }
+        uuid=uuid.replaceAll("-","");
+
+        ToastUtil.shortShow("====uuid是====="+uuid);
+        return uuid;
+    }
+
+    /**生成唯一的uuid**/
+    private static String getRandomUUId() {
+        String uuid;
+        String m_szDevIDShort = "70" +
+                Build.BOARD.length() % 10 + Build.BRAND.length() % 10 +
+                Build.CPU_ABI.length() % 10 + Build.DEVICE.length() % 10 +
+                Build.DISPLAY.length() % 10 + Build.HOST.length() % 10 +
+                Build.ID.length() % 10 + Build.MANUFACTURER.length() % 10 +
+                Build.MODEL.length() % 10 + Build.PRODUCT.length() % 10 +
+                Build.TAGS.length() % 10 + Build.TYPE.length() % 10 +
+                Build.USER.length() % 10; //13 位
+        try {
+            String serial = android.os.Build.class.getField("SERIAL").get(null).toString();
+            //API>=9 使用serial号
+            uuid = new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+        } catch (Exception exception) {
+            //serial需要一个初始化,随意值
+            String serial = "serial";
+            uuid = new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+        }
+        if (TextUtils.isEmpty(uuid)) {
+            uuid = "860000000000086";
+        }
+        uuid = uuid.replaceAll("-", "");
+        return uuid;
     }
 
     /**
