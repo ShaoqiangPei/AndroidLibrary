@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
+
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -71,7 +74,15 @@ public class ShotShareUtil {
         if (imagePath != null){
             Intent intent = new Intent(Intent.ACTION_SEND); // 启动分享发送的属性
             File file = new File(imagePath);
-            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));// 分享的内容
+            Uri uri=null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                // UpdateConfig.FILE_PROVIDER_AUTH 即是在清单文件中配置的authorities
+                String authority= MainfastUtil.getProviderAuthority(context);
+                uri= FileProvider.getUriForFile(context, authority,file);
+            } else {
+                uri = Uri.fromFile(file);
+            }
+            intent.putExtra(Intent.EXTRA_STREAM, uri);// 分享的内容
             intent.setType("image/*");// 分享发送的数据类型
             Intent chooser = Intent.createChooser(intent, "Share screen shot");
             if(intent.resolveActivity(context.getPackageManager()) != null){
