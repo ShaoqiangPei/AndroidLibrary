@@ -17,15 +17,31 @@
 	        implementation 'com.github.ShaoqiangPei:AndroidLibrary:1.1.0'
 	}
 ```
-在你的项目中自定义一个`Application`继承于`ComContext`,类似如下：
+在你的项目中自定义一个`Application`,然后在你的自定义`Application`的`onCreate()`中进行初始化,类似如下：
 ```
-public class AppContext extends ComContext {
+/**
+ * Title:自定义application
+ * description:
+ * autor:pei
+ * created on 2020/1/9
+ */
+public class AppContext extends Application {
+
+    private static AppContext instance;
+
+    public static synchronized AppContext getInstance() {
+        return instance;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
 
+        //初始化AndroidLibrary
+        LibraryConfig.getInstance().init(AppContext.this);
     }
+
 }
 ```
 在你项目的`mainfast.xml`中声明自己的`application`，类似如下：
