@@ -13,9 +13,18 @@
 ```
 在你项目的`app_module`对应的`build.gradle`里面引用此库(以`1.1.0`版本为例),如下：
 ```
+  android {
+
+     //此项配置也要添加
+      compileOptions {
+          sourceCompatibility JavaVersion.VERSION_1_8
+          targetCompatibility JavaVersion.VERSION_1_8
+      }
+  }
+
   dependencies {
-	        implementation 'com.github.ShaoqiangPei:AndroidLibrary:1.1.0'
-	}
+      implementation 'com.github.ShaoqiangPei:AndroidLibrary:1.1.0'
+  }
 ```
 在你的项目中自定义一个`Application`,然后在你的自定义`Application`的`onCreate()`中进行初始化,类似如下：
 ```
