@@ -2,8 +2,7 @@ package com.android.commonlibrary.util;
 
 import android.app.Service;
 import android.os.Vibrator;
-
-import com.android.commonlibrary.app.ComContext;
+import com.android.commonlibrary.app.LibraryConfig;
 
 /**
  * 手机震动工具类
@@ -25,7 +24,7 @@ public class VibratorUtil {
     public static boolean isLongVibrate;
 
     private static Vibrator getVibrator() {
-        Vibrator vibrator = (Vibrator) ComContext.getInstance().getSystemService(Service.VIBRATOR_SERVICE);
+        Vibrator vibrator = (Vibrator) LibraryConfig.getInstance().getApplication().getSystemService(Service.VIBRATOR_SERVICE);
         return vibrator;
     }
 

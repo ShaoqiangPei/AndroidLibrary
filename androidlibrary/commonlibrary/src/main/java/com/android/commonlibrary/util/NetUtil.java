@@ -5,7 +5,9 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
-import com.android.commonlibrary.app.ComContext;
+
+import com.android.commonlibrary.app.LibraryConfig;
+
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -18,7 +20,7 @@ public class NetUtil {
      * 检查网络是否可用
      */
     public static boolean isNetworkConnected() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) ComContext.getInstance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) LibraryConfig.getInstance().getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = connectivityManager.getActiveNetworkInfo();
         return info != null && info.isAvailable();
     }
@@ -27,7 +29,7 @@ public class NetUtil {
      * 检查手机网络(4G/3G/2G)是否连接
      */
     public static boolean isMobileNetworkConnected() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) ComContext.getInstance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) LibraryConfig.getInstance().getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo mobileNetworkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         return mobileNetworkInfo != null;
     }
@@ -50,7 +52,7 @@ public class NetUtil {
      * @return boolean
      */
     public static boolean isWifiConnected() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) ComContext.getInstance().getApplicationContext()
+        ConnectivityManager connectivityManager = (ConnectivityManager) LibraryConfig.getInstance().getApplication()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetInfo != null && activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI;
@@ -100,7 +102,7 @@ public class NetUtil {
     @SuppressLint("DefaultLocale")
     public static String getNetType() {
         String netType = "";
-        ConnectivityManager connMgr = (ConnectivityManager) ComContext.getInstance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) LibraryConfig.getInstance().getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo == null) {
             return netType;

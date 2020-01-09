@@ -1,10 +1,14 @@
 package com.androidlibrary;
 
+import android.text.SpannableString;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.android.commonlibrary.activity.AppActivity;
 import com.android.commonlibrary.util.LogUtil;
+import com.android.commonlibrary.util.NetUtil;
+import com.android.commonlibrary.util.ScreenUtil;
+import com.android.commonlibrary.util.SpannableStringUtil;
 import com.android.commonlibrary.widget.TitleBar;
 
 import butterknife.BindView;
@@ -48,6 +52,7 @@ public class MainActivity extends AppActivity {
     }
 
     private void test() {
+
 
     }
 

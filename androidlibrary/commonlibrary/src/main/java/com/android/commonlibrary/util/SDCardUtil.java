@@ -4,7 +4,7 @@ import android.os.Build;
 import android.os.Environment;
 import androidx.annotation.RequiresApi;
 
-import com.android.commonlibrary.app.ComContext;
+import com.android.commonlibrary.app.LibraryConfig;
 
 import java.io.File;
 import java.io.IOException;
@@ -106,9 +106,9 @@ public class SDCardUtil {
         String cachePath = null;
         //手机内部缓存路径
         //------/data/user/0/package_name/cache/
-        String innerPath = ComContext.getInstance().getCacheDir().getAbsolutePath() + File.separator;
+        String innerPath = LibraryConfig.getInstance().getApplication().getCacheDir().getAbsolutePath() + File.separator;
         if (isSdcardExist()) {
-            File cacheFile = ComContext.getInstance().getExternalCacheDir();
+            File cacheFile = LibraryConfig.getInstance().getApplication().getExternalCacheDir();
             if (cacheFile != null) {
                 //sdcard上缓存路径
                 //--------/storage/emulated/0/Android/data/package_name/cache/
@@ -133,11 +133,11 @@ public class SDCardUtil {
     public static String getDiskFilePath(String fileName){
         String path=null;
         if(StringUtil.isNotEmpty(fileName)) {
-            String innerpath= ComContext.getInstance().getFilesDir().getAbsolutePath() + File.separator+fileName;
+            String innerpath= LibraryConfig.getInstance().getApplication().getFilesDir().getAbsolutePath() + File.separator+fileName;
             if (isSdcardExist()) {
                 //sdcard上缓存路径
                 //--------/storage/emulated/0/Android/data/package_name/files/file_name
-                String dirpath= ComContext.getInstance().getExternalFilesDir("diskdata").getAbsolutePath()+ File.separator;
+                String dirpath= LibraryConfig.getInstance().getApplication().getExternalFilesDir("diskdata").getAbsolutePath()+ File.separator;
                 path = dirpath+fileName;
                 if(!usefulFilePath(dirpath)){
                     //手机内部缓存路径

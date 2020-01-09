@@ -1,9 +1,7 @@
 package com.android.commonlibrary.cacher.normal_cache;
 
-
-import com.android.commonlibrary.app.ComContext;
+import com.android.commonlibrary.app.LibraryConfig;
 import com.android.commonlibrary.util.SDCardUtil;
-
 import java.io.File;
 import java.math.BigDecimal;
 
@@ -22,9 +20,9 @@ public class DiskCacheInfo {
      *             获取当前缓存
      */
     public static String getTotalCacheSize() {
-        long cacheSize = getFolderSize(ComContext.getInstance().getCacheDir());
+        long cacheSize = getFolderSize(LibraryConfig.getInstance().getApplication().getCacheDir());
         if (SDCardUtil.isSdcardExist()) {
-            cacheSize += getFolderSize(ComContext.getInstance().getExternalCacheDir());
+            cacheSize += getFolderSize(LibraryConfig.getInstance().getApplication().getExternalCacheDir());
         }
         return getFormatSize(cacheSize);
     }
@@ -33,9 +31,9 @@ public class DiskCacheInfo {
      * 删除缓存
      */
     public static void clearAllCache(){
-        deleteDir(ComContext.getInstance().getCacheDir());
+        deleteDir(LibraryConfig.getInstance().getApplication().getCacheDir());
         if(SDCardUtil.isSdcardExist()){
-            deleteDir(ComContext.getInstance().getExternalCacheDir());
+            deleteDir(LibraryConfig.getInstance().getApplication().getExternalCacheDir());
         }
     }
 

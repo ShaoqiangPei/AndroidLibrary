@@ -10,8 +10,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
-import com.android.commonlibrary.app.ComContext;
+import com.android.commonlibrary.app.LibraryConfig;
 
 
 /**
@@ -29,7 +28,7 @@ public class ScreenUtil {
 
     private static DisplayMetrics getDisplayMetrics(){
         DisplayMetrics dm = new DisplayMetrics();
-        WindowManager mWindowManager = (WindowManager) ComContext.getInstance().getSystemService(Context.WINDOW_SERVICE);
+        WindowManager mWindowManager = (WindowManager) LibraryConfig.getInstance().getApplication().getSystemService(Context.WINDOW_SERVICE);
         Display display = mWindowManager.getDefaultDisplay();
         display.getMetrics(dm);
 
@@ -67,7 +66,7 @@ public class ScreenUtil {
             Class<?> clazz = Class.forName("com.android.internal.R$dimen");
             Object object = clazz.newInstance();
             int height = Integer.parseInt(clazz.getField("status_bar_height").get(object).toString());
-            statusHeight = ComContext.getInstance().getResources().getDimensionPixelSize(height);
+            statusHeight = LibraryConfig.getInstance().getApplication().getResources().getDimensionPixelSize(height);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,6 +106,7 @@ public class ScreenUtil {
         Bitmap bp = null;
         bp = Bitmap.createBitmap(bmp, 0, statusBarHeight, width, height - statusBarHeight);
         view.destroyDrawingCache();
+        view.setDrawingCacheEnabled(false);
         return bp;
     }
 

@@ -29,7 +29,7 @@ import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
 
-import com.android.commonlibrary.app.ComContext;
+import com.android.commonlibrary.app.LibraryConfig;
 
 /***
  * 设置文本工具类
@@ -119,7 +119,7 @@ public class SpannableStringUtil {
 	 */
 	public static SpannableString setTextFrontColor(SpannableString source,int index1, int index2,int color){
 		if(source!=null) {
-			int colorVaule = ContextCompat.getColor(ComContext.getInstance(), color);
+			int colorVaule = ContextCompat.getColor(LibraryConfig.getInstance().getApplication(), color);
 			ForegroundColorSpan fcs=new ForegroundColorSpan(colorVaule);
 			source.setSpan(fcs,index1, index2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			return source;
@@ -186,7 +186,7 @@ public class SpannableStringUtil {
 	 */
 	public static SpannableString setTextBackgroundColor(SpannableString source,int index1,int index2, int color){
 		if(source!=null){
-			int colorVaule = ContextCompat.getColor(ComContext.getInstance(), color);
+			int colorVaule = ContextCompat.getColor(LibraryConfig.getInstance().getApplication(), color);
 			BackgroundColorSpan bcs=new BackgroundColorSpan(colorVaule);
 			source.setSpan(bcs,index1, index2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			return source;
@@ -548,7 +548,7 @@ public class SpannableStringUtil {
 			if (index == -1) {
 				return source;
 			}
-			Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId,null);
+			Drawable drawable = LibraryConfig.getInstance().getApplication().getResources().getDrawable(drawableId,null);
 			drawable.setBounds(0, 0, drawable.getIntrinsicWidth() , drawable.getIntrinsicHeight());
 			ImageSpan imageSpan = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
 
@@ -596,7 +596,7 @@ public class SpannableStringUtil {
 				return source;
 			}
 			index=index+changeStr.length();
-			Drawable drawable = ComContext.getInstance().getResources().getDrawable(drawableId,null);
+			Drawable drawable = LibraryConfig.getInstance().getApplication().getResources().getDrawable(drawableId,null);
 			drawable.setBounds(0, 0, drawable.getIntrinsicWidth() , drawable.getIntrinsicHeight());
 			ImageSpan imageSpan = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
 			SpannableStringBuilder builder=new SpannableStringBuilder(source);
@@ -640,7 +640,7 @@ public class SpannableStringUtil {
 			}
 			int endIndex=startIndex+changeStr.length();
 
-			Drawable drawable=ComContext.getInstance().getDrawable(drawableId);
+			Drawable drawable=LibraryConfig.getInstance().getApplication().getDrawable(drawableId);
 			drawable.setBounds(0, 0, drawable.getIntrinsicWidth() , drawable.getIntrinsicHeight());
 			ImageSpan imageSpan = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
 			source.setSpan(imageSpan, startIndex, endIndex, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
@@ -682,7 +682,7 @@ public class SpannableStringUtil {
 				@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 				@Override
 				public Drawable getDrawable() {
-					Drawable drawable=ComContext.getInstance().getDrawable(drawableId);
+					Drawable drawable=LibraryConfig.getInstance().getApplication().getDrawable(drawableId);
 					drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
 					return drawable;
 				}
@@ -733,7 +733,7 @@ public class SpannableStringUtil {
 				@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 				@Override
 				public Drawable getDrawable() {
-					Drawable drawable = ComContext.getInstance().getDrawable(drawableId);
+					Drawable drawable = LibraryConfig.getInstance().getApplication().getDrawable(drawableId);
 					drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
 					return drawable;
 				}
@@ -780,7 +780,7 @@ public class SpannableStringUtil {
 				@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 				@Override
 				public Drawable getDrawable() {
-					Drawable drawable = ComContext.getInstance().getDrawable(drawableId);
+					Drawable drawable =LibraryConfig.getInstance().getApplication().getDrawable(drawableId);
 					drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
 					return drawable;
 				}
@@ -828,7 +828,7 @@ public class SpannableStringUtil {
 
                 @Override
                 public void updateDrawState(TextPaint ds) {
-                    ds.setColor(ContextCompat.getColor(ComContext.getInstance(),colorId));//设置颜色
+                    ds.setColor(ContextCompat.getColor(LibraryConfig.getInstance().getApplication(),colorId));//设置颜色
                     ds.setUnderlineText(isUnderLine);//false时表示去掉下划线
                 }
             }, index1, index2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -1289,7 +1289,7 @@ public class SpannableStringUtil {
 	 */
 	public static SpannableString setTextItem(SpannableString source, int itemWidth,int colorId,int index1, int index2){
 		if(source!=null){
-			BulletSpan bulletSpan=new BulletSpan(itemWidth, ContextCompat.getColor(ComContext.getInstance(),colorId));
+			BulletSpan bulletSpan=new BulletSpan(itemWidth, ContextCompat.getColor(LibraryConfig.getInstance().getApplication(),colorId));
 			source.setSpan(bulletSpan, index1, index2,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			return source;
 		}

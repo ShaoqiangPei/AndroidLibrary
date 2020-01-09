@@ -5,9 +5,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.commonlibrary.R;
-import com.android.commonlibrary.app.ComContext;
+import com.android.commonlibrary.app.LibraryConfig;
 
 /**
  * Created by codeest on 2016/8/4.
@@ -22,16 +21,16 @@ public class ToastUtil {
 
     public ToastUtil(Context context) {
 //        this.mContext = context;
-        this.mContext = ComContext.getInstance();
+        this.mContext = LibraryConfig.getInstance().getApplication();
     }
 
     public static void show(int resId){
-        show(ComContext.getInstance().getString(resId));
+        show(LibraryConfig.getInstance().getApplication().getString(resId));
     }
 
     public static void show(String msg) {
         if (TD == null) {
-            TD = new ToastUtil(ComContext.getInstance());
+            TD = new ToastUtil(LibraryConfig.getInstance().getApplication());
         }
         TD.setText(msg);
         TD.create().show();
@@ -39,7 +38,7 @@ public class ToastUtil {
 
     public static void shortShow(String msg) {
         if (TD == null) {
-            TD = new ToastUtil(ComContext.getInstance());
+            TD = new ToastUtil(LibraryConfig.getInstance().getApplication());
         }
         TD.setText(msg);
         TD.createShort().show();

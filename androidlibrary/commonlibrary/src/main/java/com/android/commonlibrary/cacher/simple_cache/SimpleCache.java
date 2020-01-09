@@ -8,13 +8,11 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import com.android.commonlibrary.app.ComContext;
+import com.android.commonlibrary.app.LibraryConfig;
 import com.android.commonlibrary.util.AppUtil;
 import com.android.commonlibrary.util.StringUtil;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -46,7 +44,7 @@ public class SimpleCache {
     private ACacheManager mCache;
 
     public static SimpleCache get(){
-        return get(ComContext.getInstance().getApplicationContext(), DEFAULT_NAME);
+        return get(LibraryConfig.getInstance().getApplication().getApplicationContext(), DEFAULT_NAME);
     }
 
     public static SimpleCache get(Context ctx) {

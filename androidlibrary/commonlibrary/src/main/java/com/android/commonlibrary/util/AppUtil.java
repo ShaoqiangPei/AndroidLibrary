@@ -21,7 +21,7 @@ import androidx.core.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.android.commonlibrary.app.ComContext;
+import com.android.commonlibrary.app.LibraryConfig;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,7 +30,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.UUID;
-
 import static android.content.Context.TELEPHONY_SERVICE;
 
 /**
@@ -58,8 +57,8 @@ public class AppUtil {
     private static PackageInfo getPackageInfo() {
         PackageInfo info = null;
         try {
-            PackageManager packageManager = ComContext.getInstance().getPackageManager();
-            info = packageManager.getPackageInfo(ComContext.getInstance().getPackageName(), 0);
+            PackageManager packageManager = LibraryConfig.getInstance().getApplication().getPackageManager();
+            info = packageManager.getPackageInfo(LibraryConfig.getInstance().getApplication().getPackageName(), 0);
         } catch (NameNotFoundException e) {
             e.printStackTrace(System.err);
         }
@@ -73,7 +72,7 @@ public class AppUtil {
         PackageInfo packageInfo = getPackageInfo();
         if (packageInfo != null) {
             int labelRes = packageInfo.applicationInfo.labelRes;
-            return ComContext.getInstance().getResources().getString(labelRes);
+            return LibraryConfig.getInstance().getApplication().getResources().getString(labelRes);
         }
         return null;
     }
@@ -155,7 +154,7 @@ public class AppUtil {
     }
 
     private static TelephonyManager getTelephonyManager() {
-        TelephonyManager tm = (TelephonyManager) ComContext.getInstance().getSystemService(TELEPHONY_SERVICE);
+        TelephonyManager tm = (TelephonyManager) LibraryConfig.getInstance().getApplication().getSystemService(TELEPHONY_SERVICE);
         return tm;
     }
 
@@ -313,7 +312,7 @@ public class AppUtil {
      * ANDROID_ID也可视为作为唯一设备标识号的一个好选择。
      */
     public static String getAndroidId(){
-        String androidId = Settings.Secure.getString(ComContext.getInstance().getContentResolver(), Settings.Secure.ANDROID_ID);
+        String androidId = Settings.Secure.getString(LibraryConfig.getInstance().getApplication().getContentResolver(), Settings.Secure.ANDROID_ID);
         return androidId;
     }
 
@@ -321,13 +320,13 @@ public class AppUtil {
      * 检测当前系统声音是否为正常模式
      **/
     public static boolean isAudioNormal() {
-        AudioManager mAudioManager = (AudioManager) ComContext.getInstance().getSystemService(Context.AUDIO_SERVICE);
+        AudioManager mAudioManager = (AudioManager) LibraryConfig.getInstance().getApplication().getSystemService(Context.AUDIO_SERVICE);
         return mAudioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL;
     }
 
     private static WifiInfo getWifiInfo(){
         WifiInfo wifiInfo=null;
-        WifiManager wifiManager= (WifiManager) ComContext.getInstance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager= (WifiManager) LibraryConfig.getInstance().getApplication().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         if(wifiManager!=null){
             wifiInfo=wifiManager.getConnectionInfo();
         }
@@ -386,7 +385,7 @@ public class AppUtil {
      * @return
      */
     public static boolean isInstalled(String packageName) {
-        PackageManager pm = ComContext.getInstance().getPackageManager();
+        PackageManager pm = LibraryConfig.getInstance().getApplication().getPackageManager();
         boolean installed = false;
         try {
             pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
@@ -404,7 +403,7 @@ public class AppUtil {
      * @return
      */
     public static String getSourceApkPath() {
-        return ComContext.getInstance().getApplicationInfo().sourceDir;
+        return LibraryConfig.getInstance().getApplication().getApplicationInfo().sourceDir;
     }
 
 

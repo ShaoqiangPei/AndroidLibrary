@@ -6,14 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
-
-import com.android.commonlibrary.app.ComContext;
+import com.android.commonlibrary.app.LibraryConfig;
 import com.android.commonlibrary.util.AppUtil;
 import com.android.commonlibrary.util.LogUtil;
 import com.android.commonlibrary.util.StringUtil;
 import com.google.gson.Gson;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -26,7 +23,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -68,7 +64,7 @@ public class SpUtil {
     /**
      * 设置加密key
      *
-     * @param mak:为16位数字字母混合字符串
+     * @param mak:为16位数字字母混合字符串,如 mak="f337eface810bd25"
      */
     public static void setMAK(String mak){
         if(StringUtil.isEmpty(mak)||mak.length()<16){
@@ -81,7 +77,7 @@ public class SpUtil {
      * 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法
      **/
     public static void put(String key, Object object){
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         SharedPreferences.Editor editor = sp.edit();
 
         if (object == null) {
@@ -114,7 +110,7 @@ public class SpUtil {
      * 存储对象，对象需要实现Serializable接口
      **/
     public static void putObject(String key, Object object) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         SharedPreferences.Editor editor = sp.edit();
         if (object == null) {
             editor.remove(key);
@@ -147,7 +143,7 @@ public class SpUtil {
      * 获取对象
      **/
     public static Object getObject(String key) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         try {
             String wordBase64 = sp.getString(key, "");
             // 将base64格式字符串还原成byte数组
@@ -173,7 +169,7 @@ public class SpUtil {
      * 将复杂对象转换成json数据储存,需要配合gson使用
      **/
     public static void putJsonObject(String key, Object obj) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         SharedPreferences.Editor editor = sp.edit();
         if(obj==null){
             editor.remove(key);
@@ -199,7 +195,7 @@ public class SpUtil {
      * @return
      */
     public static String getJsonObject(String key){
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         String str = null;
         if(StringUtil.isEmpty(MAK)){
             throw new NullPointerException("SpUtil_put_error,获取失败,请在调用SpUtil类方法前先前设置秘钥");
@@ -223,7 +219,7 @@ public class SpUtil {
      * 取String，默认取null
      **/
     public static String getString(String key) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         String str = null;
         if(StringUtil.isEmpty(MAK)){
             throw new NullPointerException("SpUtil_put_error,获取失败,请在调用SpUtil类方法前先前设置秘钥");
@@ -243,7 +239,7 @@ public class SpUtil {
      * 取int，默认取number
      **/
     public static int getInt(String key, int number){
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         return sp.getInt(key, number);
     }
 
@@ -258,7 +254,7 @@ public class SpUtil {
      * 取float，默认取number
      **/
     public static float getFloat(String key, float number) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         return sp.getFloat(key, number);
     }
 
@@ -273,7 +269,7 @@ public class SpUtil {
      * 取long，默认取number
      **/
     public static long getLong(String key, long number) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         return sp.getLong(key, number);
     }
 
@@ -288,7 +284,7 @@ public class SpUtil {
      * 取boolean，默认取flag
      **/
     public static boolean getBoolean(String key, boolean flag) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         return sp.getBoolean(key, flag);
     }
 
@@ -319,7 +315,7 @@ public class SpUtil {
      * 取list(取存储基础数据类型的集合)
      **/
     public static List<?> getList(String key) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         Map<String, Object> map = (Map<String, Object>) sp.getAll();
         int size = getInt(key);
         List<Object> list = new ArrayList<>();
@@ -349,7 +345,7 @@ public class SpUtil {
      * 移除某个key对应的value
      **/
     public static void removeKey(String key) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(key);
         SharedPreferencesCompat.apply(editor);
@@ -359,7 +355,7 @@ public class SpUtil {
      * 清除所有数据
      **/
     public static void clear() {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, MODE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, MODE);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
         SharedPreferencesCompat.apply(editor);
@@ -369,7 +365,7 @@ public class SpUtil {
      * 查询某个key是否已经存在
      **/
     public static boolean contains(String key) {
-        SharedPreferences sp = ComContext.getInstance().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = LibraryConfig.getInstance().getApplication().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
         return sp.contains(key);
     }
 
