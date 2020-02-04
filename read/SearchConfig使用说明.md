@@ -108,7 +108,7 @@ SearchConfig是androidx.appcompat.widget.SearchView的一个辅助类，那当�
         goButton.setImageResource(R.mipmap.ic_search);
         mSearchView.setSubmitButtonEnabled(true);
         
-                //监听左侧搜索图标和右侧提交按钮的显示和隐藏[此方法可选]
+        //监听左侧搜索图标和右侧提交按钮的显示和隐藏[此方法可选]
         mSearchConfig.getSearchAutoComplete().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
