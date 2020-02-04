@@ -21,6 +21,7 @@ public class SearchConfig {
     private ImageView mCollapsedIcon;//搜索框中开头的搜索图标
     private SearchView.SearchAutoComplete mSearchAutoComplete;//搜索框中的输入框
     private ImageView mCloseButton;//搜索框中结尾的删除按钮
+    private ImageView mGoButton;//搜索框结尾的提交按钮
 
     public SearchConfig(SearchView searchView){
         this.mSearchView=searchView;
@@ -39,6 +40,8 @@ public class SearchConfig {
         mSearchAutoComplete=mSearchView.findViewById(R.id.search_src_text);
         mCloseButton = mSearchView.findViewById(R.id.search_close_btn);
         mCollapsedIcon = mSearchView.findViewById(R.id.search_mag_icon);
+        //提交按钮
+        mGoButton = mSearchView.findViewById(R.id.search_go_btn);
     }
 
     /**搜索框默认设置**/
@@ -89,9 +92,19 @@ public class SearchConfig {
         return mCloseButton;
     }
 
+    /**获取搜索框尾部的提交按钮**/
+    public ImageView getGoButton(){
+        return mGoButton;
+    }
+
     /**获取搜索结果**/
     public String getQueryText(){
         return mSearchAutoComplete.getText().toString();
+    }
+
+    /**清空搜索结果**/
+    public void clearSearchContent(){
+        mSearchAutoComplete.setText("");
     }
 
     /**关闭软键盘**/
