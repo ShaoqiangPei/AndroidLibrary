@@ -126,6 +126,7 @@ public class SearchConfig {
 
     //========搜索框相关其他方法=========
     //    searchView.setQueryHint("ahdewoi");//设置查询提示字符串
+    //    searchView.setFocusable(false);//设置搜索框不获取焦点
 }
 
 //===========使用示例=================
