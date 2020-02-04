@@ -37,14 +37,21 @@ SearchConfig是androidx.appcompat.widget.SearchView的一个辅助类，那当�
     /**初始化搜索**/
     private void initSearchView(){
         mSearchConfig=new SearchConfig(mSearchView);
+        //开始显示时SearchView不获取焦点
+        mSearchView.setFocusable(false);
         //设置搜索框内左侧搜索图标
         ImageView collapsedIcon=mSearchConfig.getCollapsedIcon();
         collapsedIcon.setImageResource(R.mipmap.ic_search);
         //设置搜索框右侧删除图标
         ImageView closeButton=mSearchConfig.getCloseButton();
         closeButton.setImageResource(R.mipmap.ic_delete);
-        //搜索框内文字颜色
+        //设置搜索框右侧提交按钮
+        ImageView goButton=mSearchConfig.getGoButton();
+        goButton.setImageResource(R.mipmap.ic_search);
+        mSearchView.setSubmitButtonEnabled(true);
+        //搜索框
         SearchView.SearchAutoComplete searchAutoComplete=mSearchConfig.getSearchAutoComplete();
+        //搜索框内文字颜色
         searchAutoComplete.setTextColor(Color.BLACK);
         //搜索框内文字大小
         searchAutoComplete.setTextSize(14);
@@ -53,6 +60,25 @@ SearchConfig是androidx.appcompat.widget.SearchView的一个辅助类，那当�
         //提示语
         mSearchView.setQueryHint("请输入搜索内容");//设置查询提示字符串
 
+        //监听左侧搜索图标和右侧提交按钮的显示和隐藏[此方法可选]
+        mSearchConfig.getSearchAutoComplete().setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    collapsedIcon.setImageDrawable(null);
+                    collapsedIcon.setVisibility(View.GONE);
+
+                    goButton.setImageResource(R.mipmap.ic_launcher);
+                    goButton.setVisibility(View.VISIBLE);
+                }else{
+                    goButton.setImageDrawable(null);
+                    goButton.setVisibility(View.GONE);
+
+                    collapsedIcon.setImageResource(R.mipmap.ic_launcher);
+                    collapsedIcon.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         // 设置搜索文本监听
         mSearchConfig.setOnSearchListener(new SearchView.OnQueryTextListener() {
@@ -60,7 +86,7 @@ SearchConfig是androidx.appcompat.widget.SearchView的一个辅助类，那当�
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if(StringUtil.isNotEmpty(query)){
-                    mTv.setText("搜索结果: "+query);
+                    mTextView.setText("搜索结果: "+query);
                 }else{
                     ToastUtil.shortShow("请输入要搜索的内容");
                 }
