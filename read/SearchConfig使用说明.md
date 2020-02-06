@@ -101,6 +101,33 @@ SearchConfig是androidx.appcompat.widget.SearchView的一个辅助类，那当�
         });
     }
 ```
+在`initSearchView()`方法中,`提交按钮`和`监听左侧搜索图标和右侧提交按钮的显示和隐藏`的方法是可选的，即以下代码是可设置也可以不设置的：
+```
+        //设置搜索框右侧提交按钮
+        ImageView goButton=mSearchConfig.getGoButton();
+        goButton.setImageResource(R.mipmap.ic_search);
+        mSearchView.setSubmitButtonEnabled(true);
+        
+        //监听左侧搜索图标和右侧提交按钮的显示和隐藏[此方法可选]
+        mSearchConfig.getSearchAutoComplete().setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    collapsedIcon.setImageDrawable(null);
+                    collapsedIcon.setVisibility(View.GONE);
+
+                    goButton.setImageResource(R.mipmap.ic_launcher);
+                    goButton.setVisibility(View.VISIBLE);
+                }else{
+                    goButton.setImageDrawable(null);
+                    goButton.setVisibility(View.GONE);
+
+                    collapsedIcon.setImageResource(R.mipmap.ic_launcher);
+                    collapsedIcon.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+```
 若你想在界面中，自己布局一个控件btn，使点击的时候触发搜索功能，那么你可以给btn设置以下监听以达到目的：
 ```
         //搜索按钮
