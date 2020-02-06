@@ -49,7 +49,9 @@ public class AppContext extends Application {
         instance = this;
 
         //初始化AndroidLibrary
-        LibraryConfig.getInstance().init(AppContext.this);
+        LibraryConfig.getInstance().init(this)
+                //开启log调试,默认为关闭状态
+                .setDebug(true);
     }
 
 }
