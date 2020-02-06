@@ -1,8 +1,11 @@
 package com.android.commonlibrary.util;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Environment;
+
+import com.android.commonlibrary.app.LibraryConfig;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -117,6 +120,30 @@ public class FileUtil {
         if(file.exists()){
             deleteAllFiles(file);
         }
+    }
+
+    /***
+     * 判断某个文件是否存在于Assets文件夹中
+     *
+     * @param fileName：Assets文件夹下文件名,如 order_tip.mp3
+     * @return
+     */
+    public static boolean isExistInAssets(String fileName) {
+        AssetManager assetManager = LibraryConfig.getInstance().getApplication().getAssets();
+        try {
+            String names[] = assetManager.list("");
+            for (int i = 0; i < names.length; i++) {
+                if (null != names[i] && names[i].equals(fileName.trim())) {
+                    LogUtil.i(fileName + "存在于Assets文件夹下");
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            LogUtil.i(fileName + "不存在于Assets文件夹下");
+            return false;
+        }
+        return false;
     }
 
     /**格式化文件大小**/
