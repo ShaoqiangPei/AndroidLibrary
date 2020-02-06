@@ -1,6 +1,7 @@
 
 [![](https://jitpack.io/v/ShaoqiangPei/AndroidLibrary.svg)](https://jitpack.io/#ShaoqiangPei/AndroidLibrary)
 
+
 ### 库引用说明
 在自己项目的`project`对应的`build.gradle`里面添加如下代码：
 ```
