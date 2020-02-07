@@ -1,6 +1,7 @@
 
 [![](https://jitpack.io/v/ShaoqiangPei/AndroidLibrary.svg)](https://jitpack.io/#ShaoqiangPei/AndroidLibrary)
 
+
 ### 库引用说明
 在自己项目的`project`对应的`build.gradle`里面添加如下代码：
 ```
@@ -48,7 +49,9 @@ public class AppContext extends Application {
         instance = this;
 
         //初始化AndroidLibrary
-        LibraryConfig.getInstance().init(AppContext.this);
+        LibraryConfig.getInstance().init(this)
+                //开启log调试,默认为关闭状态
+                .setDebug(true);
     }
 
 }
