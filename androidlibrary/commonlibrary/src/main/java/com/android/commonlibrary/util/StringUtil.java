@@ -139,6 +139,11 @@ public class StringUtil {
         return str;
     }
 
+    /**过滤汉字**/
+    public static String filterChinese(String chin){
+        return chin.replaceAll("[\\u4e00-\\u9fa5]", "");
+    }
+
 
     /**
      * 字符串转换为16进制字符串
