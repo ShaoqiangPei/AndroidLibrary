@@ -28,10 +28,11 @@ public class PhoneAudioHelper {
     }
 
 
-    /**获取系统默认铃声的Uri**/
-    public static Uri getDefultRingtoneUri() {
-        return RingtoneManager.getActualDefaultRingtoneUri(LibraryConfig.getInstance().getApplication(),
-                RingtoneManager.TYPE_RINGTONE);
+    /**获取系统默认铃声**/
+    public static void getDefultRingtone() {
+        Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE); //获取系统默认的notification提示音,Uri:通用资源标志符
+        Ringtone mRingtone = RingtoneManager.getRingtone(LibraryConfig.getInstance().getApplication(), uri);
+        mRingtone.play();
     }
 
     /**获取系统默认的notification提示音**/
