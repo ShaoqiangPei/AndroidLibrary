@@ -25,5 +25,26 @@
 #### 二. PhoneAudioHelper使用示例
 下面给出`PhoneAudioHelper`使用的一个示例:
 ```
+        //获取手机当前模式
+        int mode=PhoneAudioHelper.getDefultRingerMode();
+        switch (mode) {
+            case AudioManager.RINGER_MODE_SILENT://静音模式
+                //若当前手机为静音模式的处理
+                //......
+                break;
+            case AudioManager.RINGER_MODE_VIBRATE://震动模式
+                //若当前手机为震动模式的处理
+                //......
+                break;
+            case AudioManager.RINGER_MODE_NORMAL://声音模式
+                //若当前手机为震动模式的处理
+                //播放默认提示音
+                PhoneAudioHelper.getDefultRingNotification();
 
+//                //播放默认响铃
+//                PhoneAudioHelper.getDefultRingtone();
+                break;
+            default:
+                break;
+        }
 ```
