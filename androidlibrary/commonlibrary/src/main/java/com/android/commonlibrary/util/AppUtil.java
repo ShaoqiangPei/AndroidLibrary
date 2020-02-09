@@ -316,14 +316,6 @@ public class AppUtil {
         return androidId;
     }
 
-    /**
-     * 检测当前系统声音是否为正常模式
-     **/
-    public static boolean isAudioNormal() {
-        AudioManager mAudioManager = (AudioManager) LibraryConfig.getInstance().getApplication().getSystemService(Context.AUDIO_SERVICE);
-        return mAudioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL;
-    }
-
     private static WifiInfo getWifiInfo(){
         WifiInfo wifiInfo=null;
         WifiManager wifiManager= (WifiManager) LibraryConfig.getInstance().getApplication().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
