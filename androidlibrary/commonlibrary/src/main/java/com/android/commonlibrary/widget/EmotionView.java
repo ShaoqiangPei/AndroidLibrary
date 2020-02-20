@@ -9,6 +9,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.annotation.Nullable;
+
+import com.android.commonlibrary.entity.BaseEntity;
 import com.android.commonlibrary.util.LogUtil;
 import com.android.commonlibrary.util.ScreenUtil;
 import java.io.Serializable;
@@ -201,7 +203,7 @@ public class EmotionView extends View {
     }
 
     /**数据类**/
-    public class Emotion implements Serializable {
+    public class Emotion extends BaseEntity {
 
         private Bitmap bitmap;//需要绘制的bitmap
         private int x,y;//x,y轴坐标

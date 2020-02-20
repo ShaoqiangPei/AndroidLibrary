@@ -9,14 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-
 import com.android.commonlibrary.R;
 import com.android.commonlibrary.app.AppActivityManager;
 import com.android.commonlibrary.interfacer.IActivity;
 import com.android.commonlibrary.util.DoubleClickUtil;
 import java.io.Serializable;
 import java.util.List;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
@@ -33,7 +31,7 @@ public abstract class AppActivity extends AppCompatActivity implements IActivity
 
     protected View mLayoutView;//总布局
     protected Activity mContext;
-    protected boolean isNoTitle;//是否隐藏标题栏
+    protected boolean isNoTitle;//是否隐藏标题栏,默认隐藏标题栏
     private Unbinder mUnbinder;
 
     @Override
