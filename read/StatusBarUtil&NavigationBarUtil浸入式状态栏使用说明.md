@@ -302,7 +302,8 @@ public class HideActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 }
+```
 #### 三.实现效果
-具体实现效果请参考[Android中浸入式状态栏的使用](https://www.jianshu.com/p/337505b25650)
+具体实现效果请参考 [Android中浸入式状态栏的使用](https://www.jianshu.com/p/337505b25650)
 
 
