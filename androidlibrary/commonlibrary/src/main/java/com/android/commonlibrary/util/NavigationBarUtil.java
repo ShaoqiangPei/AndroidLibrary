@@ -6,7 +6,6 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.lang.reflect.Method;
 
 /**
