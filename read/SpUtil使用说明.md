@@ -19,13 +19,17 @@ android6.0 以上需要动态申请权限，8.0需要申请文件读写Provider�
 //gson
 implementation 'com.google.code.gson:gson:2.8.5'
 ```
-
 #### spUtil使用介绍
 ##### 1.SpUtil存储涉及加密模块，故在使用SpUtil的任何存取方法前(最好在项目的Appliction中)设置秘钥
 ```
 //设置秘钥，秘钥mak为16位数字字母组合的字符串
 SpUtil.setMAK(String mak);
 ```
+若你觉得想一个16位的mak比较麻烦，那么你可以调用以下方法生成一个随机的16位数字和小写字母组合的mak：
+```
+Stirng randomMak=SpUtil.getRandomMak();
+```
+最后你可以保存这个randomMak，用于SpUtil.setMAK(String mak)方法的参数设置
 ##### 2.存储String，int，boolean，float，long数据类型
 ```
 //存储 当数据类型为String，int，boolean，float，long中任何一种的时候，put方法具备自动转型功能
