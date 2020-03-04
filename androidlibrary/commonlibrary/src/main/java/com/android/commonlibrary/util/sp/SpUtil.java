@@ -23,6 +23,8 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -59,6 +61,30 @@ public class SpUtil {
             name=name.replace(".","_")+"_data";
         }
         return name;
+    }
+
+    /**随机生成一个16位字符串的mak**/
+    public static String getRandomMak() {
+        //构造key值抽取库
+        List<String> list = new ArrayList<>();
+        //循环添加26个小写字母
+        for (int i = 1; i <= 26; i++) {
+            char letter = (char) (96 + i);
+            String lowerLetter = String.valueOf(letter);
+            list.add(lowerLetter);
+        }
+        //循环添加0-9的数字
+        for (int i = 0; i < 10; i++) {
+            list.add(String.valueOf(i));
+        }
+        //随机数获取16为key值
+        StringBuffer buffer = new StringBuffer();
+        Random random = new Random();
+        for (int i = 0; i < 16; i++) {
+            int index = random.nextInt(list.size());
+            buffer.append(list.get(index));
+        }
+        return buffer.toString();
     }
 
     /**
