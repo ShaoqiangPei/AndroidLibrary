@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Environment;
-
 import com.android.commonlibrary.app.LibraryConfig;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,16 +12,25 @@ import java.io.Writer;
 import java.text.DecimalFormat;
 
 /**
- * @fileName FileUtils.java
+ * Title:File文件工具类
+ * description:
+ * autor:pei
+ * created on 2020/3/6
  */
 public class FileUtil {
 
-    /**创建文件夹**/
-    public static void createDirFile(String path) {
+    /**
+     * 创建文件夹
+     *
+     * @param path 文件夹路径
+     * @return  返回文件夹对象
+     */
+    public static File createDirFile(String path) {
         File dir = new File(path);
         if (!dir.exists()) {
             dir.mkdirs();
         }
+        return dir;
     }
 
     /**
@@ -69,6 +76,35 @@ public class FileUtil {
             }
         }
         return file;
+    }
+
+    /**
+     * 重命名文件
+     * 注: 重命名后源文件会自动删除，所以不需要我们手动去删除
+     *
+     * @param file 源文件
+     * @param newName 新文件名(含后缀),如：test.txt
+     * @return 重命名后的文件对象,为null表示重命名失败
+     */
+    public static File reName(final File file, final String newName) {
+        if(file==null|| StringUtil.isEmpty(newName)){
+            LogUtil.i("=====源文件为null或新文件名为null========");
+            return null;
+        }
+        if(!file.exists()){
+            LogUtil.i("=====源文件不存在========");
+            return null;
+        }
+        if(newName.equals(file.getName())){
+            LogUtil.i("=====重命名文件名与源文件名重复========");
+            return null;
+        }
+        File newFile = new File(file.getParent() + File.separator + newName);
+        boolean flag=file.renameTo(newFile);
+        if(flag){
+            return newFile;
+        }
+        return null;
     }
 
     /**删除文件**/
@@ -175,19 +211,11 @@ public class FileUtil {
         } else {
             dirPath = context.getFilesDir().getAbsolutePath() + File.separator + "LogCat";
         }
-        File dirFile=new File(dirPath);
-        if(!dirFile.exists()){
-            dirFile.mkdirs();
-        }
-        File file=new File(dirPath+ File.separator+"test.txt");
-        if (!file.exists()){
-            try {
-                file.createNewFile();
-            } catch (IOException e){
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
+        //建文件夹
+        createDirFile(dirPath);
+        //建文件
+        File file=createFileIfUnExist(dirPath+ File.separator+"test.txt");
+        //写数据
         try {
             Writer out=new FileWriter(file,true);
             out.write(str);
