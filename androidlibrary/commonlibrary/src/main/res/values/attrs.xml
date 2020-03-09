@@ -17,4 +17,17 @@
         <attr name="drawableHeight" format="dimension"/>
         <attr name="position" format="integer"/>
     </declare-styleable>
+
+    <!--  自定义进度条LoadProgressBar  -->
+    <declare-styleable name="LoadProgressBar">
+        <attr name="progress_unreach_color" format="color"></attr>
+        <attr name="progress_unreach_height" format="dimension"></attr>
+        <attr name="progress_reach_color" format="color"></attr>
+        <attr name="progress_reach_height" format="dimension"></attr>
+        <attr name="progress_text_color" format="color"></attr>
+        <attr name="progress_text_size" format="dimension"></attr>
+        <attr name="progress_text_offset" format="dimension"></attr>
+        <attr name="progress_circle_style" format="boolean"/>
+        <attr name="progress_radius" format="dimension"/>
+    </declare-styleable>
 </resources>
