@@ -45,29 +45,7 @@
     public boolean update(int progress)
 ```
 #### 二. ProgressBar的使用
-##### 2.1 建立自定义属性
-在`attrs`文件中新建如下引用样式(不会自定义的，可参考[番外篇2：自定义View属性全解](https://www.jianshu.com/p/0eb7abe21996))：
-```
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-
-    <!--  LoadProgressBar自定义属性样式  -->
-    <declare-styleable name="LoadProgressBar">
-        <attr name="progress_unreach_color" format="color"></attr>
-        <attr name="progress_unreach_height" format="dimension"></attr>
-        <attr name="progress_reach_color" format="color"></attr>
-        <attr name="progress_reach_height" format="dimension"></attr>
-        <attr name="progress_text_color" format="color"></attr>
-        <attr name="progress_text_size" format="dimension"></attr>
-        <attr name="progress_text_offset" format="dimension"></attr>
-        <attr name="progress_circle_style" format="boolean"/>
-        <attr name="progress_radius" format="dimension"/>
-    </declare-styleable>
-
-</resources>
-```
-##### 2.2 在布局中引用LoadProgressBar控件
+##### 2.1 在布局中引用LoadProgressBar控件
 在`MainActivity`对应布局文件`activity_main.xml`中声明` LoadProgressBar`控件的属性：
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -141,7 +119,7 @@ pain:progress_unreach_color="#FFA6ADB7" //设置未完成部分颜色
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
-##### 2.3 在MainActivity中使用LoadProgressBar控件
+##### 2.2 在MainActivity中使用LoadProgressBar控件
 ```
        //声明控件 
        private LoadProgressBar mLoadProgressBar;
