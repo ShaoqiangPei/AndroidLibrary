@@ -137,7 +137,7 @@ pain:progress_unreach_color="#FFA6ADB7" //设置未完成部分颜色
         pain:progress_text_size="12sp"  //可选
         pain:progress_text_offset="5dp"  //可选
         pain:progress_radius="40dp"  //可选
-        pain:progress_circle_style="true"/> //不需设置，且属性必须为true
+        pain:progress_circle_style="true"/> //必须设置，且属性必须为true
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
