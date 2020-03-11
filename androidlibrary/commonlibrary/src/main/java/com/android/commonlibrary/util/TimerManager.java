@@ -13,10 +13,12 @@ import java.util.TimerTask;
  */
 public class TimerManager {
 
-    private static final long DELAY_TIME=1000;//默认间隔时间
+    private static final long DELAY_TIME=0;//默认延时启动时间(毫秒)
+    private static final long RECYCLE_TIME=1000;//默认循环时间间隔(毫秒)
 
     private Timer mTimer;
-    private long mDelayTime=DELAY_TIME;
+    private long mDelayTime=DELAY_TIME;//延时启动时间
+    private long mRecycleTime=RECYCLE_TIME;//循环时间间隔
 
     private TimerManager(){}
 
@@ -47,7 +49,7 @@ public class TimerManager {
                     onTimerListener.schedule();
                 }
             }
-        }, 0, mDelayTime);
+        }, mDelayTime, mRecycleTime);
     }
 
     /**启动定时器延时调用**/
@@ -85,9 +87,15 @@ public class TimerManager {
         }
     }
 
-    /**设置时间间隔**/
+    /**设置延时启动时间**/
     public TimerManager setDelayTime(long delayTime) {
         mDelayTime = delayTime;
+        return TimerManager.this;
+    }
+
+    /**设置循环时间间隔**/
+    public TimerManager setRecycleTime(long recycleTime){
+        mRecycleTime=recycleTime;
         return TimerManager.this;
     }
 
