@@ -26,10 +26,10 @@ startDelay(Context context,OnTimerListener onTimerListener)
 /**停止定时器**/
 cancel() 
 
-/**设置延时启动时间(若不设置，则默认时间间隔为1秒)**/
+/**设置延时启动时间(若不设置，则默认时间间隔为0,即立刻启动)**/
 setDelayTime(long delayTime) 
 
-/**设置循环时间间隔(若不设置，则默认时间间隔为0,即立刻启动)**/
+/**设置循环时间间隔(若不设置，则默认时间间隔为1秒)**/
 setRecycleTime(long recycleTime)
 ```
 #### 三. 调用示例
