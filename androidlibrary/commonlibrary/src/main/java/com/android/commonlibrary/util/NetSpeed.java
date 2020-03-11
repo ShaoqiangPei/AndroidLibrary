@@ -56,14 +56,19 @@ public class NetSpeed {
         return NetSpeed.this;
     }
 
-    /**开始监测网速**/
-    public void start(TextView view){
+    /***
+     * 开始监测网速
+     *
+     * @param view 显示网速的控件，TextView子类
+     * @param context AppCompatActivity实例,不能是application实例
+     */
+    public void start(TextView view,Context context){
         //定时器循环
         TimerManager.getInstance()
                 .setDelayTime(mDelayTime)//设置延时启动时间，默认为0
                 .setRecycleTime(mRecycleTime)//设置循环时间间隔,默认为1000,即1秒
                 //context设置为null时可执行非ui的逻辑，context不为null时可执行更新ui逻辑
-                .startRecycle(LibraryConfig.getInstance().getApplication(),new TimerManager.OnTimerListener() {
+                .startRecycle(context,new TimerManager.OnTimerListener() {
                     @Override
                     public void schedule() {
                         //循环执行逻辑

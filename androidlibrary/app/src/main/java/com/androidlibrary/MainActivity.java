@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.android.commonlibrary.activity.AppActivity;
 import com.android.commonlibrary.util.LogUtil;
+import com.android.commonlibrary.util.NetSpeed;
 import com.android.commonlibrary.util.NetUtil;
 import com.android.commonlibrary.util.ScreenUtil;
 import com.android.commonlibrary.util.SpannableStringUtil;
