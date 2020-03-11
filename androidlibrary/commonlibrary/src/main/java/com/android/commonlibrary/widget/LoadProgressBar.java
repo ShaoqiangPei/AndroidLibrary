@@ -62,7 +62,7 @@ public class LoadProgressBar extends ProgressBar {
     }
 
     /**初始化加载自定义属性**/
-    public void initAttrs(AttributeSet attrs) {
+    private void initAttrs(AttributeSet attrs) {
         TypedArray typedArray=getContext().obtainStyledAttributes(attrs, R.styleable.LoadProgressBar);
         mTextSize= (int) typedArray.getDimension(R.styleable.LoadProgressBar_progress_text_size,mTextSize);
         mTextColor= typedArray.getColor(R.styleable.LoadProgressBar_progress_text_color,mTextColor);
