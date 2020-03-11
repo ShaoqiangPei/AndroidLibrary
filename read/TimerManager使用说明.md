@@ -26,16 +26,20 @@ startDelay(Context context,OnTimerListener onTimerListener)
 /**停止定时器**/
 cancel() 
 
-/**设置时间间隔(若不设置，则默认时间间隔为1秒)**/
+/**设置延时启动时间(若不设置，则默认时间间隔为1秒)**/
 setDelayTime(long delayTime) 
+
+/**设置循环时间间隔(若不设置，则默认时间间隔为0,即立刻启动)**/
+setRecycleTime(long recycleTime)
 ```
 #### 三. 调用示例
 ##### 3.1 延时执行 
 若要启动一个延时执行的业务逻辑，你可以像下面这样：
+**注**：此时不需要设置`setRecycleTime(long recycleTime)`方法，因为此方法只对`循环执行`有效
 ```
         //定时器延时
         TimerManager.getInstance()
-                .setDelayTime(1000)//设置时间间隔，默认1000(即1秒)
+                .setDelayTime(1000)//设置延时执行时间，默认为0(即默认情况下会立即执行)
                 //context设置为null时可执行非ui的逻辑，context不为null时可执行更新ui逻辑
                 .startDelay(MainActivity.this,new TimerManager.OnTimerListener() {
                     @Override
@@ -51,7 +55,8 @@ setDelayTime(long delayTime)
 ```
 //定时器循环
 TimerManager.getInstance()
-        .setDelayTime(1000)//设置时间间隔，默认1000(即1秒)
+        .setDelayTime(0)//设置延时执行时间，默认为0(即默认情况下会立即执行)
+        .setRecycleTime(1000)//设置循环时间间隔,默认为1000,即1秒
         //context设置为null时可执行非ui的逻辑，context不为null时可执行更新ui逻辑
         .startRecycle(MainActivity.this,new TimerManager.OnTimerListener() {
              @Override
