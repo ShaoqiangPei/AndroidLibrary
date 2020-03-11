@@ -87,13 +87,24 @@ public class TimerManager {
         }
     }
 
-    /**设置延时启动时间**/
+    /**
+     * 设置延时启动时间
+     *
+     * @param delayTime 延时执行时间(单位毫秒),默认值为0
+     * @return
+     */
     public TimerManager setDelayTime(long delayTime) {
         mDelayTime = delayTime;
         return TimerManager.this;
     }
 
-    /**设置循环时间间隔**/
+    /***
+     * 设置循环时间间隔
+     * (只在执行循环定时器时设置此参数有效)
+     *
+     * @param recycleTime 循环间隔时间(单位毫秒),默认值为1000,即1秒
+     * @return
+     */
     public TimerManager setRecycleTime(long recycleTime){
         mRecycleTime=recycleTime;
         return TimerManager.this;
@@ -116,32 +127,3 @@ public class TimerManager {
     }
 
 }
-
-//===============调用实例===============
-//
-//        //定时器循环
-//        TimerManager.getInstance()
-//                .setDelayTime(1000)//设置时间间隔，默认1000(即1秒)
-//                //context设置为null时可执行非ui的逻辑，context不为null时可更新ui
-//                .startRecycle(MainActivity.this,new TimerManager.OnTimerListener() {
-//                    @Override
-//                    public void schedule() {
-//                        //循环执行逻辑
-//                        //......
-//                    }
-//                });
-//
-//        //定时器延时
-//        TimerManager.getInstance()
-//                .setDelayTime(1000)//设置时间间隔，默认1000(即1秒)
-//                //context设置为null时可执行非ui的逻辑，context不为null时可更新ui
-//                .startDelay(MainActivity.this,new TimerManager.OnTimerListener() {
-//                    @Override
-//                    public void schedule() {
-//                        //延时执行逻辑
-//                        //......
-//                    }
-//                });
-//
-//        //取消定时器
-//        TimerManager.getInstance().cancel();
