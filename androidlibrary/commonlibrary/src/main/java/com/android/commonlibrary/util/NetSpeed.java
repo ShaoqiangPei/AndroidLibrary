@@ -4,9 +4,12 @@ import android.content.Context;
 import android.net.TrafficStats;
 import android.widget.TextView;
 
-import com.android.commonlibrary.app.LibraryConfig;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.commonlibrary.app.LibraryConfig;
 import java.text.DecimalFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Title:测网速工具类
@@ -23,6 +26,7 @@ public class NetSpeed {
     private long mLastTimeStamp;
     private long mDelayTime=DELAY_TIME;//延时启动时间
     private long mRecycleTime=RECYCLE_TIME;//循环时间间隔
+    private Timer mTimer;
 
     private NetSpeed(){}
 
@@ -64,24 +68,37 @@ public class NetSpeed {
      */
     public void start(TextView view,Context context){
         //定时器循环
-        TimerManager.getInstance()
-                .setDelayTime(mDelayTime)//设置延时启动时间，默认为0
-                .setRecycleTime(mRecycleTime)//设置循环时间间隔,默认为1000,即1秒
-                //context设置为null时可执行非ui的逻辑，context不为null时可执行更新ui逻辑
-                .startRecycle(context,new TimerManager.OnTimerListener() {
-                    @Override
-                    public void schedule() {
-                        //循环执行逻辑
-                        String speed=getNetSpeed();
-                        view.setText(speed);
-                    }
-                });
+        if(mTimer==null){
+            mTimer=new Timer();
+        }
+        //启动定时器
+        mTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(context!=null) {
+                    ((AppCompatActivity) context).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //循环执行逻辑
+                            String speed=getNetSpeed();
+                            view.setText(speed);
+                        }
+                    });
+                }else{
+                    throw new NullPointerException("===context不能为null，且context必须为AppCompatActivity实例,不能是application实例======");
+                }
+            }
+        }, mDelayTime, mRecycleTime);
     }
 
     /**取消网速监测**/
     public void cancel(){
-        TimerManager.getInstance().cancel();
-        LogUtil.i("======取消网速监测=======");
+        if(mTimer!=null){
+            mTimer.cancel();
+            mTimer=null;
+            LogUtil.i("======取消网速监测=======");
+        }
+
     }
 
     /***
