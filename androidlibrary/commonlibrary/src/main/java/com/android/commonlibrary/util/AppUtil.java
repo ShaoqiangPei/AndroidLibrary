@@ -188,8 +188,6 @@ public class AppUtil {
             uuid= UUID.nameUUIDFromBytes((uuid).getBytes(Charset.forName("UTF-8"))).toString();
         }
         uuid=uuid.replaceAll("-","");
-
-        ToastUtil.shortShow("====uuid是====="+uuid);
         return uuid;
     }
 
