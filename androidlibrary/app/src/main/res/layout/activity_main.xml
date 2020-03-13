@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.androidlibrary.MainActivity">
 
+    <com.android.commonlibrary.widget.TitleBar2
+        android:id="@+id/title_bar2"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_50"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/red"/>
+
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

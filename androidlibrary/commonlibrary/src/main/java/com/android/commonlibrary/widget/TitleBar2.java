@@ -43,7 +43,6 @@ public class TitleBar2 extends ConstraintLayout {
         initViewGone();
     }
 
-
     /**用于初始化控件的**/
     private <T> T getView(int rId) {
         View view = TitleBar2.this.findViewById(rId);
@@ -91,6 +90,30 @@ public class TitleBar2 extends ConstraintLayout {
 
     public ImageView getImvRight(){
         return mImvRight;
+    }
+
+    /**点击事件**/
+    private void setOnClickListener(View view,View.OnClickListener listener){
+        if(view.getVisibility()==View.VISIBLE){
+            view.setOnClickListener(listener);
+        }
+    }
+
+    /**左边点击事件**/
+    public void setOnClickLeft(View.OnClickListener listener){
+        setOnClickListener(mImvLeft,listener);
+        setOnClickListener(mTvLeft,listener);
+    }
+
+    /**中间点击事件**/
+    public void setOnClickCenter(View.OnClickListener listener){
+        setOnClickListener(mTvTitle,listener);
+    }
+
+    /**右边点击事件**/
+    public void setOnClickRight(View.OnClickListener listener){
+        setOnClickListener(mTvRight,listener);
+        setOnClickListener(mImvRight,listener);
     }
 
     /**
@@ -143,7 +166,6 @@ public class TitleBar2 extends ConstraintLayout {
      * 已做 dp2px处理,直接传dp值
      */
     public void setPaddings(View view,int left,int top,int right,int bottom){
-
         left= ScreenUtil.dp2px(left,mContext);
         top= ScreenUtil.dp2px(top,mContext);
         right= ScreenUtil.dp2px(right,mContext);

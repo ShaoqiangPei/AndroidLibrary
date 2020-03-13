@@ -4,12 +4,10 @@ import android.Manifest;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import com.android.commonlibrary.activity.AppActivity;
 import com.android.commonlibrary.permission.PermissionHelper;
 import com.android.commonlibrary.util.LogUtil;
-import com.android.commonlibrary.widget.TitleBar2;
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
@@ -20,7 +18,6 @@ public class MainActivity extends AppActivity {
     private Button mBtnTest;
     private TextView mTvTest;
 
-
     @Override
     public int getContentViewId() {
         return R.layout.activity_main;
@@ -28,12 +25,13 @@ public class MainActivity extends AppActivity {
 
     @Override
     public void initData() {
+
         mBtnTest=getView(R.id.button);
         mTvTest=getView(R.id.tv_left);
 
+
         requestPermission(PERMISSION_CODE);
     }
-
 
     @Override
     public void setListener() {
@@ -43,6 +41,7 @@ public class MainActivity extends AppActivity {
     @Override
     public void onClick(View v) {
         super.onClick(v);
+
         switch (v.getId()) {
             case R.id.button:
                 test();
@@ -50,6 +49,7 @@ public class MainActivity extends AppActivity {
             default:
                 break;
          }
+
     }
 
     private void requestPermission(int requestCode) {
@@ -80,7 +80,6 @@ public class MainActivity extends AppActivity {
 
     private void test() {
         String path="/data/data/com.androidlibrary/cache/test2.txt";
-
 
 //        String path="/data/data/com.androidlibrary/cache/test2.txt";
 //        boolean result=ByteStreamUtil.writeFile("大学生是啥？",path);
