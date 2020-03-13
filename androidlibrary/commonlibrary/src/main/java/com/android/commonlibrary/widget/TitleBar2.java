@@ -1,92 +1,121 @@
 package com.android.commonlibrary.widget;
 
 import android.content.Context;
+import android.media.Image;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.android.commonlibrary.R;
 import com.android.commonlibrary.util.ScreenUtil;
+import com.android.commonlibrary.util.view.ViewUtil;
 
 /**
  * Description:自定义标题栏
  *
- * 注:此类已经过时。
- *   若要使用自定义标题栏,请使用 TitleBar2
  * Author:pei
  * Date: 2019/3/21
  */
-@Deprecated
-public class TitleBar extends ConstraintLayout {
+public class TitleBar2 extends ConstraintLayout {
 
     private View mLayoutView;
     private Context mContext;
 
-    private ImageTextView mTvLeft;//R.id.tv_left
-    private ImageTextView mTvRight;//R.id.tv_title
-    private TextView mTvTitle;//R.id.tv_right
+    private ImageView mImvLeft;
+    private TextView mTvLeft;
+    private TextView mTvTitle;
+    private TextView mTvRight;
+    private ImageView mImvRight;
 
-    @Deprecated
-    public TitleBar(Context context, AttributeSet attrs) {
+    public TitleBar2(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mLayoutView = LayoutInflater.from(context).inflate(R.layout.title_bar_layout, this);
+        mLayoutView = LayoutInflater.from(context).inflate(R.layout.title_bar_layout2, this);
         this.mContext = context;
 
+        //初始化控件
         initView();
+        //初始化资源
+        initAttrs();
+        //初始化让所有控件都不可见
         initViewGone();
     }
 
+
     /**用于初始化控件的**/
     private <T> T getView(int rId) {
-        View view = TitleBar.this.findViewById(rId);
+        View view = TitleBar2.this.findViewById(rId);
         return (T) view;
     }
 
+    /**初始化控件**/
     private void initView(){
+        mImvLeft=getView(R.id.imv_left);
         mTvLeft=getView(R.id.tv_left);
-        mTvRight=getView(R.id.tv_right);
         mTvTitle=getView(R.id.tv_title);
+        mTvRight=getView(R.id.tv_right);
+        mImvRight=getView(R.id.imv_right);
     }
 
+    /**初始化资源**/
+    private void initAttrs(){
+
+    }
+
+    /**初始化让所有控件都不可见**/
     private void initViewGone(){
+        mImvLeft.setVisibility(View.GONE);
         mTvLeft.setVisibility(View.GONE);
-        mTvRight.setVisibility(View.GONE);
         mTvTitle.setVisibility(View.GONE);
+        mTvRight.setVisibility(View.GONE);
+        mImvRight.setVisibility(View.GONE);
     }
 
-    @Deprecated
-    public ImageTextView getTvLeft() {
+    public ImageView getImvLeft(){
+        return mImvLeft;
+    }
+
+    public TextView getTvLeft(){
         return mTvLeft;
     }
 
-    @Deprecated
-    public ImageTextView getTvRight() {
-        return mTvRight;
-    }
-
-    @Deprecated
     public TextView getTvTitle() {
         return mTvTitle;
     }
 
-    /**设置左边文本和图片间距**/
-    @Deprecated
-    public void setLeftDrawablePadding(int padding){
-        mTvLeft.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
-        mTvLeft.setCompoundDrawablePadding(ScreenUtil.dp2px(padding,mContext));
+    public TextView getTvRight() {
+        return mTvRight;
     }
 
-    /**设置右边返回键文本和图片间距**/
-    @Deprecated
-    public void setRightDrawablePadding(int padding){
-        mTvRight.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
-        mTvRight.setCompoundDrawablePadding(ScreenUtil.dp2px(padding,mContext));
+    public ImageView getImvRight(){
+        return mImvRight;
     }
 
-    /**设置margins**/
-    @Deprecated
+    /**
+     * 设置文字大小
+     * @param textView TextView控件
+     * @param sp 文字大小，已做sp2px处理,直接传sp值
+     */
+    public void setTextSize(TextView textView,float sp){
+        textView.setTextSize(ScreenUtil.sp2px(sp,mContext));
+    }
+
+    /**
+     * 设置文字颜色
+     * @param textview TextView控件
+     * @param color 直接传色值资源,如：R.color.color_000000
+     */
+    public void setTextColor(TextView textview,int color){
+        textview.setTextColor(ViewUtil.getColor(mContext,color));
+    }
+
+    /***
+     * 设置margins
+     *
+     * 已做 dp2px处理,直接传dp值
+     */
     public void setMargins(View view,int left,int top,int right,int bottom){
         LayoutParams params= (LayoutParams) view.getLayoutParams();
         MarginLayoutParams marginParams = null;
@@ -108,8 +137,11 @@ public class TitleBar extends ConstraintLayout {
         view.setLayoutParams(marginParams);
     }
 
-    /**设置paddings**/
-    @Deprecated
+    /***
+     * 设置paddings
+     *
+     * 已做 dp2px处理,直接传dp值
+     */
     public void setPaddings(View view,int left,int top,int right,int bottom){
 
         left= ScreenUtil.dp2px(left,mContext);

@@ -30,4 +30,5 @@
         <attr name="progress_circle_style" format="boolean"/>
         <attr name="progress_radius" format="dimension"/>
     </declare-styleable>
+
 </resources>
