@@ -3,6 +3,7 @@ package com.androidlibrary;
 import android.Manifest;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import com.android.commonlibrary.activity.AppActivity;
@@ -25,11 +26,10 @@ public class MainActivity extends AppActivity {
 
     @Override
     public void initData() {
-
         mBtnTest=getView(R.id.button);
         mTvTest=getView(R.id.tv_left);
 
-
+        //申请权限
         requestPermission(PERMISSION_CODE);
     }
 
@@ -79,11 +79,7 @@ public class MainActivity extends AppActivity {
     }
 
     private void test() {
-        String path="/data/data/com.androidlibrary/cache/test2.txt";
 
-//        String path="/data/data/com.androidlibrary/cache/test2.txt";
-//        boolean result=ByteStreamUtil.writeFile("大学生是啥？",path);
-//        LogUtil.i("======result="+result);
     }
 
 }
