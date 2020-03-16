@@ -2,8 +2,8 @@
 
 ### 概述
 `TitleBar2`是一个自定义标题栏类，可以说是`TitleBar`的升级版，之所以创建这个类，是因为`TitleBar`在使用的过程中，当涉及到突变加载时，效果不是很好，
-主要是`TitleBar`的子控件`ImageTextView`对图片的显示出现拉伸变形等情况，导致图片加载严重失真，于是便产生了`TitleBar2`,建议大家在使用自定义标题栏的时候，
-优先使用`TitleBar2`，因为`TitleBar`已经废弃。
+主要是`TitleBar`的子控件`ImageTextView`对图片的显示出现拉伸变形等情况，导致图片加载严重失真，于是便产生了`TitleBar2`,建议大家在使用自定义标题栏的时候，优先使用`TitleBar2`，因为`TitleBar`已经废弃。  
+想了解`TitleBar`的使用，请参考[TitleBar使用说明](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TitleBar%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
 
 ### 使用说明
 #### 一.在xml文件中引入TitleBar2控件
@@ -41,8 +41,8 @@
 ```
 mTitleBar2.getTvTitle().setVisibility(View.VISIBLE);
 ```
-显示效果如下
-![image.png](https://upload-images.jianshu.io/upload_images/6127340-107cee400d49fb88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+显示效果如下  
+![image.png](https://upload-images.jianshu.io/upload_images/6127340-107cee400d49fb88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
 下面以左返回键为例(右返回键雷同，此处不表)，显示左返回键图标+标题：
 ```
         mTitleBar2.getImvLeft().setVisibility(View.VISIBLE);
@@ -50,8 +50,8 @@ mTitleBar2.getTvTitle().setVisibility(View.VISIBLE);
         //显示左侧图标
         mTitleBar2.getImvLeft().setImageResource(R.mipmap.ic_back_left);
 ```
-效果如下
-![image.png](https://upload-images.jianshu.io/upload_images/6127340-4b91054b8b5f75f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+效果如下  
+![image.png](https://upload-images.jianshu.io/upload_images/6127340-4b91054b8b5f75f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
 显示左返回键文字+标题
 ```
         mTitleBar2.getTvLeft().setVisibility(View.VISIBLE);
@@ -65,8 +65,8 @@ mTitleBar2.getTvTitle().setVisibility(View.VISIBLE);
         mTitleBar2.setTextSize(mTitleBar2.getTvTitle(),5);//设置文字大小
         mTitleBar2.setTextColor(mTitleBar2.getTvTitle(), R.color.green);//设置文字颜色
 ```
-显示如下：
-![image.png](https://upload-images.jianshu.io/upload_images/6127340-5eea8fe388f360ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+显示如下：  
+![image.png](https://upload-images.jianshu.io/upload_images/6127340-5eea8fe388f360ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
 显示左返图标+左返文字+标题
 ```
         //显示控件
@@ -84,7 +84,7 @@ mTitleBar2.getTvTitle().setVisibility(View.VISIBLE);
         mTitleBar2.setTextSize(mTitleBar2.getTvTitle(),5);//设置文字大小
         mTitleBar2.setTextColor(mTitleBar2.getTvTitle(), R.color.green);//设置文字颜色
 ```
-效果如下
+效果如下  
 ![image.png](https://upload-images.jianshu.io/upload_images/6127340-88332803fa26b15a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 #### 四.TitleBar2设置图标
 以设置左侧返回键图标为例，你可以这样设置
