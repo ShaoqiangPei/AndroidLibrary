@@ -19,25 +19,7 @@ import java.util.Map;
  * Author:pei
  * Date: 2019/3/22
  */
-public class BaseEntity implements Serializable,Parcelable {
-
-    public BaseEntity() {
-    }
-
-    protected BaseEntity(Parcel in) {
-    }
-
-    public static final Creator<BaseEntity> CREATOR = new Creator<BaseEntity>() {
-        @Override
-        public BaseEntity createFromParcel(Parcel in) {
-            return new BaseEntity(in);
-        }
-
-        @Override
-        public BaseEntity[] newArray(int size) {
-            return new BaseEntity[size];
-        }
-    };
+public class BaseEntity implements Serializable{
 
     /**打印对象属性值**/
     public String printObject(){
@@ -127,16 +109,6 @@ public class BaseEntity implements Serializable,Parcelable {
             e.printStackTrace();
         }
         return value;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
     }
 
 }
