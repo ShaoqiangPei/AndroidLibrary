@@ -41,7 +41,7 @@ public class IntentHelper {
     }
 
     /**用intent给下一个界面传带单个参数的界面跳转**/
-    private Intent putParameter(Intent intent, String tag, Object parameter){
+    public Intent putParameter(Intent intent, String tag, Object parameter){
         if(parameter==null){
             throw new NullPointerException("=====传入参数不能为null=======");
         }
@@ -147,7 +147,7 @@ public class IntentHelper {
     }
 
     /**用intent给下一个界面传int集合**/
-    private Intent putIntList(Intent intent, String tag, List<Integer> list){
+    public Intent putIntList(Intent intent, String tag, List<Integer> list){
         intent.putIntegerArrayListExtra(tag, (ArrayList<Integer>) list);
         return intent;
     }
@@ -165,7 +165,7 @@ public class IntentHelper {
     }
 
     /**用intent给下一个界面传String集合**/
-    private Intent putStringList(Intent intent, String tag, List<String> list){
+    public Intent putStringList(Intent intent, String tag, List<String> list){
         intent.putStringArrayListExtra(tag, (ArrayList<String>) list);
         return intent;
     }
@@ -183,7 +183,7 @@ public class IntentHelper {
     }
 
     /**用intent给下一个界面传object集合,object需要实现Parcelable接口**/
-    private Intent putParcelableList(Intent intent, String tag, List<? extends Parcelable> list){
+    public Intent putParcelableList(Intent intent, String tag, List<? extends Parcelable> list){
         intent.putParcelableArrayListExtra(tag, (ArrayList<? extends Parcelable>) list);
         return intent;
     }
