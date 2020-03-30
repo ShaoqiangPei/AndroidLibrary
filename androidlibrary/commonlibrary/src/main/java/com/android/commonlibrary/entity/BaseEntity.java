@@ -19,7 +19,7 @@ import java.util.Map;
  * Author:pei
  * Date: 2019/3/22
  */
-public class BaseEntity implements Parcelable, Serializable {
+public class BaseEntity implements Serializable,Parcelable {
 
     public BaseEntity() {
     }
