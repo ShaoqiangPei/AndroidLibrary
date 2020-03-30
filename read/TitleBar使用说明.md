@@ -1,7 +1,8 @@
 ## TitleBar使用说明
 
 ### 概述
-TitleBar 是一个自定义标题栏，里面含有 左返回键，标题，右返回键 三个控件，使用十分灵活。为你自定义标题栏提供便捷。
+TitleBar 是一个自定义标题栏，里面含有 左返回键，标题，右返回键 三个控件，使用十分灵活。为你自定义标题栏提供便捷。  
+此类已废弃，建议使用其替代类[TitleBar2](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/TitleBar2%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
 
 ### 使用
 #### 一.TitleBar的引用
