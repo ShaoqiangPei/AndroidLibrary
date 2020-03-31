@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 
 import com.android.commonlibrary.app.LibraryConfig;
 import com.android.commonlibrary.util.AppUtil;
+import com.android.commonlibrary.util.LogUtil;
 import com.android.commonlibrary.util.StringUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -53,6 +54,14 @@ public class SimpleCache {
 
     public static SimpleCache get(Context ctx, String cacheName) {
         File f = new File(ctx.getCacheDir(), cacheName);
+        if(!f.exists()){
+            boolean created=f.mkdir();
+            if(created){
+                LogUtil.w("====[两参数]SimpleCache缓存文件夹创建成功======");
+            }else{
+                LogUtil.w("====[两参数]SimpleCache缓存文件夹创建失败======");
+            }
+        }
         return get(f, MAX_SIZE, MAX_COUNT);
     }
 
@@ -62,6 +71,14 @@ public class SimpleCache {
 
     public static SimpleCache get(Context ctx, long max_zise, int max_count) {
         File f = new File(ctx.getCacheDir(), DEFAULT_NAME);
+        if(!f.exists()){
+            boolean created=f.mkdir();
+            if(created){
+                LogUtil.w("====[三参数]SimpleCache缓存文件夹创建成功======");
+            }else{
+                LogUtil.w("====[三参数]SimpleCache缓存文件夹创建失败======");
+            }
+        }
         return get(f, max_zise, max_count);
     }
 
