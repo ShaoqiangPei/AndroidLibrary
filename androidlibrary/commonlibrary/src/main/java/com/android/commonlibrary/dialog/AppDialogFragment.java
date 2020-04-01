@@ -53,6 +53,7 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     protected boolean mTouchOutsideCancel=true;//默认点击dialog外面屏幕，dialog关闭
     protected boolean mRidShadow=false;//默认dialog设置圆角背景时有阴影
     protected boolean mUIShadow=false;//默认弹出diaolog时,界面无遮罩
+    protected boolean mRestoreLightWindow=true;//关闭dialog时是否恢复界面亮度,默认为true，即恢复
     protected float mUIShadowAlpha=DEFAULT_UI_ALPHA;//dialog显示遮罩时的亮度值
     protected int mBackGroundId=RID;//背景资源id，类似R.drawable.ui_shape_gray_round_corner
     protected double mScaleWidth=WRAP_CONTENT;//屏幕宽度比例
@@ -247,7 +248,10 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
         }
         //背景恢复亮度
         mUIShadow=false;
-        setActivityUIAlpha(1.0f);
+        //mRestoreLightWindow默认为true，即默认情况下,关闭dialog,恢复窗口亮度
+        if(mRestoreLightWindow) {
+            setActivityUIAlpha(1.0f);
+        }
         super.onDestroy();
     }
 
@@ -314,6 +318,21 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     public AppDialogFragment setUIShadow(boolean uiShadow,float uiShadowAlpha){
         this.mUIShadow=uiShadow;
         this.mUIShadowAlpha=uiShadowAlpha;
+        return this;
+    }
+
+    /***
+     * 设置dialog在消失时,去掉背景后面的遮罩(默认为true，即消失时去掉背景遮罩)
+     *
+     * 注:当界面上弹出多个dialog，而在关闭最上面的dialog时仍想保留dialog遮罩的时候
+     *   可以设置此方法为false，除此情况以外,不需调用此方法，默认为true,即消失时去掉背景遮罩就好
+     *
+     * @param restoreLightWindow true:消失时去掉dialog背景遮罩
+     *                           false:消失时不去掉dialog背景遮罩
+     * @return
+     */
+    public AppDialogFragment keepUIShadowWhenDestory(boolean restoreLightWindow){
+        this.mRestoreLightWindow=restoreLightWindow;
         return this;
     }
 
