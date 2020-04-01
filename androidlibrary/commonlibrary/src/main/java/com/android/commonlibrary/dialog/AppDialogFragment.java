@@ -40,6 +40,7 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     public static final int WRAP_CONTENT=-2;//dialog窗口大小自适应
     public static final int MATCH_PARENT=-3;//dialog窗口全屏
 
+    protected static final float MAX_UI_ALPHA=1.0f;//dialog显示时window最大亮度
     protected static final float DEFAULT_UI_ALPHA=0.6f;//dialog显示遮罩时的默认亮度值
 
     protected View mLayoutView;
@@ -53,11 +54,11 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     protected boolean mTouchOutsideCancel=true;//默认点击dialog外面屏幕，dialog关闭
     protected boolean mRidShadow=false;//默认dialog设置圆角背景时有阴影
     protected boolean mUIShadow=false;//默认弹出diaolog时,界面无遮罩
-    protected boolean mRestoreLightWindow=true;//关闭dialog时是否恢复界面亮度,默认为true，即恢复
     protected float mUIShadowAlpha=DEFAULT_UI_ALPHA;//dialog显示遮罩时的亮度值
     protected int mBackGroundId=RID;//背景资源id，类似R.drawable.ui_shape_gray_round_corner
     protected double mScaleWidth=WRAP_CONTENT;//屏幕宽度比例
     protected double mScaleHeight=WRAP_CONTENT;//屏幕高度比例
+    protected float mDestoryAlpha=MAX_UI_ALPHA;//dialog关闭时窗口亮度，默认为MAX_UI_ALPHA,即这张消失，界面恢复最亮
 
     @Override
     public void onAttach(Context context) {
@@ -248,10 +249,8 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
         }
         //背景恢复亮度
         mUIShadow=false;
-        //mRestoreLightWindow默认为true，即默认情况下,关闭dialog,恢复窗口亮度
-        if(mRestoreLightWindow) {
-            setActivityUIAlpha(1.0f);
-        }
+        //dialog关闭时,设置窗口透明度,默认为1.0f，即关闭dialog后，界面遮罩消失
+        setActivityUIAlpha(mDestoryAlpha);
         super.onDestroy();
     }
 
@@ -322,17 +321,22 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     }
 
     /***
-     * 设置dialog在消失时,去掉背景后面的遮罩(默认为true，即消失时去掉背景遮罩)
+     * 设置dialog在消失时,去掉背景后面的遮罩透明度，默认为MAX_UI_ALPHA
+     * 即正常情况下，关闭dialog，遮罩完全消失。
      *
      * 注:当界面上弹出多个dialog，而在关闭最上面的dialog时仍想保留dialog遮罩的时候
-     *   可以设置此方法为false，除此情况以外,不需调用此方法，默认为true,即消失时去掉背景遮罩就好
+     *    可以调用此方法给界面设置带透明度的遮罩，除此情况以外,不需调用此方法，默认为MAX_UI_ALPHA,即消失时去掉背景遮罩就好
      *
-     * @param restoreLightWindow true:消失时去掉dialog背景遮罩
-     *                           false:消失时不去掉dialog背景遮罩
+     * @param alpha 0f-1.0f  0为全黑，1.0f为全透明，即最亮
+     *              当取值不在0-1之间，则取默认透明度MAX_UI_ALPHA,即dialog消失时去掉背景遮罩
      * @return
      */
-    public AppDialogFragment keepUIShadowWhenDestory(boolean restoreLightWindow){
-        this.mRestoreLightWindow=restoreLightWindow;
+    public AppDialogFragment setDestoryAlpha(float alpha){
+        if(alpha<0||alpha>1){
+            this.mDestoryAlpha= MAX_UI_ALPHA;
+        }else{
+            this.mDestoryAlpha=alpha;
+        }
         return this;
     }
 
