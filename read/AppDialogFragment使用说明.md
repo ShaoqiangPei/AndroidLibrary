@@ -142,6 +142,7 @@ dependencies {
 显示效果如下  
 ![image.png](https://upload-images.jianshu.io/upload_images/6127340-58721a7066b2a7f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 #### 五. dialog设置背景遮罩
+##### 5.1 显示时设置背景遮罩
 给dialog设置背景遮罩主要涉及到两个方法
 ```
     /***
@@ -181,6 +182,17 @@ dependencies {
                 .showDialog(getSupportFragmentManager());//显示dialog
 ```
 需要注意的是，当你想设置背景遮罩透明度的时候，setUIShadow(boolean uiShadow,float uiShadowAlpha)  方法中的 uiShadow需要设置为true，然后 uiShadowAlpha 范围为(范围0f-1f,0f为黑色,1f为透明)
+##### 5.2 关闭时设置背景遮罩
+当姐买你涉及到弹出多个dialog叠加的时候，在关闭顶层dialog的时候，我们希望界面能保持底层dialog原有的背景遮罩，
+这时，我们则需要设置关闭时的遮罩透明度。默认情况下，`mDestoryAlpha`取值为`MAX_UI_ALPHA`(`MAX_UI_ALPHA`=1.0f),即正常情况下，关闭dialog
+视窗透明度为全透明，关闭dialog时，背景遮罩消失。
+当你有多个dialog叠加显示，并在顶层dialog关闭时，要视窗保持底层dialog的背景遮罩透明度,你可以在显示顶层dialog时作如下设置：
+```
+   new TopDialog()
+       .setDestoryAlpha(0.6f)//消失时显示遮罩,透明度设置底层dialog的遮罩透明度
+       .showDialog(getSupportFragmentManager());//显示dialog
+```
+这样，你在关闭TopDialog的时候，视窗就能保证底层dialog仍保持原背景遮罩了。
 #### 六. dialog返回键的处理
 设置点击返回键dialog消失的方法是：
 ```
