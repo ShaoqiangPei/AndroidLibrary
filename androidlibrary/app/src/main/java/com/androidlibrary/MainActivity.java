@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import com.android.commonlibrary.activity.AppActivity;
 import com.android.commonlibrary.permission.PermissionHelper;
 import com.android.commonlibrary.util.LogUtil;
+import com.android.commonlibrary.util.NumberUtil;
+
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
@@ -78,7 +80,14 @@ public class MainActivity extends AppActivity {
     }
 
     private void test() {
+        double a1=2.908765432;
+        double a2=3.01736485957;
 
+        LogUtil.i("=======和==="+ NumberUtil.add(a1,a2));
+        LogUtil.i("=======差==="+ NumberUtil.sub(a1,a2));
+        LogUtil.i("=======积==="+ NumberUtil.mul(a1,a2));
+        LogUtil.i("=======商==="+ NumberUtil.divide(a1,a2));
+        LogUtil.i("=======商==="+ NumberUtil.divide(a1,a2,5));
     }
 
 }

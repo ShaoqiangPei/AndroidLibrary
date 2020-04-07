@@ -47,10 +47,6 @@ public abstract class AppPopupWindow extends PopupWindow{
         this.mContext = context;
         //设置窗口
         setWindow();
-        //初始化
-        initView();
-        initData();
-        setListener();
     }
 
     /**设置窗口**/

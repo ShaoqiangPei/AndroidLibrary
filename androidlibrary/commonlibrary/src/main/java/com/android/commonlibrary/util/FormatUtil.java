@@ -44,13 +44,6 @@ public class FormatUtil {
         return f1;
     }
 
-    /**去掉数字后面多余的0**/
-    public static String removeZeroNumber(String number) {
-        return BigDecimal.valueOf(Double.parseDouble(number))
-                .stripTrailingZeros().toPlainString();
-    }
-
-
     /**
      *  格式化距离为 km/m 数
      *
@@ -66,6 +59,12 @@ public class FormatUtil {
             return formatXNumByCompute(distance,n) + "m";
         }
         return formatXNumByCompute(distance / 1000,n) + "km";
+    }
+
+    /**去掉数字后面多余的0**/
+    public static String removeZeroNumber(String number) {
+        return BigDecimal.valueOf(Double.parseDouble(number))
+                .stripTrailingZeros().toPlainString();
     }
 
 }
