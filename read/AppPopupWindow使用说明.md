@@ -14,6 +14,13 @@ public class TestPop extends AppPopupWindow {
     public TestPop(Context context){
         super(context);
 
+        //传值逻辑
+        //......
+
+        //初始化(这里必须调用,不然initView,initData和setListener三个方法不执行)
+        initView();
+        initData();
+        setListener();
     }
 
     @Override
@@ -253,7 +260,14 @@ public class TestPop extends AppPopupWindow {
 
     public TestPop(Context context){
         super(context);
+        
+        //传值逻辑
+        //......
 
+        //初始化(这里必须调用,不然initView,initData和setListener三个方法不执行)
+        initView();
+        initData();
+        setListener();
     }
 
     @Override
@@ -345,10 +359,3 @@ public class TestPop extends AppPopupWindow {
 
     }
 ```
-
-
-
-
-
-
-
