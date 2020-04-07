@@ -109,7 +109,7 @@ public abstract class AppPopupWindow extends PopupWindow{
     }
 
     /**获取pop宽度**/
-    private int getPopWidth(){
+    protected int getPopWidth(){
         int popupWidth=0;
         if(mScaleWidth==WRAP_CONTENT) {
             mLayoutView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
@@ -121,7 +121,7 @@ public abstract class AppPopupWindow extends PopupWindow{
     }
 
     /**获取pop高度**/
-    private int getPopHeight(){
+    protected int getPopHeight(){
         int popupHeight=0;
         if(mScaleHeight==WRAP_CONTENT) {
             mLayoutView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
