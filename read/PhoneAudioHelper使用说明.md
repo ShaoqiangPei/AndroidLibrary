@@ -24,7 +24,7 @@
     
     ......
 ```
-更多方法，请参看源码。
+更多方法，请参看[源码](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/androidlibrary/commonlibrary/src/main/java/com/android/commonlibrary/util/PhoneAudioHelper.java)。
 
 #### 二. PhoneAudioHelper使用示例
 各种模式下关于声音处理的示例：
