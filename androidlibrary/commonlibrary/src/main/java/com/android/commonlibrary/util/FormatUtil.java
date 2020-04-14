@@ -29,7 +29,7 @@ public class FormatUtil {
      * @param n 为 int 类型
      * @return
      */
-    public static String formatXNum(double f,int n) {
+    public static String formatXNum(double f, int n) {
         DecimalFormat formater = new DecimalFormat();
         formater.setMaximumFractionDigits(n);
         formater.setGroupingSize(0);
@@ -54,17 +54,80 @@ public class FormatUtil {
      * @param n 四舍五入 保留n位小数
      * @return
      */
-    public static String formatKmDistance(double distance,int n) {
+    public static String formatKmDistance(double distance, int n) {
         if (distance < 1000) {
             return formatXNumByCompute(distance,n) + "m";
         }
         return formatXNumByCompute(distance / 1000,n) + "km";
     }
 
-    /**去掉数字后面多余的0**/
+    /**去掉字符串前面的零**/
+    public static String removeZeroBeforeStr(String str){
+        if(StringUtil.isNotEmpty(str)){
+            String newStr = str.replaceAll("^(0+)", "");
+            return newStr;
+        }
+        return null;
+    }
+
+    /***
+     * 去掉字符串尾部的零
+     *
+     * 能去掉字符串尾部的零，但是不能去掉尾部的小数点。
+     * 如 5000 会变成 5，但是 50.0 会变成 50.
+     * @param str
+     * @return
+     */
+    public static String removeZeroAfterStr(String str){
+        if(StringUtil.isNotEmpty(str)){
+            String newStr = str.replaceAll("(0+)$", "");
+            return newStr;
+        }
+        return null;
+    }
+
+    /***
+     * 去掉数字后面多余的0
+     *
+     * 主要去掉数字型字符串尾部用于保持精度的零。
+     * 如 50.00 会变成 50
+     *
+     * @param number
+     * @return
+     */
     public static String removeZeroNumber(String number) {
         return BigDecimal.valueOf(Double.parseDouble(number))
                 .stripTrailingZeros().toPlainString();
+    }
+
+    /**除掉输入数值以0开头的情况,如输入“05”，则变成“5”**/
+    public static String getCountString(String countStr){
+        if(StringUtil.isNotEmpty(countStr)) {
+            String tempStr = countStr.trim();
+            if(isAllZeroOrPoint(tempStr)){
+                return "0";
+            }
+            String value=removeZeroBeforeStr(tempStr).trim();
+            if(value.startsWith(".")){
+                value="0"+value;
+            }
+            return value;
+        }
+        return "0";
+    }
+
+    /**判断字符串是否只含0或者.或者是0和.混合*/
+    private static boolean isAllZeroOrPoint(String str){
+        if(StringUtil.isEmpty(str)){
+            return false;
+        }
+        char charArray[]=str.toCharArray();
+        for(char c:charArray){
+            if(c!='0'&&c!='.'){
+                return false;
+            }
+        }
+        return true;
     }
 
 }

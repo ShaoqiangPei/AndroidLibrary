@@ -37,108 +37,233 @@ public class RegularUtil {
     }
 
     /**
-     * 判断是否为电话号码(粗略判断，第一位数为1，长度为11位)
-     *
-     * @param phoneNum:电话号码字符串
-     * @return
-     */
-    public static boolean isMobileNO(String phoneNum) {
-        String telRegex = "[1]\\d{10}";// "[1]"代表第1位为数字1，"\\d{10}"代表后面是可以是0～9的数字，有10位。
-        return phoneNum.matches(telRegex);
-    }
-
-    /**
-     * 验证码验证
-     *
-     * @param code 验证码字符串
-     * @param length 规定长度
-     * @return
-     */
-    public static boolean isValidateCode(String code,int length) {
-        String telRegex = "\\d{"+length+"}";
-        return code.matches(telRegex);
-    }
-
-    /**
-     * 校验密码（是否为startLength-endLength位数字和字母的组合）
-     *
-     * @param code
-     * @return
-     */
-    public static boolean isPassWord(String code,int startLength,int endLength) {
-        String telRegex = "[0-9A-Za-z]{"+startLength+","+endLength+"}";
-        boolean isMix = code.matches(telRegex);
-        boolean isResult = false;
-        if (isMix) {
-            Pattern isLetter = Pattern.compile("[A-Za-z]");
-            if (isLetter.matcher(code).find()) {
-                Pattern isNumber = Pattern.compile("[0-9]");
-                isResult = isNumber.matcher(code).find();
-            }
-
-        }
-        return isResult;
-    }
-
-    /**
-     * 验证是否为startLength位到endLength位的数字
-     *
-     * @param code 要验证的字符串
-     * @param startLength 最少的位数
-     * @param endLength 最多的位数
-     * @return
-     */
-    public static boolean isLessOrMoreNum(String code,int startLength,int endLength) {
-        String telRegex = "\\d{"+startLength+","+endLength+"}";
-        return code.matches(telRegex);
-    }
-
-    /**
-     * 验证桌号(以字母开头，数字结尾)
-     *
-     * @param tableNo
-     * @return
-     */
-    public static boolean isTableNo(String tableNo) {
-        String telRegex = "^[a-zA-Z0-9]+$";
-        return tableNo.matches(telRegex);
-    }
-
-    /**
-     * 验证账号昵称(最短长度为startLength,最长长度为endLength,可以包含字母和中文)
-     *
-     * @param userName 昵称字符串
-     * @param startLength 最短长度
-     * @param endLength 最长长度
-     * @return
-     */
-    public static boolean isUserName(String userName,int startLength,int endLength) {
-        String userRegex = "^[a-zA-Z\\u4E00-\\u9FA5]{"+startLength+","+endLength+"}";
-        return userName.matches(userRegex);
-    }
-
-    /**
-     * 该方法主要使用正则表达式来判断字符串中是否包含字母
-     *
-     * @param cardNum 待检验的原始卡号
-     * @return 返回是否包含
-     * @author fenggaopan 2015年7月21日 上午9:49:40
-     */
-    public static boolean isContainsStr(String cardNum) {
-        String regex = ".*[a-zA-Z]+.*";
-        Matcher m = Pattern.compile(regex).matcher(cardNum);
-        return m.matches();
-    }
-
-    /**
      * 根据规则匹配字符串
      *
      * @param msg 字符串
      * @param regex 设置的规则，如:"^[a-zA-Z0-9]+$"
      * @return
      */
-    public static boolean isRegex(String msg,String regex){
-        return msg.matches(regex);
+    public static boolean isRegex(String msg, String regex){
+        if(StringUtil.isEmpty(msg)){
+            return false;
+        }
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(msg);
+        return matcher.matches();
     }
+
+    /**字符串是否全为数字**/
+    public static boolean isAllNumber(String msg){
+       String regex="^\\d+$";
+       return isRegex(msg,regex);
+    }
+
+    /**字符串是否含有数字**/
+    public static boolean isContainNumber(String msg){
+        String regex="^.*\\d.*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否不包含数字**/
+    public static boolean isNoContainNumber(String msg){
+        return !isContainNumber(msg);
+    }
+
+    /**字符串是否全为小写字母**/
+    public static boolean isAllLowerCaseLetter(String msg){
+        String regex="^[a-z]+$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否含有小写字母**/
+    public static boolean isContainLowerCaseLetter(String msg){
+        String regex="^.*[a-z].*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否不含小写字母**/
+    public static boolean isNoContainLowerCaseLetter(String msg){
+        return !isContainLowerCaseLetter(msg);
+    }
+
+    /**字符串是否全为大写字母**/
+    public static boolean isAllCapitalLetter(String msg){
+        String regex="^[A-Z]+$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否含有大写字母**/
+    public static boolean isContainCapitalLetter(String msg){
+        String regex="^.*[A-Z].*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否不含大写字母**/
+    public static boolean isNoContainCapitalLetter(String msg){
+        return !isContainCapitalLetter(msg);
+    }
+
+    /**字符串是否全为字母**/
+    public static boolean isAllLetter(String msg){
+        String regex="^[a-zA-Z]+$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否含有字母**/
+    public static boolean isContainLetter(String msg){
+        String regex="^.*[a-zA-Z].*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否不含字母**/
+    public static boolean isNoContainLetter(String msg){
+        return !isContainLetter(msg);
+    }
+
+    /**字符串是否全为中文**/
+    public static boolean isAllChinese(String msg){
+        String regex="^[\\u4e00-\\u9fa5]+$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否含有中文**/
+    public static boolean isContainChinese(String msg){
+        String regex="^.*[\\u4e00-\\u9fa5].*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否不含中文**/
+    public static boolean isNoContainChinese(String msg){
+        return !isContainChinese(msg);
+    }
+
+    /**
+     * 字符串是否含有 temp字符串
+     *
+     * @param msg
+     * @param temp
+     * @return
+     */
+    public static boolean isContainX(String msg,String temp){
+        String regex="^.*["+temp+"].*$";
+        return isRegex(msg,regex);
+    }
+
+    /**
+     * 字符串是否含有小数点
+     *
+     * @param msg
+     * @return
+     */
+    public static boolean isContainPoint(String msg){
+        return isContainX(msg,".");
+    }
+
+    /**字符串是否以数字开头**/
+    public static boolean isStartByNumber(String msg){
+        String regex="^\\d.*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否以数字结尾**/
+    public static boolean isEndByNumber(String msg){
+        String regex="^.*\\d$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否以小写字母开头**/
+    public static boolean isStartByLowerCaseLetter(String msg){
+        String regex="^[a-z].*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否以小写字母结尾**/
+    public static boolean isEndByLowerCaseLetter(String msg){
+        String regex="^.*[a-z]$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否以大写字母开头**/
+    public static boolean isStartByCapitalLetter(String msg){
+        String regex="^[A-Z].*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否以大写字母结尾**/
+    public static boolean isEndByCapitalLetter(String msg){
+        String regex="^.*[A-Z]$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否以字母开头**/
+    public static boolean isStartByLetter(String msg){
+        String regex="^[a-zA-Z].*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否以字母结尾**/
+    public static boolean isEndByLetter(String msg){
+        String regex="^.*[a-zA-Z]$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否以中文开头**/
+    public static boolean isStartByChinese(String msg){
+        String regex="^[\\u4e00-\\u9fa5].*$";
+        return isRegex(msg,regex);
+    }
+
+    /**字符串是否以中文结尾**/
+    public static boolean isEndByChinese(String msg){
+        String regex="^.*[\\u4e00-\\u9fa5]$";
+        return isRegex(msg,regex);
+    }
+
+
+    /**
+     * 字符串长度是否为n
+     * @param msg
+     * @param n  验证长度
+     * @return
+     */
+    public static boolean isLengthN(String msg,int n){
+        String regex="^.{"+n+"}";
+        return isRegex(msg,regex);
+    }
+
+    /**
+     * 字符串长度至少为n
+     * @param msg
+     * @param n  验证最少长度
+     * @return
+     */
+    public static boolean isLengthAtMinN(String msg,int n){
+        String regex="^.{"+n+",}";
+        return isRegex(msg,regex);
+    }
+
+    /**
+     * 字符串长度最大为n
+     * @param msg
+     * @param n  验证最大长度
+     * @return
+     */
+    public static boolean isLengthAtMaxN(String msg,int n){
+        String regex="^.{0,"+n+"}";
+        return isRegex(msg,regex);
+    }
+
+    /***
+     * 字符串长度是否在 min-max 之间
+     * @param msg
+     * @param minLength 最小长度
+     * @param maxLength 最大长度
+     * @return
+     */
+    public static boolean isLengthMainAndMax(String msg, int minLength, int maxLength) {
+        String regex = "^.{" + minLength + "," + maxLength + "}";
+        return isRegex(msg,regex);
+    }
+
 
 }
