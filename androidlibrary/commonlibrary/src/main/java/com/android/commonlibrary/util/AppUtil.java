@@ -25,7 +25,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.nio.charset.Charset;
+import java.util.Enumeration;
 import java.util.UUID;
 import static android.content.Context.TELEPHONY_SERVICE;
 
@@ -301,6 +305,29 @@ public class AppUtil {
         return null;
     }
 
+    /**获取SIM卡运营商名称**/
+    public static String getSIMOperatorName(Context context) {
+        TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+        String operator = telephonyManager.getSimOperator(); //sim提供者
+        String str = "";
+        if (operator != null) {
+            if (operator.equals("46000") || operator.equals("46002") || operator.equals("46007") || operator.equals("46020") || operator.equals("46004")) {
+                str = "中国移动";
+            } else if (operator.equals("46001") || operator.equals("46006") || operator.equals("46009") || operator.equals("46010")) {
+                str = "中国联通";
+            } else if (operator.equals("46003") || operator.equals("46005") || operator.equals("46011")) {
+                str = "中国电信";
+            } else if (operator.equals("")) {
+                str = "无sim卡";
+            } else {
+                str = "未知sim卡";
+            }
+        } else {
+            str = "SIM卡错误";
+        }
+        return str;
+    }
+
     /**
      *Settings.Secure.ANDROID_ID 是一串64位的编码（十六进制的字符串），是随机生成的设备的第一个引导，
      * 其记录着一个固定值，通过它可以知道设备的寿命（在设备恢复出厂设置后，该值可能会改变）。
@@ -361,6 +388,23 @@ public class AppUtil {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**获取手机IP地址**/
+    public static String getLocalIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        return inetAddress.getHostAddress().toString();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
         }
         return null;
     }
