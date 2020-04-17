@@ -13,7 +13,7 @@ ok，接下来你才能开始使用PermissionHelper这个类的相关方法了�
 ##### 2.1 定义申请权限的常量
 在你项目的常量类(假设你常量类名为Contents)中定义权限申请的常量：
 ```
-public static final int PERMISSION_CODE=555;(值自己定义)
+public static final int PERMISSION_CODE=555;//值自己定义
 ```
 ##### 2.2 具体操作
 在你要申请权限的activity中添加以下代码
