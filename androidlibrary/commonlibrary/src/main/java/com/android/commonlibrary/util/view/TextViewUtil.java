@@ -28,7 +28,7 @@ public class TextViewUtil {
      * @param textView textview 控件
      * @param padding 需要做dp2px转换
      */
-    public void setLeftDrawablePadding(TextView textView, int padding) {
+    public static void setLeftDrawablePadding(TextView textView, int padding) {
         textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
         textView.setCompoundDrawablePadding(padding);
     }
@@ -38,7 +38,7 @@ public class TextViewUtil {
      * @param textView textview 控件
      * @param padding 需要做dp2px转换
      */
-    public void setRightDrawablePadding(TextView textView, int padding) {
+    public static void setRightDrawablePadding(TextView textView, int padding) {
         textView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
         textView.setCompoundDrawablePadding(padding);
     }
