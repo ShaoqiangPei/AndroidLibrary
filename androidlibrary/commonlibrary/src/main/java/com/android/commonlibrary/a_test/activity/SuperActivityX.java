@@ -21,7 +21,7 @@ public abstract class SuperActivityX extends AppActivityX implements InitActivit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAppActivityXProxy=new AppActivityXProxy();
-        mAppActivityX= (AppActivityX) mAppActivityXProxy.bind(SuperActivityX.this);
+        mAppActivityX= (AppActivityX) mAppActivityXProxy.bind(new AppActivityX());
         mAppActivityX.setInitActivityX(this);
         super.onCreate(savedInstanceState);
     }

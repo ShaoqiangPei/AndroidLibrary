@@ -8,8 +8,8 @@ package com.android.commonlibrary.mvp_frame;
 
 public interface PrePresenter {
 
-    abstract void attachView();
+    void attachView();
 
-    abstract void detachView();
+    void detachView();
 
 }

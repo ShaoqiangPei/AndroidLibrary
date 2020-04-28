@@ -23,7 +23,7 @@ public abstract class PreActivityX<T> extends AppActivityX implements InitActivi
     protected void onCreate(Bundle savedInstanceState) {
         mAppActivityXProxy=new AppActivityXProxy();
         mAppActivityXProxy.setIPreActivityX(this);
-        mAppActivityX= (AppActivityX) mAppActivityXProxy.bind(PreActivityX.this);
+        mAppActivityX= (AppActivityX) mAppActivityXProxy.bind(new AppActivityX());
         mAppActivityX.setInitActivityX(this);
         super.onCreate(savedInstanceState);
     }
