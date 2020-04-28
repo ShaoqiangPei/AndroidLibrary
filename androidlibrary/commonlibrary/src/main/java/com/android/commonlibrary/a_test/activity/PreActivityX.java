@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.android.commonlibrary.a_test.interfacer.IPreActivityX;
 import com.android.commonlibrary.a_test.interfacer.InitActivityX;
+import com.android.commonlibrary.mvp_frame.PrePresenter;
 
 /**
  * Title:
@@ -12,10 +13,11 @@ import com.android.commonlibrary.a_test.interfacer.InitActivityX;
  * autor:pei
  * created on 2020/4/28
  */
-public abstract class PreActivityX extends AppActivityX implements InitActivityX,IPreActivityX {
+public abstract class PreActivityX<T> extends AppActivityX implements InitActivityX,IPreActivityX {
 
     protected AppActivityXProxy mAppActivityXProxy;
     protected AppActivityX mAppActivityX;
+    protected T mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public abstract class PreActivityX extends AppActivityX implements InitActivityX
     @Override
     public void loadMVP() {
         mAppActivityX.loadMVP();
+        mPresenter= mAppActivityXProxy.getPresenter();
     }
 
     @SuppressLint("MissingSuperCall")

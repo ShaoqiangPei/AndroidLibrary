@@ -10,10 +10,5 @@ import com.android.commonlibrary.mvp_frame.PrePresenter;
  */
 public interface IPreActivityX {
 
-        /**
-         * 加载mvp框架的时候用，供子类重写，此处不做处理
-         **/
-        void loadMVP();
-
         <T extends PrePresenter>T getPresenter();
 }

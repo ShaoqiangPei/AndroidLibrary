@@ -17,7 +17,6 @@ import java.lang.reflect.Proxy;
 public class AppActivityXProxy implements InvocationHandler {
 
     protected AppActivityX mAppActivityX;
-    protected PrePresenter mPresenter;
     protected IPreActivityX mIPreActivityX;
 
     public Object bind(AppActivityX appActivityX){
@@ -34,20 +33,23 @@ public class AppActivityXProxy implements InvocationHandler {
         Object result=null;
 
         String methodName=method.getName();
-        if("loadMVP".equals(methodName)){
-            if(mIPreActivityX!=null) {
-                mPresenter = mIPreActivityX.getPresenter();
-                if (mPresenter != null) {
-                    mPresenter.attachView();
-                }
-            }
-        }else if("onDestroy".equals(methodName)){
-            if (mPresenter != null) {
-                mPresenter.detachView();
+        if(mIPreActivityX!=null){
+            PrePresenter presenter= mIPreActivityX.getPresenter();
+            if(null!=presenter&&"loadMVP".equals(methodName)){
+                presenter.attachView();
+            }else if(null!=presenter&&"onDestroy".equals(methodName)){
+                presenter.detachView();
             }
         }
         result=method.invoke(mAppActivityX,args);
         return result;
+    }
+
+    public <T extends PrePresenter>T getPresenter(){
+        if(mIPreActivityX!=null){
+            return mIPreActivityX.getPresenter();
+        }
+        return null;
     }
 
 }
