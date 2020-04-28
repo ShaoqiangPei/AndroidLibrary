@@ -4,14 +4,16 @@ package com.android.commonlibrary.mvp_frame;
 import androidx.annotation.Nullable;
 
 import com.android.commonlibrary.activity.AppActivity;
+import com.android.commonlibrary.mvp_frame.pre_interfacer.IPreActivity;
+import com.android.commonlibrary.mvp_frame.pre_interfacer.PrePresenter;
 
 
 /**
  * MVP架构 Activity基类
  **/
-public abstract class PreActivity<T extends PrePresenter> extends AppActivity {
+public abstract class PreActivity extends AppActivity implements IPreActivity {
 
-    protected T mPresenter;
+    protected PrePresenter mPresenter;
 
     @Override
     protected void loadMVP() {
@@ -22,9 +24,6 @@ public abstract class PreActivity<T extends PrePresenter> extends AppActivity {
             mPresenter.attachView();
         }
     }
-
-    @Nullable
-    protected abstract T getPresenter();
 
     @Override
     public void onDestroy() {

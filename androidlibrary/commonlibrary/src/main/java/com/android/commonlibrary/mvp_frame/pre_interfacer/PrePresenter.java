@@ -1,4 +1,4 @@
-package com.android.commonlibrary.mvp_frame;
+package com.android.commonlibrary.mvp_frame.pre_interfacer;
 
 /**
  * Created by Admin on 2017/5/16.

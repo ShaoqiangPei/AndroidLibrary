@@ -1,16 +1,15 @@
 package com.android.commonlibrary.mvp_frame;
 
-import androidx.annotation.Nullable;
-
 import com.android.commonlibrary.fragment.AppFragment;
-
+import com.android.commonlibrary.mvp_frame.pre_interfacer.IPreActivity;
+import com.android.commonlibrary.mvp_frame.pre_interfacer.PrePresenter;
 
 /**
  * MVP架构 Fragment基类
  **/
-public abstract class PreFragment<T extends PrePresenter> extends AppFragment {
+public abstract class PreFragment extends AppFragment implements IPreActivity {
 
-    protected T mPresenter;
+    protected PrePresenter mPresenter;
 
     @Override
     protected void loadMVP() {
@@ -21,9 +20,6 @@ public abstract class PreFragment<T extends PrePresenter> extends AppFragment {
             mPresenter.attachView();
         }
     }
-
-    @Nullable
-    protected abstract T getPresenter();
 
     @Override
     public void onDestroy() {
