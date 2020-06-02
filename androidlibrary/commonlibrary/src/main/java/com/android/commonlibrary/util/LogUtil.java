@@ -91,6 +91,18 @@ public class LogUtil {
         }
     }
 
+    public static void systemPrintln(String message){
+        if (LOG) {
+            System.out.println(TAG+": "+message);
+        }
+    }
+
+    public static void systemPrintln(String tag,String message){
+        if (LOG) {
+            System.out.println(tag+": "+message);
+        }
+    }
+
     private static String formatLog(String tag) {
         StackTraceElement traceElements[] = Thread.currentThread().getStackTrace();
         StackTraceElement element = traceElements[4];

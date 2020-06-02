@@ -1,4 +1,4 @@
-package com.android.commonlibrary.dialog;
+package com.android.commonlibrary.dialog_fragment;
 
 import android.app.Dialog;
 import android.content.Context;

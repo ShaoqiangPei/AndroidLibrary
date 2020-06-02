@@ -8,5 +8,5 @@ package com.android.commonlibrary.mvp_frame.pre_interfacer;
  */
 public interface IPreActivity {
 
-        <T extends PrePresenter>T getPresenter();
+      <T extends PrePresenter>T getPresenter();
 }

@@ -71,9 +71,6 @@ ext {
             //loadingdialog,网络加载对话框
             implementation_loading_dialog:"com.github.d-max:spots-dialog:0.7@aar"
 
-
-
-
 //            //selector框架
 //            compile_DevShapeUtils:"com.github.LiangLuDev:DevShapeUtils:1.0.1",
 //

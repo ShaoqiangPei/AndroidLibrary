@@ -1,4 +1,4 @@
-package com.android.commonlibrary.dialog;
+package com.android.commonlibrary.dialog_fragment;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -78,7 +78,6 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
         if(mScaleWidth==MATCH_PARENT&&mScaleHeight==MATCH_PARENT){
             setStyle(STYLE_NO_FRAME, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         }
-
     }
 
     @Nullable

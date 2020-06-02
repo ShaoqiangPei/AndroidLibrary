@@ -9,8 +9,10 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.commonlibrary.R;
@@ -165,6 +167,25 @@ public abstract class AppPopupWindow extends PopupWindow{
         ColorDrawable dw = new ColorDrawable(color);
         this.setBackgroundDrawable(dw);
         return AppPopupWindow.this;
+    }
+
+    /***
+     * 设置PopupWindow最大高度
+     *
+     * @param view
+     */
+    private void setMaxViewHeight(final View view,float scaleHeight){
+        view.post(new Runnable(){
+            public void run() {//这里获取宽高
+                int maxHeight= (int) (ScreenUtil.getHeight()*scaleHeight);
+                int height=view.getHeight();
+                ViewGroup.LayoutParams params= new ViewGroup.LayoutParams(ScreenUtil.getWidth()/3, ViewGroup.LayoutParams.WRAP_CONTENT);
+                if(height>maxHeight){
+                    params.height=maxHeight;
+                }
+                view.setLayoutParams(params);
+            }
+        });
     }
 
     /**点击pop外部是否消失，默认true消失**/
