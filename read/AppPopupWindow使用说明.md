@@ -128,6 +128,71 @@ public class TestPop extends AppPopupWindow {
 
 }
 ```
+##### 2.4 设置TestPop的最大高度
+一般我们可能还会有这样的需求，就是在`pop`在某高度范围内则自适应显示，超过某高度则按此高度显示。  
+若有这样的需求，可使用如下方法做设置:
+```
+    /**
+     * 设置PopupWindow最大高度
+     *
+     * @param scaleHeight 高度系数，float类型
+     *                    eg：  scaleHeight=0.5f 表示高度是屏幕高度的 0.5
+     * @return
+     */
+    public AppPopupWindow setMaxViewHeight(float scaleHeight)
+```
+该方法在你自建的`pop`初始化时设置。如我限定在自定义`pop`即以上的`TestPop`显示的最大高度不超过屏幕的二分之一(即`TestPop`高度小于屏幕高度一半时
+按实际高度显示，当`TestPop`高度大于屏幕高度一半时，则按屏幕高度一般设置)，则可以在`TestPop`初始化时作设置，示例代码如下:
+```
+/**
+ * Title:限制popuwindow的最大高度的pop
+ * description:
+ * autor:pei
+ * created on 2020/6/2
+ */
+public class TestPop extends AppPopupWindow {
+
+    public TestPop(Context context) {
+        super(context);
+
+        //传值逻辑
+        //......
+
+        //初始化(这里必须调用,不然initView,initData和setListener三个方法不执行)
+        initView();
+        initData();
+        setListener();
+    }
+
+    @Override
+    protected double[] getWindowSize() {
+        return new double[]{0.5d, super.WRAP_CONTENT};
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_pop;
+    }
+
+    @Override
+    protected void initView() {
+        
+    }
+
+    @Override
+    protected void initData() {
+        //设置最大高度为屏幕高度的一半
+        setMaxViewHeight(0.5f);
+
+    }
+
+    @Override
+    protected void setListener() {
+
+    }
+
+}
+```
 #### 三. PopupWindow中控件初始化
 如上所述，在TestPop中，你可以这样像初始化控件：
 ```
