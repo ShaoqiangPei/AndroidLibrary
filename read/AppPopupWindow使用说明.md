@@ -88,8 +88,6 @@ public class TestPop extends AppPopupWindow {
 
 }
 ```
-显示如下:  
-![1.gif](https://upload-images.jianshu.io/upload_images/6127340-368d0c0010de6236.gif?imageMogr2/auto-orient/strip)
 ##### 2.2 设置TestPop大小自适应
 若要设置TestPop的大小自适应，你可以这样：
 ```
@@ -110,8 +108,6 @@ public class TestPop extends AppPopupWindow {
 
 }
 ```
-显示如下:  
-![2.gif](https://upload-images.jianshu.io/upload_images/6127340-ccb96144bd9ef7c1.gif?imageMogr2/auto-orient/strip)
 ##### 2.3 设置TestPop按屏幕尺寸比例显示大小
 若要让TestPop按屏幕比例显示，你可以这样：
 ```
@@ -132,8 +128,6 @@ public class TestPop extends AppPopupWindow {
 
 }
 ```
-显示如下:  
-![3.gif](https://upload-images.jianshu.io/upload_images/6127340-f4b4dbbb13a0d870.gif?imageMogr2/auto-orient/strip)
 #### 三. PopupWindow中控件初始化
 如上所述，在TestPop中，你可以这样像初始化控件：
 ```
