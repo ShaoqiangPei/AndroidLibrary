@@ -169,23 +169,28 @@ public abstract class AppPopupWindow extends PopupWindow{
         return AppPopupWindow.this;
     }
 
-    /***
+    /**
      * 设置PopupWindow最大高度
      *
-     * @param view
+     * @param scaleHeight 高度系数，float类型
+     *                    eg：  scaleHeight=0.5f 表示高度是屏幕高度的 0.5
+     * @return
      */
-    private void setMaxViewHeight(final View view,float scaleHeight){
-        view.post(new Runnable(){
-            public void run() {//这里获取宽高
-                int maxHeight= (int) (ScreenUtil.getHeight()*scaleHeight);
-                int height=view.getHeight();
-                ViewGroup.LayoutParams params= new ViewGroup.LayoutParams(ScreenUtil.getWidth()/3, ViewGroup.LayoutParams.WRAP_CONTENT);
-                if(height>maxHeight){
-                    params.height=maxHeight;
+    public AppPopupWindow setMaxViewHeight(float scaleHeight){
+        if(mLayoutView!=null) {
+            mLayoutView.post(new Runnable() {
+                public void run() {//这里获取宽高
+                    int maxHeight = (int) (ScreenUtil.getHeight() * scaleHeight);
+                    int height = mLayoutView.getHeight();
+                    ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ScreenUtil.getWidth() / 3, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    if (height > maxHeight) {
+                        params.height = maxHeight;
+                    }
+                    mLayoutView.setLayoutParams(params);
                 }
-                view.setLayoutParams(params);
-            }
-        });
+            });
+        }
+        return AppPopupWindow.this;
     }
 
     /**点击pop外部是否消失，默认true消失**/
