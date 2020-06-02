@@ -59,6 +59,56 @@ dialog的显示大小由以下方法确定
 ```
 显示效果如下  
 ![2.gif](https://upload-images.jianshu.io/upload_images/6127340-d5a614e5c0e4421b.gif?imageMogr2/auto-orient/strip)
+##### 2.3 设置dialog最大 宽度/高度
+有时我们会有这样的需求：当dialog高度小于某个值时显示实际高度，高度大于某个值时显示该给定值高度。那么如何设置呢?  
+下面以设置最大高度为屏幕高度一半为例讲解。  
+那么在自定义的弹出框`MyDialog`中的高度设置一定是`super.WRAP_CONTENT`,下面给出`MyDialog`样例代码：
+```
+public class MyDialog extends AppDialogFragment {
+
+    @Override
+    protected double[] getWindowSize() {
+        return new double[]{0.5d,super.WRAP_CONTENT};
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_pop;
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void setListener() {
+
+    }
+}
+```
+然后我们要达到`MyDialog`显示内容高度小于屏幕高度一半时显示实际高度，显示内容大于屏幕高度一半时，则`dialog`高度显示为屏幕高度一半。  
+则在`MainActivity`中调用如下：
+```
+        new MyDialog()
+                .setMaxScaleHeight(0.5d)//设置最大高度为屏幕高度一半,dialog高度设置为super.WRAP_CONTENT时才生效
+                .showDialog(getSupportFragmentManager());//显示dialog
+```
+同理，当需要设置`dialog`最大宽度时，则`dialog`宽度设置一定是`super.WRAP_CONTENT`,，类似下面这样：
+```
+public class MyDialog2 extends AppDialogFragment {
+
+    @Override
+    protected double[] getWindowSize() {
+        return new double[]{super.WRAP_CONTENT,0.5d};
+    }
+```
+然后在`MainActivity`中设置`dialog`显示最大宽度为屏幕宽度一半的时候，`MainActivity`中调用代码类似如下：
+```
+        new MyDialog2()
+                .setMaxScaleWidth(0.5d)//设置最大宽度为屏幕宽度0.5,dialog宽度设置为super.WRAP_CONTENT时才生效
+                .showDialog(getSupportFragmentManager());//显示dialog
+```
 #### 三.dialog中控件初始化
 假设你的MyDialog中有一个控件button，那么我们可以有两种方式来初始化它。
 #### 3.1 利用getView()初始化控件
@@ -245,6 +295,8 @@ setOnDialogCancelListener(OnDialogCancelListener listener)
                 .setUIShadow(false)//默认弹出diaolog时,界面无遮罩
                 .setCancel(true)//返回键是否关闭dialog，默认true
                 .setCancelOnTouchOutside(true)//屏幕外点击是否关闭，默认true
+//                .setMaxScaleWidth(0.3d)//设置最大宽度为屏幕宽度0.3,dialog宽度设置为super.WRAP_CONTENT时才生效            
+//                .setMaxScaleHeight(0.5d)//设置最大高度为屏幕高度一半,dialog高度设置为super.WRAP_CONTENT时才生效
                 .showDialog(getSupportFragmentManager());//显示dialog
 ```
 
