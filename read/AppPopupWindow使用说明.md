@@ -193,6 +193,19 @@ public class TestPop extends AppPopupWindow {
 
 }
 ```
+同理，设置最大宽度可用以下方法:
+```
+    /**
+     * 设置PopupWindow最大宽度
+     *
+     * @param scaleWidth 宽度系数，float类型
+     *                    eg：  scaleWidth=0.5f 表示宽度是屏幕宽度的 0.5
+     * @return
+     */
+    public AppPopupWindow setMaxViewWidth(float scaleWidth)
+```
+这里需要注意的是，一般当有最大 宽度/高度 设置的时候，则`TestPop`的 宽度/高度 在初始化方法`getWindowSize()`种设置的参数会是`super.WRAP_CONTENT`,
+然后设置最大宽度/高度 的方法会在`TestPop`初始化时做设置。
 #### 三. PopupWindow中控件初始化
 如上所述，在TestPop中，你可以这样像初始化控件：
 ```
