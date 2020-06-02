@@ -152,8 +152,6 @@ public class TestPop extends AppPopupWindow {
 ```
 popupWindow. setBackgroundAlpha(0.5f);
 ```
-显示效果如下:  
-![4.gif](https://upload-images.jianshu.io/upload_images/6127340-90a53cbf53d9e01b.gif?imageMogr2/auto-orient/strip)
 #### 五. 设置PopupWindow弹出动画
 AppPopupWindow还支持弹出动画效果，具体动画效果参数有以下几种：
 ```
@@ -169,8 +167,6 @@ AppPopupWindow还支持弹出动画效果，具体动画效果参数有以下几
 //控件上面弹出
 popupWindow.setAnimation(AppPopupWindow.ANIMATION_TOP_STYLE)
 ```
-显示效果如下:  
-![5.gif](https://upload-images.jianshu.io/upload_images/6127340-2bc833cbc40df18f.gif?imageMogr2/auto-orient/strip)  
 其他动画效果调用雷同，这里就不啰嗦了。
 #### 六.设置PopupWindow弹出位置
 AppPopupWindow支持popupWindow的弹出位置，其支持在控件上，下，左，右及屏幕底部弹出五种显示位置，调用方法如下：
@@ -218,10 +214,6 @@ AppPopupWindow支持popupWindow的弹出位置，其支持在控件上，下，�
      */
     public void showAtScreenBottom(View view)
 ```
-显示效果如下：  
-![6.gif](https://upload-images.jianshu.io/upload_images/6127340-a10a249115dfc329.gif?imageMogr2/auto-orient/strip)![7.gif](https://upload-images.jianshu.io/upload_images/6127340-4e992cff2e1fa072.gif?imageMogr2/auto-orient/strip)  
-![8.gif](https://upload-images.jianshu.io/upload_images/6127340-2309cde9ce6d325a.gif?imageMogr2/auto-orient/strip)![9.gif](https://upload-images.jianshu.io/upload_images/6127340-16a8738a0f588cad.gif?imageMogr2/auto-orient/strip)  
-![10.gif](https://upload-images.jianshu.io/upload_images/6127340-d71859a31957eb85.gif?imageMogr2/auto-orient/strip)  
 #### 七. AppPopupWindow其他方法
 AppPopupWindow除了以上方法外，还有些常用的方法，如下：
 ```
