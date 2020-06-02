@@ -15,7 +15,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.android.commonlibrary.R;
+import com.android.commonlibrary.util.LogUtil;
 import com.android.commonlibrary.util.ScreenUtil;
 
 /**
@@ -182,9 +185,33 @@ public abstract class AppPopupWindow extends PopupWindow{
                 public void run() {//这里获取宽高
                     int maxHeight = (int) (ScreenUtil.getHeight() * scaleHeight);
                     int height = mLayoutView.getHeight();
-                    ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ScreenUtil.getWidth() / 3, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    ViewGroup.LayoutParams params = mLayoutView.getLayoutParams();
                     if (height > maxHeight) {
                         params.height = maxHeight;
+                    }
+                    mLayoutView.setLayoutParams(params);
+                }
+            });
+        }
+        return AppPopupWindow.this;
+    }
+
+    /**
+     * 设置PopupWindow最大宽度
+     *
+     * @param scaleWidth 宽度系数，float类型
+     *                    eg：  scaleWidth=0.5f 表示宽度是屏幕宽度的 0.5
+     * @return
+     */
+    public AppPopupWindow setMaxViewWidth(float scaleWidth){
+        if(mLayoutView!=null) {
+            mLayoutView.post(new Runnable() {
+                public void run() {//这里获取宽高
+                    int maxWidth = (int) (ScreenUtil.getWidth() * scaleWidth);
+                    int width = mLayoutView.getWidth();
+                    ViewGroup.LayoutParams params = mLayoutView.getLayoutParams();
+                    if (width > maxWidth) {
+                        params.width = maxWidth;
                     }
                     mLayoutView.setLayoutParams(params);
                 }

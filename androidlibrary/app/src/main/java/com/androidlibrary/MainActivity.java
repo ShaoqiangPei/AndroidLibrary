@@ -48,7 +48,6 @@ public class MainActivity extends AppActivity {
             default:
                 break;
          }
-
     }
 
     private void requestPermission(int requestCode) {
@@ -80,6 +79,8 @@ public class MainActivity extends AppActivity {
     private void test() {
 
     }
+
+
 
 }
 

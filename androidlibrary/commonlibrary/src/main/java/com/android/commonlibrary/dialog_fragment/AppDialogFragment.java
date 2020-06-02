@@ -56,8 +56,12 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     protected boolean mUIShadow=false;//默认弹出diaolog时,界面无遮罩
     protected float mUIShadowAlpha=DEFAULT_UI_ALPHA;//dialog显示遮罩时的亮度值
     protected int mBackGroundId=RID;//背景资源id，类似R.drawable.ui_shape_gray_round_corner
+
+    protected double maxScaleWidth=0;//屏幕宽度最大比例系数
+    protected double maxScaleHeight=0;//屏幕高度最大比例系数
     protected double mScaleWidth=WRAP_CONTENT;//屏幕宽度比例
     protected double mScaleHeight=WRAP_CONTENT;//屏幕高度比例
+
     protected float mDestoryAlpha=MAX_UI_ALPHA;//dialog关闭时窗口亮度，默认为MAX_UI_ALPHA,即这张消失，界面恢复最亮
 
     @Override
@@ -154,14 +158,17 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
                 setWindowHeight(windowParams,dm);//设置高度
                 window.setLayout(windowParams.width,windowParams.height);
             }
-
         }
     }
 
     /**设置窗口宽度**/
     private void setWindowWidth(WindowManager.LayoutParams windowParams,DisplayMetrics dm) {
         if (mScaleWidth == WRAP_CONTENT) {
-            windowParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+            if(maxScaleWidth>0){
+                windowParams.width = (int) (dm.widthPixels * maxScaleWidth);
+            }else{
+                windowParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+            }
         } else if (mScaleWidth > 0) {
             windowParams.width = (int) (dm.widthPixels * mScaleWidth); // 宽度设置为屏幕的0.65
         } else {
@@ -172,7 +179,11 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     /**设置窗口高度**/
     private void setWindowHeight(WindowManager.LayoutParams windowParams,DisplayMetrics dm) {
         if (mScaleHeight == WRAP_CONTENT) {
-            windowParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            if(maxScaleHeight>0){
+                windowParams.height = (int) (dm.heightPixels * maxScaleHeight);
+            }else{
+                windowParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            }
         } else if (mScaleHeight > 0) {
             windowParams.height = (int) (dm.heightPixels * mScaleHeight); // 高度设置为屏幕的0.6
         } else {
@@ -277,6 +288,17 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
         return null;
     }
 
+    /**设置dialog最大宽度系数**/
+    public AppDialogFragment setMaxScaleWidth(double maxScaleWidth) {
+        this.maxScaleWidth = maxScaleWidth;
+        return this;
+    }
+
+    /**设置dialog最大高度度系数**/
+    public AppDialogFragment setMaxScaleHeight(double maxScaleHeight) {
+        this.maxScaleHeight = maxScaleHeight;
+        return this;
+    }
 
     /**
      * 设置dialog背景色
