@@ -1,9 +1,5 @@
 package com.android.commonlibrary.entity;
 
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -103,6 +99,7 @@ public class BaseEntity implements Serializable{
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
+            throw new SecurityException("====根据属性名获取属性值的对象类中需要添加 Getter 和 Setter 方法========");
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

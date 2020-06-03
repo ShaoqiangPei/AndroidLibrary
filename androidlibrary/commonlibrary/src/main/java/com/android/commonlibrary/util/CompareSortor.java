@@ -65,18 +65,32 @@ public class CompareSortor<T> implements Comparator<T> {
     @Override
     public int compare(Object t1, Object t2) {
         if (t1 instanceof Integer) {//int
+            LogUtil.i("===Integer====t1="+t1+"   t2="+t2);
+
             return mReverse ? reverseCompare((int) t1, (int) t2) : sortCompare((int) t1, (int) t2);
         } else if (t1 instanceof Float) {//float
+            LogUtil.i("===Float====t1="+t1+"   t2="+t2);
+
             return mReverse ? reverseCompare((float) t1, (float) t2) : sortCompare((float) t1, (float) t2);
         } else if (t1 instanceof Double) {//double
+            LogUtil.i("===Double====t1="+t1+"   t2="+t2);
+
             return mReverse ? reverseCompare((double) t1, (double) t2) : sortCompare((double) t1, (double) t2);
         } else if (t1 instanceof Long) {//long
+            LogUtil.i("===Long====t1="+t1+"   t2="+t2);
+
             return mReverse ? reverseCompare((long) t1, (long) t2) : sortCompare((long) t1, (long) t2);
         } else if (t1 != null && t2 != null) {//object
+            LogUtil.i("===object====t1="+t1+"   t2="+t2);
+
             Object obj1 = getFieldValueByName(mFieldName, t1);
             Object obj2 = getFieldValueByName(mFieldName, t2);
+
+            LogUtil.i("===object====obj1="+obj1+"   obj2="+obj2);
             return compare(obj1, obj2);
         } else {
+            LogUtil.i("===classCastException====t1="+t1+"   t2="+t2);
+
             String classCastException = "强转异常：" + mFieldName + "不能转化成int,float,double,long中的任何一种类型";
             throw new ClassCastException(classCastException);
         }
@@ -191,6 +205,7 @@ public class CompareSortor<T> implements Comparator<T> {
                 value = method.invoke(obj, new Object[]{});
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
+                throw new SecurityException("====根据属性名获取属性值的对象类中需要添加 Getter 和 Setter 方法========");
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
