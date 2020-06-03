@@ -21,6 +21,7 @@ LogUtil.e(MainActivity.class,"=====fList====="+fList.toString());
 MainActivity:=====fList=====[1, 3, 7, 9]
 ```
 #### 2. CompareSortor对对像按其属性中数字大小排序
+这里需要注意的是，用于对比的对象里面的属性要写 Setter/Getter 方法，若没有会导致排序异常。  
 下面是对Student以age排序(注：age需要是数字，即int，float，double，long类型)
 ```
 Student stu1=new Student("c",12);
