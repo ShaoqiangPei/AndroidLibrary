@@ -43,7 +43,7 @@ public class SyDialogFragment extends AppDialogFragment {
 
     @Override
     protected double[] getWindowSize() {
-        return new double[]{0.8f,0.28f};
+        return new double[]{0.8d,0.28d};
     }
 
     @Override
