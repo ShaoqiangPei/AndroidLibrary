@@ -7,14 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import com.android.commonlibrary.activity.AppActivity;
 import com.android.commonlibrary.permission.PermissionHelper;
-import com.android.commonlibrary.util.CompareSortor;
 import com.android.commonlibrary.util.LogUtil;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
@@ -86,7 +79,6 @@ public class MainActivity extends AppActivity {
     private void test() {
 
     }
-
 
 }
 
