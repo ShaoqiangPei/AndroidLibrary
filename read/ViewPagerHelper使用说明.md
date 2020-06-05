@@ -70,22 +70,79 @@ setRemoveBoundShadow(true)
         app:layout_constraintBottom_toBottomOf="parent"/>
 ```
 #### 二. ViewPagerHelper 在 Activity 中的使用
-为了讲解方便，这里我准备了三个`Fragment`:`OneFragment`，`TwoFragment`，`ThreeFragment`。这三个`Fragment`页面基本一样，只是在显示颜色和文字上有稍许差异。
-`Fragment`的快捷实现，大家可以参看
+为了讲解方便，这里我准备了三个`Fragment`:`OneFragment`，`TwoFragment`，`ThreeFragment`。这三个`Fragment`页面基本一样，只是在显示颜色和文字上有稍许差异。`Fragment`的快捷实现，大家可以参看[AppFragment使用说明](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md),这里就不赘述了。  
+接下来要在`Activity`对应的布局中添加`ViewPager`控件，类似如下：
+```
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn1"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+```
+然后在`Activity`中做相关声明和初始化操作：
+```
+    //声明
+    private ViewPager mViewPager;
+    private ViewPagerHelper mViewPagerHelper;
 
+    //初始化控件
+    mViewPager=findViewById(R.id.vpager);
 
+    //初始化 ViewPager+Fragment页面效果
+    private void initData(){
+        mViewPagerHelper=new ViewPagerHelper();
+        mViewPagerHelper.addFragment(new OneFragment())
+                .addFragment(new TwoFragment())
+                .addFragment(new ThreeFragment())
+                .setRemoveBoundShadow(true)//true:去掉边界阴影  false:滑到边界有阴影。默认为false,即滑至边界有边界阴影
+                .setLoadCount(3)//设置预加载fragment个数，不设置的话默认添加几个fragment就预加载几个
+                .setLoadIndex(0)//设置初始化时显示第几页,默认下表为0,即加载第一页
+                .init(mViewPager,TempActivity.this);//此行设置要放最后
+    }
+```
+监听`ViewPager`切换界面事件,可以像下面这样：
+```
+    /**设置监听**/
+    private void setListener(){
+        //viewPager页面滑动监听
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
 
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        mViewPager.setCurrentItem(position);
+                        ToastUtil.shortShow("第一页");
+                        mTv.setText("第一页");
+                        break;
+                    case 1:
+                        mViewPager.setCurrentItem(position);
+                        ToastUtil.shortShow("第二页");
+                        mTv.setText("第二页");
+                        break;
+                    case 2:
+                        mViewPager.setCurrentItem(position);
+                        ToastUtil.shortShow("第三页");
+                        mTv.setText("第三页");
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-
-
-
-
-
-
-
-
-
-
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                //state的状态有三个，0表示什么都没做，1正在滑动，2滑动完毕
+            }
+        });
+    }
+```
 
