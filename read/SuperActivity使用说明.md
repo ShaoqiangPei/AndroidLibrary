@@ -6,7 +6,7 @@ SuperActivity 作为所有Activity的超类，具备mvp模式,提供系列的状
 
 ### 使用介绍
 #### 一.使用须知
-作为`Activity`的超类，我们并不会在项目中去直接继承此类建自己的`Activity`，而是通常继承该类的子类，即`AppActivity`来快速创建自己的`Activity`.  
+作为`Activity`的超类，我们并不会在项目中去直接继承此类建自己的`Activity`，而是通常继承该类的子类，即`AppActivity`来快速创建自己的`Activity`.
 但是为了更加流畅的使用`AppActivity`这个基类，我们有必要对其父类，也就是`SuperActivity`有一个全面的认知。
 #### 二. activity的注册通用配置
 activity 在 Mainfast.xml 中注册的时候，通常会添加一些常用的配置属性.例如你的 TestActivity 在 Mainfast.xml 中注册的时候，可以这样配置：
@@ -30,7 +30,7 @@ activity 在 Mainfast.xml 中注册的时候，通常会添加一些常用的配
     </application>
 ```
 #### 三. 隐藏标题栏
-在app开发过程中，我们经常会隐藏标题栏.AppActivity也提供了相关方法.
+在app开发过程中，我们经常会隐藏标题栏.SuperActivity也提供了相关方法.
 如果你要将整个app都设为标题栏隐藏状态，那么你可以直接在 Mainfast.xml 中设置整个app的 theme,在 mainfast.xml 中将 app 的 theme 设置成 Theme.Design.NoActionBar 即可,就像下面这样：
 ```
 <application
@@ -43,7 +43,7 @@ activity 在 Mainfast.xml 中注册的时候，通常会添加一些常用的配
 
 </application>
 ```
-如果你只需要隐藏某个activity(如上面提到的TestActivity),那么你就不要改 mainfast.xml 中的 theme,只需要在 TestActivity 加载 xml 文件之前设置 AppActivity 的 isNoTitle=true 即可,类似下面这样：
+如果你只需要隐藏某个activity(如TestActivity),那么你就不要改 mainfast.xml 中的 theme,只需要在 TestActivity 加载 xml 文件之前设置 AppActivity 的 isNoTitle=true 即可,类似下面这样：
 ```
 public class TestActivity extends AppActivity {
 
@@ -140,7 +140,7 @@ public class TestActivity extends AppActivity {
     }
 }
 ```
-#### 五. AppActivity中方法简介
+#### 五. SupperActivity中方法简介
 ##### 1. 控件值获取,非空判断、取值
 更多相关方法请查阅 AppHelper 类
 ```
