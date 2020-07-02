@@ -3,7 +3,7 @@ package com.android.commonlibrary.mvp_frame;
 import android.content.Context;
 import com.android.commonlibrary.activity.AppActivity;
 import com.android.commonlibrary.entity.UIData;
-import com.android.commonlibrary.mvp_frame.pre_interfacer.PreView;
+import com.android.commonlibrary.interfacer.pre_interfacer.PreView;
 
 /**
  * Description:更新主线程ui帮助类

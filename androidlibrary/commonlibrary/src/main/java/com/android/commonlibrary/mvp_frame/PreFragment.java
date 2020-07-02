@@ -1,8 +1,8 @@
 package com.android.commonlibrary.mvp_frame;
 
 import com.android.commonlibrary.fragment.AppFragment;
-import com.android.commonlibrary.mvp_frame.pre_interfacer.IPreActivity;
-import com.android.commonlibrary.mvp_frame.pre_interfacer.PrePresenter;
+import com.android.commonlibrary.interfacer.pre_interfacer.IPreActivity;
+import com.android.commonlibrary.interfacer.pre_interfacer.PrePresenter;
 
 /**
  * MVP架构 Fragment基类

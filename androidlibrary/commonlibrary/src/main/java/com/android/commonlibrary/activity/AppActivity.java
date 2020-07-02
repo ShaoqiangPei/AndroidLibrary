@@ -84,6 +84,13 @@ public abstract class AppActivity extends AppCompatActivity implements IActivity
         setListener();
     }
 
+
+    /**加载mvp框架的时候用**/
+    @Override
+    public void loadMVP() {
+
+    }
+
     @Override
     public void onClick(View v) {
         DoubleClickUtil.shakeClick(v);

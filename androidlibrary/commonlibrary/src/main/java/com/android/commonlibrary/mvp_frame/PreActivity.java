@@ -13,6 +13,8 @@ public abstract class PreActivity extends AppActivity implements IPreActivity {
 
     @Override
     public void loadMVP() {
+        super.loadMVP();
+
         mPresenter = getPresenter();
         if (mPresenter != null) {
             mPresenter.attachView();
