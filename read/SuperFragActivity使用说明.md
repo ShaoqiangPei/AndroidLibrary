@@ -1,14 +1,14 @@
-## AppFragActivity使用说明
+## SuperFragActivity使用说明
 
 ### 概述
-AppFragActivity 是 AppActivity 的一个子类，具备AppActivity的所有特性.
+SuperFragActivity 是 SuperActivity 的一个子类，具备SuperActivity的所有特性.
 此类用在当activity需要开启Fragment的时候使用，主要用于处理Activity和Fragment间对于返回键的处理。
 Activity向Fragment传值的话，也可以参考这个返回键处理的逻辑。
 
 ### 使用说明
-#### 一. AppFragActivity 使用 AppActivity 相关特性
-AppFragActivity 是 AppActivity 的一个子类,具备AppActivity的所有特性的所有特性.
-要使用 AppActivity 相关特性的话可以参考[AppActivity使用说明](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)  
+#### 一. SuperFragActivity 使用 SuperActivity 相关特性
+SuperFragActivity 是 SuperActivity 的一个子类,具备SuperActivity的所有特性的所有特性.作为一个超类，我们不会直接使用它，当我们需要创建
+一个含加载`Fragment`的`Activity`时，我们会直接继承`SuperFragActivity`的子类`AppFragActivity`
 #### 二. Activity 和 Fragment 对于返回键处理使用说明
 Activity中加载有动态的Fragment，那么对于activity，需要继承AppFragActivity。如MainActivity中有动态加载Fragment的需要，那么mainActivity可以这样写：
 ```
