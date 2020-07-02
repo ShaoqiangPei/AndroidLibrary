@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.android.commonlibrary.activity.AppActivity;
 import com.android.commonlibrary.activity.AppHelper;
+import com.android.commonlibrary.activity.SuperActivity;
 import com.android.commonlibrary.interfacer.IActivity;
 import com.android.commonlibrary.interfacer.OnFragmentListener;
 import com.android.commonlibrary.util.DoubleClickUtil;
@@ -20,12 +20,12 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Description:Fragment基类
+ * Description:Fragment超类
  *
  * Author:pei
  * Date: 2019/7/4
  */
-public abstract class AppFragment extends Fragment implements IActivity{
+public abstract class SuperFragment extends Fragment implements IActivity{
 
     protected View mLayoutView;//总布局
     protected Context mContext;
@@ -107,25 +107,25 @@ public abstract class AppFragment extends Fragment implements IActivity{
     /**获取控件值**/
     @Override
     public String getTextOfView(TextView textView) {
-        return ((AppActivity)mContext).getTextOfView(textView);
+        return ((SuperActivity)mContext).getTextOfView(textView);
     }
 
     /**获取非空字符串**/
     @Override
     public String getNotEmptyString(String str) {
-        return ((AppActivity)mContext).getNotEmptyString(str);
+        return ((SuperActivity)mContext).getNotEmptyString(str);
     }
 
     /**长吐司**/
     @Override
     public void showToast(String msg) {
-        ((AppActivity)mContext).showToast(msg);
+        ((SuperActivity)mContext).showToast(msg);
     }
 
     /**短吐司**/
     @Override
     public void showShortToast(String msg) {
-        ((AppActivity)mContext).showShortToast(msg);
+        ((SuperActivity)mContext).showShortToast(msg);
     }
 
     /**用于初始化控件的**/
@@ -137,85 +137,85 @@ public abstract class AppFragment extends Fragment implements IActivity{
     /**无参界面跳转**/
     @Override
     public void startAct(Class<?> cls) {
-        ((AppActivity)mContext).startAct(cls);
+        ((SuperActivity)mContext).startAct(cls);
     }
 
     /**含一个参数的界面跳转**/
     @Override
     public void startParameterAct(Class<?> cls, String tag, Object parameter) {
-        ((AppActivity)mContext).startParameterAct(cls,tag,parameter);
+        ((SuperActivity)mContext).startParameterAct(cls,tag,parameter);
     }
 
     /**接收上一个界面传过来的int**/
     @Override
     public int getIntParameter(String tag) {
-        return ((AppActivity)mContext).getIntParameter(tag);
+        return ((SuperActivity)mContext).getIntParameter(tag);
     }
 
     /**接收上一个界面传过来的String**/
     @Override
     public String getStringParameter(String tag) {
-        return ((AppActivity)mContext).getStringParameter(tag);
+        return ((SuperActivity)mContext).getStringParameter(tag);
     }
 
     /**接收上一个界面传过来的boolean**/
     @Override
     public boolean getBooleanParameter(String tag) {
-        return ((AppActivity)mContext).getBooleanParameter(tag);
+        return ((SuperActivity)mContext).getBooleanParameter(tag);
     }
 
     /**接收上一个界面传过来的Bundle**/
     @Override
     public Bundle getBundleParameter(String tag) {
-        return ((AppActivity)mContext).getBundleParameter(tag);
+        return ((SuperActivity)mContext).getBundleParameter(tag);
     }
 
     /**接收上一个界面传过来的对象，对象需要实现Serializable**/
     @Override
     public Serializable getSerializableObject(String tag) {
-        return ((AppActivity)mContext).getSerializableObject(tag);
+        return ((SuperActivity)mContext).getSerializableObject(tag);
     }
 
     /**接收上一个界面传过来的对象，对象需要实现Parcelable**/
     @Override
     public Parcelable getParcelableObject(String tag) {
-        return ((AppActivity)mContext).getParcelableObject(tag) ;
+        return ((SuperActivity)mContext).getParcelableObject(tag) ;
     }
 
     /**传一个int集合的界面跳转**/
     @Override
     public void startIntegerListAct(Class<?> cls, String tag, List<Integer> list) {
-        ((AppActivity)mContext).startIntegerListAct(cls,tag,list);
+        ((SuperActivity)mContext).startIntegerListAct(cls,tag,list);
     }
 
     /**接收上一个界面传过来的int集合**/
     @Override
     public List<Integer> getIntegerList(String tag) {
-        return ((AppActivity)mContext).getIntegerList(tag);
+        return ((SuperActivity)mContext).getIntegerList(tag);
     }
 
     /**传一个String集合的界面跳转**/
     @Override
     public void startStringListAct(Class<?> cls, String tag, List<String> list) {
-        ((AppActivity)mContext).startStringListAct(cls,tag,list);
+        ((SuperActivity)mContext).startStringListAct(cls,tag,list);
     }
 
     /**接收上一个界面传过来的String集合**/
     @Override
     public List<String> getStringList(String tag) {
-        return ((AppActivity)mContext).getStringList(tag);
+        return ((SuperActivity)mContext).getStringList(tag);
     }
 
     /**传一个object集合的界面跳转,集合中的object需要实现Parcelable接口**/
     @Override
     public void startParcelableListAct(Class<?> cls, String tag, List<? extends Parcelable> list) {
-        ((AppActivity)mContext).startParcelableListAct(cls,tag,list);
+        ((SuperActivity)mContext).startParcelableListAct(cls,tag,list);
     }
 
     /**接收上一个界面传过来的object集合,集合中的object需要实现Parcelable接口**/
     @Override
     public List<? extends Parcelable> getParcelableList(String tag) {
-        return ((AppActivity)mContext).getParcelableList(tag);
+        return ((SuperActivity)mContext).getParcelableList(tag);
     }
 
     /**下一个Fragemnt中接收传值**/

@@ -1,12 +1,11 @@
 package com.android.commonlibrary.activity;
 
 import android.view.KeyEvent;
-
 import com.android.commonlibrary.interfacer.OnFragmentBackListener;
 import com.android.commonlibrary.util.LogUtil;
 
 /**
- * Description: 集成Fragment时需要用到的activity
+ * Description: 集成Fragment时需要用到的activity超类
  *
  *  当需要加载Fragment并且要在activity中处理返回键的时候用此类
  *  具备AppActivity的所有特性
@@ -15,7 +14,7 @@ import com.android.commonlibrary.util.LogUtil;
  * Author:pei
  * Date: 2019/7/16
  */
-public abstract class AppFragActivity extends AppActivity{
+public abstract class SuperFragActivity extends SuperActivity {
 
     protected OnFragmentBackListener mOnFragmentBackListener;
 
