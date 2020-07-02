@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.android.commonlibrary.R;
 import com.android.commonlibrary.app.AppActivityManager;
 import com.android.commonlibrary.interfacer.IActivity;
+import com.android.commonlibrary.interfacer.pre_interfacer.IPreLoad;
 import com.android.commonlibrary.util.DoubleClickUtil;
 import java.io.Serializable;
 import java.util.List;
@@ -27,7 +28,7 @@ import butterknife.Unbinder;
  * Author:pei
  * Date: 2019/7/3
  */
-public abstract class AppActivity extends AppCompatActivity implements IActivity {
+public abstract class AppActivity extends AppCompatActivity implements IActivity, IPreLoad {
 
     protected View mLayoutView;//总布局
     protected Activity mContext;
@@ -49,12 +50,9 @@ public abstract class AppActivity extends AppCompatActivity implements IActivity
             mLayoutView = LayoutInflater.from(mContext).inflate(getContentViewId(), null);
             setContentView(mLayoutView);
             mUnbinder = ButterKnife.bind(this);
-            //加载mvp框架的时候用
-            loadMVP();
 
-            //初始化加载
-            initData();
-            setListener();
+            //逻辑处理
+            logicProcess();
         }else{
             throw new SecurityException("====请在Activity的getContentViewId中给activity设置对应的xml文件id=======");
         }
@@ -76,8 +74,15 @@ public abstract class AppActivity extends AppCompatActivity implements IActivity
         }
     }
 
-    /**加载mvp框架的时候用，供子类重写，此处不做处理**/
-    protected void loadMVP(){}
+    /**逻辑处理**/
+    public void logicProcess() {
+        //加载mvp框架的时候用
+        loadMVP();
+
+        //初始化加载
+        initData();
+        setListener();
+    }
 
     @Override
     public void onClick(View v) {

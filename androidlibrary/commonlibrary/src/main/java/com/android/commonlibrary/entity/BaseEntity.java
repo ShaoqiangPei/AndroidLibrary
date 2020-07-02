@@ -28,7 +28,7 @@ public class BaseEntity implements Serializable{
     }
 
     /**打印对象属性值**/
-    public String objectToString(Object obj){
+    public static String objectToString(Object obj){
         List<Map<String,Object>> filedInfos=getFiledsInfo(obj);
         StringBuffer buffer=new StringBuffer();
         if(!filedInfos.isEmpty()){
@@ -44,7 +44,7 @@ public class BaseEntity implements Serializable{
         return buffer.toString();
     }
 
-    private StringBuffer getBuffer(List<Map<String,Object>> filedInfos, StringBuffer buffer){
+    private static StringBuffer getBuffer(List<Map<String,Object>> filedInfos, StringBuffer buffer){
         if(buffer==null){
             buffer=new StringBuffer();
         }
@@ -61,7 +61,7 @@ public class BaseEntity implements Serializable{
     /**
      * 获取属性类型(type)，属性名(name)，属性值(value)的map组成的list
      */
-    private List getFiledsInfo(Object obj){
+    private static List getFiledsInfo(Object obj){
         List<Map<String,Object>> list=new ArrayList();
         if(obj!=null) {
             Field fields[] = obj.getClass().getDeclaredFields();
@@ -84,7 +84,7 @@ public class BaseEntity implements Serializable{
     /**
      * 根据属性名获取属性值 
      */
-    private Object getFieldValueByName(String fieldName, String type, Object obj){
+    private static Object getFieldValueByName(String fieldName, String type, Object obj){
         Object value=null;
         try {
             String firstLetter=fieldName.substring(0,1).toUpperCase();

@@ -22,7 +22,6 @@ public class AppContext extends Application {
         LibraryConfig.getInstance().init(this)
                 //开启log调试,默认为关闭状态
                 .setDebug(true);
-
     }
 
 

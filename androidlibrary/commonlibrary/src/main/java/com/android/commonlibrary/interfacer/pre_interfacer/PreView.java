@@ -1,4 +1,4 @@
-package com.android.commonlibrary.mvp_frame.pre_interfacer;
+package com.android.commonlibrary.interfacer.pre_interfacer;
 
 /**
  *   MVP-View基类
