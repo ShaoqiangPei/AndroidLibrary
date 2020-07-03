@@ -59,4 +59,6 @@ public class TestActivity extends AppFragActivity {
 
 }
 ```
+#### 二. 更多
+更多使用方法，请参考其父类[SuperFragActivity使用说明](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SuperFragActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
 
