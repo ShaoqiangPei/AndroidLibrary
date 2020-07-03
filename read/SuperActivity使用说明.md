@@ -8,28 +8,7 @@ SuperActivity 作为所有Activity的超类，具备mvp模式,提供系列的状
 #### 一.使用须知
 作为`Activity`的超类，我们并不会在项目中去直接继承此类建自己的`Activity`，而是通常继承该类的子类，即`AppActivity`来快速创建自己的`Activity`.
 但是为了更加流畅的使用`AppActivity`这个基类，我们有必要对其父类，也就是`SuperActivity`有一个全面的认知。
-#### 二. activity的注册通用配置
-activity 在 Mainfast.xml 中注册的时候，通常会添加一些常用的配置属性.例如你的 TestActivity 在 Mainfast.xml 中注册的时候，可以这样配置：
-```
- <application
-        //以下代码省略
-        //......
-        >
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".TestActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|touchscreen"
-            android:screenOrientation="portrait" />
-            
-    </application>
-```
-#### 三. 隐藏标题栏
+#### 二. 隐藏标题栏
 在app开发过程中，我们经常会隐藏标题栏.SuperActivity也提供了相关方法.
 如果你要将整个app都设为标题栏隐藏状态，那么你可以直接在 Mainfast.xml 中设置整个app的 theme,在 mainfast.xml 中将 app 的 theme 设置成 Theme.Design.NoActionBar 即可,就像下面这样：
 ```
@@ -64,7 +43,7 @@ public class TestActivity extends AppActivity {
     }
 }
 ```
-#### 四. 控件初始化
+#### 三. 控件初始化
 在 TestActivity 继承 AppActivity 以后,TestActivity界面的控件可以有多种初始化方式
 ##### 1.原始方式初始化控件
 TestActivity 作为一个activity,其界面中的控件具备最原始的初始化方式,以 TestActivity 界面的 TextView 为例,你可以这样初始化：
