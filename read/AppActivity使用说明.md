@@ -62,5 +62,26 @@ public class TestActivity extends AppActivity implements MainContract.View {
     //......
 }
 ```
+#### 二. activity的注册通用配置
+activity 在 Mainfast.xml 中注册的时候，通常会添加一些常用的配置属性.例如你的 TestActivity 在 Mainfast.xml 中注册的时候，可以这样配置：
+```
+ <application
+        //以下代码省略
+        //......
+        >
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|touchscreen"
+            android:screenOrientation="portrait" />
+            
+    </application>
+```
 #### 三. 更多
-更多使用方法，
+更多使用方法，请参考[SuperActivity使用说明](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SuperActivity%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
