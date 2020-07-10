@@ -1,6 +1,6 @@
-## SupportFragment使用说明
+## SuperFragment使用说明
 ### 说明
-SupportFragment 作为所有Fragment的超类，提供系列的跳转Activity方法,跳转Fragment界面的传值. 
+`SuperFragment` 作为所有Fragment的超类，提供系列的跳转Activity方法,跳转Fragment界面的传值. 
 供fragment继承，提高fragment的创建及编写效率
 
 ### 使用介绍
@@ -8,7 +8,7 @@ SupportFragment 作为所有Fragment的超类，提供系列的跳转Activity方
 当你要新建一个fragment(假设你新建的为FragmentB类),你只需要让FragmentB继承AppFragment
 并实现AppFragment的getContentViewId(), initData()和setListener()这三个方法即可.你新建的TestActivity可以类似这样创建：
 ```
-public class FragmentB extends SupportFragment {
+public class FragmentB extends AppFragment {
 
     @Override
     public int getContentViewId() {
@@ -45,7 +45,7 @@ AppHelper中具备一个初始化控件的泛型方法,初始化 FragmentB 中�
     //控件初始化
     mTvTestB= AppHelper.getInstance().getView(mLayoutView,R.id.tv_b);
 ```
-##### 3.利用父类 SupportFragment 中的方法初始化控件
+##### 3.利用父类 SuperFragment 中的方法初始化控件
 在 FragmentB 类中初始化 mTvTestB，你还可以这样操作：
 ```
     //声明控件
@@ -55,7 +55,7 @@ AppHelper中具备一个初始化控件的泛型方法,初始化 FragmentB 中�
     mTvTestB= getView(R.id.tv_b);
 ```
 ##### 4.利用 butterknife 初始化控件
-SupportFragment 中已经集成了 butterknife,但是作为一个库引用的话，你仍需在自己的项目中引用 butterknife 库,
+SuperFragment 中已经集成了 butterknife,但是作为一个库引用的话，你仍需在自己的项目中引用 butterknife 库,
 如你在自己项目的 app_module下做 butterknife 库的引用：
 ```
 android {
