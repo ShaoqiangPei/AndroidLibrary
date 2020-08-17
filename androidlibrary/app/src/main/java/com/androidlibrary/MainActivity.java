@@ -8,6 +8,9 @@ import androidx.annotation.NonNull;
 import com.android.commonlibrary.mvp_frame.AppActivity;
 import com.android.commonlibrary.permission.PermissionHelper;
 import com.android.commonlibrary.util.LogUtil;
+import com.android.commonlibrary.util.ScreenBrightUtil;
+import com.android.commonlibrary.util.ToastUtil;
+
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
