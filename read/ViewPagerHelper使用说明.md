@@ -6,6 +6,10 @@
 ### 使用说明
 #### 一. ViewPagerHelper 主要方法介绍
 ```
+    /**添加标题**/
+    public ViewPagerHelper addTitleList(List<String>titleList)
+
+
     /**
      * 添加fragment
      **/
@@ -94,7 +98,8 @@ setRemoveBoundShadow(true)
     //初始化 ViewPager+Fragment页面效果
     private void initData(){
         mViewPagerHelper=new ViewPagerHelper();
-        mViewPagerHelper.addFragment(new OneFragment())
+        mViewPagerHelper.addTitleList(mTitleList) //可不选，不设置则不显示标题文字
+                .addFragment(new OneFragment())
                 .addFragment(new TwoFragment())
                 .addFragment(new ThreeFragment())
                 .setRemoveBoundShadow(true)//true:去掉边界阴影  false:滑到边界有阴影。默认为false,即滑至边界有边界阴影
