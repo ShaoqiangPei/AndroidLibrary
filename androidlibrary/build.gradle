@@ -15,7 +15,6 @@ buildscript {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         //避免butterKnife在library中使用出现id冲突
         classpath 'com.jakewharton:butterknife-gradle-plugin:9.0.0-rc2'
-
     }
 }
 

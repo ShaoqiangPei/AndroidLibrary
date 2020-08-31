@@ -17,11 +17,18 @@ import java.util.List;
  */
 public class ViewPagerHelper {
 
+    private List<String>mTitleList;
     private List<Fragment> mFragmentList;
     private ViewPagerAdapter mViewPagerAdapter;
     private int mLoadCount = 0;//预加载Fragment个数
     private int mLoadIndex = 0;//初始化时默认显示页码的下标
     private boolean mRemoveBoundShadow=false;//viewPager滑到边界时是否去掉边界阴影,默认滑至边界有阴影
+
+    /**添加标题**/
+    public ViewPagerHelper addTitleList(List<String>titleList){
+        this.mTitleList=titleList;
+        return ViewPagerHelper.this;
+    }
 
     /**
      * 添加fragment
@@ -85,7 +92,7 @@ public class ViewPagerHelper {
         if (viewPager == null) {
             throw new NullPointerException("====viewPager不能为null======");
         }
-        mViewPagerAdapter = new ViewPagerAdapter(((FragmentActivity) context).getSupportFragmentManager(), mFragmentList);
+        mViewPagerAdapter = new ViewPagerAdapter(((FragmentActivity) context).getSupportFragmentManager(), mTitleList,mFragmentList);
         //设置ViewPger滑至边界是否去掉边界阴影
         //true:去掉边界阴影  false:滑到边界有阴影。默认为false,即滑至边界有边界阴影
         if(mRemoveBoundShadow){
