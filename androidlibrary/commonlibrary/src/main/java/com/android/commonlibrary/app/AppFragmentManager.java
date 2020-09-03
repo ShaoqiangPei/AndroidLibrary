@@ -77,12 +77,13 @@ public class AppFragmentManager {
             addFragmentTag(tag);
         } else {
             transaction.show(fragment);
-            for (String fragmentTag : mFragmentStack) {
-                if (!fragmentTag.equals(tag)) {
-                    Fragment otherfragment = manager.findFragmentByTag(fragmentTag);
-                    if (otherfragment != null) {
-                        transaction.hide(otherfragment);
-                    }
+        }
+        //隐藏其他fragment
+        for (String fragmentTag : mFragmentStack) {
+            if (!fragmentTag.equals(tag)) {
+                Fragment otherfragment = manager.findFragmentByTag(fragmentTag);
+                if (otherfragment != null) {
+                    transaction.hide(otherfragment);
                 }
             }
         }
