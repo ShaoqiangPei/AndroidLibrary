@@ -12,13 +12,33 @@ import java.security.NoSuchAlgorithmException;
  */
 public class MD5Util {
 
+    /***
+     * 加密成 32 位 MD5字符串
+     *
+     * @param str 要加密的字符串
+     * @return
+     */
     public static String getMD5(String str) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(str.getBytes());
-            return getString2(md.digest());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        if(str!=null){
+            return getMD5(str.getBytes());
+        }
+        return "";
+    }
+
+    /***
+     *  加密成 32 位 MD5字符串
+     * @param data 要加密的字节数组
+     * @return
+     */
+    public static String getMD5(byte data[]){
+        if(data!=null){
+            try {
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                md.update(data);
+                return getString2(md.digest());
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
         }
         return "";
     }

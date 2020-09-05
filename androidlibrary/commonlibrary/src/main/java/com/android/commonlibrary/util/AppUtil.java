@@ -8,6 +8,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -88,6 +89,43 @@ public class AppUtil {
             return packageInfo.packageName;
         }
         return null;
+    }
+
+    /***
+     *  根据应用程序包名 获取 应用签名
+     *
+     * @param packageName eg:com.example.mydemo
+     * @return 经MD5加密后的32位字符串
+     */
+    public static String getSignatureByPackageName(String packageName){
+        if(StringUtil.isEmpty(packageName)){
+            LogUtil.e("=====获取签名失败，应用程序包名为 null=====");
+            return null;
+        }
+        PackageManager localPackageManager = LibraryConfig.getInstance().getApplication().getPackageManager();
+        PackageInfo localPackageInfo;
+        try {
+            localPackageInfo = localPackageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
+            if (localPackageInfo == null) {
+                LogUtil.e("信息为 null, 应用程序包名 = " + packageName);
+                return null;
+            }
+        } catch (PackageManager.NameNotFoundException localNameNotFoundException) {
+            LogUtil.e("包名没有找到...");
+            return null;
+        }
+        Signature[] arrayOfSignature = localPackageInfo.signatures;
+        if ((arrayOfSignature == null) || (arrayOfSignature.length == 0)){
+            LogUtil.e("===signs is null====");
+            return null;
+        }
+        Signature sign=arrayOfSignature[0];
+        String signature=null;
+        if(sign!=null){
+            //md5加密，生成32位字符串签名
+            signature=MD5Util.getMD5(sign.toByteArray());
+        }
+        return signature;
     }
 
     /**
