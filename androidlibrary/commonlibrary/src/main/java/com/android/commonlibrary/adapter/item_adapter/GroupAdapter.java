@@ -140,8 +140,13 @@ public abstract class GroupAdapter<T>extends BaseSectionQuickAdapter implements 
     /**设置九宫格RecyclerView**/
     @Override
     public void setRecyclerGridManager(RecyclerView recyclerView, int itemCount) {
+        setRecyclerGridManager(recyclerView,false,itemCount);
+    }
+
+    /**设置九宫格RecyclerView**/
+    public void setRecyclerGridManager(RecyclerView recyclerView,  boolean NestedScrollingEnabled,int itemCount) {
         openLoadAnimation();//默认adapter渐现效果
-        AdapterHelper.getInstance().setRecyclerGridManager(this,recyclerView,itemCount,mContext);
+        AdapterHelper.getInstance().setRecyclerGridManager(this,recyclerView,NestedScrollingEnabled,itemCount,mContext);
     }
 
     /**设置九宫格间距**/

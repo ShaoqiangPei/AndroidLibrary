@@ -53,12 +53,25 @@ public class AdapterHelper {
         return vaule;
     }
 
-    /**设置线性RecyclerView**/
+    /***
+     * 设置线性RecyclerView
+     *
+     * NestedScrollingEnabled：参数默认为 false 的设置
+     */
     public void setRecyclerLinearManager(RecyclerView.Adapter adapter, RecyclerView recyclerView, Context context){
+        setRecyclerLinearManager(adapter,recyclerView,false,context);
+    }
+
+    /***
+     * 设置线性RecyclerView
+     *
+     * @param NestedScrollingEnabled：可活动设置recyclerView.setNestedScrollingEnabled(boolean scroll)参数
+     */
+    public void setRecyclerLinearManager(RecyclerView.Adapter adapter, RecyclerView recyclerView, boolean NestedScrollingEnabled,Context context){
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setSmoothScrollbarEnabled(true);
         layoutManager.setAutoMeasureEnabled(true);
-        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setNestedScrollingEnabled(NestedScrollingEnabled);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -71,12 +84,25 @@ public class AdapterHelper {
         return divider;
     }
 
-    /**设置九宫格RecyclerView**/
+    /***
+     * 设置九宫格RecyclerView
+     *
+     * NestedScrollingEnabled：参数默认为 false 的设置
+     */
     public void setRecyclerGridManager(RecyclerView.Adapter adapter, RecyclerView recyclerView, int itemCount, Context context){
+        setRecyclerGridManager(adapter,recyclerView,false,itemCount,context);
+    }
+
+    /***
+     * 设置九宫格RecyclerView
+     *
+     * @param NestedScrollingEnabled：可活动设置recyclerView.setNestedScrollingEnabled(boolean scroll)参数
+     */
+    public void setRecyclerGridManager(RecyclerView.Adapter adapter, RecyclerView recyclerView, boolean NestedScrollingEnabled,int itemCount, Context context){
         GridLayoutManager manager = new GridLayoutManager(context, itemCount);
         manager.setSmoothScrollbarEnabled(true);
         manager.setAutoMeasureEnabled(true);
-        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setNestedScrollingEnabled(NestedScrollingEnabled);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);

@@ -18,13 +18,13 @@ import com.chad.library.adapter.base.animation.BaseAnimation;
 public interface IAdapter {
 
     /**item中初始化控件**/
-    <T>void initView(BaseViewHolder viewHolder, T obj);
+    void initView(BaseViewHolder viewHolder, Object obj);
 
     /**item中初始化数据**/
-    <T>void initData(BaseViewHolder viewHolder, T obj);
+    void initData(BaseViewHolder viewHolder, Object obj);
 
     /**item中监听事件**/
-    <T>void setListener(BaseViewHolder viewHolder, T obj);
+    void setListener(BaseViewHolder viewHolder, Object obj);
 
     /**获取headerView**/
     View getHeaderView(int headerViewId);

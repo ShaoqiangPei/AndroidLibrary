@@ -129,7 +129,12 @@ public abstract class ComAdapter<T> extends BaseQuickAdapter<T, BaseViewHolder> 
     /**设置线性RecyclerView**/
     @Override
     public void setRecyclerLinearManager(RecyclerView recyclerView) {
-        AdapterHelper.getInstance().setRecyclerLinearManager(this,recyclerView,mContext);
+        setRecyclerLinearManager(recyclerView,false);
+    }
+
+    /**设置线性RecyclerView**/
+    public void setRecyclerLinearManager(RecyclerView recyclerView,boolean NestedScrollingEnabled) {
+        AdapterHelper.getInstance().setRecyclerLinearManager(this,recyclerView,NestedScrollingEnabled,mContext);
         //默认adapter渐现效果
         openLoadAnimation();
     }
