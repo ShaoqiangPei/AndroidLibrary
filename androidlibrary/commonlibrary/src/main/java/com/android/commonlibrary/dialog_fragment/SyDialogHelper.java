@@ -16,7 +16,7 @@ public class SyDialogHelper {
 
     private static SyDialogFragment mSyDialogFragment;
 
-    /**显示一个按钮的提示dialog(自己写按钮文字)**/
+    /**显示一个按钮的提示dialog(自己写按钮文字和功能)**/
     public static void showDialogOneBtn(String tipMsg, String btnText, Context context, View.OnClickListener listener){
         if(mSyDialogFragment==null){
             mSyDialogFragment = getSyDialogFragment(context);
@@ -27,11 +27,14 @@ public class SyDialogHelper {
         }
         mSyDialogFragment.setTitleText("提示")
                 .setMesssageText(tipMsg)
+                .setConfirmBtn(false)
                 .setCancelBtn(btnText, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mSyDialogFragment.dismiss();
-                        listener.onClick(v);
+                        if(listener!=null) {
+                            listener.onClick(v);
+                        }
                     }
                 })
                 .setUIShadow(true)
@@ -40,9 +43,19 @@ public class SyDialogHelper {
                 .showDialog(((AppCompatActivity) context).getSupportFragmentManager());
     }
 
-    /**显示一个按钮的提示dialog(默认按钮文字为"确定")**/
+    /**显示一个按钮的提示dialog(默认按钮文字为"确定",自己写按钮功能)**/
     public static void showDialogOneBtn(String tipMsg,Context context,View.OnClickListener listener){
         showDialogOneBtn(tipMsg,"确定",context,listener);
+    }
+
+    /**显示一个按钮的提示,无按钮功能，自己写按钮文字**/
+    public static void showDialogOneBtn(String tipMsg,String btnText,Context context){
+        showDialogOneBtn(tipMsg,btnText,context,null);
+    }
+
+    /**显示一个按钮的提示,无按钮功能，按钮文字为"确定"**/
+    public static void showDialogOneBtn(String tipMsg,Context context){
+        showDialogOneBtn(tipMsg,"确定",context);
     }
 
     /**显示两个按钮的提示dialog(确定，取消按钮文字和功能自定义)**/

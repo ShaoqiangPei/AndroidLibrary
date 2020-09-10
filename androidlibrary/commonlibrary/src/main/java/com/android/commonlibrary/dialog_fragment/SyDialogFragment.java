@@ -205,7 +205,7 @@ public class SyDialogFragment extends AppDialogFragment {
 
     /**确认点击事件**/
     public SyDialogFragment setConfirmBtn(View.OnClickListener onClickListener){
-        isConfirmBtn=true;
+        setConfirmBtn(true);
         this.mOnConfirmClickListener=onClickListener;
         return this;
     }
@@ -229,9 +229,25 @@ public class SyDialogFragment extends AppDialogFragment {
         return this;
     }
 
+    public void setmTvTitle(TextView mTvTitle) {
+        this.mTvTitle = mTvTitle;
+    }
+
+    /**设置确认按钮可见性**/
+    public SyDialogFragment setConfirmBtn(boolean confirmBtn) {
+        isConfirmBtn = confirmBtn;
+        return this;
+    }
+
+    /**设置取消按钮可见性**/
+    public SyDialogFragment setCancelBtn(boolean cancelBtn) {
+        isCancelBtn = cancelBtn;
+        return this;
+    }
+
     /**取消点击事件**/
     public SyDialogFragment setCancelBtn(View.OnClickListener onClickListener){
-        isCancelBtn=true;
+        setCancelBtn(true);
         this.mOnCancelClickListener=onClickListener;
         return this;
     }
