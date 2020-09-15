@@ -79,11 +79,13 @@ public class AppFragmentManager {
             transaction.show(fragment);
         }
         //隐藏其他fragment
-        for (String fragmentTag : mFragmentStack) {
-            if (!fragmentTag.equals(tag)) {
-                Fragment otherfragment = manager.findFragmentByTag(fragmentTag);
-                if (otherfragment != null) {
-                    transaction.hide(otherfragment);
+        if(CollectionUtil.isNotEmpty(mFragmentStack)) {
+            for (String fragmentTag : mFragmentStack) {
+                if (!fragmentTag.equals(tag)) {
+                    Fragment otherfragment = manager.findFragmentByTag(fragmentTag);
+                    if (otherfragment != null) {
+                        transaction.hide(otherfragment);
+                    }
                 }
             }
         }
