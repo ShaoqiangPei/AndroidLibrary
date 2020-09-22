@@ -4,11 +4,15 @@ import android.os.Build;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.commonlibrary.R;
 import com.android.commonlibrary.util.AppUtil;
 import com.android.commonlibrary.util.StringUtil;
+
+import java.lang.reflect.Field;
 
 /**
  * Title: EditText 工具类
@@ -56,4 +60,25 @@ public class EditTextUtil {
         }
         return max;
     }
+
+    /***
+     * 设置光标颜色
+     *
+     * 或者直接在xml中设置：  android:textCursorDrawable="@drawable/ic"
+     *
+     * @param editText
+     * @param drawableId：R.drawable.ic
+     */
+    public void setTextCursorDrawable(EditText editText, int drawableId) {
+        if (editText != null && drawableId != 0) {
+            try {
+                Field f = TextView.class.getDeclaredField("mCursorDrawableRes");
+                f.setAccessible(true);
+                f.set(editText, drawableId);
+            } catch (Exception ignored) {
+
+            }
+        }
+    }
+
 }

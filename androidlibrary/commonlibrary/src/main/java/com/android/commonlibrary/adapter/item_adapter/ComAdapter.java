@@ -3,6 +3,7 @@ package com.android.commonlibrary.adapter.item_adapter;
 import android.content.Context;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.android.commonlibrary.adapter.item_divider.GridDividerItemDecoration;
 import com.android.commonlibrary.adapter.item_divider.LinearDividerItemDecoration;
@@ -132,7 +133,12 @@ public abstract class ComAdapter<T> extends BaseQuickAdapter<T, BaseViewHolder> 
         setRecyclerLinearManager(recyclerView,false);
     }
 
-    /**设置线性RecyclerView**/
+    /***
+     * 设置线性RecyclerView
+     *
+     * @param recyclerView
+     * @param NestedScrollingEnabled 设置true的时候可解决 AppBarLayout+NestedScrollView+ViewPager+RecyclerView滑动冲突问题
+     */
     public void setRecyclerLinearManager(RecyclerView recyclerView,boolean NestedScrollingEnabled) {
         AdapterHelper.getInstance().setRecyclerLinearManager(this,recyclerView,NestedScrollingEnabled,mContext);
         //默认adapter渐现效果
