@@ -69,7 +69,7 @@ public class EditTextUtil {
      * @param editText
      * @param drawableId：R.drawable.ic
      */
-    public void setTextCursorDrawable(EditText editText, int drawableId) {
+    public static void setTextCursorDrawable(EditText editText, int drawableId) {
         if (editText != null && drawableId != 0) {
             try {
                 Field f = TextView.class.getDeclaredField("mCursorDrawableRes");
