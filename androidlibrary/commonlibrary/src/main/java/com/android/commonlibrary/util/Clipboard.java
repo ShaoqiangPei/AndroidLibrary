@@ -7,6 +7,8 @@ import android.os.Build;
 import android.text.method.ArrowKeyMovementMethod;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 /**
  * Title:剪切板帮助类
  * description:
@@ -74,30 +76,48 @@ public class Clipboard{
      *         便于一打开此界面就能获取内容。
      *
      * 注：需要判断app回到前台
+     *
+     * 关于方法内部要用post调用的原因：
+     *    android Q的规定："只有默认输入法(IME)或者是目前处于焦点的应用, 才能访问到剪贴板数据"
+     *
+     *    而在onCreate或者onResume方法时，View可能还处于申请获取焦点状态，导致获取不到剪切板数据，
+     *    所以当所有View都绘制完毕后，就可以获取到剪切板数据了。
+     *    Ps，所有View绘制完成后才会调用post()方法
+     *
+     * @param context 上下文
+     * @param isClear  获取内容后是否清除剪切板内容 true:获取后立即清除   false：获取后不清除
+     * @param listener 获取内容监听
      */
-    public void getClipboardContent(Context context,OnClipboardListener listener){
+    public void getClipboardContent(Context context,boolean isClear,OnClipboardListener listener){
         //注：需要判断app回到前台
-        // 获取剪贴板数据
-        String content = null;
-        if(mClipboardManager==null){
-            mClipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        }
-        try {
-            ClipData data = mClipboardManager.getPrimaryClip();
-            ClipData.Item item = data.getItemAt(0);
-            content = item.getText().toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (content != null) {
-            // 执行我们的操作
-            if(listener!=null){
-                listener.clipboard(content);
+        ((AppCompatActivity)context).getWindow().getDecorView().post(new Runnable() {
+            @Override
+            public void run() {
+                // 获取剪贴板数据
+                String content = null;
+                if(mClipboardManager==null){
+                    mClipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                }
+                try {
+                    ClipData data = mClipboardManager.getPrimaryClip();
+                    ClipData.Item item = data.getItemAt(0);
+                    content = item.getText().toString();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (content != null) {
+                    // 执行我们的操作
+                    if(listener!=null){
+                        listener.clipboard(content);
+                    }
+                    if(isClear) {
+                        // 清除剪贴板
+                        ClipData clip = ClipData.newPlainText("", "");
+                        mClipboardManager.setPrimaryClip(clip);
+                    }
+                }
             }
-            // 清除剪贴板
-            ClipData clip = ClipData.newPlainText("", "");
-            mClipboardManager.setPrimaryClip(clip);
-        }
+        });
     }
 
     /**设置textView可被复制,剪切和粘贴**/
