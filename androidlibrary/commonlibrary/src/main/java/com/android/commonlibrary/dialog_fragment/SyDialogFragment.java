@@ -265,7 +265,7 @@ public class SyDialogFragment extends AppDialogFragment {
         return this;
     }
 
-    /**设置确认按钮文字大小**/
+    /**设置取消按钮文字大小**/
     public SyDialogFragment setCancelTextSize(float size){
         this.mCancelTextSize=size;
         return this;

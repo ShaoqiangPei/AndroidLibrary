@@ -5,12 +5,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+
+import com.android.commonlibrary.dialog_fragment.SyDialogHelper;
 import com.android.commonlibrary.mvp_frame.AppActivity;
 import com.android.commonlibrary.permission.PermissionHelper;
-import com.android.commonlibrary.util.AppUtil;
+import com.android.commonlibrary.util.AgreementDefaultHelper;
 import com.android.commonlibrary.util.LogUtil;
-import com.android.commonlibrary.util.MD5Util;
-
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
@@ -80,7 +80,39 @@ public class MainActivity extends AppActivity {
     }
 
     private void test() {
+        SyDialogHelper.showDialogOneBtn("大家好",mContext);
 
+//        AgreementDefaultHelper.showDefaultAgreementDialog(mContext, "测试app",
+//                R.color.red, null,
+//                R.color.colorAccent,R.color.green,
+//                //跳转用户协议界面的监听
+//                new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        LogUtil.i("====跳转用户协议=======");
+//                    }
+//                },
+//                //跳转隐私协议界面的监听
+//                new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        LogUtil.i("====跳转隐私协议=======");
+//                    }
+//                },
+//                //取消按钮监听,一般执行退出app的操作
+//                new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        LogUtil.i("====退出app=======");
+//                    }
+//                },
+//                //确定按钮的操作,一般处理进入app的流程
+//                new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        LogUtil.i("====进入app=======");
+//                    }
+//                });
     }
 
 }

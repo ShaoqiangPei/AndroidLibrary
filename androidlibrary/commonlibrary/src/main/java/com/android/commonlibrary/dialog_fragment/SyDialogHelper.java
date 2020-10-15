@@ -14,7 +14,35 @@ import androidx.fragment.app.Fragment;
  */
 public class SyDialogHelper {
 
+    private static final int RID=-1;//默认背景资源id
+
     private static SyDialogFragment mSyDialogFragment;
+    private static int mConfirmTextColor=RID;//默认确认按钮文字颜色
+    private static int mCancelTextColor=RID;//默认取消按钮文字颜色
+
+    /***
+     * 设置SyDialogHelper弹出dialog的确认按钮颜色
+     *
+     * 注: 此方法为可选，若有需要可在Application中设置整个app中
+     *    由SyDialogHelper弹出dialog的确认按钮的颜色
+     *
+     * @param confirmTextColor：R.color.red
+     */
+    public static void setConfirmTextColor(int confirmTextColor){
+        mConfirmTextColor=confirmTextColor;
+    }
+
+    /***
+     * 设置SyDialogHelper弹出dialog的取消按钮颜色
+     *
+     * 注: 此方法为可选，若有需要可在Application中设置整个app中
+     *    由SyDialogHelper弹出dialog的确认按钮的颜色
+     *
+     * @param cancelTextColor：R.color.red
+     */
+    public static void setCancelTextColor(int cancelTextColor){
+        mCancelTextColor= cancelTextColor;
+    }
 
     /**显示一个按钮的提示dialog(自己写按钮文字和功能)**/
     public static void showDialogOneBtn(String tipMsg, String btnText, Context context, View.OnClickListener listener){
@@ -106,12 +134,19 @@ public class SyDialogHelper {
     }
 
     private static SyDialogFragment getSyDialogFragment(Context context){
-        return (SyDialogFragment) AppDialogFragment.createFragment(SyDialogFragment.class, context, new AppDialogFragment.OnCreateFragmentListener() {
+        SyDialogFragment syDialogFragment= (SyDialogFragment) AppDialogFragment.createFragment(SyDialogFragment.class, context, new AppDialogFragment.OnCreateFragmentListener() {
             @Override
             public Fragment createFragment() {
                 return new SyDialogFragment();
             }
         });
+        if(mConfirmTextColor!=RID){
+            syDialogFragment.setConfirmTextColor(mConfirmTextColor);
+        }
+        if(mCancelTextColor!=RID){
+            syDialogFragment.setCancelTextColor(mCancelTextColor);
+        }
+        return syDialogFragment;
     }
 
 

@@ -1,9 +1,7 @@
 package com.androidlibrary;
 
 import android.app.Application;
-
 import com.android.commonlibrary.app.LibraryConfig;
-
 
 public class AppContext extends Application {
 
