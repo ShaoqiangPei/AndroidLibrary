@@ -16,6 +16,7 @@ SyDialogFragment使用过程中，一般效果图如下
 ```
         SyDialogFragment syDialogFragment=new SyDialogFragment();
         syDialogFragment.setBackGroundColor(R.color.white)//默认背景白色，在SyDialogFragment中设置
+                .setDialogSize(0.8d,0.28d) //设置dialog弹框大小,不设置的话默认宽度比例为0.8d,高度比例为0.28d
                 .setTitle(true)//默认显示标题栏
                 .setTitleText("申请")//默认显示"提示"，在xml中设置
                 .setTitleTextColor(R.color.blue)//默认黑色，在xml中设置
