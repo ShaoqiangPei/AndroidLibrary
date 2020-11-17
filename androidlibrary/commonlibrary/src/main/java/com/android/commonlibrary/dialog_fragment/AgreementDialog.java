@@ -37,7 +37,6 @@ public class AgreementDialog extends AppDialogFragment {
     private int mCancelBackground=super.RID;//设置取消按钮背景
 
     private double mScaleWidth=0d;//弹框宽度比
-    private double mScaleHeight=0d;//弹框高度比
 
     //协议点击监听事件
     private View.OnClickListener mOnUserListener;
@@ -52,10 +51,7 @@ public class AgreementDialog extends AppDialogFragment {
         if(mScaleWidth==0){
             mScaleWidth=0.7d;
         }
-        if(mScaleHeight==0){
-            mScaleHeight=super.WRAP_CONTENT;
-        }
-        return new double[]{mScaleWidth,mScaleHeight};
+        return new double[]{mScaleWidth,super.WRAP_CONTENT};
     }
 
     @Override
@@ -174,12 +170,10 @@ public class AgreementDialog extends AppDialogFragment {
      * 不调用的话,默认宽度为屏幕的 0.7,高度自适应
      *
      * @param scaleWidth
-     * @param scaleHeight
      * @return
      */
-    public AgreementDialog setDialogSize(double scaleWidth,double scaleHeight){
+    public AgreementDialog setDialogSize(double scaleWidth){
         this.mScaleWidth=scaleWidth;
-        this.mScaleHeight=scaleHeight;
         return this;
     }
 

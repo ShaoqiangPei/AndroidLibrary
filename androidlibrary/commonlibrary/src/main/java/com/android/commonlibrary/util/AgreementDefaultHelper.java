@@ -226,7 +226,7 @@ public class AgreementDefaultHelper {
      * @param context 上下文
      * @param appName app名称
      * @param scaleWidth dialog宽度尺寸比,当设置为 0d时,会默认dialog宽度为屏幕宽的 0.7d
-     * @param scaleHeight dialog高度尺寸比,当设置为 0d时,会默认dialog高度为屏幕自适应 WRAP_CONTENT
+     *                   (注:高度是自适应的,WRAP_CONTENT)
      * @param agreementColor "用户协议","隐私协议"文字颜色, R.color.color_red
      * @param link 联系方式 默认为"暂无",若添加的话,以电话为例则是 Tel: 15927453658
      * @param link confirmBackground 确认按钮背景,如 R.drawable.c,R.color.red
@@ -237,7 +237,7 @@ public class AgreementDefaultHelper {
      * @param confirmListener 确定按钮的操作,一般处理进入app的流程
      */
     public static void showDefaultAgreementDialog(Context context,String appName,
-                                                  double scaleWidth,double scaleHeight,
+                                                  double scaleWidth,
                                                   int agreementColor,String link,
                                                   int confirmBackground,int cancelBackground,
                                                   View.OnClickListener userListener,
@@ -251,7 +251,7 @@ public class AgreementDefaultHelper {
                 return new AgreementDialog();
             }
         });
-        agreementDialog.setDialogSize(scaleWidth,scaleHeight) //设置dialog显示尺寸
+        agreementDialog.setDialogSize(scaleWidth) //设置dialog显示尺寸
                 .setUserListener(userListener)//跳转用户协议界面的监听
                 .setPrivacyListener(privacyListener)//跳转隐私协议界面的监听
                 //对tvContent内部数据做特殊处理的监听
@@ -285,7 +285,7 @@ public class AgreementDefaultHelper {
 
 //=======================调用示例=================================
 //        AgreementDefaultHelper.showDefaultAgreementDialog(mContext, "测试app",
-//                0d,0d,
+//                0d,
 //                R.color.red, null,
 //                R.color.colorAccent,R.color.green,
 //                //跳转用户协议界面的监听
