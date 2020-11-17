@@ -285,6 +285,7 @@ public class AgreementDefaultHelper {
 
 //=======================调用示例=================================
 //        AgreementDefaultHelper.showDefaultAgreementDialog(mContext, "测试app",
+//                0d,0d,
 //                R.color.red, null,
 //                R.color.colorAccent,R.color.green,
 //                //跳转用户协议界面的监听
