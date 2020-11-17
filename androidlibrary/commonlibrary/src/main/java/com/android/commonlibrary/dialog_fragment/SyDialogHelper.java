@@ -17,13 +17,29 @@ public class SyDialogHelper {
     private static final int RID=-1;//默认背景资源id
 
     private static SyDialogFragment mSyDialogFragment;
-    private static int mConfirmTextColor=RID;//默认确认按钮文字颜色
-    private static int mCancelTextColor=RID;//默认取消按钮文字颜色
+    private static double mScaleWidth=0; //全局dialog宽度尺寸比
+    private static double mScaleHeight=0; //全局dialog高度尺寸比
+    private static int mConfirmTextColor=RID;//全局dialog默认确认按钮文字颜色
+    private static int mCancelTextColor=RID;//全局dialog默认取消按钮文字颜色
+
+    /***
+     * 设置通用dialog—SyDialogFragment全局尺寸
+     *
+     * 注: 此方法为可选,若有需要可在Application中设置整个app中
+     *    由SyDialogHelper弹出dialog的宽高尺寸
+     *
+     * @param scaleWidth 屏幕宽度比,如 0.8d 表示宽度为屏幕宽度的0.8
+     * @param scaleHeight 屏幕高度比,如 0.28d 表示宽度为屏幕宽度的0.28
+     */
+    public static void setDialogSize(double scaleWidth,double scaleHeight){
+        mScaleWidth=scaleWidth;
+        mScaleHeight=scaleHeight;
+    }
 
     /***
      * 设置SyDialogHelper弹出dialog的确认按钮颜色
      *
-     * 注: 此方法为可选，若有需要可在Application中设置整个app中
+     * 注: 此方法为可选,若有需要可在Application中设置整个app中
      *    由SyDialogHelper弹出dialog的确认按钮的颜色
      *
      * @param confirmTextColor：R.color.red
@@ -140,6 +156,9 @@ public class SyDialogHelper {
                 return new SyDialogFragment();
             }
         });
+        //设置dialog显示尺寸
+        syDialogFragment.setDialogSize(mScaleWidth,mScaleHeight);
+        //设置按钮颜色
         if(mConfirmTextColor!=RID){
             syDialogFragment.setConfirmTextColor(mConfirmTextColor);
         }
