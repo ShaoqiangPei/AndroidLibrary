@@ -34,6 +34,9 @@ public class SyDialogFragment extends AppDialogFragment {
     private int mCancelTextColor=super.RID;//默认取消按钮文字颜色在xml中设置
     private float mCancelTextSize=super.RID;//默认取消按钮文字大小在xml中设置
 
+    private double mScaleDialogWidth=0; //屏幕宽度比例
+    private double mScaleDialogHeight=0; //屏幕高度比例
+
     private boolean isConfirmBtn;//默认不显示确认按钮
     private boolean isCancelBtn;//默认不显示取消按钮
 
@@ -43,7 +46,13 @@ public class SyDialogFragment extends AppDialogFragment {
 
     @Override
     protected double[] getWindowSize() {
-        return new double[]{0.8d,0.28d};
+        if(mScaleDialogWidth<=0){
+            mScaleDialogWidth=0.8d;
+        }
+        if(mScaleDialogHeight<=0){
+            mScaleDialogHeight=0.28d;
+        }
+        return new double[]{mScaleDialogWidth,mScaleDialogHeight};
     }
 
     @Override
@@ -124,7 +133,6 @@ public class SyDialogFragment extends AppDialogFragment {
         }else{
             mTvCancel.setVisibility(View.GONE);
         }
-
     }
 
     /**初始化控件**/
@@ -153,6 +161,13 @@ public class SyDialogFragment extends AppDialogFragment {
         }else if(v.getId()== R.id.tv_cancel&&mOnCancelClickListener!=null){
             mOnCancelClickListener.onClick(v);
         }
+    }
+
+    /**设置dialog尺寸**/
+    public SyDialogFragment setDialogSize(double scaleWidth,double scaleHeight){
+        this.mScaleDialogWidth=scaleWidth;
+        this.mScaleDialogHeight=scaleHeight;
+        return this;
     }
 
     /**设置dialog背景色**/
@@ -276,6 +291,7 @@ public class SyDialogFragment extends AppDialogFragment {
 //        mSyDialogFragment=new SyDialogFragment();
 //
 //        mSyDialogFragment.setBackGroundColor(R.color.white)//默认背景白色，在SyDialogFragment中设置
+//        .setDialogSize(0.8d,0.28d) //设置dialog弹框大小,不设置的话默认宽度比例为0.8d,高度比例为0.28d
 //        .setTitle(true)//默认显示标题栏
 //        .setTitleText("申请")//默认显示"提示"，在xml中设置
 //        .setTitleTextColor(R.color.blue)//默认黑色，在xml中设置
