@@ -58,6 +58,18 @@ public class RegularUtil {
        return isRegex(msg,regex);
     }
 
+    /***
+     * 判断是否为数字(整数或小数)
+     *
+     * 一般用于判断输入框中要输入Double类型数据
+     * @param msg
+     * @return
+     */
+    public static boolean isDoubleFormat(String msg){
+        String regex="0|^[1-9][0-9]*$|^[1-9][0-9]*\\.[0-9]+$|0\\.[0-9]+$";
+        return RegularUtil.isRegex(msg,regex);
+    }
+
     /**字符串是否含有数字**/
     public static boolean isContainNumber(String msg){
         String regex="^.*\\d.*$";

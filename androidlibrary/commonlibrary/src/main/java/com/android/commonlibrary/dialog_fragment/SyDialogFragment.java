@@ -43,13 +43,12 @@ public class SyDialogFragment extends AppDialogFragment {
     private View.OnClickListener mOnConfirmClickListener;
     private View.OnClickListener mOnCancelClickListener;
 
-
     @Override
     protected double[] getWindowSize() {
-        if(mScaleDialogWidth<=0){
+        if(mScaleDialogWidth==0){
             mScaleDialogWidth=0.8d;
         }
-        if(mScaleDialogHeight<=0){
+        if(mScaleDialogHeight==0){
             mScaleDialogHeight=0.28d;
         }
         return new double[]{mScaleDialogWidth,mScaleDialogHeight};
