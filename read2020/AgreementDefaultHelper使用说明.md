@@ -11,6 +11,7 @@
     private void showAgreementDialog() {
         AgreementDefaultHelper.showDefaultAgreementDialog(this,
                 AppUtil.getAppName(),
+                0d,0d,
                 R.color.blue,
                 null,
                 R.color.blue,
