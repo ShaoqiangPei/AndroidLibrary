@@ -218,6 +218,26 @@ public abstract class SuperFragment extends Fragment implements IActivity{
         return ((SuperActivity)mContext).getParcelableList(tag);
     }
 
+    /***
+     * 带List<Serializable>list的界面跳转,集合中的object需要实现Serializable接口
+     *
+     * @param cls
+     * @param bundle  若有携带有信息的bundle需要传,则此处传该bundle对象
+     *                若没有bundle需要传,则此处传null就行
+     * @param tag
+     * @param list
+     */
+    @Override
+    public void startSerializableListAct(Class<?> cls, Bundle bundle, String tag, List<? extends Serializable> list) {
+        ((SuperActivity)mContext).startSerializableListAct(cls,bundle,tag,list);
+    }
+
+    /**接收上一个界面传过来的list<Serializable>list,集合中的object需要实现Serializable接口**/
+    @Override
+    public List<? extends Serializable> getSerializableList(String tag) {
+        return ((SuperActivity)mContext).getSerializableList(tag);
+    }
+
     /**下一个Fragemnt中接收传值**/
     protected Bundle getFragBundle(){
         Bundle bundle=getArguments();

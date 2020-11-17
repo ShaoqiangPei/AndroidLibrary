@@ -199,4 +199,44 @@ public class IntentHelper {
     public List<? extends Parcelable> getParcelableList(Context context,String tag) {
         return ((Activity)context).getIntent().getParcelableArrayListExtra(tag);
     }
+
+    /***
+     * 用intent给下一个界面传object集合,object需要实现Serializable接口
+     *
+     * @param intent
+     * @param bundle 若有携带有信息的bundle需要传,则此处传该bundle对象
+     *               若没有bundle需要传,则此处传null就行
+     * @param tag
+     * @param list
+     * @return
+     */
+    public Intent putSerializableList(Intent intent, Bundle bundle,String tag, List<? extends Serializable> list){
+        if(bundle==null){
+            bundle=new Bundle();
+        }
+        bundle.putSerializable(tag,(Serializable)list);//序列化,要注意转化(Serializable)
+        intent.putExtras(bundle);//发送数据
+        return intent;
+    }
+
+    /***
+     * 带List<Serializable>list的界面跳转
+     *
+     * @param context
+     * @param cls
+     * @param bundle  若有携带有信息的bundle需要传,则此处传该bundle对象
+     *                若没有bundle需要传,则此处传null就行
+     * @param tag
+     * @param list
+     */
+    public void startSerializableListAct(Context context,Class<?> cls, Bundle bundle,String tag, List<? extends Serializable> list) {
+        Intent intent = newIndexIntent(context,cls);
+        Intent listIntent = putSerializableList(intent, bundle,tag, list);
+        context.startActivity(listIntent);
+    }
+
+    /**用intent接收上一个界面传过来的list<Serializable>list**/
+    public List<? extends Serializable> getSerializableList(Context context,String tag) {
+        return (List<? extends Serializable>) ((Activity)context).getIntent().getSerializableExtra(tag);
+    }
 }
