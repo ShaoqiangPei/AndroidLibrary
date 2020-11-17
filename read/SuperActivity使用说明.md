@@ -186,6 +186,20 @@ public void startParcelableListAct(Class<?> cls, String tag, List<? extends Parc
 
 /**接收上一个界面传过来的object集合,集合中的object需要实现Parcelable接口**/
 public List<? extends Parcelable> getParcelableList(String tag)
+
+/***
+ * 带List<Serializable>list的界面跳转
+ *
+ * @param cls
+ * @param bundle  若有携带有信息的bundle需要传,则此处传该bundle对象
+ *                若没有bundle需要传,则此处传null就行
+ * @param tag
+ * @param list
+ */
+void startSerializableListAct(Class<?> cls, Bundle bundle, String tag, List<? extends Serializable> list);
+
+/**用intent接收上一个界面传过来的list<Serializable>list**/
+List<? extends Serializable> getSerializableList(String tag);
 ```
 ##### 5. 系统dialog方法
 ```
