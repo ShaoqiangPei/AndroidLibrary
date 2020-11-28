@@ -1,5 +1,6 @@
 package com.android.commonlibrary.dialog_fragment;
 
+import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ public class SyDialogFragment extends AppDialogFragment {
     private String mTitleText;//默认标题栏文字在xml中设置
     private int mTitleTextColor= super.RID;//默认标题栏文字颜色在xml中设置
     private float mTitleTextSize=super.RID;//默认标题栏文字大小在xml中设置
-    private String mContentText;//默认内容区文字在xml中设置
+    private Object mContentText;//默认内容区文字在xml中设置(可以为String或SpannableString)
     private int mContentTextColor=super.RID;//默认内容区文字颜色在xml中设置
     private float mContentTextSize=super.RID;//默认内容区文字大小在xml中设置
     private String mConfirmText;//默认确认按钮文字在xml中设置
@@ -84,7 +85,12 @@ public class SyDialogFragment extends AppDialogFragment {
         }
         //设置内容区文字
         if(mContentText!=null){
-            mTvContent.setText(mContentText);
+            if(mContentText instanceof SpannableString){
+                SpannableString sp= (SpannableString) mContentText;
+                mTvContent.setText(sp);
+            }else if(mContentText instanceof String){
+                mTvContent.setText(mContentText.toString());
+            }
             //设置内容超长时可滑动显示
             mTvContent.setMovementMethod(ScrollingMovementMethod.getInstance());
         }
@@ -199,8 +205,8 @@ public class SyDialogFragment extends AppDialogFragment {
         return this;
     }
 
-    /**设置内容区文字**/
-    public SyDialogFragment setMesssageText(String message){
+    /**设置内容区文字(可以是String或SpannableString)**/
+    public SyDialogFragment setMesssageText(Object message){
         this.mContentText=message;
         return this;
     }

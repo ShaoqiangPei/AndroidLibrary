@@ -99,6 +99,8 @@ dependencies {
     implementation librarys.implementation_rx_java2
     //loadingdialog,网络加载对话框
     implementation librarys.implementation_loading_dialog
+    //drawerlayout(侧滑菜单栏)
+    api librarys.api_drawerlayout
 
 //    //Glide
 //    api librarys.compile_glide4

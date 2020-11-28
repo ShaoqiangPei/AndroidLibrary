@@ -191,7 +191,7 @@ public class AgreementDefaultHelper {
         if(userListener!=null) {
             sp = SpannableStringUtil.setClickText(getAgreementDialogContent(appName), USER_AGREEMENT, textColor, false, userListener);
         }
-        //意思协议设置
+        //隐私协议设置
         if(privacyListener!=null) {
             sp = SpannableStringUtil.setClickText(sp, PRIVACY_AGREEMENT, textColor, false, privacyListener);
         }

@@ -1,6 +1,7 @@
 package com.android.commonlibrary.dialog_fragment;
 
 import android.content.Context;
+import android.text.SpannableString;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,12 +62,17 @@ public class SyDialogHelper {
     }
 
     /**显示一个按钮的提示dialog(自己写按钮文字和功能)**/
-    public static void showDialogOneBtn(String tipMsg, String btnText, Context context, View.OnClickListener listener){
+    public static void showDialogOneBtn(Object tipMsg, String btnText, Context context, View.OnClickListener listener){
         if(mSyDialogFragment==null){
             mSyDialogFragment = getSyDialogFragment(context);
         }
         if (mSyDialogFragment.isShowing()) {
             //若已经显示则不再show了
+            return;
+        }
+        //提示语设置校验
+        if(!effectTipMsg(tipMsg)){
+            //setMesssageText(tipMsg)只允许设置非空 String或SpannableString
             return;
         }
         mSyDialogFragment.setTitleText("提示")
@@ -88,27 +94,32 @@ public class SyDialogHelper {
     }
 
     /**显示一个按钮的提示dialog(默认按钮文字为"确定",自己写按钮功能)**/
-    public static void showDialogOneBtn(String tipMsg,Context context,View.OnClickListener listener){
+    public static void showDialogOneBtn(Object tipMsg,Context context,View.OnClickListener listener){
         showDialogOneBtn(tipMsg,"确定",context,listener);
     }
 
     /**显示一个按钮的提示,无按钮功能，自己写按钮文字**/
-    public static void showDialogOneBtn(String tipMsg,String btnText,Context context){
+    public static void showDialogOneBtn(Object tipMsg,String btnText,Context context){
         showDialogOneBtn(tipMsg,btnText,context,null);
     }
 
     /**显示一个按钮的提示,无按钮功能，按钮文字为"确定"**/
-    public static void showDialogOneBtn(String tipMsg,Context context){
+    public static void showDialogOneBtn(Object tipMsg,Context context){
         showDialogOneBtn(tipMsg,"确定",context);
     }
 
     /**显示两个按钮的提示dialog(确定，取消按钮文字和功能自定义)**/
-    public static void showDialogTwoBtn(String tipMsg,String cancelText,String confirmText,Context context,View.OnClickListener cancelListener,View.OnClickListener confirmListener){
+    public static void showDialogTwoBtn(Object tipMsg,String cancelText,String confirmText,Context context,View.OnClickListener cancelListener,View.OnClickListener confirmListener){
         if(mSyDialogFragment==null){
             mSyDialogFragment = getSyDialogFragment(context);
         }
         if (mSyDialogFragment.isShowing()) {
             //若已经显示则不再show了
+            return;
+        }
+        //提示语设置校验
+        if(!effectTipMsg(tipMsg)){
+            //setMesssageText(tipMsg)只允许设置非空 String或SpannableString
             return;
         }
         mSyDialogFragment.setTitleText("提示")
@@ -135,7 +146,7 @@ public class SyDialogHelper {
 
 
     /**显示两个按钮的提示dialog(确定，取消按钮文字自定义，点击取消按钮dialog消失)**/
-    public static void showDialogTwoBtn(String tipMsg,String cancelText,String confirmText,Context context,View.OnClickListener listener){
+    public static void showDialogTwoBtn(Object tipMsg,String cancelText,String confirmText,Context context,View.OnClickListener listener){
         showDialogTwoBtn(tipMsg, cancelText, confirmText, context, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,7 +156,7 @@ public class SyDialogHelper {
     }
 
     /**显示两个按钮的提示dialog(确定，取消按钮的文字固定，只需自己写确定功能)**/
-    public static void showDialogTwoBtn(String tipMsg,Context context,View.OnClickListener listener){
+    public static void showDialogTwoBtn(Object tipMsg,Context context,View.OnClickListener listener){
         showDialogTwoBtn(tipMsg,"取消","确定",context,listener);
     }
 
@@ -166,6 +177,21 @@ public class SyDialogHelper {
             syDialogFragment.setCancelTextColor(mCancelTextColor);
         }
         return syDialogFragment;
+    }
+
+    /**是否为有效提示语**/
+    private static boolean effectTipMsg(Object tipMessage){
+        if(tipMessage==null){
+            throw new NullPointerException("===SyDialogHelper的syDialogFragment中设置提示语不能为 null ======");
+        }
+        if(tipMessage instanceof SpannableString){
+            return true;
+        }
+        if(tipMessage instanceof String){
+            return true;
+        }else{
+            throw new ClassCastException("===SyDialogHelper的syDialogFragment中的提示语设置只接受 String 和 SpannableString 数据类型======");
+        }
     }
 
 
