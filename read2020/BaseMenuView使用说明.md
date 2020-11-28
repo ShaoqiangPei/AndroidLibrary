@@ -112,7 +112,7 @@ public class MenuView extends BaseMenuView{
 
 </androidx.drawerlayout.widget.DrawerLayout>
 ```
-然后给出`MainActivity`中含一个侧滑菜单栏时的布局代码(注：项目中引用实际的自定义菜单栏MenuView的全路径)：
+然后给出`MainActivity`中含一个侧滑菜单栏时的布局代码(`注：项目中引用实际的自定义菜单栏MenuView的全路径`)：
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -145,7 +145,7 @@ public class MenuView extends BaseMenuView{
 </androidx.drawerlayout.widget.DrawerLayout>
 ```
 然后菜单栏可以为做左侧滑菜单栏，也可以为右侧滑菜单栏，位置的设定的话，你可以在`xml`布局中的自定义菜单控件`MenuView`上设置`layout_gravity`属性,
-就像下面这样(注：项目中引用实际的自定义菜单栏MenuView的全路径)：
+就像下面这样(`注：项目中引用实际的自定义菜单栏MenuView的全路径`)：
 ```
     <com.demo.MenuView
         android:id="@+id/menuLayout"
