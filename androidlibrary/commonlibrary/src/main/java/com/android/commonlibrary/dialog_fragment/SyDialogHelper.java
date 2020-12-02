@@ -160,6 +160,13 @@ public class SyDialogHelper {
         showDialogTwoBtn(tipMsg,"取消","确定",context,listener);
     }
 
+    /**dialog消失**/
+    public static void dismiss(){
+        if(mSyDialogFragment!=null){
+            mSyDialogFragment.dismiss();
+        }
+    }
+
     private static SyDialogFragment getSyDialogFragment(Context context){
         SyDialogFragment syDialogFragment= (SyDialogFragment) AppDialogFragment.createFragment(SyDialogFragment.class, context, new AppDialogFragment.OnCreateFragmentListener() {
             @Override
