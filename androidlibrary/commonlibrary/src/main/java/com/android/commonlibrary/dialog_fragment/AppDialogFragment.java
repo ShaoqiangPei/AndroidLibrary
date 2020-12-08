@@ -391,6 +391,8 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
             String className = this.getClass().getSimpleName();
             if(!isAdded()) {
                 this.show(fragmentManager, className);
+            }else{
+                this.dismiss();
             }
         } catch (Exception e) {
             e.printStackTrace();
