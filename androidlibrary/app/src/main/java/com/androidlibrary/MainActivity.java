@@ -80,39 +80,7 @@ public class MainActivity extends AppActivity {
     }
 
     private void test() {
-        SyDialogHelper.showDialogOneBtn("大家好",mContext);
 
-//        AgreementDefaultHelper.showDefaultAgreementDialog(mContext, "测试app",
-//                R.color.red, null,
-//                R.color.colorAccent,R.color.green,
-//                //跳转用户协议界面的监听
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        LogUtil.i("====跳转用户协议=======");
-//                    }
-//                },
-//                //跳转隐私协议界面的监听
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        LogUtil.i("====跳转隐私协议=======");
-//                    }
-//                },
-//                //取消按钮监听,一般执行退出app的操作
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        LogUtil.i("====退出app=======");
-//                    }
-//                },
-//                //确定按钮的操作,一般处理进入app的流程
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        LogUtil.i("====进入app=======");
-//                    }
-//                });
     }
 
 }

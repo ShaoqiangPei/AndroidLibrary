@@ -3,7 +3,6 @@ package com.android.commonlibrary.dialog_fragment;
 import android.content.Context;
 import android.text.SpannableString;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 

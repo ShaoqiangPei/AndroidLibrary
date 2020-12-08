@@ -391,8 +391,9 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
             String className = this.getClass().getSimpleName();
             if(!isAdded()) {
                 this.show(fragmentManager, className);
-            }else{
-                this.dismiss();
+                //防止commit()执行后并没有立即 add(R.id.main_fg_content, f, “TAG” + tagPage)造成
+                //findFragmentByTag（xxx）读取不到内容
+                fragmentManager.executePendingTransactions();
             }
         } catch (Exception e) {
             e.printStackTrace();
