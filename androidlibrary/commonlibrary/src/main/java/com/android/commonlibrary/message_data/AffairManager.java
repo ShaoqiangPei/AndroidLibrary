@@ -140,6 +140,13 @@ public class AffairManager {
 
         @Override
         public void run() {
+            if(mOnAffairListener==null){
+                String errorMessage="AffairManager handle Exception: " +
+                        "Unable to start AffairRunnable," +
+                        "you need \"setOnAffairListener(OnAffairListener onAffairListener)\" " +
+                        "before \"handleAffair(Object obj)\"";
+                throw new NullPointerException(errorMessage);
+            }
             LogUtil.i("======事务处理线程启动=====");
             while (isRunning()) {
                 if (!isAffairEmpty()) {
@@ -147,11 +154,11 @@ public class AffairManager {
                     Object obj = getAffair(0);
                     if(obj!=null){
                         //事务处理业务逻辑
-                        if (mOnAffairListener != null) {
-                            mOnAffairListener.doAffair(obj);
+                        boolean saveObj=mOnAffairListener.doAffair(obj);
+                        if(!saveObj) {//为false表示事务执行完毕后会将该obj从队列中移除,默认返回fasle
+                            //移除事务
+                            removeAffair(obj);
                         }
-                        //移除事务
-                        removeAffair(obj);
                         try {
                             Thread.sleep(mDelayTime);
                         } catch (InterruptedException e) {
@@ -170,15 +177,19 @@ public class AffairManager {
             }
             //清空事务队列
             mAffairList.clear();
-            if (mOnAffairListener != null) {
-                mOnAffairListener.affairDestroy();
-            }
+            mOnAffairListener.affairDestroy();
             LogUtil.i("======AffairManager====线程结束====");
         }
     }
 
     public interface OnAffairListener {
-        void doAffair(Object obj);
+        /**
+         * 事务执行完毕后是否保留(不移除obj)
+         *
+         * @param obj 事务处理的obj
+         * @return 队列中是否仍然保留obj的标志，默认返回false,即不保留(会从队列中将该obj移除)
+         */
+        boolean doAffair(Object obj);
         //队列中数据全部处理完毕
         void affairDestroy();
     }
