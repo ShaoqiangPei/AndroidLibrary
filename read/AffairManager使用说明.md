@@ -47,6 +47,8 @@ AffairManager 是用于处理事务队列的工具类。原理是将一个个的
 - 添加的事务，在`doAffair(Object obj)`依次处理,事务队列全部执行完毕后,回调`affairDestroy()`方法  
 - 设置事务处理时间间隔,单位为毫秒,若不设置,则默认事务处理时间间隔为500毫秒  
 - 在`doAffair(Object obj)`或`affairDestroy()`方法中需要更新ui时，可调用`updateInUI(Activity activity, Runnable runnable)`方法
+- 需要注意的是`doAffair(Object obj)`会有一个`boolean`返回值,默认是返回`false`，表示该事务执行完毕后会将`obj`从事务队列中移除，若有特殊情况需要处理(事务执行完毕后，
+`obj`不从事务队列中移除)，则你需要在`doAffair(Object obj)`方法内部做相应处理，然后返回`true`
 ```
     //设置事务处理时间间隔,单位毫秒
     mAffairManager.setDelayTime(1500)
@@ -66,6 +68,14 @@ AffairManager 是用于处理事务队列的工具类。原理是将一个个的
                      mTextView.setText(obj.toString());
                 }
              });
+             
+//            //特殊情况不移除特殊情况的处理,不移除
+//                if(obj.toString().trim().contains("5")){
+//                  LogUtil.i("=====特殊情况不移除===  time="+time);
+//                  return true;
+//              }
+             
+             return false
           }
 
           @Override
