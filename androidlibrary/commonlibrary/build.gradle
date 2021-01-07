@@ -101,6 +101,9 @@ dependencies {
     implementation librarys.implementation_loading_dialog
     //drawerlayout(侧滑菜单栏)
     api librarys.api_drawerlayout
+    //下拉刷新swiperefreshlayout
+    api librarys.api_swiperefreshlayout
+
 
 //    //Glide
 //    api librarys.compile_glide4

@@ -72,7 +72,11 @@ ext {
             implementation_loading_dialog:"com.github.d-max:spots-dialog:0.7@aar",
 
             //DrawerLayout(侧滑菜单栏)
-            api_drawerlayout: "androidx.drawerlayout:drawerlayout:1.1.0-alpha03"
+            api_drawerlayout: "androidx.drawerlayout:drawerlayout:1.1.0-alpha03",
+
+            //下拉刷新swiperefreshlayout
+            api_swiperefreshlayout: "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
 
 //            //selector框架
 //            compile_DevShapeUtils:"com.github.LiangLuDev:DevShapeUtils:1.0.1",
