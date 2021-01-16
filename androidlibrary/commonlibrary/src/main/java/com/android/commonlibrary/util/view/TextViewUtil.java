@@ -48,16 +48,46 @@ public class TextViewUtil {
     }
 
     /***
-     * 设置文字大小(兼容不同屏幕分辨率时调用)
+     * 设置文字大小缩放配置(兼容不同屏幕分辨率时调用)
      *
      * @param textView
      * @param minTextSize  最小文字大小
      * @param maxTextSize  最大文字大小
      * @param sizeStep  文字大小缩放粒度(一般设置为 1)
      */
-    public static void setTextSize(AppCompatTextView textView, int minTextSize, int maxTextSize, int sizeStep){
+    public static void setTextSizeAutoConfig(AppCompatTextView textView, int minTextSize, int maxTextSize, int sizeStep){
         TextViewCompat.setAutoSizeTextTypeWithDefaults(textView,TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,minTextSize,maxTextSize,sizeStep, TypedValue.COMPLEX_UNIT_SP);
+    }
+
+    /***
+     * 设置文字大小(像素设置)
+     *
+     * @param textView
+     * @param textSize 文字大小(单位：px)
+     */
+    public static void setTextSzieByPx(TextView textView,float textSize){
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,textSize); //像素
+    }
+
+    /***
+     * 设置文字大小(sp设置)
+     *
+     * @param textView
+     * @param textSize 文字大小(单位：sp)
+     */
+    public static void setTextSzieBySp(TextView textView,float textSize){
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,textSize); //sp
+    }
+
+    /***
+     * 设置文字大小(dip设置)
+     *
+     * @param textView
+     * @param textSize 文字大小(单位：dip)
+     */
+    public static void setTextSzieByDp(TextView textView,float textSize){
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,textSize); //dp
     }
 
 }

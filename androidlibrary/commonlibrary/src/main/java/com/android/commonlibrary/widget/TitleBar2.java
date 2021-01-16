@@ -1,21 +1,19 @@
 package com.android.commonlibrary.widget;
 
 import android.content.Context;
-import android.media.Image;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.TextViewCompat;
 
 import com.android.commonlibrary.R;
 import com.android.commonlibrary.util.ScreenUtil;
+import com.android.commonlibrary.util.view.TextViewUtil;
 import com.android.commonlibrary.util.view.ViewUtil;
 
 /**
@@ -30,9 +28,9 @@ public class TitleBar2 extends ConstraintLayout {
     private Context mContext;
 
     private ImageView mImvLeft;
-    private TextView mTvLeft;
-    private TextView mTvTitle;
-    private TextView mTvRight;
+    private AppCompatTextView mTvLeft;
+    private AppCompatTextView mTvTitle;
+    private AppCompatTextView mTvRight;
     private ImageView mImvRight;
 
     public TitleBar2(Context context, AttributeSet attrs) {
@@ -81,15 +79,15 @@ public class TitleBar2 extends ConstraintLayout {
         return mImvLeft;
     }
 
-    public TextView getTvLeft(){
+    public AppCompatTextView getTvLeft(){
         return mTvLeft;
     }
 
-    public TextView getTvTitle() {
+    public AppCompatTextView getTvTitle() {
         return mTvTitle;
     }
 
-    public TextView getTvRight() {
+    public AppCompatTextView getTvRight() {
         return mTvRight;
     }
 
@@ -127,18 +125,18 @@ public class TitleBar2 extends ConstraintLayout {
      * @param sp 文字大小，已做sp2px处理,直接传sp值
      */
     public void setTextSize(TextView textView,float sp){
-        textView.setTextSize(ScreenUtil.sp2px(sp,mContext));
+        TextViewUtil.setTextSzieBySp(textView,sp);
     }
 
     /***
-     * 设置文字大小(兼容不同屏幕分辨率时调用)
+     * 设置文字大小缩放配置(兼容不同屏幕分辨率时调用)
      *
      * @param textView
      * @param minTextSize  最小文字大小
      * @param maxTextSize  最大文字大小
      * @param sizeStep  文字大小缩放粒度(一般设置为 1)
      */
-    public void setTextSize(AppCompatTextView textView,int minTextSize,int maxTextSize,int sizeStep){
+    public void setTextSizeAutoConfig(AppCompatTextView textView,int minTextSize,int maxTextSize,int sizeStep){
         TextViewCompat.setAutoSizeTextTypeWithDefaults(textView,TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,minTextSize,maxTextSize,sizeStep, TypedValue.COMPLEX_UNIT_SP);
     }
