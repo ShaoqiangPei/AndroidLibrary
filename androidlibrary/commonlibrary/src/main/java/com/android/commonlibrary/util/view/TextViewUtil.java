@@ -1,9 +1,13 @@
 package com.android.commonlibrary.util.view;
 
 import android.graphics.Typeface;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.TextViewCompat;
 
 import com.android.commonlibrary.util.ScreenUtil;
 
@@ -42,4 +46,18 @@ public class TextViewUtil {
         textView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
         textView.setCompoundDrawablePadding(padding);
     }
+
+    /***
+     * 设置文字大小(兼容不同屏幕分辨率时调用)
+     *
+     * @param textView
+     * @param minTextSize  最小文字大小
+     * @param maxTextSize  最大文字大小
+     * @param sizeStep  文字大小缩放粒度(一般设置为 1)
+     */
+    public static void setTextSize(AppCompatTextView textView, int minTextSize, int maxTextSize, int sizeStep){
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(textView,TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,minTextSize,maxTextSize,sizeStep, TypedValue.COMPLEX_UNIT_SP);
+    }
+
 }

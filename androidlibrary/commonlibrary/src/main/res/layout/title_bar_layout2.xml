@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="fitCenter"/>
 
-    <TextView
+    <AppCompatTextView
         android:id="@+id/tv_left"
         style="@style/tv_text"
         android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
         android:textSize="@dimen/sp_14"
         android:textColor="@color/black"/>
 
-    <TextView
+    <AppCompatTextView
         android:id="@+id/tv_title"
         style="@style/tv_text"
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         android:textSize="@dimen/sp_14"
         android:textColor="@color/black"/>
 
-    <TextView
+    <AppCompatTextView
         android:id="@+id/tv_right"
         style="@style/tv_text"
         android:layout_width="wrap_content"
