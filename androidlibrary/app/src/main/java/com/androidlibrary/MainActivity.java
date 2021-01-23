@@ -12,7 +12,6 @@ import com.android.commonlibrary.permission.PermissionHelper;
 import com.android.commonlibrary.util.LogUtil;
 import com.android.commonlibrary.util.view.ViewUtil;
 import com.android.commonlibrary.widget.TitleBar2;
-
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
@@ -53,13 +52,11 @@ public class MainActivity extends AppActivity {
 
         //申请权限
         requestPermission(PERMISSION_CODE);
-
     }
 
     @Override
     public void setListener() {
         mBtnTest.setOnClickListener(this);
-
 
     }
 
@@ -103,6 +100,7 @@ public class MainActivity extends AppActivity {
     }
 
     private void test() {
+
 
     }
 

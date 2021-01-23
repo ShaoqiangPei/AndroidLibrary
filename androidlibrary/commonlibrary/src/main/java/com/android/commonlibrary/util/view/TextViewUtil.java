@@ -50,6 +50,8 @@ public class TextViewUtil {
     /***
      * 设置文字大小缩放配置(兼容不同屏幕分辨率时调用)
      *
+     * 备注：必须在 setTextSize 之后调用
+     *
      * @param textView
      * @param minTextSize  最小文字大小
      * @param maxTextSize  最大文字大小
