@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
-
 import androidx.core.content.ContextCompat;
 
 /**
@@ -93,6 +92,22 @@ public class ImageViewUtil {
         if(uri!=null){
             imv.setImageURI(uri);
         }
+    }
+
+    /***
+     * 通过 ImageView获得 Bitmap
+     *
+     * @param imv
+     * @return
+     */
+    public static Bitmap getBitmapByImageView(ImageView imv){
+        Bitmap bitmap=null;
+
+        imv.setDrawingCacheEnabled(true);
+        bitmap=Bitmap.createBitmap(imv.getDrawingCache());
+        imv.setDrawingCacheEnabled(false);
+
+        return bitmap;
     }
 
 }
