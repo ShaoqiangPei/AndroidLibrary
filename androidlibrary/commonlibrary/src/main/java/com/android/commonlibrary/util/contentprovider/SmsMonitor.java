@@ -40,18 +40,22 @@ public class SmsMonitor {
     public static final String SMS_TO_SEND_LIST="待发送列表";
     public static final String SMS_ZERO="0类型短信";
 
+    //默认收到短信后查询收件箱最近60秒的内容
+    private static final long DIFF_TIME=1000*60;
     //检测时间段(防止重复调用)
-    private static final long DEFAULT_MILLISECONDS=1000;//一秒
-    //未查询到数据前重复查询最多次数
-    private static final int TOTAL_QUERY_COUNT=5;
+    private static final long DEFAULT_MILLISECONDS=1500;//1.5秒
     //每次查询时间间隔(单位毫秒)
     private static final long QUERY_DIFF_TIME=300;
+    //从监听到收件箱变化(即手机收到短信)开始,最多查询短信箱次数
+    private static final int TOTAL_QUERY_COUNT=5;
 
     private Context mContext;
     private Uri mUri;
     private ContentResolver mContentResolver;
     private ContentObserver mContentObserver;
+    //记录上次双击时间
     private long mLastTime;
+    //记录手机收到短信后未查询到数据前查询了几次
     private int mCount;
 
     private SmsMonitor(){}
@@ -80,37 +84,50 @@ public class SmsMonitor {
      * @param phoneNumber：phoneNumber为具体电话号码时表示只监听该号码短信
      *                     phoneNumber表示监听所有短信
      *
-     * @param diffTime：设置监听时间段。如 diffTime=1000*30 表示监听过去30秒事件内的短信
      * @param listener: 监听得到的短信数据
      *
      */
-    public void registerSmsObserver(String phoneNumber, long diffTime, OnSmsChangeListener listener){
-        if(mContext==null){
-            throw new NullPointerException("======请先调用init(Context context)方法========");
-        }
-
-        List<SmsData> list=new ArrayList<>();
-        mContentResolver=mContext.getContentResolver();
-        mUri= Uri.parse(SmsMonitor.SMS_URI);
-        //设置要查询的列名
-        String[] line = {SmsMonitor.ADDRESS,SmsMonitor.PERSON,SmsMonitor.BODY,SmsMonitor.DATE,SmsMonitor.TYPE};
-        Handler handler=new Handler();
-        //短信观察器
-        mContentObserver=new ContentObserver(handler) {
-            @Override
-            public void onChange(boolean selfChange) {
-                if (accept()) {
-                    LogUtil.i("=====监听通过=======");
-                    //查询短信信息
-                    querySmsInfo(line,list,phoneNumber,diffTime,listener);
-                } else {
-                    LogUtil.i("======监听限制=====");
-                }
+    public void registerSmsObserver(String phoneNumber, OnSmsChangeListener listener){
+        if(mContentResolver==null) {
+            //未注册时开始注册流程
+            if (mContext == null) {
+                throw new NullPointerException("======请先调用init(Context context)方法========");
             }
-        };
-        //注册观察器
-        mContentResolver.registerContentObserver(mUri,true,mContentObserver);
-        LogUtil.i("======注册短信接收监听====");
+            mLastTime = 0;
+            List<SmsData> list = new ArrayList<>();
+            mContentResolver = mContext.getContentResolver();
+            mUri = Uri.parse(SmsMonitor.SMS_URI);
+            //设置要查询的列名
+            String[] line = {SmsMonitor.ADDRESS, SmsMonitor.PERSON, SmsMonitor.BODY, SmsMonitor.DATE, SmsMonitor.TYPE};
+            Handler handler = new Handler();
+            //短信观察器
+            mContentObserver = new ContentObserver(handler) {
+                @Override
+                public void onChange(boolean selfChange) {
+                    //采用防双击和收到结果注销的双重限制,以保证只执行一次onChange方法
+                    if (accept()) {
+                        LogUtil.i("=====监听通过=======");
+                        //注销监听
+                        unRegisterSmsObserver();
+                        //此处延迟是为了防止查询到短信箱中上一条信息
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        //查询短信信息
+                        querySmsInfo(line, list, phoneNumber, listener);
+                    } else {
+                        LogUtil.i("======监听限制=====");
+                    }
+                }
+            };
+            //注册观察器
+            mContentResolver.registerContentObserver(mUri, true, mContentObserver);
+            LogUtil.i("======注册短信接收监听====");
+        }else{
+            LogUtil.i("======短信接收监听已经注册了====");
+        }
     }
 
     /***
@@ -119,16 +136,15 @@ public class SmsMonitor {
      * @param line 查询条件
      * @param list 存储查询结果
      * @param phoneNumber 要查的电话号码,若为null,则查所有短信
-     * @param diffTime 查询时间条件, diffTime - 现在 的时间段
      * @param listener 查询结果监听
      */
-    private void querySmsInfo(String[] line, List<SmsData> list, String phoneNumber, long diffTime, OnSmsChangeListener listener){
+    private void querySmsInfo(String[] line, List<SmsData> list, String phoneNumber, OnSmsChangeListener listener){
         //查询条件
         String selection = null;
         if (StringUtil.isNotEmpty(phoneNumber)) {
-            selection = "address='" + phoneNumber + "' and date>'" + (System.currentTimeMillis() - diffTime) + "'";
+            selection = "address='" + phoneNumber + "' and date>'" + (System.currentTimeMillis() - SmsMonitor.DIFF_TIME) + "'";
         } else {
-            selection = "date>'" + (System.currentTimeMillis() -  diffTime) + "'";
+            selection = "date>'" + (System.currentTimeMillis() -  SmsMonitor.DIFF_TIME) + "'";
         }
         Cursor cursor = mContext.getContentResolver().query(mUri, line, selection, null, "date desc");
         //下面就跟操作普通数据库一样了
@@ -148,35 +164,47 @@ public class SmsMonitor {
                 smsData.setDate(getLongToDate(date));
                 //设置短信类型
                 smsData.setType(getSmsType(type));
-                if (!list.contains(smsData)) {
-                    list.add(smsData);
+                //若list中含相同信息的smsData,删除list中的并添加新的SmsData
+                int index=existSmsInfoInList(list,smsData);
+                if(index>-1){
+                    list.remove(index);
                 }
+                list.add(smsData);
             }
             cursor.close();
         }
         if(listener != null){
             if(!list.isEmpty()){
                 //由于是时间倒序查询添加的,所以最新一条数据 index=0
-                listener.getSmsInfo(list.get(0));
-                //查到短信后将查询计数次数清零
-                mCount=0;
+                SmsData smsData=list.get(0);
+                if(listener.isAuthor(smsData)) {
+                    LogUtil.i("========查到的是自己想要的短信,流程准备结束=========");
+                    //查到的是自己想要的短信
+                    listener.getSmsData(smsData);
+                    //查到短信后将查询计数次数清零
+                    mCount = 0;
+                }else{
+                    //查到的不是自己想要的短信,重新注册监听
+                    LogUtil.i("========查到的不是自己想要的短信,重新注册监听=========");
+                    registerSmsObserver(phoneNumber,listener);
+                }
             }else{
                 LogUtil.i("======获取list无数据重新执行=====");
-                //若未查询到短信则每隔300毫秒查一次,最多查5次
+                //若收到短信后未查询到短信数据则每隔300毫秒查一次,最多查 TOTAL_QUERY_COUNT 次
                 if(mCount<SmsMonitor.TOTAL_QUERY_COUNT) {
                     try {
                         Thread.sleep(SmsMonitor.QUERY_DIFF_TIME);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    querySmsInfo(line, list, phoneNumber, diffTime, listener);
+                    querySmsInfo(line, list, phoneNumber, listener);
                     mCount++;
+                    LogUtil.i("====已查询短信箱次数==mCurrentCount="+mCount);
                 }else{
-                    //连续查5次还没查到短信则宣告查询失败
+                    //连续查 mTotalCount 次还没查到短信则宣告查询失败
                     mCount=0;
-                    LogUtil.e("======短信监听失败=====");
-                    //查询失败
-                    listener.getSmsInfo(null);
+                    LogUtil.i("======查询短信箱失败表示未收到短信,继续注册监听=====");
+                    registerSmsObserver(phoneNumber,listener);
                 }
             }
         }else{
@@ -186,13 +214,32 @@ public class SmsMonitor {
 
     /**防止重复调用**/
     private boolean accept() {
-        //大于一秒方可通过
+        //大于1.5秒方可通过
         long diff = System.currentTimeMillis() - mLastTime;
         mLastTime = System.currentTimeMillis();
         if (diff > SmsMonitor.DEFAULT_MILLISECONDS) {
             return true;
         }
         return false;
+    }
+
+    /***
+     * list 中是否存在相同短信信息的对象
+     *
+     * @param list
+     * @param smsData
+     * @return -1:不存在。  不等于-1则存在
+     */
+    private int existSmsInfoInList(List<SmsData> list, SmsData smsData){
+        if(smsData!=null&&!list.isEmpty()) {
+            for(int i=0;i<list.size();i++){
+                SmsData bean=list.get(i);
+                if(bean.equals(smsData)){
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     /***
@@ -204,8 +251,15 @@ public class SmsMonitor {
     public void unRegisterSmsObserver(){
         if(mContentResolver!=null&&mContentObserver!=null){
             mContentResolver.unregisterContentObserver(mContentObserver);
+            mContentResolver=null;
+            mContentObserver=null;
             LogUtil.i("======注销短信接收监听====");
         }
+        //手机收到短信后未查询到数据前查询的次数记录清零
+        mCount=0;
+        //防双击上次时间记录清零
+        mLastTime=0;
+
     }
 
     /**
@@ -259,12 +313,24 @@ public class SmsMonitor {
 
     /**短信变化监听接口**/
     public interface OnSmsChangeListener{
+
+        /***
+         * 用于判断接收到的短信是否是自己想要的
+         *
+         * 方法中用于处理接收需要短信特征的逻辑
+         *
+         * @param smsData
+         * @return  true:是自己要的短信, false:不是自己想要的短信
+         */
+        boolean isAuthor(SmsData smsData);
+
         /**
          * 查询返回结果
          *
-         * @param smsData 返回具体对象表示查询成功,返回 null表示查询失败
+         * @param smsData 返回具体对象表示查询成功
          */
-        void getSmsInfo(SmsData smsData);
+        void getSmsData(SmsData smsData);
+
     }
 
 }

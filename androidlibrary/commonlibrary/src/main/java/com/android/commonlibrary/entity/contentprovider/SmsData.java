@@ -1,7 +1,6 @@
 package com.android.commonlibrary.entity.contentprovider;
 
-import androidx.annotation.NonNull;
-
+import androidx.annotation.Nullable;
 import com.android.commonlibrary.entity.BaseEntity;
 
 /**
@@ -69,4 +68,30 @@ public class SmsData extends BaseEntity {
                 ", type='" + type + '\'' +
                 '}';
     }
+
+
+    /**获得对象除date属性之外的数据**/
+    public String withOutDateToString() {
+        return "SmsData{" +
+                "address='" + address + '\'' +
+                ", person='" + person + '\'' +
+                ", body='" + body + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
+
+    /**比较两个对象除date之外是否值相等**/
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if(obj!=null){
+            if(obj instanceof SmsData){
+                SmsData temp= (SmsData) obj;
+                if(temp.withOutDateToString().equals(this.withOutDateToString())){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
