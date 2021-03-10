@@ -134,6 +134,25 @@ public class ViewUtil {
         return  ContextCompat.getColor(conetxt,id);
     }
 
+    /**
+     * 将 R.color.color_ffffff 转成字符串"#FFFFFF"
+     * @param context
+     * @param id : R.color.color_ffffff
+     * @return 字符串 "#FFFFFF"
+     */
+    public static String changeColor(Context context, int id) {
+        StringBuffer stringBuffer = new StringBuffer();
+        int color = context.getResources().getColor(id);
+        int red = (color & 0xff0000) >> 16;
+        int green = (color & 0x00ff00) >> 8;
+        int blue = (color & 0x0000ff);
+        stringBuffer.append(Integer.toHexString(red));
+        stringBuffer.append(Integer.toHexString(green));
+        stringBuffer.append(Integer.toHexString(blue));
+
+        return "#"+stringBuffer.toString();
+    }
+
     //===========================================================
     //                   设置view控件宽高
     //===========================================================

@@ -8,6 +8,8 @@ import android.view.View;
 
 import androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
 
+import com.android.commonlibrary.util.view.ViewUtil;
+
 /**
  * Description:实现启动页view颜色渐变的工具类
  * <p>
@@ -46,8 +48,8 @@ public class LaunchUtil {
      * @param endColor   如：R.color.blue
      */
     public LaunchUtil init(Context context,int startColor,int endColor){
-        String startColorStr=changeColor(context,startColor);
-        String endColorStr=changeColor(context,endColor);
+        String startColorStr= ViewUtil.changeColor(context,startColor);
+        String endColorStr=ViewUtil.changeColor(context,endColor);
         init(startColorStr,endColorStr);
         return this;
     }
@@ -69,26 +71,6 @@ public class LaunchUtil {
         }
         mColors = new int[]{Color.parseColor(startColor), Color.parseColor(endColor)};
         return this;
-    }
-
-
-    /**
-     * 将 R.color.color_ffffff 转成字符串"#FFFFFF"
-     * @param context
-     * @param id : R.color.color_ffffff
-     * @return 字符串 "#FFFFFF"
-     */
-    public String changeColor(Context context, int id) {
-        StringBuffer stringBuffer = new StringBuffer();
-        int color = context.getResources().getColor(id);
-        int red = (color & 0xff0000) >> 16;
-        int green = (color & 0x00ff00) >> 8;
-        int blue = (color & 0x0000ff);
-        stringBuffer.append(Integer.toHexString(red));
-        stringBuffer.append(Integer.toHexString(green));
-        stringBuffer.append(Integer.toHexString(blue));
-
-        return "#"+stringBuffer.toString();
     }
 
     /**
