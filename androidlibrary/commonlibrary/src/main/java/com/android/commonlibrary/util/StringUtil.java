@@ -95,6 +95,41 @@ public class StringUtil {
         return buf.toString();
     }
 
+    /***
+     * 字符串中插入数据
+     *
+     * @param message 要处理的字符串
+     * @param count 每隔 count 个char进行插入
+     * @param tag 要插入的字符串(可以为空)
+     * @return
+     *
+     * 举例：
+     *     以 String message=“abcde”,插入tag="X"为例：
+     *     count=0,得到结果为：XaXbXcXdXeX
+     *     count=1,得到结果为：aXbXcXdXeX
+     *     count=2,得到结果为：abXcdXe
+     *     count=3,得到结果为：abcXde
+     *     count=4,得到结果为：abcdXe
+     *     count=5,得到结果为：abcdeX
+     */
+    public static String insertTag(String message,int count,String tag){
+        //非空判断
+        if(isEmpty(message)){
+            LogUtil.e("=====要插入的message不能为null======");
+            return null;
+        }
+        //count范围
+        int max=message.length();
+        if(count<0||count>max){
+            LogUtil.e("=====count需在[0,"+max+"]之间======");
+            return null;
+        }
+        //名称中间插入空格
+        String split = "(.{"+count+"})";
+        message = message.replaceAll(split, "$1"+tag);
+        return message;
+    }
+
     /**
      * 将字符串list集合转换为String，使用tag连接
      *

@@ -1,6 +1,7 @@
 package com.android.commonlibrary.util;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -41,6 +42,19 @@ public class LaunchUtil {
     /**
      * 初始化
      *
+     * @param startColor 如：R.color.white
+     * @param endColor   如：R.color.blue
+     */
+    public LaunchUtil init(Context context,int startColor,int endColor){
+        String startColorStr=changeColor(context,startColor);
+        String endColorStr=changeColor(context,endColor);
+        init(startColorStr,endColorStr);
+        return this;
+    }
+
+    /**
+     * 初始化
+     *
      * @param startColor 八位或六位色值，如："#F3D266" 或 "#FFF3D266"
      * @param endColor   八位或六位色值，如："#FFFFFF" 或 "#FFFFFFFF"
      */
@@ -55,6 +69,26 @@ public class LaunchUtil {
         }
         mColors = new int[]{Color.parseColor(startColor), Color.parseColor(endColor)};
         return this;
+    }
+
+
+    /**
+     * 将 R.color.color_ffffff 转成字符串"#FFFFFF"
+     * @param context
+     * @param id : R.color.color_ffffff
+     * @return 字符串 "#FFFFFF"
+     */
+    public String changeColor(Context context, int id) {
+        StringBuffer stringBuffer = new StringBuffer();
+        int color = context.getResources().getColor(id);
+        int red = (color & 0xff0000) >> 16;
+        int green = (color & 0x00ff00) >> 8;
+        int blue = (color & 0x0000ff);
+        stringBuffer.append(Integer.toHexString(red));
+        stringBuffer.append(Integer.toHexString(green));
+        stringBuffer.append(Integer.toHexString(blue));
+
+        return "#"+stringBuffer.toString();
     }
 
     /**
