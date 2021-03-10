@@ -140,7 +140,7 @@ public class ViewUtil {
      * @param id : R.color.color_ffffff
      * @return 字符串 "#FFFFFF"
      */
-    public static String changeColor(Context context, int id) {
+    public static String changeColor(Context context, @ColorRes int id) {
         StringBuffer stringBuffer = new StringBuffer();
         int color = context.getResources().getColor(id);
         int red = (color & 0xff0000) >> 16;
