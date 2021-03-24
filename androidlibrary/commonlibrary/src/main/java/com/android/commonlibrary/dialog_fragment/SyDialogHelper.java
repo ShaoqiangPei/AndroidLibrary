@@ -65,13 +65,14 @@ public class SyDialogHelper {
         if(mSyDialogFragment==null){
             mSyDialogFragment = getSyDialogFragment(context);
         }
-        if (mSyDialogFragment.isShowing()) {
-            //若已经显示则不再show了
-            return;
-        }
         //提示语设置校验
         if(!effectTipMsg(tipMsg)){
             //setMesssageText(tipMsg)只允许设置非空 String或SpannableString
+            return;
+        }
+        if (mSyDialogFragment.isShowing()) {
+            //若已经显示则刷新提示语,不再show了
+            mSyDialogFragment.setMesssageText(tipMsg);
             return;
         }
         mSyDialogFragment.setTitleText("提示")
@@ -112,13 +113,14 @@ public class SyDialogHelper {
         if(mSyDialogFragment==null){
             mSyDialogFragment = getSyDialogFragment(context);
         }
-        if (mSyDialogFragment.isShowing()) {
-            //若已经显示则不再show了
-            return;
-        }
         //提示语设置校验
         if(!effectTipMsg(tipMsg)){
             //setMesssageText(tipMsg)只允许设置非空 String或SpannableString
+            return;
+        }
+        if (mSyDialogFragment.isShowing()) {
+            //若已经显示则刷新提示语,不再show了
+            mSyDialogFragment.setMesssageText(tipMsg);
             return;
         }
         mSyDialogFragment.setTitleText("提示")
