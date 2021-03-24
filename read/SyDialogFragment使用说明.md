@@ -59,3 +59,31 @@ SyDialogFragment作为AppDialogFragment子类，具备AppDialogFragment的所有
                 .showDialog(getSupportFragmentManager());
 ```
 若先调用父类AppDialogFragment中的方法，再调用SyDialogFragment自己的方法则会报错。
+#### 三. SyDialogFragment刷新界面数据
+##### 3.1 只刷新提示信息
+当`SyDialogFragment`已经创建了，但是我们要刷新其界面提示语的时候(以调用只显示一个按钮的方法为例),可以像下面这样:
+```
+        //在第一次调用时显示提示语为"大学"
+        SyDialogHelper.showDialogOneBtn("大学",mContext);
+```
+在`SyDialogFragment`已经显示的情况下，我们要将提示语刷新为"小学",则在需要刷新的地方直接像下面这样调用即可:
+```     //在需要将提示语刷新为"小学"的地方调用
+        SyDialogHelper.showDialogOneBtn("小学",mContext);
+```
+##### 3.2 需要刷新已经显示的更多参数
+对于一个已经弹出的`SyDialogFragment`时,若需要刷新更多信息，则需要`SyDialogFragment`实例对象及`resetInitConfig()`的协助。  
+以`SyDialogHelper.showDialogOneBtn`方法为例。本来此方法是显示时有一个按钮,但是我们在其显示的时候希望其显示时没有按钮，则可以像下面这样:
+```
+        //初始设置
+        SyDialogHelper.showDialogOneBtn("大学",mContext);
+        //隐藏按钮
+        SyDialogHelper.getSyDialogFragment(mContext).setCancelBtn(false);
+        //刷新后最终的显示
+        SyDialogHelper.getSyDialogFragment(mContext).resetInitConfig();
+```
+在以上`SyDialogFragment`已经显示的情况下，我想刷新该`dialog`,使得提示语变更为`xiao学`,然后显示出一个按钮，则可以在需要的地方接着像下面这样调用:
+```     
+        //刷新一个已经显示的dialog的提示语，并显示出按钮 
+        SyDialogHelper.showDialogOneBtn("xiao学",mContext);
+```
+
