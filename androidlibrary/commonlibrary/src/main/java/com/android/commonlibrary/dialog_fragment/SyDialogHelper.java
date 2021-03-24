@@ -60,19 +60,20 @@ public class SyDialogHelper {
         mCancelTextColor= cancelTextColor;
     }
 
+    /**获得SyDialogFragment对象**/
+    public static SyDialogFragment getSyDialogFragment(Context context){
+        if(mSyDialogFragment==null){
+            mSyDialogFragment = createSyDialogFragment(context);
+        }
+        return mSyDialogFragment;
+    }
+
     /**显示一个按钮的提示dialog(自己写按钮文字和功能)**/
     public static void showDialogOneBtn(Object tipMsg, String btnText, Context context, View.OnClickListener listener){
-        if(mSyDialogFragment==null){
-            mSyDialogFragment = getSyDialogFragment(context);
-        }
+        mSyDialogFragment=getSyDialogFragment(context);
         //提示语设置校验
         if(!effectTipMsg(tipMsg)){
             //setMesssageText(tipMsg)只允许设置非空 String或SpannableString
-            return;
-        }
-        if (mSyDialogFragment.isShowing()) {
-            //若已经显示则刷新提示语,不再show了
-            mSyDialogFragment.setMesssageText(tipMsg);
             return;
         }
         mSyDialogFragment.setTitleText("提示")
@@ -86,11 +87,17 @@ public class SyDialogHelper {
                             listener.onClick(v);
                         }
                     }
-                })
-                .setUIShadow(true)
-                .setCancel(false)
-                .setCancelOnTouchOutside(false)
-                .showDialog(((AppCompatActivity) context).getSupportFragmentManager());
+                });
+        if (mSyDialogFragment.isShowing()) {
+            //若已经显示则刷新提示语,不再show了
+            mSyDialogFragment.resetInitConfig();
+        }else{
+            //若未显示则显示
+            mSyDialogFragment.setUIShadow(true)
+                    .setCancel(false)
+                    .setCancelOnTouchOutside(false)
+                    .showDialog(((AppCompatActivity) context).getSupportFragmentManager());
+        }
     }
 
     /**显示一个按钮的提示dialog(默认按钮文字为"确定",自己写按钮功能)**/
@@ -110,17 +117,10 @@ public class SyDialogHelper {
 
     /**显示两个按钮的提示dialog(确定，取消按钮文字和功能自定义)**/
     public static void showDialogTwoBtn(Object tipMsg,String cancelText,String confirmText,Context context,View.OnClickListener cancelListener,View.OnClickListener confirmListener){
-        if(mSyDialogFragment==null){
-            mSyDialogFragment = getSyDialogFragment(context);
-        }
+        mSyDialogFragment=getSyDialogFragment(context);
         //提示语设置校验
         if(!effectTipMsg(tipMsg)){
             //setMesssageText(tipMsg)只允许设置非空 String或SpannableString
-            return;
-        }
-        if (mSyDialogFragment.isShowing()) {
-            //若已经显示则刷新提示语,不再show了
-            mSyDialogFragment.setMesssageText(tipMsg);
             return;
         }
         mSyDialogFragment.setTitleText("提示")
@@ -138,13 +138,17 @@ public class SyDialogHelper {
                         mSyDialogFragment.dismiss();
                         confirmListener.onClick(v);
                     }
-                })
-                .setUIShadow(true)
-                .setCancel(false)
-                .setCancelOnTouchOutside(false)
-                .showDialog(((AppCompatActivity) context).getSupportFragmentManager());
+                });
+        if (mSyDialogFragment.isShowing()) {
+            //若已经显示则刷新提示语,不再show了
+            mSyDialogFragment.resetInitConfig();
+        }else{
+            mSyDialogFragment.setUIShadow(true)
+                    .setCancel(false)
+                    .setCancelOnTouchOutside(false)
+                    .showDialog(((AppCompatActivity) context).getSupportFragmentManager());
+        }
     }
-
 
     /**显示两个按钮的提示dialog(确定，取消按钮文字自定义，点击取消按钮dialog消失)**/
     public static void showDialogTwoBtn(Object tipMsg,String cancelText,String confirmText,Context context,View.OnClickListener listener){
@@ -168,7 +172,7 @@ public class SyDialogHelper {
         }
     }
 
-    private static SyDialogFragment getSyDialogFragment(Context context){
+    private static SyDialogFragment createSyDialogFragment(Context context){
         SyDialogFragment syDialogFragment= (SyDialogFragment) AppDialogFragment.createFragment(SyDialogFragment.class, context, new AppDialogFragment.OnCreateFragmentListener() {
             @Override
             public Fragment createFragment() {

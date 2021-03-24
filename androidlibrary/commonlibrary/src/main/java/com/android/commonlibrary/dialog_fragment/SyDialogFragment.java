@@ -162,9 +162,13 @@ public class SyDialogFragment extends AppDialogFragment {
     public void onClick(View v) {
         super.onClick(v);
         if(v.getId()== R.id.tv_confirm&&mOnConfirmClickListener!=null){
-            mOnConfirmClickListener.onClick(v);
+            if(mTvConfirm.getVisibility()==View.VISIBLE){
+                mOnConfirmClickListener.onClick(v);
+            }
         }else if(v.getId()== R.id.tv_cancel&&mOnCancelClickListener!=null){
-            mOnCancelClickListener.onClick(v);
+            if(mTvCancel.getVisibility()==View.VISIBLE){
+                mOnCancelClickListener.onClick(v);
+            }
         }
     }
 
@@ -249,7 +253,7 @@ public class SyDialogFragment extends AppDialogFragment {
         return this;
     }
 
-    public void setmTvTitle(TextView mTvTitle) {
+    public void setTvTitle(TextView mTvTitle) {
         this.mTvTitle = mTvTitle;
     }
 

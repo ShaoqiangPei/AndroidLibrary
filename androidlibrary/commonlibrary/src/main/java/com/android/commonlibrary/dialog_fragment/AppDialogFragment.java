@@ -95,6 +95,12 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     }
 
     protected void onCreateFragmentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //初始化
+        resetInitConfig();
+    }
+
+    /**DialogFragment已创建的情况下,调用此方法可用于刷新界面数据**/
+    public void resetInitConfig(){
         initData();
         setListener();
     }
