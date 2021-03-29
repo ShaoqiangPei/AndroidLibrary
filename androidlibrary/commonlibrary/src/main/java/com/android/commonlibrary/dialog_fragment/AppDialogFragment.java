@@ -170,11 +170,14 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     /**设置窗口宽度**/
     private void setWindowWidth(WindowManager.LayoutParams windowParams,DisplayMetrics dm) {
         if (mScaleWidth == WRAP_CONTENT) {
+            int tempWidth=ViewGroup.LayoutParams.WRAP_CONTENT;
             if(maxScaleWidth>0){
-                windowParams.width = (int) (dm.widthPixels * maxScaleWidth);
-            }else{
-                windowParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                int tempMaxWidth=(int) (dm.widthPixels * maxScaleWidth);
+                if(tempWidth>tempMaxWidth){
+                    tempWidth=tempMaxWidth;
+                }
             }
+            windowParams.width=tempWidth;
         } else if (mScaleWidth > 0) {
             windowParams.width = (int) (dm.widthPixels * mScaleWidth); // 宽度设置为屏幕的0.65
         } else {
@@ -185,11 +188,14 @@ public abstract class AppDialogFragment extends AppCompatDialogFragment implemen
     /**设置窗口高度**/
     private void setWindowHeight(WindowManager.LayoutParams windowParams,DisplayMetrics dm) {
         if (mScaleHeight == WRAP_CONTENT) {
+            int tempHeight=ViewGroup.LayoutParams.WRAP_CONTENT;
             if(maxScaleHeight>0){
-                windowParams.height = (int) (dm.heightPixels * maxScaleHeight);
-            }else{
-                windowParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                int tempMaxHeight=(int)(dm.heightPixels * maxScaleHeight);
+                if(tempHeight>tempMaxHeight){
+                    tempHeight=tempMaxHeight;
+                }
             }
+            windowParams.height=tempHeight;
         } else if (mScaleHeight > 0) {
             windowParams.height = (int) (dm.heightPixels * mScaleHeight); // 高度设置为屏幕的0.6
         } else {
