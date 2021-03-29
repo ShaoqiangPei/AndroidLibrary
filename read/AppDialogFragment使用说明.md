@@ -299,6 +299,13 @@ setOnDialogCancelListener(OnDialogCancelListener listener)
 //                .setMaxScaleHeight(0.5d)//设置最大高度为屏幕高度一半,dialog高度设置为super.WRAP_CONTENT时才生效
                 .showDialog(getSupportFragmentManager());//显示dialog
 ```
-
+#### 九. 自定义dialog界面的刷新
+对于一个已经弹出的`dialog`,当我们需要刷新界面数据的时候,可以调用以下方法:
+```
+    /**DialogFragment已创建的情况下,调用此方法可用于刷新界面数据**/
+    public void resetInitConfig()
+```
+具体使用可参考[SyDialogFragment使用说明](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/SyDialogFragment%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+的**第三项**说明
 
 
