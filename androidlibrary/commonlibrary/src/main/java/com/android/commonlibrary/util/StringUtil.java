@@ -203,6 +203,30 @@ public class StringUtil {
         return chin.replaceAll("[\\u4e00-\\u9fa5]", "");
     }
 
+    /***
+     * 字符串中提取数字
+     *
+     * @param message 字符串
+     * @return null: 表示 message 中不含数字
+     *        非null: 返回数字字符串,如 message=" 我23A7",返回字符串 "237"
+     */
+    public static String getNumberFromStr(String message){
+        String tempStr="";
+        if(isNotEmpty(message)){
+            for(char c:message.toCharArray()){
+                if(c>=48&&c<=57){
+                    tempStr = tempStr + String.valueOf(c);
+                }
+            }
+        }
+        if(isNotEmpty(tempStr)){
+            tempStr=tempStr.trim();
+        }else{
+            tempStr=null;
+        }
+        return tempStr;
+    }
+
 
     /**
      * 字符串转换为16进制字符串

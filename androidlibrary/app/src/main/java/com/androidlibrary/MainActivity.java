@@ -12,6 +12,7 @@ import com.android.commonlibrary.dialog_fragment.SyDialogHelper;
 import com.android.commonlibrary.mvp_frame.AppActivity;
 import com.android.commonlibrary.permission.PermissionHelper;
 import com.android.commonlibrary.util.LogUtil;
+import com.android.commonlibrary.util.StringUtil;
 import com.android.commonlibrary.util.TimerManager;
 import com.android.commonlibrary.util.view.ViewUtil;
 import com.android.commonlibrary.widget.TitleBar2;
@@ -111,22 +112,13 @@ public class MainActivity extends AppActivity {
     }
 
     private void test() {
-        LogUtil.i("=======1=======");
-        //初始设置
-        SyDialogHelper.showDialogOneBtn("大学",mContext);
-        //隐藏按钮
-        SyDialogHelper.getSyDialogFragment(mContext).setCancelBtn(false);
-        //刷新后最终的显示
-        SyDialogHelper.getSyDialogFragment(mContext).resetInitConfig();
+       LogUtil.i("=======测试======");
 
-        TimerManager.getInstance().setDelayTime(5000)
-                .startDelay(mContext, new TimerManager.OnTimerListener() {
-                    @Override
-                    public void schedule() {
-                        LogUtil.i("=====自动点击=====");
-                        mTvTest.performClick();
-                    }
-                });
+        String message = " 我123";
+        String temp = StringUtil.getNumberFromStr(" 我123");
+        LogUtil.i("=======message.length======" + message.length());
+        LogUtil.i("=======temp.length======" + temp.length());
+        LogUtil.i("=======temp======" + temp);
 
     }
 
