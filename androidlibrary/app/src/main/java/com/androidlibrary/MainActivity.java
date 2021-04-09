@@ -9,9 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.android.commonlibrary.dialog_fragment.SyDialogHelper;
+import com.android.commonlibrary.entity.AppInfo;
 import com.android.commonlibrary.mvp_frame.AppActivity;
 import com.android.commonlibrary.permission.PermissionHelper;
+import com.android.commonlibrary.util.AppUtil;
 import com.android.commonlibrary.util.LogUtil;
+import com.android.commonlibrary.util.MainfastUtil;
 import com.android.commonlibrary.util.RandomUtil;
 import com.android.commonlibrary.util.StringUtil;
 import com.android.commonlibrary.util.TimerManager;
@@ -19,6 +22,7 @@ import com.android.commonlibrary.util.view.ViewUtil;
 import com.android.commonlibrary.widget.TitleBar2;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -120,27 +124,15 @@ public class MainActivity extends AppActivity {
     private void test() {
         LogUtil.i("=======测试======");
 
-        //计算单个概率,总概率为1
-        boolean flag = RandomUtil.getProbability(0.6);
-        if (flag) {
-            LogUtil.i("=====总概率为1,该执行概率为0.6,是否会执行：是");
-        } else {
-            LogUtil.i("=====总概率为1,该执行概率为0.6,是否会执行：否");
-        }
+//        List<AppInfo>list= AppUtil.getAppInfos(MainActivity.this);
+//        for(AppInfo info:list){
+//            LogUtil.i("===info="+info.toString());
+//        }
 
-        //计算一组数据中单个item执行的概率
-        Map<String,Double>map=new HashMap<>();
-        //设置集合
-        RandomUtil.putProbability(map,"逛街",0.6);
-        RandomUtil.putProbability(map,"看电影",0.2);
-        RandomUtil.putProbability(map,"吃饭",0.3);
-        //是否吃饭
-        boolean eatFlag=RandomUtil.getProbabilityByKey(map,"吃饭");
-        if(eatFlag){
-            LogUtil.i("===去吃饭===");
-        }else{
-            LogUtil.i("===做其他的事===");
-        }
+        String apkPackageName="com.ss.android.article.lite";
+        //打开"今日头条极速版"
+        AppUtil.openAppByPackageName(MainActivity.this,apkPackageName);
+
     }
 
 

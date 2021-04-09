@@ -2,12 +2,15 @@ package com.android.commonlibrary.util;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,7 +23,11 @@ import android.provider.Settings;
 import androidx.core.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.text.format.Formatter;
+
 import com.android.commonlibrary.app.LibraryConfig;
+import com.android.commonlibrary.entity.AppInfo;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,7 +37,9 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.UUID;
 import static android.content.Context.TELEPHONY_SERVICE;
 
@@ -65,6 +74,87 @@ public class AppUtil {
             e.printStackTrace(System.err);
         }
         return info;
+    }
+
+    /**获取设备安装的app列表信息**/
+    public static List<AppInfo> getAppInfos(Context context){
+        //首先获取到包的管理者
+        PackageManager packageManager = context.getPackageManager();
+        //获取到所有的安装包
+        List<PackageInfo> installedPackages = packageManager.getInstalledPackages(0);
+        ArrayList<AppInfo> appInfos = new ArrayList<>();
+        for (PackageInfo installedPackage : installedPackages) {
+            AppInfo appInfo = new AppInfo();
+            //程序包名
+            String packageName = installedPackage.packageName;
+            appInfo.setPackageName(packageName);
+            //获取到图标
+            Drawable icon = installedPackage.applicationInfo.loadIcon(packageManager);
+            appInfo.setIcon(icon);
+            //获取到应用的名字
+            String appName = installedPackage.applicationInfo.loadLabel(packageManager).toString();
+            appInfo.setAppName(appName);
+            //获取到安装包的路径
+            String sourceDir = installedPackage.applicationInfo.sourceDir;
+            File file = new File(sourceDir);
+            //获取到安装apk的大小
+            long apkSize = file.length();
+            //格式化apk的大小
+            appInfo.setApkSize(Formatter.formatFileSize(context,apkSize));
+            int flags = installedPackage.applicationInfo.flags;
+            //判断当前是否是系统app
+            if((flags & ApplicationInfo.FLAG_SYSTEM) !=0){
+                //那么就是系统app
+                appInfo.setUserApp(false);
+            }else{
+                //那么就是用户app
+                appInfo.setUserApp(true);
+            }
+            if((flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE)!=0){
+                //那么当前安装的就是sd卡
+                appInfo.setSD(true);
+            }else{
+                //那么就是手机内存
+                appInfo.setSD(false);
+            }
+            appInfos.add(appInfo);
+        }
+        return appInfos;
+    }
+
+    /***
+     * 根据包名打开一个app
+     *
+     * @param context
+     * @param packageName: 包名全称,如："com.ss.android.article.lite"
+     */
+    public static boolean openAppByPackageName(Context context,String packageName){
+        PackageInfo pi;
+        try {
+            pi = context.getPackageManager().getPackageInfo(packageName, 0);
+            Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
+            resolveIntent.setPackage(pi.packageName);
+            PackageManager pManager = context.getPackageManager();
+            List<ResolveInfo> apps = pManager.queryIntentActivities(resolveIntent, 0);
+            ResolveInfo ri = apps.iterator().next();
+            if (ri != null) {
+                packageName = ri.activityInfo.packageName;
+                String className = ri.activityInfo.name;
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent
+                        .FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                //重点是加这个
+                ComponentName cn = new ComponentName(packageName, className);
+                intent.setComponent(cn);
+                context.startActivity(intent);
+
+                return true;
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            LogUtil.e("=====打开应用错误===errormessage="+e.getMessage());
+        }
+        return false;
     }
 
     /**
@@ -505,6 +595,13 @@ public class AppUtil {
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
+        context.startActivity(intent);
+    }
+
+    /**去辅助服务界面(无障碍)**/
+    public static void getToAccessibility(Context context){
+        //手动开启辅助服务
+        Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
         context.startActivity(intent);
     }
 
