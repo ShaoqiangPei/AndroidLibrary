@@ -150,6 +150,18 @@ public class ViewUtil {
         stringBuffer.append(Integer.toHexString(green));
         stringBuffer.append(Integer.toHexString(blue));
 
+        String redStr = Integer.toHexString(red);
+        redStr = redStr.length() == 1 ? "0" + redStr : redStr;
+        stringBuffer.append(redStr);
+
+        String greenStr = Integer.toHexString(green);
+        greenStr = greenStr.length() == 1 ? "0" + greenStr : greenStr;
+        stringBuffer.append(greenStr);
+
+        String blueStr = Integer.toHexString(blue);
+        blueStr = blueStr.length() == 1 ? "0" + blueStr : blueStr;
+        stringBuffer.append(blueStr);
+
         return "#"+stringBuffer.toString();
     }
 
