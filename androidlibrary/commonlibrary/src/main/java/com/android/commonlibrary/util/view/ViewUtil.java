@@ -146,9 +146,6 @@ public class ViewUtil {
         int red = (color & 0xff0000) >> 16;
         int green = (color & 0x00ff00) >> 8;
         int blue = (color & 0x0000ff);
-        stringBuffer.append(Integer.toHexString(red));
-        stringBuffer.append(Integer.toHexString(green));
-        stringBuffer.append(Integer.toHexString(blue));
 
         String redStr = Integer.toHexString(red);
         redStr = redStr.length() == 1 ? "0" + redStr : redStr;
