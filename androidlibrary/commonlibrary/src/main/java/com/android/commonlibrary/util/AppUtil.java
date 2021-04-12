@@ -2,7 +2,6 @@ package com.android.commonlibrary.util;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -24,10 +23,8 @@ import androidx.core.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.text.format.Formatter;
-
 import com.android.commonlibrary.app.LibraryConfig;
 import com.android.commonlibrary.entity.AppInfo;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -599,7 +596,7 @@ public class AppUtil {
     }
 
     /**去辅助服务界面(无障碍)**/
-    public static void getToAccessibility(Context context){
+    public static void goToAccessibility(Context context){
         //手动开启辅助服务
         Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
         context.startActivity(intent);

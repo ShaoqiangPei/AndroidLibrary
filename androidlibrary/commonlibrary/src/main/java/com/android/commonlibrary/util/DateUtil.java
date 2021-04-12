@@ -16,14 +16,14 @@ import java.util.TimeZone;
 @SuppressLint("SimpleDateFormat")
 public class DateUtil {
 
-    private static final String SYNBOL_ONE="-";
-    private static final String MILLI="SSS";//毫秒
-    private static final String SECOND_MILLI="s.SSS";//秒和毫秒
-    private static final String HOUR_MINUTE="HH:mm";//时:分
-    private static final String HOUR_MINUTE_SECOND="HH:mm:ss";//时:分:秒
-    private static final String YEAR_MONTH_DAY="yyyy-MM-dd";//年-月-日
-    private static final String CHINA_DATE_MIN="yyyy年MM月dd日 HH:mm";//xxxx年xx月xx日 时:分
-    private static final String CHINA_DATE="yyyy年MM月dd日";//xxxx年xx月xx日
+    public static final String SYNBOL_ONE="-";
+    public static final String MILLI="SSS";//毫秒
+    public static final String SECOND_MILLI="s.SSS";//秒和毫秒
+    public static final String HOUR_MINUTE="HH:mm";//时:分
+    public static final String HOUR_MINUTE_SECOND="HH:mm:ss";//时:分:秒
+    public static final String YEAR_MONTH_DAY="yyyy-MM-dd";//年-月-日
+    public static final String CHINA_DATE_MIN="yyyy年MM月dd日 HH:mm";//xxxx年xx月xx日 时:分
+    public static final String CHINA_DATE="yyyy年MM月dd日";//xxxx年xx月xx日
     /**
      * 获取当前时间毫秒单位上的数值(只获取毫秒单位上的值,时分秒等其他单位上的值不获取)
      * @return eg:849
@@ -381,6 +381,64 @@ public class DateUtil {
         end.setTime(endTime);
 
         return date.after(begin) && date.before(end);
+    }
+
+    /***
+     * 判断当前时间是否在[startTime, endTime]区间，注意时间格式要一致
+     *
+     * @param nowTime:当前时间字符串
+     * @param startTime：开始时间字符串
+     * @param endTime:结束时间字符串
+     * @param pattern:时间字符串连接模式
+     *        当 pattern="HH:mm"时,表示以上三个参数的时间格式均为"HH:mm"(24小时制),比较时间段
+     *        当 pattern="yyyy-MM-dd"时,表示以上三个参数的时间格式均为"yyyy-MM-dd",比较日期段
+     *        当 pattern="yyyy-MM-dd HH:mm"时,表示以上三个参数的时间格式均为"yyyy-MM-dd HH:mm",比较含日期的时间段
+     *        其他以此类推
+     * @return
+     */
+    public static boolean isEffectiveDateByPattern(String nowTime,String startTime, String endTime,String pattern){
+        if(StringUtil.isEmpty(nowTime)){
+            throw new NullPointerException("=====nowTime不能为空====");
+        }
+        if(StringUtil.isEmpty(startTime)){
+            throw new NullPointerException("=====startTime不能为空====");
+        }
+        if(StringUtil.isEmpty(endTime)){
+            throw new NullPointerException("=====endTime不能为空====");
+        }
+        if(StringUtil.isEmpty(pattern)){
+            throw new NullPointerException("=====pattern不能为空====");
+        }
+        Date nowDate=dateStrToObj(nowTime,pattern);
+        Date startDate=dateStrToObj(startTime,pattern);
+        Date endDate=dateStrToObj(endTime,pattern);
+        if(nowDate!=null&&startDate!=null&&endDate!=null){
+            return isEffectiveDate(nowDate,startDate,endDate);
+        }
+        return false;
+    }
+
+    /***
+     * 时间字符串转 Date 对象
+     *
+     * @param time：时间或日期字符串,格式由pattern确定,如 "2021-04-12 16:41:46"等
+     * @param pattern 时间格式,样式可以是"HH:mm","yyyy-MM-dd","yyyy-MM-dd HH:mm"等由调用者确定
+     */
+    public static Date dateStrToObj(String time,String pattern) {
+        if(StringUtil.isEmpty(time)){
+            throw new NullPointerException("=====time不能为空====");
+        }
+        if(StringUtil.isEmpty(pattern)){
+            throw new NullPointerException("=====pattern不能为空====");
+        }
+        Date date = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        try {
+            date = simpleDateFormat.parse(time);
+        } catch (Exception e) {
+            LogUtil.e("========errorMessage=" + e.getMessage());
+        }
+        return date;
     }
 
     /**

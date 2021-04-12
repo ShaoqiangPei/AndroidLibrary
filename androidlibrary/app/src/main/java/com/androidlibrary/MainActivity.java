@@ -7,25 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-
 import com.android.commonlibrary.dialog_fragment.SyDialogHelper;
-import com.android.commonlibrary.entity.AppInfo;
 import com.android.commonlibrary.mvp_frame.AppActivity;
 import com.android.commonlibrary.permission.PermissionHelper;
-import com.android.commonlibrary.util.AppUtil;
+import com.android.commonlibrary.util.DateUtil;
 import com.android.commonlibrary.util.LogUtil;
-import com.android.commonlibrary.util.MainfastUtil;
-import com.android.commonlibrary.util.RandomUtil;
-import com.android.commonlibrary.util.StringUtil;
-import com.android.commonlibrary.util.TimerManager;
 import com.android.commonlibrary.util.view.ViewUtil;
 import com.android.commonlibrary.widget.TitleBar2;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
@@ -36,7 +24,6 @@ public class MainActivity extends AppActivity {
     private Button mBtnTest;
     private TextView mTvTest;
     private TitleBar2 mTitleBar2;
-
 
     @Override
     public int getContentViewId() {
@@ -122,16 +109,19 @@ public class MainActivity extends AppActivity {
     }
 
     private void test() {
-        LogUtil.i("=======测试======");
+        String date = "13:50";
+        String startDate = "12:00";
+        String endDate = "13:25";
 
-//        List<AppInfo>list= AppUtil.getAppInfos(MainActivity.this);
-//        for(AppInfo info:list){
-//            LogUtil.i("===info="+info.toString());
-//        }
-
-        String apkPackageName="com.ss.android.article.lite";
-        //打开"今日头条极速版"
-        AppUtil.openAppByPackageName(MainActivity.this,apkPackageName);
+        boolean flag= DateUtil.isEffectiveDateByPattern(
+                date, startDate,
+                endDate,DateUtil.HOUR_MINUTE
+        );
+        if(flag){
+            LogUtil.i("======在范围内=======");
+        }else{
+            LogUtil.i("======在范围外=======");
+        }
 
     }
 
