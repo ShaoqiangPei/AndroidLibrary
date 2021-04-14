@@ -13,15 +13,24 @@ public class AppInfo extends BaseEntity{
 
     //应用图标
     private Drawable icon;
+
     //应用的名字
     private String appName;
+
+    //应用版本名称,如: 1.0.0
+    private String versionName;
+
+    //应用包名,如: "com.test.app"
+    private String packageName;
+
     //应用程序的大小
     private String apkSize;
+
     //表示用户程序
     private boolean isUserApp;
+
     //存储的位置.
     private boolean isSD;
-    private String packageName;
 
     public Drawable getIcon() {
         return icon;
@@ -37,6 +46,22 @@ public class AppInfo extends BaseEntity{
 
     public void setAppName(String appName) {
         this.appName = appName;
+    }
+
+    public String getVersionName() {
+        return versionName;
+    }
+
+    public void setVersionName(String versionName) {
+        this.versionName = versionName;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
     }
 
     public String getApkSize() {
@@ -63,23 +88,16 @@ public class AppInfo extends BaseEntity{
         isSD = SD;
     }
 
-    public String getPackageName() {
-        return packageName;
-    }
-
-    public void setPackageName(String packageName) {
-        this.packageName = packageName;
-    }
-
     @Override
     public String toString() {
         return "AppInfo{" +
                 "icon=" + icon +
                 ", appName='" + appName + '\'' +
+                ", versionName='" + versionName + '\'' +
+                ", packageName='" + packageName + '\'' +
                 ", apkSize='" + apkSize + '\'' +
                 ", isUserApp=" + isUserApp +
                 ", isSD=" + isSD +
-                ", packageName='" + packageName + '\'' +
                 '}';
     }
 }

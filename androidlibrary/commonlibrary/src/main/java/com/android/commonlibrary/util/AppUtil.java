@@ -91,6 +91,9 @@ public class AppUtil {
             //获取到应用的名字
             String appName = installedPackage.applicationInfo.loadLabel(packageManager).toString();
             appInfo.setAppName(appName);
+            //获取到应用的版本名称
+            String versionName = installedPackage.versionName;
+            appInfo.setVersionName(versionName);
             //获取到安装包的路径
             String sourceDir = installedPackage.applicationInfo.sourceDir;
             File file = new File(sourceDir);

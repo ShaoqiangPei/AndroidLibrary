@@ -8,12 +8,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import com.android.commonlibrary.dialog_fragment.SyDialogHelper;
+import com.android.commonlibrary.entity.AppInfo;
 import com.android.commonlibrary.mvp_frame.AppActivity;
 import com.android.commonlibrary.permission.PermissionHelper;
+import com.android.commonlibrary.util.AppUtil;
 import com.android.commonlibrary.util.DateUtil;
 import com.android.commonlibrary.util.LogUtil;
 import com.android.commonlibrary.util.view.ViewUtil;
 import com.android.commonlibrary.widget.TitleBar2;
+
+import java.util.List;
+
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
@@ -109,19 +114,7 @@ public class MainActivity extends AppActivity {
     }
 
     private void test() {
-        String date = "13:50";
-        String startDate = "12:00";
-        String endDate = "13:25";
 
-        boolean flag= DateUtil.isEffectiveDateByPattern(
-                date, startDate,
-                endDate,DateUtil.HOUR_MINUTE
-        );
-        if(flag){
-            LogUtil.i("======在范围内=======");
-        }else{
-            LogUtil.i("======在范围外=======");
-        }
 
     }
 
