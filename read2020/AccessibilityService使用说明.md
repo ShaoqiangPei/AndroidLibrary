@@ -217,6 +217,6 @@ open class TestService: AccessibilityService(){
 
 #### 四.无障碍操作帮助类
 为了快速实现对界面控件的操作(`点击`,`输入`和`滑动`等),我们可以借助以下两个类来实现我们自动化测试的进程：
-- AccessibilityHelper
-- GestureHelper
+- [AccessibilityHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read2020/AccessibilityHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+- [GestureHelper](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read2020/GestureHelper%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
 
