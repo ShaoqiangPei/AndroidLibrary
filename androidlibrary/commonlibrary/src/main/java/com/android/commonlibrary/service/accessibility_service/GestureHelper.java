@@ -2,9 +2,7 @@ package com.android.commonlibrary.service.accessibility_service;
 
 import android.accessibilityservice.AccessibilityService;
 import android.os.Build;
-
 import androidx.annotation.RequiresApi;
-
 import com.android.commonlibrary.util.ScreenUtil;
 
 /**
@@ -37,6 +35,13 @@ public class GestureHelper {
         return Holder.instance;
     }
 
+    /***
+     * 设置屏幕尺寸
+     *
+     * @param currentScreenWidth 开发设备的实际屏幕宽度值
+     * @param currentScreenHeight 开发设备的实际屏幕高度值
+     * @return
+     */
     public GestureHelper initSize(int currentScreenWidth,int currentScreenHeight){
         this.mCurrentScreenWidth=currentScreenWidth;
         this.mCurrentScreenHeight=currentScreenHeight;

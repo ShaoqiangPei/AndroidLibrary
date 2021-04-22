@@ -6,8 +6,10 @@ import android.net.Uri;
 import android.os.Environment;
 import com.android.commonlibrary.app.LibraryConfig;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Writer;
 import java.text.DecimalFormat;
 
@@ -178,6 +180,80 @@ public class FileUtil {
             e.printStackTrace();
             LogUtil.i(fileName + "不存在于Assets文件夹下");
             return false;
+        }
+        return false;
+    }
+
+    /***
+     * 根据 assets 文件夹下文件路径设置文件
+     *
+     * 原理：assets文件夹下文件无法通过直接设置文件路径读取文件
+     *      (assets文件夹下文件路径为：file:///android_asset/文件名)
+     *      需要将assets文件夹下文件拷贝出来,然后读取拷贝文件路径
+     *      此处是将assets文件夹下文件拷贝到缓存中
+     *
+     * @param fileName
+     * @return
+     */
+    public static String getcopyAssetToCachePath(String fileName,Context context){
+        if(context==null){
+            throw new NullPointerException("=== context不能为null ====");
+        }
+        if(StringUtil.isNotEmpty(fileName)) {
+            //将asset文件写入缓存
+            try {
+                File cacheDir = context.getCacheDir();
+                if (!cacheDir.exists()) {
+                    cacheDir.mkdirs();
+                }
+                File outFile = new File(cacheDir, fileName);
+                if (!outFile.exists()) {
+                    boolean res = outFile.createNewFile();
+                    if (!res) {
+                        LogUtil.e("=======创建文件失败========");
+                        return null;
+                    }
+                } else {
+                    if (outFile.length() > 10) {//表示已经写入一次
+                        return outFile.getAbsolutePath();
+                    }
+                }
+                InputStream is = context.getAssets().open(fileName);
+                FileOutputStream fos = new FileOutputStream(outFile);
+                byte[] buffer = new byte[1024];
+                int byteCount;
+                while ((byteCount = is.read(buffer)) != -1) {
+                    fos.write(buffer, 0, byteCount);
+                }
+                fos.flush();
+                is.close();
+                fos.close();
+                return outFile.getAbsolutePath();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            LogUtil.e("=====文件名不能为null======");
+        }
+        return null;
+    }
+
+    /**删除由于 读取 assets文件夹下视频文件产生的缓存 **/
+    public static boolean deleteCacheFile(String filePath) {
+        if(StringUtil.isNotEmpty(filePath)) {
+            File file = new File(filePath);
+            if (file.exists()) {
+                if (file.isFile()) {
+                    file.delete();
+                    return true;
+                } else {
+                    LogUtil.e("=====filePath=" + filePath + " 路径不是文件(可能是文件夹?)");
+                }
+            } else {
+                LogUtil.e("=====filePath=" + filePath + " 文件不存在");
+            }
+        }else{
+            LogUtil.e("=====filePath不能为null=====");
         }
         return false;
     }
