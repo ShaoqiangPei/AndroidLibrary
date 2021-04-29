@@ -54,4 +54,5 @@ activity 在 Mainfast.xml 中注册的时候，通常会添加一些常用的配
 ```
 #### 三. 更多使用介绍
 [AppActivity基础能力](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivity%E5%9F%BA%E7%A1%80%E8%83%BD%E5%8A%9B%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ——— 处理`Activity`状态栏设置,控件初始化,非空判断,界面跳转传值,系统级dialog的创建  
-[AppActivity加载Fragment能力](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivity%E5%8A%A0%E8%BD%BDFragment%E8%83%BD%E5%8A%9B%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ——— 处理`Activity`中含`Fragment`加载时的情况
+[AppActivity加载Fragment能力](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/AppActivity%E5%8A%A0%E8%BD%BDFragment%E8%83%BD%E5%8A%9B%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ——— 处理`Activity`中含`Fragment`加载时的情况  
+[AppActivity网络通讯能力]() ——— 涉及到`网络通讯时`,迅速接入`mvp模式`
