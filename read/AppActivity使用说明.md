@@ -4,7 +4,8 @@
 `AppActivity`作为`Activity`基类,具备以下功能：
 - Activity基础能力(`状态栏设置`,`控件初始化`,`非空判断`,`界面跳转`,`界面跳转传值`,`系统级dialog的创建`)
 - 加载Fragment能力
-- MVP架构(网络通讯能力)
+- MVP架构(网络通讯能力)  
+
 你可以继承`AppActivity`快速创建自己的`Activity`.
 
 ### 使用说明
