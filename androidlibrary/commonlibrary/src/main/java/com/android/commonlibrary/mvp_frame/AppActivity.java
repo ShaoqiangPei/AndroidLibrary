@@ -1,13 +1,13 @@
 package com.android.commonlibrary.mvp_frame;
 
-import com.android.commonlibrary.activity.SuperActivity;
+import com.android.commonlibrary.activity.SuperFragActivity;
 import com.android.commonlibrary.interfacer.pre_interfacer.IPreActivity;
 import com.android.commonlibrary.interfacer.pre_interfacer.PrePresenter;
 
 /**
- * Activity基类(含mvp架构功能)
+ * 具备MVP架构的Activity基类(具备加载Fragment的能力)
  **/
-public abstract class AppActivity extends SuperActivity implements IPreActivity {
+public abstract class AppActivity extends SuperFragActivity implements IPreActivity {
 
     protected PrePresenter mPresenter;
 
