@@ -62,6 +62,6 @@ public class TestActivity extends AppActivity implements MainContract.View {
 ```
 
 更多关于`MVP架构`网络通讯的使用，可参考  
-[mvp-frame](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+[mvp-frame使用说明](https://github.com/ShaoqiangPei/AndroidLibrary/blob/master/read/mvp-frame%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
 
 
