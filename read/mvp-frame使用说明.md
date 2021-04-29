@@ -7,7 +7,6 @@ mvp-frame 架构主要为 app 以 MVP架构 模式构建而产生，实现项目
 ### 使用说明
 #### 一. mvp_frame 包下有以下类
 - AppActivity：MVP架构 Activity基类  
-- AppFragActivity：MVP架构Activity基类(Activity中含Fragment加载时使用)
 - AppFragment：MVP架构 Fragment基类  
 - PrePresenter：T-MVP Presenter基类  
 - PreView：MVP-View基类  
@@ -77,7 +76,7 @@ public class MainPresenter implements MainContract.Presenter{
 }
 ```
 ##### 2.3 MainActivity — 登录界面ui
-涉及到通讯，MainActivity需要继承AppActivity，并实现 MainContract.View 接口，示例代码如下：
+涉及到通讯，MainActivity需要继承AppActivity，并实现 MainContract.View 接口(在含有Fragment加载的Activity中使用也是如此)，示例代码如下：
 ```
 /**
  * Title:登录界面
@@ -144,23 +143,7 @@ public class MainActivity extends AppActivity implements MainContract.View {
 
 }
 ```
-#### 三. mvp-frame在含有Fragment加载的Activity中的使用
-mvp-frame 含有Fragment加载的Activity中使用的时候，"MainContract登录功能接口层" 和 "MainPresenter登录功能通讯逻辑层" 没什么变化，唯一变化的是 “界面ui层” 的继承关系变了，由对 AppActivity 的继承，改为对 AppFragActivity 的继承，类似下面这样：  
-```
-/**
- * Title:登录界面
- * description:
- * autor:pei
- * created on 2019/12/16
- */
-public class MainActivity extends AppFragActivity implements MainContract.View {
-     
-     //其他代码省略
-     //......
-
-}
-```
-#### 四. mvp-frame在Fragment中的使用  
+#### 三. mvp-frame在Fragment中的使用  
 mvp-frame 在 Fragment中使用的时候，"MainContract登录功能接口层" 和 "MainPresenter登录功能通讯逻辑层" 没什么变化，唯一变化的是 “界面ui层” 的继承关系变了，由对 activity 的继承，改为对 Fragment 的继承，类似下面这样：  
 ```
 /**
