@@ -25,6 +25,8 @@ import android.text.TextUtils;
 import android.text.format.Formatter;
 import com.android.commonlibrary.app.LibraryConfig;
 import com.android.commonlibrary.entity.AppInfo;
+import com.android.commonlibrary.util.encrypt.MD5Util;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -213,7 +215,7 @@ public class AppUtil {
         String signature=null;
         if(sign!=null){
             //md5加密，生成32位字符串签名
-            signature=MD5Util.getMD5(sign.toByteArray());
+            signature= MD5Util.getMD5(sign.toByteArray());
         }
         return signature;
     }

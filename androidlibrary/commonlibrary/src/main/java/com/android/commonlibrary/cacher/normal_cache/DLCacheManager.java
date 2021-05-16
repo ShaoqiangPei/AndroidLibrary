@@ -2,7 +2,7 @@ package com.android.commonlibrary.cacher.normal_cache;
 
 import com.android.commonlibrary.util.AppUtil;
 import com.android.commonlibrary.util.GsonUtil;
-import com.android.commonlibrary.util.MD5Util;
+import com.android.commonlibrary.util.encrypt.MD5Util;
 import com.android.commonlibrary.util.SDCardUtil;
 import com.android.commonlibrary.util.StringUtil;
 

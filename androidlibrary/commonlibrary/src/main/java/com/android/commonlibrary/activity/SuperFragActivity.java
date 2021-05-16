@@ -5,11 +5,10 @@ import com.android.commonlibrary.interfacer.OnFragmentBackListener;
 import com.android.commonlibrary.util.LogUtil;
 
 /**
- * Description: 集成Fragment时需要用到的activity超类
+ * Description: AppActivity的父类,具备加载fragment的能力
  *
- *  当需要加载Fragment并且要在activity中处理返回键的时候用此类
- *  具备AppActivity的所有特性
- *  主要用来处理Fragment和activity的返回键功能
+ *  在SuperActivity基础之上增加activity加载fragment的能力
+ *  处理了Fragment和activity的返回键功能
  *
  * Author:pei
  * Date: 2019/7/16

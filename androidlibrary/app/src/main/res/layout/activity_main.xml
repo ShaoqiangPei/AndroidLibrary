@@ -30,13 +30,5 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-    <com.android.commonlibrary.widget.TitleBar2
-        android:id="@+id/title_bar2"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

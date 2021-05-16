@@ -1,4 +1,4 @@
-package com.android.commonlibrary.util;
+package com.android.commonlibrary.util.encrypt;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
