@@ -198,6 +198,27 @@ public class StringUtil {
         return count;
     }
 
+    /***
+     * 将字符串中首个target替换成replacement
+     *
+     * @param source 操作源字符串
+     * @param target 要替换的字符串
+     * @param replacement 替换值
+     *
+     * @return 替换成功返回具体字符串,替换失败返回 null
+     */
+    public static String replaceByTarget(String source,String target,String replacement){
+        if(StringUtil.isNotEmpty(source)&&StringUtil.isNotEmpty(target)&&StringUtil.isNotEmpty(replacement)){
+            if(source.contains(target)){
+                int index=source.indexOf(target);
+                StringBuffer buffer = new StringBuffer(source);
+                buffer.replace(index, index+1, replacement);
+                return buffer.toString();
+            }
+        }
+        return null;
+    }
+
     /**过滤汉字**/
     public static String filterChinese(String chin){
         return chin.replaceAll("[\\u4e00-\\u9fa5]", "");
