@@ -37,8 +37,8 @@ public class AgreementDefaultHelper {
             "击\"同意\"即表示您已阅读并同意以上协议的" +
             "全部内容,请点击\"同意\",开始使用我们的产品和服务.";
 
-    //用户协议
-    private static String USER_CONTENT="\n一、总则\n\n" +
+    //用户协议(开头)
+    private static String USER_CONTENT_FIRST="\n一、总则\n\n" +
             "\t\t1.1 用户应当同意本协议的条款并按照页面上的提示完成全部的注册程序。用户在进行注册程序过程中勾选\"同意"+TAG+USER_AGREEMENT+"\"按钮即表示用户与"+TAG+"达成协议，完全接受本协议项下的全部条款。\n\n" +
             "\t\t1.2 用户注册成功后，"+TAG+"将给予每个用户一个用户账号及相应的密码，该用户账号和密码由用户负责保管；用户应当对以其用户账号进行的所有活动和事件负法律责任。\n\n" +
             "\t\t1.3 用户可以使用"+TAG+"各个频道单项服务，当用户使用"+TAG+"各单项服务时，用户的使用行为视为其对该单项服务的服务条款以及"+TAG+"在该单项服务中发出的各类公告的同意。\n\n" +
@@ -119,8 +119,10 @@ public class AgreementDefaultHelper {
             "\t\t7.1 本协议的订立、执行和解释及争议的解决均应适用中华人民共和国法律。\n\n" +
             "\t\t7.2 如双方就本协议内容或其执行发生任何争议，双方应尽量友好协商解决；协商不成时，任何一方均可向"+TAG+"所在地的人民法院提起诉讼。\n\n" +
             "\t\t7.3 "+TAG+"未行使或执行本服务协议任何权利或规定，不构成对前述权利或权利之放弃。\n\n" +
-            "\t\t7.4 如本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，本协议的其余条款仍应有效并且有约束力。\n\n" +
-            "\t\t请您在发现任何违反本服务协议以及其他任何单项服务的服务条款、"+TAG+"各类公告之情形时，通知"+TAG+"。您可以通过如下联络方式同"+TAG+"联系:\n\n"+
+            "\t\t7.4 如本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，本协议的其余条款仍应有效并且有约束力。\n\n";
+
+    //用户协议(结尾)
+    private static String USER_CONTENT_LAST="\t\t请您在发现任何违反本服务协议以及其他任何单项服务的服务条款、"+TAG+"各类公告之情形时，通知"+TAG+"。您可以通过如下联络方式同"+TAG+"联系:\n\n"+
             "\t\t"+LINK+"\n\n";
 
     //隐私协议
@@ -155,7 +157,7 @@ public class AgreementDefaultHelper {
             "\t\t\t(c) 通过"+TAG+"所设cookies所取得的有关信息，将适用本政策。\n\n" +
             "\t\t6. 信息安全\n" +
             "\t\t\t(a) "+TAG+"帐号均有安全保护功能，请妥善保管您的用户名及密码信息。"+TAG+"将通过对用户密码进行加密等安全措施确保您的信息不丢失，不被滥用和变造。尽管有前述安全措施，但同时也请您注意在信息网络上不存在“完善的安全措施”。\n" +
-            "\t\t\t(b) 在使用"+TAG+"网络服务进行网上交易时，您不可避免的要向交易对方或潜在的交易对方披露自己的个人信息，如联络方式或者邮政地址。请您妥善保护自己的个人信息，仅在必要的情形下向他人提供。如您发现自己的个人信息泄密，尤其是"+TAG+"用户名及密码发生泄露，请您立即联络"+TAG+"客服，以便"+TAG+"采取相应措施。\n\n";
+            "\t\t\t(b) 在使用"+TAG+"网络服务进行网上交易时，您不可避免的要向交易对方或潜在的交易对方披露自己的个人信息，如联络方式或者邮政地址。请您妥善保护自己的个人信息，仅在必要的情形下向他人提供。如您发现自己的个人信息泄密，尤其是"+TAG+"用户名及密码发生泄露，请您立即联络"+TAG+"客服，以便"+TAG+"采取相应措施。";
 
     /**获取用户协议弹框内容**/
     public static String getAgreementDialogContent(String appName){
@@ -202,20 +204,46 @@ public class AgreementDefaultHelper {
         }
     }
 
-    /**获取用户协议**/
-    public static String getUserContent(String appName){
+    /***
+     * 获取用户协议
+     *
+     * @param appName: App名称
+     * @param append: 需要补充的用户协议信息,如无需补充,则此参数为null
+     * @return
+     */
+    public static String getUserContent(String appName,String append){
         String content=null;
         if(StringUtil.isNotEmpty(appName)){
-            content=USER_CONTENT.replace(TAG,appName);
+            String first=USER_CONTENT_FIRST.replace(TAG,appName);
+            String last=USER_CONTENT_LAST.replace(TAG,appName);
+
+            if(StringUtil.isEmpty(append)){
+                content=first+last;
+            }else{
+                content=first+"\t\t"+append+"\n\n"+last;
+            }
+        }else{
+            content=append;
         }
         return content;
     }
 
-    /**获取隐私协议**/
-    public static String getPrivacyContent(String appName){
+    /***
+     * 获取隐私协议
+     *
+     * @param appName App名称
+     * @param append 需要补充的隐私协议信息,如无需补充,则此参数为null
+     * @return
+     */
+    public static String getPrivacyContent(String appName,String append){
         String content=null;
         if(StringUtil.isNotEmpty(appName)){
             content=PRIVACY_CONTENT.replace(TAG,appName);
+            if(StringUtil.isEmpty(append)){
+                content=content+"\n\n";
+            }else{
+                content=content+"\n\t\t"+append+"\n\n";
+            }
         }
         return content;
     }
