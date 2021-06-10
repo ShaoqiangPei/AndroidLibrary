@@ -3,6 +3,7 @@ package com.android.commonlibrary.util.view;
 import android.os.Build;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.method.DigitsKeyListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -21,6 +22,21 @@ import java.lang.reflect.Field;
  * created on 2020/3/13
  */
 public class EditTextUtil {
+
+    //数字
+    public static final String DIGIT_NUMBER="0123456789";
+    //小写字母
+    public static final String DIGIT_LOWER_LETTER="abcdefghijklmnopqrstuvwxyz";
+    //大写字母
+    public static final String DIGIT_CAPITAL_LETTER="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    //字母
+    public static final String DIGIT_LETTER=DIGIT_LOWER_LETTER+DIGIT_CAPITAL_LETTER;
+    //数字+小写字母
+    public static final String DIGIT_NUMBER_LOWER_LETTER=DIGIT_NUMBER+DIGIT_LOWER_LETTER;
+    //数字+大写字母
+    public static final String DIGIT_NUMBER_CAPITAL_LETTER=DIGIT_NUMBER+DIGIT_CAPITAL_LETTER;
+    //数字+字母
+    public static final String DIGIT_NUMBER_LETTER=DIGIT_NUMBER+DIGIT_LETTER;
 
     /**设置光标显示在输入框尾部**/
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -78,6 +94,17 @@ public class EditTextUtil {
             } catch (Exception ignored) {
 
             }
+        }
+    }
+
+    /***
+     * 设置输入框 digits 属性
+     *
+     * 注: android:digits=""的代码实现
+     */
+    public static void setDigits(EditText editText,String digit) {
+        if (StringUtil.isNotEmpty(digit)) {
+            editText.setKeyListener(DigitsKeyListener.getInstance(digit));
         }
     }
 

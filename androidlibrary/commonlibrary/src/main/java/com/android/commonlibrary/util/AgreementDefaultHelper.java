@@ -13,6 +13,11 @@ import com.android.commonlibrary.R;
 import com.android.commonlibrary.dialog_fragment.AgreementDialog;
 import com.android.commonlibrary.dialog_fragment.AppDialogFragment;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Title:默认用户协议帮助类
  * description:
@@ -22,6 +27,9 @@ import com.android.commonlibrary.dialog_fragment.AppDialogFragment;
 public class AgreementDefaultHelper {
 
     public static final String TAG="AgreementDefaultHelper_tag";
+
+    private static final String AGREEMENT_KEY="agreement_helper_startIndex";
+    private static final String AGREEMENT_VALUE="agreement_helper_endIndex";
 
     //联系方式
     private static String LINK="暂无";//默认为暂无,若添加的话,以电话为例则是 Tel: 15927453658
@@ -307,6 +315,72 @@ public class AgreementDefaultHelper {
                         .setCancel(false)//返回键是否关闭dialog
                         .setCancelOnTouchOutside(false)//屏幕外点击是否关闭
                         .showDialog(((AppCompatActivity)context).getSupportFragmentManager());//显示dialog
+    }
+
+    /***
+     * 修改一个字符串中所有以startFlag开头，以endFlag结束的字段颜色为colorId
+     *
+     * @param message：操作源
+     * @param startFlag：开头tag
+     * @param endFlag：结尾 tag
+     * @param colorId：要变色的color,如 R.color.red
+     * @return
+     */
+    public static SpannableString translate(String message, String startFlag, String endFlag,int colorId){
+        SpannableString sp = null;
+        LogUtil.i("======1====message="+message);
+        if(StringUtil.isNotEmpty(message)){
+            List<Map<String,Integer>>indexList = checkList(message,startFlag,endFlag);
+            LogUtil.i("======2====indexList="+indexList);
+            if(!indexList.isEmpty()){
+                sp = new SpannableString(message);
+                LogUtil.i("======3====sp="+sp);
+                for(Map<String,Integer>map:indexList){
+                    int startIndex = map.get(AGREEMENT_KEY);
+                    int endIndex = map.get(AGREEMENT_VALUE);
+                    LogUtil.i("======map====key="+startIndex+"  value="+endIndex);
+                    sp = SpannableStringUtil.setTextFrontColor(sp,startIndex,endIndex+1, colorId);
+                }
+            }
+        }
+        return sp;
+    }
+
+    private static List<Map<String,Integer>> checkList(String message, String startFlag, String endFlag){
+        List<Map<String,Integer>>list  = new ArrayList<>();
+        return checkString(message,startFlag,endFlag,list);
+    }
+
+    private static List<Map<String,Integer>> checkString(String message, String startFlag, String endFlag,List<Map<String,Integer>>list){
+        String temp=null;
+        if(StringUtil.isNotEmpty(message)){
+            if(message.contains(startFlag)&&message.contains(endFlag)){
+                int startIndex=message.indexOf(startFlag);
+                int endIndex=message.indexOf(endFlag);
+                if(endIndex>startIndex){
+                    LogUtil.i("====startIndex="+startIndex+"  endIndex="+endIndex);
+                    if(startIndex<endIndex-1){
+                        LogUtil.i("======合法输出======");
+                        Map<String,Integer>map = new HashMap<>();
+                        map.put(AGREEMENT_KEY,startIndex);
+                        map.put(AGREEMENT_VALUE,endIndex);
+                        if(!list.contains(map)){
+                            list.add(map);
+                        }
+                    }else{
+                        LogUtil.i("======非法输出======");
+                    }
+                    temp = StringUtil.replaceByTarget(message,startFlag,"#");
+                    temp = StringUtil.replaceByTarget(temp,endFlag,"#");
+                    return checkString(temp,startFlag,endFlag,list);
+                }else if(endIndex<startIndex){
+                    temp=StringUtil.replaceByTarget(message,endFlag,"#");
+                    return checkString(temp,startFlag,endFlag,list);
+                }
+            }
+        }
+        LogUtil.i("====结束===list="+list);
+        return list;
     }
 
 }
