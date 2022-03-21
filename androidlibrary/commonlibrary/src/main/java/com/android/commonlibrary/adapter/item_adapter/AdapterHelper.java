@@ -142,9 +142,30 @@ public class AdapterHelper {
         });
     }
 
+    /**
+     * 添加控件长按监听
+     **/
+    public void addOnLongClickListener(OnLongItemClickListener listener, View view, final BaseViewHolder viewHolder, final Object obj) {
+        //mTvName点击事件
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (listener != null) {
+                    listener.longItemClickListener(v, viewHolder, obj);
+                }
+                return false;
+            }
+        });
+    }
+
     /**点击事件监听**/
     public interface OnItemClickListener {
         void itemClickListener(View view, BaseViewHolder viewHolder, Object obj);
+    }
+
+    /**长按事件监听**/
+    public interface OnLongItemClickListener {
+        void longItemClickListener(View view, BaseViewHolder viewHolder, Object obj);
     }
 
     /***

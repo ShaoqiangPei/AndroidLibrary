@@ -25,6 +25,7 @@ public abstract class ComAdapter<T> extends BaseQuickAdapter<T, BaseViewHolder> 
     protected List<T> mData;
     protected int mItemViewId;//item布局id
     protected AdapterHelper.OnItemClickListener mOnItemClickListener;
+    protected AdapterHelper.OnLongItemClickListener mOnLongItemClickListener;
 
     public ComAdapter(int itemViewId, List<T> data, Context context) {
         super(itemViewId, data);
@@ -187,6 +188,17 @@ public abstract class ComAdapter<T> extends BaseQuickAdapter<T, BaseViewHolder> 
         AdapterHelper.getInstance().addOnClickListener(mOnItemClickListener,view,viewHolder,obj);
     }
 
+    /**设置长按事件监听**/
+    @Override
+    public void setOnLongItemClickListener(AdapterHelper.OnLongItemClickListener onLongItemClickListener) {
+        this.mOnLongItemClickListener=onLongItemClickListener;
+    }
+
+    /**添加控件长按监听**/
+    @Override
+    public void addOnLongClickListener(View view, BaseViewHolder viewHolder, Object obj) {
+        AdapterHelper.getInstance().addOnLongClickListener(mOnLongItemClickListener,view,viewHolder,obj);
+    }
 }
 
 //==================使用范例=============

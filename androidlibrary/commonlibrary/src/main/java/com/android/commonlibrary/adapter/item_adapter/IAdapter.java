@@ -85,4 +85,10 @@ public interface IAdapter {
 
     /**添加控件监听**/
     void addOnClickListener(View view, final BaseViewHolder viewHolder, final Object obj);
+
+    /**设置长按事件监听**/
+    void setOnLongItemClickListener(AdapterHelper.OnLongItemClickListener onLongItemClickListener);
+
+    /**添加控件长按监听**/
+    void addOnLongClickListener(View view, final BaseViewHolder viewHolder, final Object obj);
 }
