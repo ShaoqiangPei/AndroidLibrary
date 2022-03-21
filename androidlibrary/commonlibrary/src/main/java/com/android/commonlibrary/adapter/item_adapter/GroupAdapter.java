@@ -25,6 +25,7 @@ public abstract class GroupAdapter<T>extends BaseSectionQuickAdapter implements 
     protected int mSectionHeadViewId;//分组布局的headerid
     protected int mItemViewId;//item布局id
     protected AdapterHelper.OnItemClickListener mOnItemClickListener;
+    protected AdapterHelper.OnLongItemClickListener mOnLongItemClickListener;
 
     public GroupAdapter(int itemViewId, int sectionHeadViewId, List<T> data, Context context) {
         super(itemViewId, sectionHeadViewId, data);
@@ -176,6 +177,18 @@ public abstract class GroupAdapter<T>extends BaseSectionQuickAdapter implements 
     @Override
     public void addOnClickListener(View view, BaseViewHolder viewHolder, Object obj) {
         AdapterHelper.getInstance().addOnClickListener(mOnItemClickListener,view,viewHolder,obj);
+    }
+
+    /**设置长按事件监听**/
+    @Override
+    public void setOnLongItemClickListener(AdapterHelper.OnLongItemClickListener onLongItemClickListener) {
+        this.mOnLongItemClickListener=onLongItemClickListener;
+    }
+
+    /**添加控件长按监听**/
+    @Override
+    public void addOnLongClickListener(View view, BaseViewHolder viewHolder, Object obj) {
+        AdapterHelper.getInstance().addOnLongClickListener(mOnLongItemClickListener,view,viewHolder,obj);
     }
 
 }
