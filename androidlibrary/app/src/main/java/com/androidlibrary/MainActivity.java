@@ -1,20 +1,13 @@
 package com.androidlibrary;
 
-import android.Manifest;
 import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import com.android.commonlibrary.dialog_fragment.SyDialogHelper;
 import com.android.commonlibrary.mvp_frame.AppActivity;
-import com.android.commonlibrary.permission.PermissionHelper;
 import com.android.commonlibrary.util.LogUtil;
-import com.android.commonlibrary.util.encrypt.AES;
-import com.android.commonlibrary.util.encrypt.Aes256;
-import kr.co.namee.permissiongen.PermissionFail;
-import kr.co.namee.permissiongen.PermissionSuccess;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class MainActivity extends AppActivity {
@@ -66,30 +59,30 @@ public class MainActivity extends AppActivity {
     }
 
     private void requestPermission(int requestCode) {
-        String permissions[] = {
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        PermissionHelper.getInstance().checkPermissions(permissions, requestCode,MainActivity.this);
+//        String permissions[] = {
+//                Manifest.permission.READ_EXTERNAL_STORAGE,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//        PermissionHelper.getInstance().checkPermissions(permissions, requestCode,MainActivity.this);
     }
 
-    @PermissionSuccess(requestCode =PERMISSION_CODE)
-    public void requestSuccess() {
-        //申请到权限后的处理
-        //......
-        LogUtil.i("=======获得权限======");
-    }
-
-    @PermissionFail(requestCode =PERMISSION_CODE)
-    public void requestFail() {
-        //未获取到权限的处理
-        //......
-        LogUtil.i("=======没有权限======");
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        PermissionHelper.getInstance().onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+//    @PermissionSuccess(requestCode =PERMISSION_CODE)
+//    public void requestSuccess() {
+//        //申请到权限后的处理
+//        //......
+//        LogUtil.i("=======获得权限======");
+//    }
+//
+//    @PermissionFail(requestCode =PERMISSION_CODE)
+//    public void requestFail() {
+//        //未获取到权限的处理
+//        //......
+//        LogUtil.i("=======没有权限======");
+//    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+//        PermissionHelper.getInstance().onRequestPermissionsResult(requestCode, permissions, grantResults);
+//    }
 
 
     private void test() {
