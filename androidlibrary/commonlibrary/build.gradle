@@ -112,3 +112,15 @@ dependencies {
 //    //selector框架
 //    api librarys.compile_DevShapeUtils
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.ShaoqiangPei'
+            }
+        }
+    }
+}

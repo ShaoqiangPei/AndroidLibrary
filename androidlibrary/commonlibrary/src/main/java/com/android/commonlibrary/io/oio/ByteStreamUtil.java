@@ -97,8 +97,6 @@ public class ByteStreamUtil {
             result=true;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }finally {
             StreamUtil.closeStream(null,outputStream);
             StreamUtil.closeStream(null,printStream);
