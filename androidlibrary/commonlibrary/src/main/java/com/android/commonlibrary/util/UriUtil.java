@@ -41,25 +41,9 @@ public class UriUtil {
      * @param filePath
      * @return
      */
-    public static Uri getgetUriByPath(String filePath){
+    public static Uri getUriByPath(String filePath){
         File file=FileUtil.createFile(filePath);
         return getUriByFile(file);
-    }
-
-    //简易处理板  （实际本没有发现什么问题，可以直接使用）
-    public static String getRealPathFromURI(Context context, Uri contentURI) {
-        String result;
-        Cursor cursor = context.getContentResolver().query(contentURI,
-                new String[]{MediaStore.Images.ImageColumns.DATA},//
-                null, null, null);
-        if (cursor == null) result = contentURI.getPath();
-        else {
-            cursor.moveToFirst();
-            int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-            result = cursor.getString(index);
-            cursor.close();
-        }
-        return result;
     }
 
     //复杂版处理  (适配多种API)   最后直接调用这个方法就可以了
@@ -125,5 +109,6 @@ public class UriUtil {
         }
         return filePath;
     }
+
 
 }

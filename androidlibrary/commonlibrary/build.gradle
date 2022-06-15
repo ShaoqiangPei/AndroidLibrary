@@ -82,8 +82,8 @@ dependencies {
     androidTestImplementation librarys.androidTestImplementation_support_espresso
 
     //================第三方库============
-//    //PermissionGen
-//    api librarys.api_permissionenGen
+    //PermissionGen
+    api librarys.api_rxpermissions
     //gson(引入Retrofit网络框架后,需要替换成retrofit2_converter_gson)
     implementation librarys.implementation_gson
     //butterKnife

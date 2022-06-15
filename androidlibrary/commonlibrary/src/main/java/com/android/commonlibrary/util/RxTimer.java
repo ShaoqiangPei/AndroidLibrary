@@ -2,10 +2,10 @@ package com.android.commonlibrary.util;
 
 import androidx.annotation.NonNull;
 import java.util.concurrent.TimeUnit;
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * Title: RxJava2.x实现的定时器

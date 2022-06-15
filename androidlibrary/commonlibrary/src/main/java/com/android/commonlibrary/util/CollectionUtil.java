@@ -130,4 +130,19 @@ public class CollectionUtil {
     public static <K, V> boolean isNotEmpty(Map<K, V> map) {
         return !isEmpty(map);
     }
+
+
+    /**判断数组是否为空**/
+    public static boolean isEmpty(String array[]){
+        if(array==null||array.length<=0){
+            return true;
+        }
+        return false;
+    }
+
+    /**判断数组是否为非空**/
+    public static boolean isNotEmpty(String array[]){
+        return !isEmpty(array);
+    }
+
 }
