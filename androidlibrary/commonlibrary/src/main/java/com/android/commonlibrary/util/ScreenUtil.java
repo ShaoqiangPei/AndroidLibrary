@@ -35,6 +35,52 @@ public class ScreenUtil {
         return dm;
     }
 
+    /**屏幕基本信息**/
+    public static void printScreenInfo(){
+        LogUtil.i("*************屏幕信息*************\n");
+        int width=ScreenUtil.getWidth();
+        int height=ScreenUtil.getHeight();
+        LogUtil.i("宽="+ width+" 高="+height+"\n");
+        int dpi=ScreenUtil.getDpi();
+        float density=ScreenUtil.getDensity();
+        LogUtil.i("dpi="+ dpi+"  density(屏幕像素比例)="+density+"\n");
+        float smallwidthDensity=0f;
+        int smallSide=width<height?width:height;
+        if(density==0f||width==0){
+            LogUtil.i("smallwidthDensity获取异常(smallwidthDensity=smallSide/density,smallwidthDensity="+smallwidthDensity+",请查看是否width或height或density为0)"+"\n");
+        }else{
+            smallwidthDensity=smallSide/density;
+        }
+        LogUtil.i("smallwidthDensity(最小宽度)="+ smallwidthDensity+"\n");
+        LogUtil.i("**********************************\n");
+    }
+
+    /***
+     * 获取屏幕dpi,如 120/160/240/320 (dpi)
+     *
+     * @return
+     */
+    public static int getDpi() {
+        DisplayMetrics dm = getDisplayMetrics();
+        if(dm!=null){
+            return dm.densityDpi;
+        }
+        return 0;
+    }
+
+    /***
+     * 屏幕像素比例
+     *
+     * eg: 0.75/1.0/1.5/2.0
+     */
+    public static float getDensity(){
+        DisplayMetrics dm = getDisplayMetrics();
+        if(dm!=null){
+            return dm.density;
+        }
+        return 0f;
+    }
+
     /**
      * 获取屏幕宽
      **/
@@ -56,6 +102,8 @@ public class ScreenUtil {
         }
         return 0;
     }
+
+
 
     /**
      * 获得状态栏的高度
