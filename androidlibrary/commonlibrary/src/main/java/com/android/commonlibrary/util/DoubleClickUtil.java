@@ -12,12 +12,7 @@ public class DoubleClickUtil {
     private static long mLastClick;
 
     public static boolean isDoubleClick(){
-        //大于一秒方个通过
-        if (System.currentTimeMillis() - mLastClick <= DEFAULT_MILLISECONDS){
-            return true;
-        }
-        mLastClick = System.currentTimeMillis();
-        return false;
+        return isDoubleClick(DEFAULT_MILLISECONDS);
     }
 
     public static boolean isDoubleClick(long milliseconds){
@@ -30,13 +25,7 @@ public class DoubleClickUtil {
     }
 
     public static void shakeClick(final View v) {
-        v.setClickable(false);
-        v.postDelayed(new Runnable(){
-            @Override
-            public void run() {
-                v.setClickable(true);
-            }
-        }, DEFAULT_MILLISECONDS);
+        shakeClick(v,DEFAULT_MILLISECONDS);
     }
 
     public static void shakeClick(final View v, long milliseconds) {
