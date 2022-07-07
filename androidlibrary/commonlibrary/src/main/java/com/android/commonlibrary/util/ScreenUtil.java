@@ -1,6 +1,7 @@
 package com.android.commonlibrary.util;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -44,13 +45,7 @@ public class ScreenUtil {
         int dpi=ScreenUtil.getDpi();
         float density=ScreenUtil.getDensity();
         LogUtil.i("dpi="+ dpi+"  density(屏幕像素比例)="+density+"\n");
-        float smallwidthDensity=0f;
-        int smallSide=width<height?width:height;
-        if(density==0f||width==0){
-            LogUtil.i("smallwidthDensity获取异常(smallwidthDensity=smallSide/density,smallwidthDensity="+smallwidthDensity+",请查看是否width或height或density为0)"+"\n");
-        }else{
-            smallwidthDensity=smallSide/density;
-        }
+        float smallwidthDensity=getSmallwidthDensity();
         LogUtil.i("smallwidthDensity(最小宽度)="+ smallwidthDensity+"\n");
         LogUtil.i("**********************************\n");
     }
@@ -79,6 +74,33 @@ public class ScreenUtil {
             return dm.density;
         }
         return 0f;
+    }
+
+    /****
+     * 屏幕最小宽度
+     *
+     * (系统会根据当前设备屏幕的 最小宽度 来匹配 values-swdp)
+     * @return
+     */
+    public static float getSmallwidthDensity(){
+        float smallwidthDensity=0f;
+        Application application=LibraryConfig.getInstance().getApplication();
+        if(application!=null) {
+            smallwidthDensity = application.getResources().getConfiguration().smallestScreenWidthDp;
+            LogUtil.i("===读取配置获取屏幕最小宽度:smallwidthDensity="+smallwidthDensity);
+        }else{
+            float density=ScreenUtil.getDensity();
+            int width=ScreenUtil.getWidth();
+            int height=ScreenUtil.getHeight();
+            int smallSide = width < height ? width : height;
+            if (density == 0f || width == 0) {
+                throw new SecurityException("smallwidthDensity获取异常(smallwidthDensity=smallSide/density,smallwidthDensity=" + smallwidthDensity + ",请查看是否width或height或density为0)" + "\n");
+            } else {
+                smallwidthDensity = smallSide / density;
+                LogUtil.i("===通过屏幕宽高计算获取屏幕最小宽度:smallwidthDensity="+smallwidthDensity);
+            }
+        }
+        return smallwidthDensity;
     }
 
     /**
