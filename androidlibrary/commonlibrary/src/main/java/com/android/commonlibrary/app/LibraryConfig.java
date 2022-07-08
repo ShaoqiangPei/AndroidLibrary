@@ -38,10 +38,11 @@ public class LibraryConfig {
      * @param debug true:打开调试log,  false:关闭调试log
      * @return
      */
-    public void setDebug(boolean debug){
+    public LibraryConfig setDebug(boolean debug){
         this.mDebug=debug;
         //设置自定义打印开关
         LogUtil.setDebug(mDebug);
+        return LibraryConfig.this;
     }
 
     /**
@@ -60,7 +61,6 @@ public class LibraryConfig {
             ScreenUtil.printScreenInfo();
         }
     }
-
 
 
     /**获取项目上下文**/

@@ -2,7 +2,6 @@ package com.android.commonlibrary.io;
 
 import com.android.commonlibrary.util.LogUtil;
 import com.android.commonlibrary.util.StringUtil;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
