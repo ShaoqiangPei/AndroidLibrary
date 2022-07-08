@@ -54,12 +54,13 @@ public class LibraryConfig {
      * @param showScreenInfo true:打印屏幕信息,  false:不打印屏幕信息
      * @return
      */
-    public void setShowScreenInfo(boolean showScreenInfo){
+    public LibraryConfig setShowScreenInfo(boolean showScreenInfo){
         this.mShowScreenInfo=showScreenInfo;
         //是否打印设备屏幕信息(当 mDebug==true && showScreenInfo==true时,打印才生效)
         if(mDebug&&mShowScreenInfo){
             ScreenUtil.printScreenInfo();
         }
+        return LibraryConfig.this;
     }
 
 
