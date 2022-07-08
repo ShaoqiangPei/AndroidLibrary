@@ -1,5 +1,11 @@
+//表示这是一个module模块(非主module)
 apply plugin: 'com.android.library'
-//引用butterknife
+
+//引用build.gradle文件
+//配置jitpack源码打包查看与注释问题
+apply from: 'javadoc_sources.gradle'
+
+//引用butterknife插件
 apply plugin: 'com.jakewharton.butterknife'
 
 //为jitpack做配置
@@ -33,44 +39,6 @@ android {
         targetCompatibility 1.8
     }
 
-//==========以下添加是为了让自己的库发布到JitPack上仍能显示注释==================
-    // 打包源码jar
-    task sourcesJar(type: Jar) {
-        from android.sourceSets.main.java.srcDirs
-        classifier = 'sources'
-    }
-    //编译groovy代码时采用 UTF-8
-    tasks.withType(GroovyCompile) {
-        groovyOptions.encoding = "MacRoman"
-    }
-
-    //编译JAVA文件时采用UTF-8
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-    }
-
-    task javadoc(type: Javadoc) {
-        failOnError false
-        source = android.sourceSets.main.java.sourceFiles
-        configurations.implementation.setCanBeResolved(true)
-        configurations.api.setCanBeResolved(true)
-        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//        classpath += configurations.compile
-        classpath += configurations.implementation
-        classpath += configurations.api
-    }
-
-    // 打包文档jar
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
-        from javadoc.destinationDir
-    }
-
-    artifacts {
-        archives sourcesJar
-        archives javadocJar
-    }
-//==========以上添加是为了让自己的库发布到JitPack上仍能显示注释==================
 }
 
 dependencies {
@@ -124,6 +92,7 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
                 groupId = 'com.github.ShaoqiangPei'
+//                version = '1.0.0'
             }
         }
     }
