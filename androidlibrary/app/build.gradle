@@ -14,6 +14,7 @@ android {
         targetSdkVersion config.targetSdkVersion
         versionCode config.versionCode
         versionName config.versionName
+        multiDexEnabled config.multiDexEnabled
         testInstrumentationRunner config.testInstrumentationRunner
     }
 

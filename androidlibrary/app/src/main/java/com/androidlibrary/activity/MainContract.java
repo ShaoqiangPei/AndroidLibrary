@@ -1,7 +1,7 @@
 package com.androidlibrary.activity;
 
-import com.android.commonlibrary.interfacer.mvp.PrePresenter;
-import com.android.commonlibrary.interfacer.mvp.PreView;
+import com.android.commonlibrary.interfacer.frame.struct.mvp.PrePresenter;
+import com.android.commonlibrary.interfacer.frame.struct.mvp.PreView;
 
 /**
  * Title:登录功能接口层

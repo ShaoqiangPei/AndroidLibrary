@@ -41,12 +41,13 @@ public class ScreenUtil {
         LogUtil.i("*************屏幕信息*************\n");
         int width=ScreenUtil.getWidth();
         int height=ScreenUtil.getHeight();
-        LogUtil.i("宽="+ width+" 高="+height+"\n");
+        Context context=LibraryConfig.getInstance().getApplication();
+        LogUtil.i("宽="+ width+"px("+ScreenUtil.px2dp(width,context)+"dp) 高="+height+"px("+ScreenUtil.px2dp(height,context)+"dp)\n");
         int dpi=ScreenUtil.getDpi();
         float density=ScreenUtil.getDensity();
-        LogUtil.i("dpi="+ dpi+"  density(屏幕像素比例)="+density+"\n");
+        LogUtil.i("密度值="+ dpi+"dpi  density(像素比例)="+density+"\n");
         float smallwidthDensity=getSmallwidthDensity();
-        LogUtil.i("smallwidthDensity(最小宽度)="+ smallwidthDensity+"\n");
+        LogUtil.i("smallwidthDensity(最小宽度)="+ smallwidthDensity+"dp\n");
         LogUtil.i("**********************************\n");
     }
 
@@ -87,7 +88,7 @@ public class ScreenUtil {
         Application application=LibraryConfig.getInstance().getApplication();
         if(application!=null) {
             smallwidthDensity = application.getResources().getConfiguration().smallestScreenWidthDp;
-            LogUtil.i("===读取配置获取屏幕最小宽度:smallwidthDensity="+smallwidthDensity);
+            LogUtil.i("===通过读取配置获取:smallwidthDensity="+smallwidthDensity+"(dp)");
         }else{
             float density=ScreenUtil.getDensity();
             int width=ScreenUtil.getWidth();
@@ -97,7 +98,7 @@ public class ScreenUtil {
                 throw new SecurityException("smallwidthDensity获取异常(smallwidthDensity=smallSide/density,smallwidthDensity=" + smallwidthDensity + ",请查看是否width或height或density为0)" + "\n");
             } else {
                 smallwidthDensity = smallSide / density;
-                LogUtil.i("===通过屏幕宽高计算获取屏幕最小宽度:smallwidthDensity="+smallwidthDensity);
+                LogUtil.i("===通过屏幕宽高计算:smallwidthDensity="+smallwidthDensity+"(dp)");
             }
         }
         return smallwidthDensity;

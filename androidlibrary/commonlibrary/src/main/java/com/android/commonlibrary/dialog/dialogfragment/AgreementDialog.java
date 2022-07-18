@@ -1,4 +1,4 @@
-package com.android.commonlibrary.dialog_fragment;
+package com.android.commonlibrary.dialog.dialogfragment;
 
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;

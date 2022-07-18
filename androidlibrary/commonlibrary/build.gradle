@@ -25,6 +25,7 @@ android {
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
         testInstrumentationRunner config.testInstrumentationRunner
+        multiDexEnabled config.multiDexEnabled
     }
 
     buildTypes {
@@ -54,21 +55,29 @@ android {
     //打包源码jar
     task sourcesJar(type: Jar) {
         from android.sourceSets.main.java.srcDirs
-        classifier = 'sources'
+//        classifier = 'sources'
+        archiveClassifier.set("sources")
+    }
+
+    configurations {
+        compile
     }
 
     task javadoc(type: Javadoc) {
-        failOnError false
+        failOnError false  //报错不中断
         source = android.sourceSets.main.java.sourceFiles
         configurations.implementation.setCanBeResolved(true)
+        configurations.api.setCanBeResolved(true)
         classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 //        classpath += configurations.compile //Android Gradle 3.0.0之前使用
         classpath += configurations.implementation
+        classpath += configurations.api
     }
 
     //打包文档jar(制作文档(Javadoc))
     task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
+//        classifier = 'javadoc'
+        archiveClassifier.set("javadoc")
         from javadoc.destinationDir
     }
 
@@ -95,6 +104,8 @@ dependencies {
     //================第三方库============
     //PermissionGen
     api librarys.api_rxpermissions
+    //屏幕适配
+    api librarys.api_autosize
     //gson(引入Retrofit网络框架后,需要替换成retrofit2_converter_gson)
     implementation librarys.implementation_gson
     //butterKnife

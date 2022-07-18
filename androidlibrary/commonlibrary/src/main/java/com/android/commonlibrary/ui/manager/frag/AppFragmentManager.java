@@ -1,4 +1,4 @@
-package com.android.commonlibrary.app;
+package com.android.commonlibrary.ui.manager.frag;
 
 import android.content.Context;
 import android.os.Bundle;

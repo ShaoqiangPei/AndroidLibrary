@@ -20,6 +20,8 @@ ext {
             versionCode:1,
             //版本名称
             versionName:"1.0.0",
+            //方法数超65535的处理
+            multiDexEnabled: true,
 
             testInstrumentationRunner:"androidx.test.runner.AndroidJUnitRunner"
     ]
@@ -56,6 +58,9 @@ ext {
 
             //Permissions
             api_rxpermissions:"com.github.tbruyelle:rxpermissions:0.12",
+
+            //屏幕适配
+            api_autosize:"me.jessyan:autosize:1.2.1",
 
             //Brvah(adapter)适配器
             api_BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",

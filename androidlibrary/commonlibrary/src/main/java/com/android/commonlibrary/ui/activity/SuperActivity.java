@@ -1,4 +1,4 @@
-package com.android.commonlibrary.activity;
+package com.android.commonlibrary.ui.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -10,17 +10,16 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 import com.android.commonlibrary.R;
-import com.android.commonlibrary.app.AppActivityManager;
+import com.android.commonlibrary.frame.view.ButterKnifeWrapper;
+import com.android.commonlibrary.interfacer.base.IAFFrame;
+import com.android.commonlibrary.ui.manager.act.AppActivityManager;
 import com.android.commonlibrary.interfacer.base.IAF;
 import com.android.commonlibrary.interfacer.base.IActivity;
-import com.android.commonlibrary.interfacer.base.IFrame;
 import com.android.commonlibrary.util.DoubleClickUtil;
 import java.io.Serializable;
 import java.util.List;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Description:Activity超类
@@ -29,12 +28,13 @@ import butterknife.Unbinder;
  * Author:pei
  * Date: 2019/7/3
  */
-public abstract class SuperActivity extends AppCompatActivity implements IAF, IActivity, IFrame {
+public abstract class SuperActivity extends AppCompatActivity implements IAF, IActivity, IAFFrame {
 
     protected View mLayoutView;//总布局
     protected Activity mContext;
     protected boolean isNoTitle;//是否隐藏标题栏,默认隐藏标题栏
-    private Unbinder mUnbinder;
+
+    private ButterKnifeWrapper mButterKnifeWrapper;//butterKnife初始化控件框架
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +50,9 @@ public abstract class SuperActivity extends AppCompatActivity implements IAF, IA
             //加载布局
             mLayoutView = LayoutInflater.from(mContext).inflate(getContentViewId(), null);
             setContentView(mLayoutView);
-            mUnbinder = ButterKnife.bind(this);
 
-            //加载mvp框架的时候用
-            loadMVP();
-            //框架加载
-            attach();
+            //加载框架的时候用
+            loadFrame();
             //初始化加载
             initData();
             setListener();
@@ -80,15 +77,19 @@ public abstract class SuperActivity extends AppCompatActivity implements IAF, IA
         }
     }
 
-    /**加载mvp框架的时候用，供子类重写，此处不做处理**/
-    protected void loadMVP(){}
-
+    /**加载框架的时候用，供子类重写，此处不做处理**/
     @Override
-    public void attach() {}
+    public void loadFrame() {
+        mButterKnifeWrapper =new ButterKnifeWrapper(this);
+        mButterKnifeWrapper.attachView();
+    }
 
+    /**做框架必要的注销处理，供子类重写，此处不做处理**/
     @Override
-    public void distach() {
-
+    public void destoryFrame() {
+        if(mButterKnifeWrapper !=null){
+            mButterKnifeWrapper.detachView();
+        }
     }
 
     @Override
@@ -99,13 +100,15 @@ public abstract class SuperActivity extends AppCompatActivity implements IAF, IA
     @Override
     protected void onDestroy() {
         //框架销毁
-        distach();
-
-        if (mUnbinder != null) {
-            mUnbinder.unbind();
-        }
+        destoryFrame();
         AppActivityManager.getInstance().finishActivity(this);
         super.onDestroy();
+    }
+
+    /**用于初始化控件的**/
+    @Override
+    public <T>T getView(int rId) {
+        return AppHelper.getInstance().getView(mContext,rId);
     }
 
     /**获取控件值**/
@@ -130,12 +133,6 @@ public abstract class SuperActivity extends AppCompatActivity implements IAF, IA
     @Override
     public void showShortToast(String msg) {
         AppHelper.getInstance().showShortToast(msg);
-    }
-
-    /**用于初始化控件的**/
-    @Override
-    public <T>T getView(int rId) {
-        return AppHelper.getInstance().getView(mContext,rId);
     }
 
     /**无参界面跳转**/

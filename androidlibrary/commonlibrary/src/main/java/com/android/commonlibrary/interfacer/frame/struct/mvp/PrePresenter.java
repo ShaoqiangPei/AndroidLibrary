@@ -6,7 +6,7 @@ package com.android.commonlibrary.interfacer.frame.struct.mvp;
  * T-MVP Presenter基类
  */
 
-public interface IPrePresenter {
+public interface PrePresenter {
 
     void attachView();
 

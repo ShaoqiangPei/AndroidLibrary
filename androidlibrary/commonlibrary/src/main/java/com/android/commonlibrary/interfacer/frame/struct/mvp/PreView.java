@@ -1,4 +1,4 @@
-package com.android.commonlibrary.interfacer.mvp;
+package com.android.commonlibrary.interfacer.frame.struct.mvp;
 
 /**
  *   MVP-View基类

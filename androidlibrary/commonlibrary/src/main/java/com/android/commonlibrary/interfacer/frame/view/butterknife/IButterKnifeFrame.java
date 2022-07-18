@@ -1,4 +1,4 @@
-package com.android.commonlibrary.interfacer.frame;
+package com.android.commonlibrary.interfacer.frame.view.butterknife;
 
 import com.android.commonlibrary.interfacer.base.IFrame;
 
@@ -9,7 +9,7 @@ import com.android.commonlibrary.interfacer.base.IFrame;
  * autor:pei
  * created on 2022/7/14
  */
-public interface IViewFrame extends IFrame {
+public interface IButterKnifeFrame extends IFrame {
 
     /**创建**/
     void attachView();

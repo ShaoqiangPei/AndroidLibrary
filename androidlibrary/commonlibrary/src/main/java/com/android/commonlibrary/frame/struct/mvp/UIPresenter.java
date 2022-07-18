@@ -1,7 +1,9 @@
-package com.android.commonlibrary.mvp_frame;
+package com.android.commonlibrary.frame.struct.mvp;
 
 import android.content.Context;
+
 import com.android.commonlibrary.entity.UIData;
+import com.android.commonlibrary.frame.af.AppActivity;
 import com.android.commonlibrary.interfacer.frame.struct.mvp.PreView;
 
 /**

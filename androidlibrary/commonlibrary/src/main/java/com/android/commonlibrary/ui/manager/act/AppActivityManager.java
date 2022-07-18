@@ -1,9 +1,10 @@
-package com.android.commonlibrary.app;
+package com.android.commonlibrary.ui.manager.act;
 
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
+import com.android.commonlibrary.app.LibraryConfig;
 import com.android.commonlibrary.cacher.normal_cache.Cache;
 import com.android.commonlibrary.util.LogUtil;
 
@@ -86,7 +87,7 @@ public class AppActivityManager {
      */
     public void finishActivity(Class<?> cls) {
         for (Activity activity : mActivityStack) {
-            if (activity.getClass().equals(cls)) {
+            if (activity != null && activity.getClass().equals(cls)) {
                 finishActivity(activity);
                 return;
             }
@@ -98,7 +99,7 @@ public class AppActivityManager {
      */
     public void finishOtherActivity(Class<?> cls) {
         for (Activity activity : mActivityStack) {
-            if (!activity.getClass().equals(cls)) {
+            if (activity != null &&!activity.getClass().equals(cls)) {
                 if (null != activity) {
                     activity.finish();
                 }
@@ -110,7 +111,8 @@ public class AppActivityManager {
      * 结束所有Activity
      */
     public void finishAllActivity() {
-        for (int i = 0, size = mActivityStack.size(); i < size; i++) {
+        int activitySize=getActivitySize();
+        for (int i = 0; i < activitySize; i++) {
             if (null != mActivityStack.get(i)) {
                 mActivityStack.get(i).finish();
             }

@@ -1,4 +1,4 @@
-package com.android.commonlibrary.screenadapter.wd;
+package com.android.commonlibrary.frame.screen.wd;
 
 import java.io.File;
 import java.io.FileNotFoundException;

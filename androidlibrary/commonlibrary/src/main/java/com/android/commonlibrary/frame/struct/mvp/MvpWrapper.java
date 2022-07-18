@@ -1,6 +1,6 @@
-package com.androidlibrary.test;
+package com.android.commonlibrary.frame.struct.mvp;
 
-import com.android.commonlibrary.interfacer.base.IFrame;
+import com.android.commonlibrary.interfacer.frame.struct.mvp.IMvpFrame;
 import com.android.commonlibrary.interfacer.frame.struct.mvp.PrePresenter;
 
 /**
@@ -10,7 +10,7 @@ import com.android.commonlibrary.interfacer.frame.struct.mvp.PrePresenter;
  * autor:pei
  * created on 2022/7/13
  */
-public class MvpWrapper implements IFrame {
+public class MvpWrapper implements IMvpFrame {
 
     private PrePresenter mPresenter;
 
@@ -19,17 +19,16 @@ public class MvpWrapper implements IFrame {
     }
 
     @Override
-    public void attach() {
+    public void attachStruct() {
         if (mPresenter != null) {
             mPresenter.attachView();
         }
     }
 
     @Override
-    public void distach() {
+    public void detachStruct() {
         if (mPresenter != null) {
             mPresenter.detachView();
         }
     }
-
 }

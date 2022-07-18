@@ -1,8 +1,8 @@
-package com.testdemo.function;
+package com.android.commonlibrary.frame.screen.autosize;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import com.testdemo.base.BaseActivity;
+import com.android.commonlibrary.frame.af.AppActivity;
 import me.jessyan.autosize.AutoSizeCompat;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.internal.CustomAdapt;
@@ -11,11 +11,13 @@ import me.jessyan.autosize.utils.ScreenUtils;
 /**
  * Title: 处理适配中出现不生效问题
  *
- * description:
+ * description: 使用时将此类拷贝到你的项目中，将DefaultSuperAutoSizeActivity名称改为 SuperAutoSizeActivity
+ *              然后把继承的 AppActivity 改为自己项目中的 基类Activity(如BaseActivity)
+ *
  * autor:pei
  * created on 2022/7/14
  */
-public abstract class SuperAutoSizeActivity extends BaseActivity implements CustomAdapt {
+public abstract class DefaultSuperAutoSizeActivity extends AppActivity implements CustomAdapt {
 
     private float mDensity;
 

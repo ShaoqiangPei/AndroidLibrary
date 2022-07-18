@@ -1,6 +1,6 @@
-package com.android.commonlibrary.interfacer.mvp;
+package com.android.commonlibrary.interfacer.frame.struct.mvp;
 
-import com.android.commonlibrary.interfacer.frame.struct.mvp.IPrePresenter;
+import com.android.commonlibrary.interfacer.frame.struct.mvp.PrePresenter;
 
 /**
  * Title:获取Presenter对象的接口
@@ -8,8 +8,8 @@ import com.android.commonlibrary.interfacer.frame.struct.mvp.IPrePresenter;
  * autor:pei
  * created on 2020/4/28
  */
-public interface IPreActivity {
+public interface IPresenter {
 
 //      <T extends PrePresenter>T getPresenter();
-      IPrePresenter getPresenter();
+      PrePresenter getPresenter();
 }

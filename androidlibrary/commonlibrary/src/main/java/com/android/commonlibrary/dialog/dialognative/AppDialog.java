@@ -1,4 +1,4 @@
-package com.android.commonlibrary.dialog;
+package com.android.commonlibrary.dialog.dialognative;
 
 import android.app.Activity;
 import android.app.Dialog;

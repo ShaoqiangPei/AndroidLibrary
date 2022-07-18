@@ -1,4 +1,4 @@
-package com.android.commonlibrary.fragment;
+package com.android.commonlibrary.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.android.commonlibrary.frame.view.ButterKnifeWrapper;
+import com.android.commonlibrary.interfacer.base.IAFFrame;
 import com.android.commonlibrary.ui.activity.AppHelper;
 import com.android.commonlibrary.ui.activity.SuperActivity;
-import com.android.commonlibrary.interfacer.base.IFrame;
-import com.android.commonlibrary.interfacer.base.OnFragmentListener;
 import com.android.commonlibrary.interfacer.base.IAF;
 import com.android.commonlibrary.interfacer.base.IFragment;
 import com.android.commonlibrary.util.DoubleClickUtil;
@@ -18,8 +18,6 @@ import java.io.Serializable;
 import java.util.List;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Description:Fragment超类
@@ -27,13 +25,14 @@ import butterknife.Unbinder;
  * Author:pei
  * Date: 2019/7/4
  */
-public abstract class SuperFragment extends Fragment implements IAF, IFragment, IFrame {
+public abstract class SuperFragment extends Fragment implements IAF, IFragment, IAFFrame {
 
     protected View mLayoutView;//总布局
     protected Context mContext;
-    private Unbinder mUnbinder;
     protected boolean isFirstTimeLoad=true;
     protected boolean mFragmentCreated;
+
+    private ButterKnifeWrapper mButterKnifeWrapper;//butterKnife初始化控件框架
 
     /**与Activity交互回调监听**/
     protected OnFragmentListener mOnFragmentListener;
@@ -54,11 +53,8 @@ public abstract class SuperFragment extends Fragment implements IAF, IFragment, 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (getContentViewId() != 0) {
             mLayoutView = inflater.inflate(getContentViewId(), container, false);
-            mUnbinder = ButterKnife.bind(this, mLayoutView);//绑定framgent
-            //加载mvp框架的时候用
-            loadMVP();
-            //框架加载
-            attach();
+            //加载框架的时候用
+            loadFrame();
             //初始化
             onCreateFragmentView(inflater, container, savedInstanceState);
             return mLayoutView;
@@ -88,10 +84,24 @@ public abstract class SuperFragment extends Fragment implements IAF, IFragment, 
         }
     }
 
-    /**加载mvp框架的时候用，供子类重写，此处不做处理**/
-    protected void loadMVP(){}
+    /**加载框架的时候用，供子类重写，此处不做处理**/
+    @Override
+    public void loadFrame() {
+        mButterKnifeWrapper =new ButterKnifeWrapper(this, mLayoutView);
+        mButterKnifeWrapper.attachView();
+    }
+
+    /**做框架必要的注销处理，供子类重写，此处不做处理**/
+    @Override
+    public void destoryFrame() {
+        if(mButterKnifeWrapper !=null){
+            mButterKnifeWrapper.detachView();
+        }
+    }
+
     /**fragment可见,子类需要用到时重写**/
     protected  void onVisible(boolean isFirstTimeLoad){}
+
     /**fragment不可见,子类需要用到时重写**/
     protected  void onInvisible(){}
 
@@ -103,13 +113,16 @@ public abstract class SuperFragment extends Fragment implements IAF, IFragment, 
     @Override
     public void onDestroy() {
         //框架销毁
-        distach();
-
-        if(mUnbinder!=null){
-            mUnbinder.unbind();
-        }
+        destoryFrame();
         super.onDestroy();
     }
+
+    /**用于初始化控件的**/
+    @Override
+    public <T> T getView(int rId) {
+        return AppHelper.getInstance().getView(mLayoutView,rId);
+    }
+
 
     /**获取控件值**/
     @Override
@@ -133,12 +146,6 @@ public abstract class SuperFragment extends Fragment implements IAF, IFragment, 
     @Override
     public void showShortToast(String msg) {
         ((SuperActivity)mContext).showShortToast(msg);
-    }
-
-    /**用于初始化控件的**/
-    @Override
-    public <T> T getView(int rId) {
-        return AppHelper.getInstance().getView(mLayoutView,rId);
     }
 
     /**无参界面跳转**/
@@ -252,6 +259,19 @@ public abstract class SuperFragment extends Fragment implements IAF, IFragment, 
             return bundle;
         }
         return null;
+    }
+
+    /**
+     * Description:Fragmnet与Activity交互回调监听接口
+     *             (fragment给activity回传值的回调接口)
+     *
+     * Author:pei
+     * Date: 2019/7/4
+     */
+    public interface OnFragmentListener {
+
+        /**object需要实现Serializable或Parcelable接口**/
+        void onFragment(String clsNameDetail, Object object);
     }
 
 }

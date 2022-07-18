@@ -9,9 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.android.commonlibrary.R;
-import com.android.commonlibrary.dialog_fragment.AgreementDialog;
-import com.android.commonlibrary.dialog_fragment.AppDialogFragment;
+import com.android.commonlibrary.dialog.dialogfragment.AgreementDialog;
+import com.android.commonlibrary.dialog.dialogfragment.AppDialogFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;

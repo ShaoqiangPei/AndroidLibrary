@@ -1,7 +1,6 @@
-package com.android.commonlibrary.activity;
+package com.android.commonlibrary.ui.activity;
 
 import android.view.KeyEvent;
-import com.android.commonlibrary.interfacer.base.OnFragmentBackListener;
 import com.android.commonlibrary.util.LogUtil;
 
 /**
@@ -49,6 +48,14 @@ public abstract class SuperFragActivity extends SuperActivity {
      */
     protected boolean onActivityKeyDown(int keyCode, KeyEvent event){
         return super.onKeyDown(keyCode, event);
+    }
+
+
+    /**Activity与Fragment交互时,对于返回键处理的监听**/
+    public interface OnFragmentBackListener {
+
+        /**返回键的处理**/
+        void onBackForward(int keyCode, KeyEvent event);
     }
 
 }

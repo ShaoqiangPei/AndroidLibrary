@@ -3,18 +3,18 @@ package com.android.commonlibrary.interfacer.frame;
 import com.android.commonlibrary.interfacer.base.IFrame;
 
 /**
- * Title: 控件初始化框架顶级接口,如 butterknife 等
+ * Title: 屏幕适配框架顶级接口
  *
  * description:
  * autor:pei
  * created on 2022/7/14
  */
-public interface IViewFrame extends IFrame {
+public interface IScreenFrame extends IFrame {
 
-    /**创建**/
-    void attachView();
+    /**加载**/
+    void attachScreen();
 
-    /**销毁**/
-    void detachView();
+    /**取消**/
+    void detachScreen();
 
 }
