@@ -51,7 +51,11 @@ public class AppContext extends Application {
         //初始化AndroidLibrary
         LibraryConfig.getInstance().init(this)
                 //开启log调试,默认为关闭状态
-                .setDebug(true);
+                .setDebug(true)
+		//是否打印设备屏幕信息,默认false
+                //必须在setDebug之后调用,且当setDebug(true)时,setShowScreenInfo(true)才生效
+                .setShowScreenInfo(true);
+                
     }
 
 }
