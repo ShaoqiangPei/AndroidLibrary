@@ -2,6 +2,7 @@
 
 ### 概述
 `WidthHeightDimensHelper`作为一个`android`屏幕适配帮助类，主要用于生成`res/`文件夹下不同`values`文件夹。
+使用的是宽高限定符原理。
 
 ### 使用
 在你`Android`项目下建`java_module`,然后将`WidthHeightDimensHelper`复制到此`module`下，接着在`java`的
