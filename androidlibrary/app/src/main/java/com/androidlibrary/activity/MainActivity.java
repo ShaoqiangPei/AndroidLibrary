@@ -7,8 +7,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
+import com.android.commonlibrary.entity.BaseEntity;
+import com.android.commonlibrary.entity.RestTimeEntity;
 import com.android.commonlibrary.frame.af.AppActivity;
 import com.android.commonlibrary.interfacer.frame.struct.mvp.PrePresenter;
+import com.android.commonlibrary.util.DateUtil;
 import com.android.commonlibrary.util.LogUtil;
 import com.android.commonlibrary.util.ScreenUtil;
 import com.androidlibrary.R;
@@ -165,6 +168,16 @@ public class MainActivity extends AppActivity implements MainContract.View{
 
     private void test() {
         ((MainPresenter)getPresenter()).login();
+
+
+        long end=DateUtil.getDifferenceFromTime("2022-08-20 09:30:00");
+        LogUtil.i("=========end="+end);
+        end=Math.abs(end);
+        LogUtil.i("=========end2="+end);
+
+
+        RestTimeEntity entity= DateUtil.getRestTime(end);
+        LogUtil.i("========entity==="+ BaseEntity.objectToString(entity));
     }
 
 

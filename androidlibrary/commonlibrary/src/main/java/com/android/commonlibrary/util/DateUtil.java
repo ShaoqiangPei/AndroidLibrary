@@ -447,11 +447,11 @@ public class DateUtil {
     /***
      * 将时间戳转化成剩余时间 (几天几个小时几分几秒...)
      *
-     * @param timestamp:时间戳,long类型
+     * @param timestamp:时间戳,long类型,单位秒
      *
-     * @return String
+     * @return RestTimeEntity
      */
-    public static RestTimeEntity timestampConver(long timestamp){
+    public static RestTimeEntity getRestTime(long timestamp){
         long DAY_TIMESTAMP=60*60*24L;//一天的秒数
         long HOUR_TIMESTAMP=60*60L;//一小时的秒数
 
