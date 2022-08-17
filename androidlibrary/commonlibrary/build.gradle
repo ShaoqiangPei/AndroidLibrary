@@ -42,51 +42,6 @@ android {
 
 
 //============库发布到JitPack上仍能显示注释===============
-//    //编译JAVA文件时采用UTF-8
-//    tasks.withType(JavaCompile) {
-//        options.encoding = "UTF-8"
-//    }
-//
-//    //编译groovy代码时采用 UTF-8
-//    tasks.withType(GroovyCompile) {
-//        groovyOptions.encoding = "MacRoman"
-//    }
-//
-//    //打包源码jar
-//    task sourcesJar(type: Jar) {
-//        from android.sourceSets.main.java.srcDirs
-////        classifier = 'sources'
-//        archiveClassifier.set("sources")
-//    }
-//
-//    configurations {
-//        compile
-//    }
-//
-//    task javadoc(type: Javadoc) {
-//        failOnError false  //报错不中断
-//        source = android.sourceSets.main.java.sourceFiles
-//        configurations.implementation.setCanBeResolved(true)
-//        configurations.api.setCanBeResolved(true)
-//        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-////        classpath += configurations.compile //Android Gradle 3.0.0之前使用
-//        classpath += configurations.implementation
-//        classpath += configurations.api
-//    }
-//
-//    //打包文档jar(制作文档(Javadoc))
-//    task javadocJar(type: Jar, dependsOn: javadoc) {
-////        classifier = 'javadoc'
-//        archiveClassifier.set("javadoc")
-//        from javadoc.destinationDir
-//    }
-//
-//    artifacts {
-//        archives sourcesJar
-//        archives javadocJar
-//    }
-
-
     //编译JAVA文件时采用UTF-8
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
@@ -99,23 +54,33 @@ android {
 
     //打包源码jar
     task sourcesJar(type: Jar) {
-        from android.sourceSets.main.java.sourceFiles
+        from android.sourceSets.main.java.srcDirs
+//        classifier = 'sources'
         archiveClassifier.set("sources")
+    }
+
+    configurations {
+        compile
     }
 
     task javadoc(type: Javadoc) {
         failOnError false  //报错不中断
-        //设置源码所在的位置
         source = android.sourceSets.main.java.sourceFiles
+        configurations.implementation.setCanBeResolved(true)
+        configurations.api.setCanBeResolved(true)
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//        classpath += configurations.compile //Android Gradle 3.0.0之前使用
+        classpath += configurations.implementation
+        classpath += configurations.api
     }
 
     //打包文档jar(制作文档(Javadoc))
     task javadocJar(type: Jar, dependsOn: javadoc) {
+//        classifier = 'javadoc'
         archiveClassifier.set("javadoc")
         from javadoc.destinationDir
     }
 
-    //产生相关配置文件的任务
     artifacts {
         archives sourcesJar
         archives javadocJar
