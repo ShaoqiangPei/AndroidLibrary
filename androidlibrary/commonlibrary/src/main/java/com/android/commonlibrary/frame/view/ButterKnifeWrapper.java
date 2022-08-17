@@ -2,13 +2,10 @@ package com.android.commonlibrary.frame.view;
 
 import android.app.Activity;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import com.android.commonlibrary.interfacer.base.IAF;
 import com.android.commonlibrary.interfacer.frame.view.butterknife.IButterKnifeFrame;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 

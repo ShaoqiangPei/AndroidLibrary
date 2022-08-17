@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-
 import com.android.commonlibrary.app.LibraryConfig;
 import com.android.commonlibrary.util.AppUtil;
 import com.android.commonlibrary.util.LogUtil;

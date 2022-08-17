@@ -2,15 +2,12 @@ package com.android.commonlibrary.ui.manager.frag;
 
 import android.content.Context;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.android.commonlibrary.util.CollectionUtil;
 import com.android.commonlibrary.util.StringUtil;
-
 import java.util.Iterator;
 import java.util.Stack;
 

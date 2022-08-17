@@ -1,6 +1,9 @@
 package com.android.commonlibrary.util;
 
 import android.annotation.SuppressLint;
+
+import com.android.commonlibrary.entity.RestTimeEntity;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -439,6 +442,74 @@ public class DateUtil {
             LogUtil.e("========errorMessage=" + e.getMessage());
         }
         return date;
+    }
+
+    /***
+     * 将时间戳转化成剩余时间 (几天几个小时几分几秒...)
+     *
+     * @param timestamp:时间戳,long类型
+     *
+     * @return String
+     */
+    public static RestTimeEntity timestampConver(long timestamp){
+        long DAY_TIMESTAMP=60*60*24L;//一天的秒数
+        long HOUR_TIMESTAMP=60*60L;//一小时的秒数
+
+        long day = 0;
+        long hour = 0;
+        long minutes = 0;
+        long second = 0;
+        long dayInteger = timestamp % DAY_TIMESTAMP;
+        long hourInteger = timestamp % HOUR_TIMESTAMP;
+
+        if (timestamp >= DAY_TIMESTAMP) {
+            day = timestamp / DAY_TIMESTAMP;
+            if (dayInteger != 0) {
+                timestamp = timestamp - (day * DAY_TIMESTAMP);
+                if (timestamp >= HOUR_TIMESTAMP && timestamp < DAY_TIMESTAMP) {
+                    hour = timestamp / HOUR_TIMESTAMP;
+                    if (hourInteger != 0) {
+                        if (hourInteger >= 60) {
+                            minutes = hourInteger / 60;
+                            if (hourInteger % 60 != 0) {
+                                second = hourInteger % 60;
+                            }
+                        } else if (hourInteger < 60) {
+                            second = hourInteger;
+                        }
+                    }
+                } else if (timestamp < HOUR_TIMESTAMP) {
+                    minutes = timestamp / 60;
+                    if (timestamp % 60 != 0) {
+                        second = timestamp % 60;
+                    }
+                }
+            }
+        } else if (timestamp >= HOUR_TIMESTAMP && timestamp < DAY_TIMESTAMP) {
+            hour = timestamp / HOUR_TIMESTAMP;
+            if (hourInteger != 0) {
+                if (hourInteger >= 60) {
+                    minutes = hourInteger / 60;
+                    if (hourInteger % 60 != 0) {
+                        second = hourInteger % 60;
+                    }
+                } else if (hourInteger < 60) {
+                    second = hourInteger;
+                }
+            }
+        } else if (timestamp < HOUR_TIMESTAMP) {
+            minutes = timestamp / 60;
+            if (timestamp % 60 != 0) {
+                second = timestamp % 60;
+            }
+        }
+        // (day<10?("0"+day):day) + "天" + (hour<10?("0"+hour):hour) + "时" + (minutes<10?("0"+minutes):minutes) + "分" + (second<10?("0"+second):second)+ "秒"
+        RestTimeEntity entity=new RestTimeEntity();
+        entity.setDay(day);
+        entity.setHour(hour);
+        entity.setMinutes(minutes);
+        entity.setSecond(second);
+        return entity;
     }
 
     /**
